@@ -35,6 +35,8 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
 
         // runtime 'mysql:mysql-connector-java:5.1.20'
+		
+		compile "org.jadira.usertype:usertype.jodatime:1.9"
     }
 
     plugins {
@@ -53,5 +55,6 @@ grails.project.dependency.resolution = {
 
         compile ':cache:1.0.0'
 		compile ":ckeditor:3.6.2.2"
+		compile ":joda-time:1.4"
     }
 }

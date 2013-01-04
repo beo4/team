@@ -1,6 +1,8 @@
 package de.elementEvents.tema.event
 
+import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.web.servlet.support.RequestContextUtils as RCU
 
 class EventController {
 
@@ -38,6 +40,57 @@ class EventController {
 			break
 		}
     }
+	
+	def languageLocale() {
+		def locale, result
+		if (params.locale) {
+			 
+			def cc = params.locale.split("_")
+			if (cc.size() == 1){
+				locale = new Locale(cc[0])
+				result = locale.getDisplayLanguage()
+			}
+			else if (cc.size() == 2) {
+				locale = new Locale(cc[0],cc[1])
+				result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
+			}
+			 
+			 
+		 } else {
+		 locale = new Locale("de","DE")
+		 result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
+		 }
+		
+		render result
+	}
+	
+	def returnEventLanguage() {
+		def eventLanguage = new EventLanguage()
+		def locale, result
+		
+		if (params.locale) {
+			
+		   def cc = params.locale.split("_")
+		   if (cc.size() == 1){
+			   locale = new Locale(cc[0])
+			   result = locale.getDisplayLanguage()
+		   }
+		   else if (cc.size() == 2) {
+			   locale = new Locale(cc[0],cc[1])
+			   result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
+		   }
+			
+			
+		} else {
+		locale = new Locale("de","DE")
+		result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
+		}
+		
+		eventLanguage.language = locale
+		eventLanguage.languageName = result
+		
+		render eventLanguage as JSON
+	}
 
     def show() {
         def eventInstance = Event.get(params.id)

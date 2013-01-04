@@ -7,8 +7,6 @@ import de.elementEvents.tema.subscription.SubscriptionResourceOption;
 
 class ResourceOption {
 	
-	String name
-	
 	LocalDateTime availableStart
 	LocalDateTime availableEnd
 	
@@ -17,7 +15,7 @@ class ResourceOption {
 	
 	static belongsTo = [resource: Resource]
 	
-	static hasMany = [subscriptions: SubscriptionResourceOption]
+	static hasMany = [subscriptions: SubscriptionResourceOption, i18n: ResourceOption_i18n]
 
     static constraints = {
 		meeting: nullable: true

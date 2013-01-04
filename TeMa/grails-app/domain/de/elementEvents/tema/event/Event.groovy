@@ -4,14 +4,12 @@ import de.elementEvents.tema.meeting.Meeting;
 import de.elementEvents.tema.user.User;
 
 class Event {
-
-	String title
-	String subtitle
-	String description
 	
-	static hasMany = [meetings: Meeting, participants: User]
+	String bla
+
+	static hasMany = [meetings: Meeting, participants: User, i18n: Event_i18n, eventLanguage: EventLanguage]
 	
     static constraints = {
-		description type: 'text'
+		eventLanguage minSize: 1
     }
 }

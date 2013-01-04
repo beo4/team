@@ -8,18 +8,13 @@ import de.elementEvents.tema.subscription.Subscription;
 
 class Meeting {
 	
-	String title
-	String subtitle
-	String description
-	
 	LocalDateTime start
 	LocalDateTime end
 	
 	static belongsTo = [event: Event]
 	
-	static hasMany = [subscriber: Subscription]
+	static hasMany = [subscriber: Subscription, i18n: Meeting_i18n]
 
     static constraints = {
-		description type: 'text'
     }
 }

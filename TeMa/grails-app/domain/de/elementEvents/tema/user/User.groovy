@@ -1,5 +1,7 @@
 package de.elementEvents.tema.user
 
+import de.elementEvents.tema.event.EventLanguage;
+
 class User {
 
 	transient springSecurityService
@@ -14,6 +16,8 @@ class User {
 	String email
 	String firstname
 	String lastname
+	
+	EventLanguage language
 
 	static constraints = {
 		username blank: false, unique: true
@@ -21,6 +25,7 @@ class User {
 		email email: true, blank: true, nullable: true
 		firstname blank: true, nullable: true
 		lastname blank: true, nullable: true
+		language blank: true, nullable: true
 	}
 
 	static mapping = {

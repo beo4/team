@@ -1,4 +1,5 @@
 <%@ page import="de.elementEvents.tema.event.Event" %>
+<%@ page import="org.springframework.web.servlet.support.RequestContextUtils as RCU" %>
 <!doctype html>
 <html>
 	<head>
@@ -49,9 +50,32 @@
 				</bootstrap:alert>
 				</g:hasErrors>
 
+				
+
+
 				<fieldset>
 					<g:form class="form-horizontal" action="create" >
 						<fieldset>
+							<g:message code="event.addLanguage.label" default="Add language"/>
+							<div class="input-prepend input-append">
+	      							<span class="add-on"><i class="icon-flag"></i></span>
+									<g:localeSelect name="myLocale" value="${localeToAdd}" />
+									<button class="btn btn-success" type="button" onclick="create.addLanguage($('#myLocale option:selected'));"><i class="icon-plus icon-white"></i></button>
+							</div>
+							<g:if test="${!eventInstance.eventLanguage}">
+								<bootstrap:alert class="alert-info"><g:message code="event.addLanguage.addLangugaeFirst.label"/></bootstrap:alert>
+								<ul class="nav nav-pills hidden">
+								</ul>
+							</g:if>
+							<g:else>
+							<ul class="nav nav-pills">
+							  <li><a href="#home" data-toggle="tab">Home</a></li>
+							  <li><a href="#profile" data-toggle="tab">Profile</a></li>
+							  <li><a href="#messages" data-toggle="tab">Messages</a></li>
+							  <li><a href="#settings" data-toggle="tab">Settings</a></li>
+							</ul>
+							</g:else>
+						
 							<f:all bean="eventInstance"/>
 							
 							
@@ -68,5 +92,39 @@
 			</div>
 
 		</div>
+		<g:javascript>
+		var create = new function() {
+		    this.event = ${eventInstance};
+		
+			this.addLanguage = function (source) {
+				var locale,
+				//add a tab for the language
+				tab = $('.nav.nav-pills');
+				
+				${remoteFunction(action: 'returnEventLanguage',
+                       params: '\'locale=\' + source.val()',
+					   onSuccess: 'create.addTab(tab,source,data); ',
+					   options: '[asynchronous: false]')}
+				 
+				
+				//remove the alert
+				$(".alert").alert('close')
+				source.remove();
+		    };
+		    
+		    this.addTab = function(tab,source,name) {
+		    	//add tab to table
+			    insertedTab = $("<a href=\""+source.val()+"\" data-toggle=\"tab\">"+ name.languageName + "</a>");
+					tab.removeClass('hidden').append(
+						$('<li>').append(
+							insertedTab
+						)
+					);
+				insertedTab.tab('show');
+		    }
+		    
+		    
+		}
+		</g:javascript>
 	</body>
 </html>

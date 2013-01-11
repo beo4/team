@@ -1,5 +1,7 @@
 package de.elementEvents.tema.event
 
+import grails.converters.JSON;
+
 import org.springframework.dao.DataIntegrityViolationException
 
 class EventLanguageController {
@@ -32,6 +34,33 @@ class EventLanguageController {
 			break
 		}
     }
+	
+	def addEditEventLanguage() {
+		def locale, result, eventLanguageInstance =  new EventLanguage(params)
+		if (params.locale) {
+			 
+			def cc = params.locale.split("_")
+			if (cc.size() == 1){
+				locale = new Locale(cc[0])
+				result = locale.getDisplayLanguage()
+			}
+			else if (cc.size() == 2) {
+				locale = new Locale(cc[0],cc[1])
+				result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
+			}
+			 
+			 
+		 } else {
+		 locale = new Locale("de","DE")
+		 }
+
+		 
+		 
+		 eventLanguageInstance.languageName = locale.getDisplayLanguage();
+		 eventLanguageInstance.language = locale
+		 
+		render (template: "/eventLanguage/addEditEventLanguage", model:[eventLanguageInstance: eventLanguageInstance])
+	}
 
     def show() {
         def eventLanguageInstance = EventLanguage.get(params.id)

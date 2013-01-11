@@ -54,7 +54,7 @@
 
 
 				<fieldset>
-					<g:form class="form-horizontal" action="create" >
+					<g:formRemote name="createEvent" url="[action: 'create']" class="form-horizontal" before=""  >
 						<fieldset>
 							<g:message code="event.addLanguage.label" default="Add language"/>
 							<div class="input-prepend input-append">
@@ -64,47 +64,44 @@
 							</div>
 							<g:if test="${!eventInstance.eventLanguage}">
 								<bootstrap:alert class="alert-info"><g:message code="event.addLanguage.addLangugaeFirst.label"/></bootstrap:alert>
-								<ul class="nav nav-pills hidden">
+								<ul class="nav nav-tabs hidden">
 								</ul>
+								<div class="tab-content hidden">
+								</div>
 							</g:if>
 							<g:else>
-							<ul class="nav nav-pills">
-							  <li><a href="#home" data-toggle="tab">Home</a></li>
-							  <li><a href="#profile" data-toggle="tab">Profile</a></li>
-							  <li><a href="#messages" data-toggle="tab">Messages</a></li>
-							  <li><a href="#settings" data-toggle="tab">Settings</a></li>
+							<ul class="nav nav-tabs">
+
 							</ul>
 							</g:else>
 						
-							<f:all bean="eventInstance"/>
-							
-							
 							<div class="form-actions">
-								<button type="submit" class="btn btn-primary">
+								<button type="button" class="btn btn-primary" onclick="alert(create.getBeans());">
 									<i class="icon-ok icon-white"></i>
 									<g:message code="default.button.create.label" default="Create" />
 								</button>
 							</div>
+							
 						</fieldset>
-					</g:form>
+					</g:formRemote>
 				</fieldset>
 				
 			</div>
 
 		</div>
 		<g:javascript>
-		var create = new function() {
-		    this.event = ${eventInstance};
+		var eventInstance = new Object(),
+			content = $('.tab-content'),
+			tab = $('.nav.nav-tabs'),
+			create = new function() {
 		
 			this.addLanguage = function (source) {
-				var locale,
-				//add a tab for the language
-				tab = $('.nav.nav-pills');
+				var locale;
 				
 				${remoteFunction(action: 'returnEventLanguage',
                        params: '\'locale=\' + source.val()',
-					   onSuccess: 'create.addTab(tab,source,data); ',
-					   options: '[asynchronous: false]')}
+					   onSuccess: 'create.addTab(source,data); ',
+					   options: '[asynchronous: true]')}
 				 
 				
 				//remove the alert
@@ -112,16 +109,45 @@
 				source.remove();
 		    };
 		    
-		    this.addTab = function(tab,source,name) {
+		    this.addTab = function(source,name) {
 		    	//add tab to table
-			    insertedTab = $("<a href=\""+source.val()+"\" data-toggle=\"tab\">"+ name.languageName + "</a>");
+			    var insertedTab = $("<a href=\"#"+source.val()+"\" data-toggle=\"tab\">"+ name.languageName + "</a>"),
+			    	insertedContent = $("<div class=\"tab-pane\" id=\"" + source.val() +"\">");
+			    	
 					tab.removeClass('hidden').append(
-						$('<li>').append(
+						$('<li class="speech">').append(
 							insertedTab
 						)
-					);
+					),
+				
+				content.removeClass('hidden').append(
+							insertedContent
+						);
+					
+				${remoteFunction(action: 'addEditEventLanguage',
+					   controller: 'EventLanguage',
+                       params: '\'locale=\' + source.val()',
+					   onSuccess: 'create.addTabContent(insertedContent,data)')}
+				
 				insertedTab.tab('show');
-		    }
+		    };
+		    
+		    this.addTabContent= function(target, content) {
+		    	target.html(content);
+		    };
+		    
+		    this.getBeans = function() {
+		    	$(".tab-pane").each(function(index, para) {
+		    		var language =  $(para).find('#'+$(para).attr('id')+'\\.language').val(),
+		    			languageName = $(para).find('#'+$(para).attr('id')+'\\.languageName').val();
+		    			
+		    		
+		    		eventInstance[$(para).attr('id')] = new Object();
+		    		eventInstance[$(para).attr('id')].language = language
+		    		eventInstance[$(para).attr('id')].languageName = languageName
+		    		
+		    	});
+		    };
 		    
 		    
 		}

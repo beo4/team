@@ -11,5 +11,8 @@ class Event {
 	
     static constraints = {
 		eventLanguage minSize: 1
+		meetings nullable: true
+		participants nullable: true
+		i18n nullable: true
     }
 }

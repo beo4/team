@@ -59,6 +59,32 @@ class EventController {
 		}
 	}
 
+	def addI18n() {
+		def locale, result, eventLanguageInstance =  new EventLanguage(params), event_i18n = new Event_i18n()
+		if (params.locale) {
+				def cc = params.locale.split("_")
+				if (cc.size() == 1){
+					locale = new Locale(cc[0])
+					result = locale.getDisplayLanguage()
+				}
+				else if (cc.size() == 2) {
+					locale = new Locale(cc[0],cc[1])
+					result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
+				}
+				 
+				 
+			 } else {
+			 locale = new Locale("de","DE")
+			 }
+	
+			 eventLanguageInstance.languageName = locale.getDisplayLanguage();
+			 eventLanguageInstance.language = locale
+			 
+			 event_i18n.i18n = eventLanguageInstance
+			 
+			 render event_i18n as JSON
+	}
+	
     def update() {
         def eventInstance = Event.get(params.id)
         if (!eventInstance) {

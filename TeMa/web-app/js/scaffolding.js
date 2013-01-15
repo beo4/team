@@ -222,8 +222,10 @@ function CreateCtrl($scope, $location, Grails, Flash) {
         $scope.defaults = response;
     }, errorHandler.curry($scope, $location, Flash));
 	
-	$scope.getI18n = = function(item) {
-		
+	$scope.getI18n = function(locale) {
+		Grails.newI18n({locale: locale}, function(response) {
+	        $scope[locale] = response;
+	    }, errorHandler.curry($scope, $location, Flash));
 	}
 
     $scope.save = function(item) {

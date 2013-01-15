@@ -143,8 +143,6 @@
 		    			
 		    		
 		    		eventInstance[$(para).attr('id')] = new Object();
-		    		eventInstance[$(para).attr('id')].language = language
-		    		eventInstance[$(para).attr('id')].languageName = languageName
 		    		
 		    	});
 		    };

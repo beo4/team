@@ -26,7 +26,10 @@
 		<r:layoutResources/>
 	</head>
 
-	<body>
+	<body data-ng-app="${pageProperty(name: 'body.data-ng-app')}"
+		  data-base-url="${pageProperty(name: 'body.data-base-url', default: createLink(action: 'index').replaceAll(/index$/, ''))}"
+		  data-template-url="${pageProperty(name: 'body.data-template-url', default: createLink(uri: "/ng-templates/$controllerName"))}"
+		  data-common-template-url="${pageProperty(name: 'body.data-common-template-url', default: createLink(uri: '/ng-templates'))}">
 
 		<nav class="navbar navbar-fixed-top">
 			<div class="navbar-inner">

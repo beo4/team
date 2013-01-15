@@ -56,5 +56,6 @@ grails.project.dependency.resolution = {
         compile ':cache:1.0.0'
 		compile ":ckeditor:3.6.2.2"
 		compile ":joda-time:1.4"
+		compile ":angular-scaffolding:1.0-SNAPSHOT"
     }
 }

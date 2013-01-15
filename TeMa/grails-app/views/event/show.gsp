@@ -42,24 +42,39 @@
 
 				<dl>
 				
-					<g:if test="${eventInstance?.title}">
-						<dt><g:message code="event.title.label" default="Title" /></dt>
+					<g:if test="${eventInstance?.eventLanguage}">
+						<dt><g:message code="event.eventLanguage.label" default="Event Language" /></dt>
 						
-							<dd><g:fieldValue bean="${eventInstance}" field="title"/></dd>
-						
-					</g:if>
-				
-					<g:if test="${eventInstance?.subtitle}">
-						<dt><g:message code="event.subtitle.label" default="Subtitle" /></dt>
-						
-							<dd><g:fieldValue bean="${eventInstance}" field="subtitle"/></dd>
+							<g:each in="${eventInstance.eventLanguage}" var="e">
+							<dd><g:link controller="eventLanguage" action="show" id="${e.id}">${e?.encodeAsHTML()}</g:link></dd>
+							</g:each>
 						
 					</g:if>
 				
-					<g:if test="${eventInstance?.description}">
-						<dt><g:message code="event.description.label" default="Description" /></dt>
+					<g:if test="${eventInstance?.i18n}">
+						<dt><g:message code="event.i18n.label" default="I18n" /></dt>
 						
-							<dd>${eventInstance.description}</dd>
+							<g:each in="${eventInstance.i18n}" var="i">
+							<dd><g:link controller="event_i18n" action="show" id="${i.id}">${i?.encodeAsHTML()}</g:link></dd>
+							</g:each>
+						
+					</g:if>
+				
+					<g:if test="${eventInstance?.meetings}">
+						<dt><g:message code="event.meetings.label" default="Meetings" /></dt>
+						
+							<g:each in="${eventInstance.meetings}" var="m">
+							<dd><g:link controller="meeting" action="show" id="${m.id}">${m?.encodeAsHTML()}</g:link></dd>
+							</g:each>
+						
+					</g:if>
+				
+					<g:if test="${eventInstance?.participants}">
+						<dt><g:message code="event.participants.label" default="Participants" /></dt>
+						
+							<g:each in="${eventInstance.participants}" var="p">
+							<dd><g:link controller="user" action="show" id="${p.id}">${p?.encodeAsHTML()}</g:link></dd>
+							</g:each>
 						
 					</g:if>
 				

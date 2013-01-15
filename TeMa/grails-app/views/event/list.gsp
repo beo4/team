@@ -44,20 +44,12 @@
 					<thead>
 						<tr>
 						
-							<g:sortableColumn property="title" title="${message(code: 'event.title.label', default: 'Title')}" />
-						
-							<g:sortableColumn property="subtitle" title="${message(code: 'event.subtitle.label', default: 'Subtitle')}" />
-						
 							<th></th>
 						</tr>
 					</thead>
 					<tbody>
 					<g:each in="${eventInstanceList}" var="eventInstance">
 						<tr>
-						
-							<td>${fieldValue(bean: eventInstance, field: "title")}</td>
-						
-							<td>${fieldValue(bean: eventInstance, field: "subtitle")}</td>
 						
 							<td class="link">
 								<g:link action="show" id="${eventInstance.id}" class="btn btn-small">Show &raquo;</g:link>

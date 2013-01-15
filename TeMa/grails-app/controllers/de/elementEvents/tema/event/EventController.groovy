@@ -1,168 +1,122 @@
 package de.elementEvents.tema.event
 
-import grails.converters.JSON
 import org.springframework.dao.DataIntegrityViolationException
-import org.springframework.web.servlet.support.RequestContextUtils as RCU
+import grails.converters.JSON
+import static javax.servlet.http.HttpServletResponse.*
 
 class EventController {
 
-    static allowedMethods = [create: ['GET', 'POST'], edit: ['GET', 'POST'], delete: 'POST']
+    static final int SC_UNPROCESSABLE_ENTITY = 422
 
-    def index() {
-        redirect action: 'list', params: params
-    }
+    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+
+    def index() { }
 
     def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
-        [eventInstanceList: Event.list(params), eventInstanceTotal: Event.count()]
+		response.setIntHeader('X-Pagination-Total', Event.count())
+		render Event.list(params) as JSON
     }
 
-    def create() {
-		switch (request.method) {
-		case 'GET':
-        	[eventInstance: new Event(params)]
-			break
-		case 'POST':
-	        def eventInstance = new Event(params)
-			
-			if (params.descriptionRT) {
-				eventInstance.description = params.descriptionRT
-			}
-				
-			
-	        if (!eventInstance.save(flush: true)) {
-	            render view: 'create', model: [eventInstance: eventInstance]
-	            return
-	        }
+    def save() {
+        def eventInstance = new Event(request.JSON)
+        def responseJson = [:]
+        if (eventInstance.save(flush: true)) {
+            response.status = SC_CREATED
+            responseJson.id = eventInstance.id
+            responseJson.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), eventInstance.id])
+        } else {
+            response.status = SC_UNPROCESSABLE_ENTITY
+            responseJson.errors = eventInstance.errors.fieldErrors.collectEntries {
+                [(it.field): message(error: it)]
+            }
+        }
+        render responseJson as JSON
+    }
 
-			flash.message = message(code: 'default.created.message', args: [message(code: 'event.label', default: 'Event'), eventInstance.id])
-	        redirect action: 'show', id: eventInstance.id
-			break
+    def get() {
+        def eventInstance = Event.get(params.id)
+        if (eventInstance) {
+			render eventInstance as JSON
+        } else {
+			notFound params.id
 		}
     }
 	
-	def languageLocale() {
-		def locale, result
-		if (params.locale) {
-			 
-			def cc = params.locale.split("_")
-			if (cc.size() == 1){
-				locale = new Locale(cc[0])
-				result = locale.getDisplayLanguage()
-			}
-			else if (cc.size() == 2) {
-				locale = new Locale(cc[0],cc[1])
-				result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
-			}
-			 
-			 
-		 } else {
-		 locale = new Locale("de","DE")
-		 result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
-		 }
+	def create() {
+		def availableLanuages = Locale.getAvailableLocales()
 		
-		render result
-	}
-	
-	def returnEventLanguage() {
-		def eventLanguage = new EventLanguage()
-		def locale, result
-		
-		if (params.locale) {
+		if (availableLanuages) {
+			def defaultsValues = [languages:[]]
+			for (language in availableLanuages) {
+				defaultsValues.languages.add([country:language.country, displayName: language.displayName, displayCountry: language.displayCountry, language:language.language, code:language.language + '_' + language.country])
+			}
+			//def defaultsValues=[test:availableLanuages]
 			
-		   def cc = params.locale.split("_")
-		   if (cc.size() == 1){
-			   locale = new Locale(cc[0])
-			   result = locale.getDisplayLanguage()
-		   }
-		   else if (cc.size() == 2) {
-			   locale = new Locale(cc[0],cc[1])
-			   result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
-		   }
-			
-			
+			render defaultsValues as JSON
 		} else {
-		locale = new Locale("de","DE")
-		result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
+			notFound "Locales"
 		}
-		
-		eventLanguage.language = locale
-		eventLanguage.languageName = result
-		
-		render eventLanguage as JSON
 	}
 
-    def show() {
+    def update() {
         def eventInstance = Event.get(params.id)
         if (!eventInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'event.label', default: 'Event'), params.id])
-            redirect action: 'list'
+            notFound params.id
             return
         }
 
-        [eventInstance: eventInstance]
-    }
+        def responseJson = [:]
 
-    def edit() {
-		switch (request.method) {
-		case 'GET':
-	        def eventInstance = Event.get(params.id)
-	        if (!eventInstance) {
-	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'event.label', default: 'Event'), params.id])
-	            redirect action: 'list'
-	            return
-	        }
+        if (request.JSON.version != null) {
+            if (eventInstance.version > request.JSON.version) {
+				response.status = SC_CONFLICT
+				responseJson.message = message(code: 'default.optimistic.locking.failure',
+						args: [message(code: 'event.label', default: 'Event')],
+						default: 'Another user has updated this Event while you were editing')
+				cache false
+				render responseJson as JSON
+				return
+            }
+        }
 
-	        [eventInstance: eventInstance]
-			break
-		case 'POST':
-	        def eventInstance = Event.get(params.id)
-	        if (!eventInstance) {
-	            flash.message = message(code: 'default.not.found.message', args: [message(code: 'event.label', default: 'Event'), params.id])
-	            redirect action: 'list'
-	            return
-	        }
+        eventInstance.properties = request.JSON
 
-	        if (params.version) {
-	            def version = params.version.toLong()
-	            if (eventInstance.version > version) {
-	                eventInstance.errors.rejectValue('version', 'default.optimistic.locking.failure',
-	                          [message(code: 'event.label', default: 'Event')] as Object[],
-	                          "Another user has updated this Event while you were editing")
-	                render view: 'edit', model: [eventInstance: eventInstance]
-	                return
-	            }
-	        }
+        if (eventInstance.save(flush: true)) {
+            response.status = SC_OK
+            responseJson.id = eventInstance.id
+            responseJson.message = message(code: 'default.updated.message', args: [message(code: 'event.label', default: 'Event'), eventInstance.id])
+        } else {
+            response.status = SC_UNPROCESSABLE_ENTITY
+            responseJson.errors = eventInstance.errors.fieldErrors.collectEntries {
+                [(it.field): message(error: it)]
+            }
+        }
 
-	        eventInstance.properties = params
-
-	        if (!eventInstance.save(flush: true)) {
-	            render view: 'edit', model: [eventInstance: eventInstance]
-	            return
-	        }
-
-			flash.message = message(code: 'default.updated.message', args: [message(code: 'event.label', default: 'Event'), eventInstance.id])
-	        redirect action: 'show', id: eventInstance.id
-			break
-		}
+        render responseJson as JSON
     }
 
     def delete() {
         def eventInstance = Event.get(params.id)
         if (!eventInstance) {
-			flash.message = message(code: 'default.not.found.message', args: [message(code: 'event.label', default: 'Event'), params.id])
-            redirect action: 'list'
+            notFound params.id
             return
         }
 
+        def responseJson = [:]
         try {
             eventInstance.delete(flush: true)
-			flash.message = message(code: 'default.deleted.message', args: [message(code: 'event.label', default: 'Event'), params.id])
-            redirect action: 'list'
+            responseJson.message = message(code: 'default.deleted.message', args: [message(code: 'event.label', default: 'Event'), params.id])
+        } catch (DataIntegrityViolationException e) {
+            response.status = SC_CONFLICT
+            responseJson.message = message(code: 'default.not.deleted.message', args: [message(code: 'event.label', default: 'Event'), params.id])
         }
-        catch (DataIntegrityViolationException e) {
-			flash.message = message(code: 'default.not.deleted.message', args: [message(code: 'event.label', default: 'Event'), params.id])
-            redirect action: 'show', id: params.id
-        }
+        render responseJson as JSON
+    }
+
+    private void notFound(id) {
+        response.status = SC_NOT_FOUND
+        def responseJson = [message: message(code: 'default.not.found.message', args: [message(code: 'event.label', default: 'Event'), params.id])]
+        render responseJson as JSON
     }
 }

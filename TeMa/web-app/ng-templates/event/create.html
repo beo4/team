@@ -1,0 +1,54 @@
+
+				<div class="page-header">
+					<h1>Event</h1>
+				</div>
+			
+				<alert level="{{message.level}}" text="{{message.text}}"/>
+				<form name="form" data-ng-submit="save(item)" class="form-horizontal">
+				
+					<g:message code="event.addLanguage.label" default="Add language"/>
+					
+					<g:if test="${!eventInstance.eventLanguage}">
+						<bootstrap:alert class="alert-info"><g:message code="event.addLanguage.addLangugaeFirst.label"/></bootstrap:alert>
+						<ul class="nav nav-tabs hidden">
+						</ul>
+						<div class="tab-content hidden">
+						</div>
+					</g:if>
+					<g:else>
+					<ul class="nav nav-tabs">
+
+					</ul>
+					</g:else>
+				
+					<div class="form-actions">
+						<button type="button" class="btn btn-primary" onclick="alert(create.getBeans());">
+							<i class="icon-ok icon-white"></i>
+							<g:message code="default.button.create.label" default="Create" />
+						</button>
+					</div>
+					
+						
+					<div class="control-group" data-ng-class="{error: errors.eventLanguage}">
+						<label class="control-label" for="eventLanguage">Event Language</label>
+						<div class="controls">
+							<input type="hidden" id="eventLanguage" name="eventLanguage" required data-ng-model="temp.eventLanguage">
+							<span class="help-inline" data-ng-show="errors.eventLanguage">{{errors.eventLanguage}}</span>
+							
+							<div class="input-prepend input-append">
+     							<span class="add-on"><i class="icon-flag"></i></span>
+								
+								<select id="eventLanguage" name="eventLanguage" data-ng-model="temp.eventLanguage" ng-options="obj.code as obj.displayName for obj in defaults.languages">
+        						</select>
+							<button class="btn btn-success" type="button" onclick="create.addLanguage($('#myLocale option:selected'));"><i class="icon-plus icon-white"></i></button>
+							</div>
+							
+						</div>
+					</div>
+					
+					
+					
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Create</button>
+					</div>
+				</form>

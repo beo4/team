@@ -40,7 +40,7 @@
 								
 								<select id="eventLanguage" name="eventLanguage" data-ng-model="temp.eventLanguage" ng-options="obj.code as obj.displayName for obj in defaults.languages">
         						</select>
-							<button class="btn btn-success" type="button" ng-click="getI18n(temp.eventLanguage)"><i class="icon-plus icon-white"></i></button>
+							<button ng-controller="EventCtrl" class="btn btn-success" type="button" ng-click="addLanguage(temp.eventLanguage)"><i class="icon-plus icon-white"></i></button>
 							</div>
 							
 						</div>

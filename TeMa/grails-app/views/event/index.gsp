@@ -7,7 +7,7 @@
         <g:set var="entityName" value="${message(code: 'event.label', default: 'Event')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
 
-        <r:require module="my-angular-scaffolding"/>
+        <r:require module="event-angular-scaffolding"/>
     </head>
     <body data-ng-app="scaffolding" data-base-url="${createLink(uri: '/event/')}">
         <a href="#list-event" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>

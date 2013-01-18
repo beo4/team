@@ -17,4 +17,9 @@ modules = {
         resource id: 'js', url: [dir: 'js', file: 'scaffolding.js']
         resource id: 'css', url: [plugin: 'angular-scaffolding', dir: 'css', file: 'scaffolding.css']
     }
+	
+	'event-angular-scaffolding' {
+        dependsOn 'my-angular-scaffolding'
+		resource id: 'js', url: [dir: 'js', file: 'event.js']
+    }
 }

@@ -68,7 +68,7 @@ class EventController {
 					result = locale.getDisplayLanguage()
 				}
 				else if (cc.size() == 2) {
-					locale = new Locale(cc[0],cc[1])
+					locale = new Locale(cc[1],cc[0])
 					result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
 				}
 				 

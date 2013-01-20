@@ -6,20 +6,10 @@
 				<alert level="{{message.level}}" text="{{message.text}}"/>
 				<form name="form" data-ng-submit="save(item)" class="form-horizontal">
 				
-					<g:message code="event.addLanguage.label" default="Add language"/>
+					<div class="i18ntabs">
+					</div>
 					
-					<g:if test="${!eventInstance.eventLanguage}">
-						<bootstrap:alert class="alert-info"><g:message code="event.addLanguage.addLangugaeFirst.label"/></bootstrap:alert>
-						<ul class="nav nav-tabs hidden">
-						</ul>
-						<div class="tab-content hidden">
-						</div>
-					</g:if>
-					<g:else>
-					<ul class="nav nav-tabs">
-
-					</ul>
-					</g:else>
+					<div class="zippy"></div>
 				
 					<div class="form-actions">
 						<button type="button" class="btn btn-primary" onclick="alert(create.getBeans());">

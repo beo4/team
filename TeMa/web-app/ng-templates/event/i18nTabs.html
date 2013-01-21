@@ -1,5 +1,10 @@
+<div>
 <ul class="nav nav-tabs">
-    <li ng-repeat="step in steps" ng-class="{active: $index==getCurrentStepIndex()}">
-      <a href="javascript:void(0)" ng-click="goToStep($index)">{{step}}</a>
+    <li ng-repeat="language in availableLanguages" ng-class="{active:language.selected}">
+      <a href="javascript:void(0)" ng-click="select(language)">{{language.languageName}}<button class="close btn" ng-click="deleteLanguage(language)" type="button"><i class="icon-trash"></i></button></a>
     </li>
   </ul>
+  <div class="tab-content" ng-transclude>
+  	<div data-i18npane ng-repeat="language in availableLanguages"></div>
+  </div>
+  </div>

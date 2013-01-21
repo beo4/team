@@ -4,13 +4,8 @@
 				</div>
 			
 				<alert level="{{message.level}}" text="{{message.text}}"/>
-				<form name="form" data-ng-submit="save(item)" class="form-horizontal">
-				
-					<div class="i18ntabs">
-					</div>
+				<form name="form" data-ng-submit="save(item)" class="form-horizontal" ng-controller="EventCtrl">
 					
-					<div class="zippy"></div>
-				
 					<div class="form-actions">
 						<button type="button" class="btn btn-primary" onclick="alert(create.getBeans());">
 							<i class="icon-ok icon-white"></i>
@@ -30,12 +25,14 @@
 								
 								<select id="eventLanguage" name="eventLanguage" data-ng-model="temp.eventLanguage" ng-options="obj.code as obj.displayName for obj in defaults.languages">
         						</select>
-							<button ng-controller="EventCtrl" class="btn btn-success" type="button" ng-click="addLanguage(temp.eventLanguage)"><i class="icon-plus icon-white"></i></button>
+							<button  class="btn btn-success" type="button" ng-click="addLanguage(temp.eventLanguage)"><i class="icon-plus icon-white"></i></button>
 							</div>
 							
 						</div>
 					</div>
 					
+					
+					<div data-i18ntabs="i18ntabs"></div>
 					
 					
 					<div class="form-actions">

@@ -1,62 +1,30 @@
 
-				<div class="page-header">
-					<h1>{{item.i18n.languge}}</h1>
-				</div>
+<div class="tab-pane" ng-class="{active: language.selected}" ng-transclude>
 			
-				<alert level="{{message.level}}" text="{{message.text}}"/>
-						
-					<div class="control-group" data-ng-class="{error: errors.description}">
-						<label class="control-label" for="description">Description</label>
+					<div class="control-group" data-ng-class="{error: errors.title}">
+						<label class="control-label" for="title">Title</label>
 						<div class="controls">
-							<input type="text" id="description" name="description" required data-ng-model="item.description">
-							<span class="help-inline" data-ng-show="errors.description">{{errors.description}}</span>
+							<input type="text" id="title" name="title" required data-ng-model="language.title">
+							<span class="help-inline" data-ng-show="errors.title">{{errors.title}}</span>
 						</div>
 					</div>
-					
-						
-					
-						
-					<div class="control-group" data-ng-class="{error: errors.event}">
-						<label class="control-label" for="event">Event</label>
-						<div class="controls">
-							<input type="text" id="event" name="event" required data-ng-model="item.event">
-							<span class="help-inline" data-ng-show="errors.event">{{errors.event}}</span>
-						</div>
-					</div>
-					
-						
-					
-						
-					<div class="control-group" data-ng-class="{error: errors.i18n}">
-						<label class="control-label" for="i18n">I18n</label>
-						<div class="controls">
-							<input type="text" id="i18n" name="i18n" required data-ng-model="item.i18n">
-							<span class="help-inline" data-ng-show="errors.i18n">{{errors.i18n}}</span>
-						</div>
-					</div>
-					
-						
 					
 						
 					<div class="control-group" data-ng-class="{error: errors.subtitle}">
 						<label class="control-label" for="subtitle">Subtitle</label>
 						<div class="controls">
-							<input type="text" id="subtitle" name="subtitle" required data-ng-model="item.subtitle">
+							<input type="text" id="subtitle" name="subtitle" required data-ng-model="language.subtitle">
 							<span class="help-inline" data-ng-show="errors.subtitle">{{errors.subtitle}}</span>
 						</div>
 					</div>
 					
-						
-					
-						
-					<div class="control-group" data-ng-class="{error: errors.title}">
-						<label class="control-label" for="title">Title</label>
+					<div class="control-group" data-ng-class="{error: errors.description}">
+						<label class="control-label" for="description">Description</label>
 						<div class="controls">
-							<input type="text" id="title" name="title" required data-ng-model="item.title">
-							<span class="help-inline" data-ng-show="errors.title">{{errors.title}}</span>
+							<input type="text" id="description" name="description" required data-ng-model="language.description">
+							<span class="help-inline" data-ng-show="errors.description">{{errors.description}}</span>
 						</div>
 					</div>
 					
-					<div class="form-actions">
-						<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Create</button>
-					</div>
+</div>
+					

@@ -63,12 +63,12 @@ class EventController {
 		def locale, result, eventLanguageInstance =  new EventLanguage(params), event_i18n = new Event_i18n()
 		if (params.locale) {
 				def cc = params.locale.split("_")
-				if (cc.size() == 1){
+				if (cc.size() == 1 || (cc[1].isEmpty() || cc[0].isEmpty())){
 					locale = new Locale(cc[0])
 					result = locale.getDisplayLanguage()
 				}
 				else if (cc.size() == 2) {
-					locale = new Locale(cc[1],cc[0])
+					locale = new Locale(cc[0],cc[1])
 					result = locale.getDisplayLanguage() + " (" + locale.getDisplayCountry() + ")"
 				}
 				 
@@ -77,12 +77,11 @@ class EventController {
 			 locale = new Locale("de","DE")
 			 }
 	
-			 eventLanguageInstance.languageName = locale.getDisplayLanguage();
+			 eventLanguageInstance.languageName = result
 			 eventLanguageInstance.language = locale
-			 
 			 event_i18n.i18n = eventLanguageInstance
 			 
-			 render event_i18n as JSON
+			 render eventLanguageInstance as JSON
 	}
 	
     def update() {

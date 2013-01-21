@@ -18,8 +18,15 @@ modules = {
         resource id: 'css', url: [plugin: 'angular-scaffolding', dir: 'css', file: 'scaffolding.css']
     }
 	
+	'my-angular-ui-scaffolding' {
+		dependsOn 'my-angular-scaffolding'
+		resource id: 'js', url: [dir: 'js', file: 'angular-ui.js']
+		resource id: 'js', url: [dir: 'js', file: 'angular-ui-ieshiv.js']
+		resource id: 'css', url: [dir: 'css', file: 'angular-ui.css']
+	}
+	
 	'event-angular-scaffolding' {
-        dependsOn 'my-angular-scaffolding'
+        dependsOn 'my-angular-ui-scaffolding'
 		resource id: 'js', url: [dir: 'js', file: 'event.js']
     }
 }

@@ -6,14 +6,6 @@
 				<alert level="{{message.level}}" text="{{message.text}}"/>
 				<form name="form" data-ng-submit="save(item)" class="form-horizontal" ng-controller="EventCtrl">
 					
-					<div class="form-actions">
-						<button type="button" class="btn btn-primary" onclick="alert(create.getBeans());">
-							<i class="icon-ok icon-white"></i>
-							<g:message code="default.button.create.label" default="Create" />
-						</button>
-					</div>
-					
-						
 					<div class="control-group" data-ng-class="{error: errors.eventLanguage}">
 						<label class="control-label" for="eventLanguage">Event Language</label>
 						<div class="controls">

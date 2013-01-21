@@ -39,6 +39,8 @@ scaffoldingModule.directive('i18ntabs', function(){
             }
             
             $scope.deleteLanguage = function(pane) {
+            	element.modal('show')
+            	
                 angular.forEach(panes, function(pane) {
                     pane.selected = false;
                 });

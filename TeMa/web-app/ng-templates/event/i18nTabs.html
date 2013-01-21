@@ -7,4 +7,10 @@
   <div class="tab-content" ng-transclude>
   	<div data-i18npane ng-repeat="language in availableLanguages"></div>
   </div>
+  <div ui-modal ng-repeat="language in availableLanguages" class="fade" ng-model="modalShown" id="{{language.language}}">
+	  Cool, a modal dialog!
+	  <a data-dismiss="modal">Close 1</a>
+	  <a ng-click="modalShown=false">Close 2</a>
+  </div>
+  <a data-toggle="modal" href="#{{language.language}}" ng-repeat="language in availableLanguages">Open 2</a>
   </div>

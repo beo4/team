@@ -19,7 +19,6 @@ scaffoldingModule.directive('i18ntabs', function(){
 	var baseUrl = $('body').data('template-url');
     return {
         restrict: 'A',
-        // This HTML will replace the zippy directive.
         replace: true,
         transclude: true,
         templateUrl: baseUrl + '/i18nTabs.html',
@@ -28,9 +27,9 @@ scaffoldingModule.directive('i18ntabs', function(){
               // Title element
         	var availableLanguages = scope.availableLanguages;
         },
-        controller: function($scope, $element) {
+        controller: function($scope, $element, $dialog) {
             var panes = $scope.availableLanguages = [];
-
+            
             $scope.select = function(pane) {
                 angular.forEach(panes, function(pane) {
                     pane.selected = false;
@@ -39,8 +38,6 @@ scaffoldingModule.directive('i18ntabs', function(){
             }
             
             $scope.deleteLanguage = function(pane) {
-            	element.modal('show')
-            	
                 angular.forEach(panes, function(pane) {
                     pane.selected = false;
                 });
@@ -50,6 +47,27 @@ scaffoldingModule.directive('i18ntabs', function(){
             this.addPane = function(pane) {
                 $scope.select(pane);
             }
+            
+            $scope.openMessageBox = function(pane){
+        	    var baseUrl = $('body').data('template-url'),
+        	    	title = 'Delete ' + pane.languageName,
+        	        msg = 'Delete language and all data',
+        	    	btns = [{result:'cancel', label: 'Cancel'}, {result:'ok', label: 'OK', cssClass: 'btn-primary'}],
+        	    	model ={title: title,message: msg, buttons: btns},
+        	    	opts = {
+        	              backdrop: true,
+        	              keyboard: true,
+        	              backdropClick: true,
+        	              templateUrl:  baseUrl + '/template/dialog/message.html', // OR: templateUrl: 'path/to/view.html',
+        	              controller: 'MessageBoxController',
+        	              resolve: {model: model}
+        	            };
+        	    
+        	    var msgbox = $dialog.dialog(opts);
+                msgbox.open().then(function(result){
+                   if(result === 'yes') {$scope.deleteLanguage(pane);}
+                });
+        	  };
         }
       }
     }).

@@ -27,7 +27,7 @@ angular.module('flashService', []).factory('Flash', function() {
 /**
  * The main scaffolding module.
  */
-var scaffoldingModule = angular.module('scaffolding', ['grailsService', 'flashService']);
+var scaffoldingModule = angular.module('scaffolding', ['grailsService', 'flashService', 'ui', 'ui.bootstrap.dialog']);
 
 /**
  * Route definitions connecting URL fragments to views and controllers.

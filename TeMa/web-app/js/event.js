@@ -1,16 +1,24 @@
 function EventCtrl($scope, $location, Grails, Flash) {
 
-	$scope.availableLanguages = new Array();
+	$scope.item.eventLanguage = [];
+	$scope.item.i18n = [];
 	
 	$scope.addLanguage = function(language) {
 		var locale = $scope.getI18n(language);
 	}
 	
+	$scope.defaults = Grails.create({}, function(response) {
+        $scope.defaults = response;
+    }, errorHandler.curry($scope, $location, Flash));
+	
 	$scope.getI18n = function(locale) {
 		Grails.newI18n({locale: locale}, function(response) {
-	        $scope.availableLanguages.push(response);
+			$scope.item.eventLanguage.push(response.eventLanguage);
+			response.i18n.eventLanguage = response.eventLanguage
+			$scope.item.i18n.push(response.i18n);
 	    }, errorHandler.curry($scope, $location, Flash));
 	}
+	
     
 }
 
@@ -22,13 +30,13 @@ scaffoldingModule.directive('i18ntabs', function(){
         replace: true,
         transclude: true,
         templateUrl: baseUrl + '/i18nTabs.html',
+        scope: {i18n: '='},
         // The linking function will add behavior to the template
         link: function(scope, element, attrs) {
-              // Title element
-        	var availableLanguages = scope.availableLanguages;
+        	 
         },
         controller: function($scope, $element, $dialog) {
-            var panes = $scope.availableLanguages = [];
+            var panes = $scope.i18n = [];
             
             $scope.select = function(pane) {
                 angular.forEach(panes, function(pane) {
@@ -58,7 +66,7 @@ scaffoldingModule.directive('i18ntabs', function(){
         	              backdrop: true,
         	              keyboard: true,
         	              backdropClick: true,
-        	              templateUrl:  baseUrl + '/template/dialog/message.html', // OR: templateUrl: 'path/to/view.html',
+        	              templateUrl:  baseUrl + '/template/dialog/message.html',
         	              controller: 'MessageBoxController',
         	              resolve: {model: model}
         	            };
@@ -78,7 +86,6 @@ scaffoldingModule.directive('i18ntabs', function(){
           restrict: 'A',
           transclude: true,
           link: function(scope, element, attrs, tabsCtrl) {
-            tabsCtrl.addPane(scope);
           },
           templateUrl: baseUrl + '/i18n.html',
           replace: true

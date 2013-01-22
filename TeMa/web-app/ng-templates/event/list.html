@@ -6,12 +6,22 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
+		<th>Event Titel</th>
+		
+		<th>subtitle</th>
+		
+		<th>languages</th>
 		
         </tr>
     </thead>
     <tbody>
         <tr data-ng-repeat="item in list" data-ng-click="show(item)">
+        
+			<td><ul><li data-ng-repeat="i18n in item.i18n">{{i18n.title}}</li></ul></td>
 		
+			<td><ul><li data-ng-repeat="i18n in item.i18n">{{i18n.subtitle}}</li></ul></td>
+		
+			<td><ul><li data-ng-repeat="eventLanguage in item.eventLanguage">{{eventLanguage.languageName}}</li></ul></td>
         </tr>
     </tbody>
 </table>

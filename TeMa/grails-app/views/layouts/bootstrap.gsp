@@ -61,7 +61,7 @@
 			<hr>
 
 			<footer>
-				<p>&copy; Company 2011</p>
+				<p>&copy; Element Event 2013</p>
 			</footer>
 		</div>
 

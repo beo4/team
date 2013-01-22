@@ -15,4 +15,13 @@ class Event {
 		participants nullable: true
 		i18n nullable: true
     }
+	
+	static mapping = {
+		eventLanguage: 'join'
+		eventLanguage: lazy: false
+		i18n: lazy: false
+		i18n: 'join'
+	}
+	
+	
 }

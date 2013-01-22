@@ -15,11 +15,27 @@ class EventController {
     def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		response.setIntHeader('X-Pagination-Total', Event.count())
-		render Event.list(params) as JSON
+		def jsonResult = Event.list(params)
+		JSON.use("deep")
+		render jsonResult as JSON
     }
 
     def save() {
-        def eventInstance = new Event(request.JSON)
+		def jsonObject = request.JSON
+		def eventInstance = new Event()
+		def eventLanguages = []
+		def i18ns = []
+		
+		for ( is in jsonObject.i18n) {
+			def eventi18n = new Event_i18n(is)
+			def eventLanguage = new EventLanguage(is.eventLanguage)
+			eventi18n.eventLanguage = eventLanguage
+			eventInstance.addToI18n(eventi18n)
+			eventInstance.addToEventLanguage(eventLanguage)
+			
+		}
+		
+        
         def responseJson = [:]
         if (eventInstance.save(flush: true)) {
             response.status = SC_CREATED
@@ -47,7 +63,7 @@ class EventController {
 		def availableLanuages = Locale.getAvailableLocales()
 		
 		if (availableLanuages) {
-			def defaultsValues = [languages:[]]
+			def defaultsValues = [languages:[],event: new Event()]
 			for (language in availableLanuages) {
 				defaultsValues.languages.add([country:language.country, displayName: language.displayName, displayCountry: language.displayCountry, language:language.language, code:language.language + '_' + language.country])
 			}
@@ -79,9 +95,11 @@ class EventController {
 	
 			 eventLanguageInstance.languageName = result
 			 eventLanguageInstance.language = locale
-			 event_i18n.i18n = eventLanguageInstance
+			 event_i18n.eventLanguage = eventLanguageInstance
 			 
-			 render eventLanguageInstance as JSON
+			 def returnresult = [eventLanguage: eventLanguageInstance, i18n: event_i18n]
+			 
+			 render returnresult as JSON
 	}
 	
     def update() {

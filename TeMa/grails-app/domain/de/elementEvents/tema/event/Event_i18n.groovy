@@ -7,7 +7,7 @@ class Event_i18n {
 	String subtitle
 	String description
 	
-	static belongsTo = [event: Event, i18n: EventLanguage]
+	static belongsTo = [event: Event, eventLanguage: EventLanguage]
 	
     static constraints = {
 		description type: 'text'

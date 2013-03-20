@@ -1,22 +1,24 @@
 
 <div class="page-header">
-	<h1>Show Event</h1>
+	<h1>Show Meeting</h1>
 </div>
 <alert level="{{message.level}}" text="{{message.text}}"/>
 <dl class="dl-horizontal">
 	
-	<dt>Event Language</dt>
-	<dd data-ng-bind="item.eventLanguage.languageName"></dd>
+	<dt>End</dt>
+	<dd data-ng-bind="item.end"></dd>
+	
+	<dt>Event</dt>
+	<dd data-ng-bind="item.event"></dd>
 	
 	<dt>I18n</dt>
 	<dd data-ng-bind="item.i18n"></dd>
 	
-	<dt>Meetings</dt>
-	<dd data-ng-bind="item.meetings"></dd>
-	<dd><a class="btn" data-ng-href="#/edit/{{item.id}}"><i class="icon-edit"></i> Edit</a></dd>
+	<dt>Start</dt>
+	<dd data-ng-bind="item.start"></dd>
 	
-	<dt>Participants</dt>
-	<dd data-ng-bind="item.participants"></dd>
+	<dt>Subscriber</dt>
+	<dd data-ng-bind="item.subscriber"></dd>
 	
 </dl>
 <div class="form-actions">

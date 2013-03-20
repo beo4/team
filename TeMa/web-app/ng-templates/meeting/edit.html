@@ -1,0 +1,54 @@
+
+<div class="page-header">
+	<h1>Edit Meeting</h1>
+</div>
+<alert level="{{message.level}}" text="{{message.text}}"/>
+<form name="form" data-ng-submit="update(item)" class="form-horizontal">
+	<input type="hidden" data-ng-model="item.id">
+	<input type="hidden" data-ng-model="item.version">
+
+	<div class="control-group" data-ng-class="{error: errors.end}">
+		<label class="control-label" for="end">End</label>
+		<div class="controls">
+			<input type="text" id="end" name="end" required data-ng-model="item.end">
+			<span class="help-inline" data-ng-show="errors.end">{{errors.end}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.event}">
+		<label class="control-label" for="event">Event</label>
+		<div class="controls">
+			<input type="text" id="event" name="event" required data-ng-model="item.event">
+			<span class="help-inline" data-ng-show="errors.event">{{errors.event}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.i18n}">
+		<label class="control-label" for="i18n">I18n</label>
+		<div class="controls">
+			<input type="text" id="i18n" name="i18n" required data-ng-model="item.i18n">
+			<span class="help-inline" data-ng-show="errors.i18n">{{errors.i18n}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.start}">
+		<label class="control-label" for="start">Start</label>
+		<div class="controls">
+			<input type="text" id="start" name="start" required data-ng-model="item.start">
+			<span class="help-inline" data-ng-show="errors.start">{{errors.start}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.subscriber}">
+		<label class="control-label" for="subscriber">Subscriber</label>
+		<div class="controls">
+			<input type="text" id="subscriber" name="subscriber" required data-ng-model="item.subscriber">
+			<span class="help-inline" data-ng-show="errors.subscriber">{{errors.subscriber}}</span>
+		</div>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Update</button>
+		<button type="button" class="btn btn-danger" data-ng-click="delete(item)"><i class="icon-trash"></i> Delete</button>
+	</div>
+</form>

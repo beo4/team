@@ -38,6 +38,7 @@ scaffoldingModule.config([
         var baseUrl = $('body').data('template-url');
         $routeProvider.
             when('/create', {templateUrl: baseUrl + '/create.html', controller: CreateCtrl}).
+            when('/create/:id', {templateUrl: baseUrl + '/create.html', controller: CreateCtrl}).
             when('/edit/:id', {templateUrl: baseUrl + '/edit.html', controller: EditCtrl}).
             when('/list', {templateUrl: baseUrl + '/list.html', controller: ListCtrl}).
             when('/show/:id', {templateUrl: baseUrl + '/show.html', controller: ShowCtrl}).

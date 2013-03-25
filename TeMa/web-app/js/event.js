@@ -22,6 +22,17 @@ function EventCtrl($scope, $location, Grails, Flash) {
     
 }
 
+function MeetingCtrl($scope, $routeParams, $location, Grails, Flash) {
+
+	$scope.item.event;
+	$scope.item.i18n = [];
+	
+	$scope.defaults = Grails.create({eventId: + $routeParams.id}, function(response) {
+		$scope.item.event = response.event;
+		$scope.item.i18n = response.i18n;
+    }, errorHandler.curry($scope, $location, Flash));
+}
+
 
 scaffoldingModule.directive('i18ntabs', function(){
 	var baseUrl = $('body').data('template-url');

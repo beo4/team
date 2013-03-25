@@ -1,6 +1,9 @@
 package de.elementEvents.tema.meeting
 
 import org.springframework.dao.DataIntegrityViolationException
+
+import de.elementEvents.tema.event.Event;
+import de.elementEvents.tema.event.EventLanguage;
 import grails.converters.JSON
 import static javax.servlet.http.HttpServletResponse.*
 
@@ -42,6 +45,28 @@ class MeetingController {
 			notFound params.id
 		}
     }
+	
+	def create() {
+		
+		def event = Event.get(params.eventId)
+		
+		def defaultsValues = [i18n:[],event: event]
+		
+		if (event) {
+			def availableLanuages = event.eventLanguage
+			
+			Meeting meeting = new Meeting();
+			meeting.event = event
+			
+			for ( is in availableLanuages) {
+				def meetingi18n = new Meeting_i18n()
+				meetingi18n.i18n = is
+				meetingi18n.meeting = meeting;
+				defaultsValues.i18n.add(meetingi18n)
+			}
+		}
+		render defaultsValues as JSON
+	}
 
     def update() {
         def meetingInstance = Meeting.get(params.id)

@@ -1,0 +1,54 @@
+
+<div class="page-header">
+	<h1>Edit Meeting_i18n</h1>
+</div>
+<alert level="{{message.level}}" text="{{message.text}}"/>
+<form name="form" data-ng-submit="update(item)" class="form-horizontal">
+	<input type="hidden" data-ng-model="item.id">
+	<input type="hidden" data-ng-model="item.version">
+
+	<div class="control-group" data-ng-class="{error: errors.description}">
+		<label class="control-label" for="description">Description</label>
+		<div class="controls">
+			<input type="text" id="description" name="description" required data-ng-model="item.description">
+			<span class="help-inline" data-ng-show="errors.description">{{errors.description}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.i18n}">
+		<label class="control-label" for="i18n">I18n</label>
+		<div class="controls">
+			<input type="text" id="i18n" name="i18n" required data-ng-model="item.i18n">
+			<span class="help-inline" data-ng-show="errors.i18n">{{errors.i18n}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.meeting}">
+		<label class="control-label" for="meeting">Meeting</label>
+		<div class="controls">
+			<input type="text" id="meeting" name="meeting" required data-ng-model="item.meeting">
+			<span class="help-inline" data-ng-show="errors.meeting">{{errors.meeting}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.subtitle}">
+		<label class="control-label" for="subtitle">Subtitle</label>
+		<div class="controls">
+			<input type="text" id="subtitle" name="subtitle" required data-ng-model="item.subtitle">
+			<span class="help-inline" data-ng-show="errors.subtitle">{{errors.subtitle}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.title}">
+		<label class="control-label" for="title">Title</label>
+		<div class="controls">
+			<input type="text" id="title" name="title" required data-ng-model="item.title">
+			<span class="help-inline" data-ng-show="errors.title">{{errors.title}}</span>
+		</div>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Update</button>
+		<button type="button" class="btn btn-danger" data-ng-click="delete(item)"><i class="icon-trash"></i> Delete</button>
+	</div>
+</form>

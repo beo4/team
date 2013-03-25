@@ -1,0 +1,10 @@
+<div>
+<ul class="nav nav-tabs">
+    <li ng-repeat="pane in i18n" ng-class="{active:pane.selected}">
+      <a href="javascript:void(0)" ng-click="select(pane)">{{pane.i18n.languageName}}</a>
+    </li>
+  </ul>
+  <div class="tab-content" ng-transclude>
+  	<div data-i18npane ng-repeat="pane in i18n" pane="pane"></div>
+  </div>
+</div>

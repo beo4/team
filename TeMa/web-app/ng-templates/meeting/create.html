@@ -4,42 +4,9 @@
 				</div>
 			
 				<alert level="{{message.level}}" text="{{message.text}}"/>
-				<form name="form" data-ng-submit="save(item)" class="form-horizontal">
+				<form name="form" data-ng-submit="save(item)" class="form-horizontal" ng-controller="MeetingCtrl">
 				
-						
-					
-						
-					<div class="control-group" data-ng-class="{error: errors.end}">
-						<label class="control-label" for="end">End</label>
-						<div class="controls">
-							<input type="text" id="end" name="end" required data-ng-model="item.end">
-							<span class="help-inline" data-ng-show="errors.end">{{errors.end}}</span>
-						</div>
-					</div>
-					
-						
-					
-						
-					<div class="control-group" data-ng-class="{error: errors.event}">
-						<label class="control-label" for="event">Event</label>
-						<div class="controls">
-							<input type="text" id="event" name="event" required data-ng-model="item.event">
-							<span class="help-inline" data-ng-show="errors.event">{{errors.event}}</span>
-						</div>
-					</div>
-					
-						
-					
-						
-					<div class="control-group" data-ng-class="{error: errors.i18n}">
-						<label class="control-label" for="i18n">I18n</label>
-						<div class="controls">
-							<input type="text" id="i18n" name="i18n" required data-ng-model="item.i18n">
-							<span class="help-inline" data-ng-show="errors.i18n">{{errors.i18n}}</span>
-						</div>
-					</div>
-					
-						
+					<div data-i18ntabs="i18ntabs" i18n="item.i18n"></div>	
 					
 						
 					<div class="control-group" data-ng-class="{error: errors.start}">
@@ -50,16 +17,15 @@
 						</div>
 					</div>
 					
-						
 					
-						
-					<div class="control-group" data-ng-class="{error: errors.subscriber}">
-						<label class="control-label" for="subscriber">Subscriber</label>
+					<div class="control-group" data-ng-class="{error: errors.end}">
+						<label class="control-label" for="end">End</label>
 						<div class="controls">
-							<input type="text" id="subscriber" name="subscriber" required data-ng-model="item.subscriber">
-							<span class="help-inline" data-ng-show="errors.subscriber">{{errors.subscriber}}</span>
+							<input type="text" id="end" name="end" required data-ng-model="item.end">
+							<span class="help-inline" data-ng-show="errors.end">{{errors.end}}</span>
 						</div>
 					</div>
+					
 					
 					<div class="form-actions">
 						<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Create</button>

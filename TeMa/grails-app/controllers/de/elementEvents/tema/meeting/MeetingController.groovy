@@ -61,7 +61,6 @@ class MeetingController {
 			for ( is in availableLanuages) {
 				def meetingi18n = new Meeting_i18n()
 				meetingi18n.i18n = is
-				meetingi18n.meeting = meeting;
 				defaultsValues.i18n.add(meetingi18n)
 			}
 		}

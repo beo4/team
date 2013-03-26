@@ -203,6 +203,7 @@ function ListCtrl($scope, $routeParams, $location, Grails, Flash) {
 
 function ShowCtrl($scope, $routeParams, $location, Grails, Flash) {
     $scope.message = Flash.getMessage();
+    $scope.appUrl = $('body').data('app-url');
 
     Grails.get({id: $routeParams.id}, function(item) {
         $scope.item = item;

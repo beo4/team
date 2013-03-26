@@ -1,5 +1,4 @@
 function EventCtrl($scope, $location, Grails, Flash) {
-
 	$scope.item.eventLanguage = [];
 	$scope.item.i18n = [];
 	
@@ -44,23 +43,21 @@ scaffoldingModule.directive('i18ntabs', function(){
         scope: {i18n: '='},
         // The linking function will add behavior to the template
         link: function(scope, element, attrs) {
-        	 
         },
         controller: function($scope, $element, $dialog) {
-            var panes = $scope.i18n = [];
-            
+        	
             $scope.select = function(pane) {
-                angular.forEach(panes, function(pane) {
+                angular.forEach($scope.i18n, function(pane) {
                     pane.selected = false;
                 });
                 pane.selected = true;
             }
             
             $scope.deleteLanguage = function(pane) {
-                angular.forEach(panes, function(pane) {
+                angular.forEach($scope.i18n, function(pane) {
                     pane.selected = false;
                 });
-                panes.splice(panes.indexOf(pane),1);
+                $scope.panes.splice($scope.i18n.indexOf(pane),1);
             }
 
             this.addPane = function(pane) {

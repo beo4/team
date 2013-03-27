@@ -6,8 +6,6 @@ import de.elementEvents.tema.event.EventLanguage;
 
 class Resource_i18n {
 
-    Locale language
-	
 	String name
 	String description
 	

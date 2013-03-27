@@ -7,7 +7,7 @@
         <g:set var="entityName" value="${message(code: 'meeting_i18n.label', default: 'Meeting_i18n')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
 
-        <r:require module="my-angular-scaffolding"/>
+        <r:require module="event-angular-scaffolding"/>
     </head>
     <body data-ng-app="scaffolding" data-base-url="${createLink(uri: '/meeting_i18n/')}">
         <a href="#list-meeting_i18n" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>

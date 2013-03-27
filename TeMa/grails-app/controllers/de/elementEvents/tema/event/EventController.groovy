@@ -2,6 +2,7 @@ package de.elementEvents.tema.event
 
 import org.springframework.dao.DataIntegrityViolationException
 import grails.converters.JSON
+import grails.plugin.jodatime.converters.JodaConverters;
 import static javax.servlet.http.HttpServletResponse.*
 
 class EventController {
@@ -17,6 +18,7 @@ class EventController {
 		response.setIntHeader('X-Pagination-Total', Event.count())
 		def jsonResult = Event.list(params)
 		JSON.use("deep")
+		JodaConverters.registerJsonAndXmlMarshallers()
 		render jsonResult as JSON
     }
 
@@ -53,6 +55,8 @@ class EventController {
     def get() {
         def eventInstance = Event.get(params.id)
         if (eventInstance) {
+			JSON.use("deep")
+			JodaConverters.registerJsonAndXmlMarshallers()
 			render eventInstance as JSON
         } else {
 			notFound params.id

@@ -5,6 +5,7 @@ import org.springframework.dao.DataIntegrityViolationException
 import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.event.EventLanguage;
 import grails.converters.JSON
+import grails.plugin.jodatime.converters.JodaConverters;
 import static javax.servlet.http.HttpServletResponse.*
 
 class MeetingController {
@@ -18,12 +19,31 @@ class MeetingController {
     def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		response.setIntHeader('X-Pagination-Total', Meeting.count())
+		JSON.use("deep")
+		JodaConverters.registerJsonAndXmlMarshallers()
 		render Meeting.list(params) as JSON
     }
 
     def save() {
-        def meetingInstance = new Meeting(request.JSON)
+		
+		def jsonObject = request.JSON
+		def meetingInstance = new Meeting(request.JSON)
+		def i18ns = []
+		
+		for ( is in jsonObject.i18n) {
+			def meetingi18n = new Meeting_i18n(is)
+			def eventLanguage = EventLanguage.get(is.i18n.id)
+			meetingi18n.i18n = eventLanguage
+			meetingInstance.addToI18n(meetingi18n)
+		}
+		
+		int eventId = jsonObject.event.id
+		def eventInstance = Event.get(eventId)
+		meetingInstance.event = eventInstance
+	
         def responseJson = [:]
+		
+		meetingInstance.validate()
         if (meetingInstance.save(flush: true)) {
             response.status = SC_CREATED
             responseJson.id = meetingInstance.id
@@ -64,6 +84,8 @@ class MeetingController {
 				defaultsValues.i18n.add(meetingi18n)
 			}
 		}
+		JSON.use("deep")
+		JodaConverters.registerJsonAndXmlMarshallers()
 		render defaultsValues as JSON
 	}
 

@@ -4,7 +4,9 @@
       <a href="javascript:void(0)" ng-click="select(pane)">{{pane.eventLanguage.languageName}}<button class="close btn" type="button" ng-click="openMessageBox(pane)"><i class="icon-trash"></i></button></a>
     </li>
   </ul>
-  <div class="tab-content" ng-transclude>
-  	<div data-i18npane ng-repeat="pane in i18n" pane="pane"></div>
+  <div class="tab-content">
+  	<div data-i18npane ng-repeat="pane in i18n" pane="pane" templateurl="templateurl" class="tab-pane" ng-class="{active: pane.selected}"> 
+  		<div ng-include src="templateurl + '/i18n.html'" ></div>
+  	</div>
   </div>
 </div>

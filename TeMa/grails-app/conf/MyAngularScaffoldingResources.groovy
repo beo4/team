@@ -24,6 +24,8 @@ modules = {
 		resource id: 'js', url: [dir: 'js', file: 'angular-ui-ieshiv.js']
 		resource id: 'js', url: [dir: 'js', file: 'ui-bootstrap-tpls-0.1.0-SNAPSHOT.js']
 		resource id: 'css', url: [dir: 'css', file: 'angular-ui.css']
+		resource id: 'js', url: [dir: 'js', file: 'bootstrap-datetimepicker.min.js']
+		resource id: 'css', url: [dir: 'css', file: 'bootstrap-datetimepicker.min.css']
 	}
 	
 	'event-angular-scaffolding' {

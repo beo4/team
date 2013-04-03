@@ -49,10 +49,8 @@ scaffoldingModule.directive('i18ntabs', function(){
 	var baseUrl = $('body').data('template-url');
     return {
         restrict: 'A',
-        replace: true,
-        transclude: true,
-        templateUrl: baseUrl + '/i18nTabs.html',
-        scope: {i18n: '='},
+        scope: {i18n: '=',
+        	templateurl: '='},
         // The linking function will add behavior to the template
         link: function(scope, element, attrs) {
         },
@@ -104,10 +102,7 @@ scaffoldingModule.directive('i18ntabs', function(){
         return {
           require: '^i18ntabs',
           restrict: 'A',
-          transclude: true,
           link: function(scope, element, attrs, tabsCtrl) {
-          },
-          templateUrl: baseUrl + '/i18n.html',
-          replace: true
+          }
         };
       });

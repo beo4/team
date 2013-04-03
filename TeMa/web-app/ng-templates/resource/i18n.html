@@ -1,0 +1,20 @@
+
+<div class="tab-pane" ng-class="{active: pane.selected}">
+			
+					<div class="control-group" data-ng-class="{error: errors.name}">
+						<label class="control-label" for="name">Name</label>
+						<div class="controls">
+							<input type="text" id="name" name="name" required data-ng-model="pane.name">
+							<span class="help-inline" data-ng-show="errors.name">{{errors.name}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group" data-ng-class="{error: errors.description}">
+						<label class="control-label" for="description">Description</label>
+						<div class="controls">
+							<input type="text" id="description" name="description" required data-ng-model="pane.description">
+							<span class="help-inline" data-ng-show="errors.description">{{errors.description}}</span>
+						</div>
+					</div>	
+</div>
+					

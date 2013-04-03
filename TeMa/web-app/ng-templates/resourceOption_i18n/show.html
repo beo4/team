@@ -1,0 +1,24 @@
+
+<div class="page-header">
+	<h1>Show ResourceOption_i18n</h1>
+</div>
+<alert level="{{message.level}}" text="{{message.text}}"/>
+<dl class="dl-horizontal">
+	
+	<dt>I18n</dt>
+	<dd data-ng-bind="item.i18n"></dd>
+	
+	<dt>Language</dt>
+	<dd data-ng-bind="item.language"></dd>
+	
+	<dt>Name</dt>
+	<dd data-ng-bind="item.name"></dd>
+	
+	<dt>Resource Option</dt>
+	<dd data-ng-bind="item.resourceOption"></dd>
+	
+</dl>
+<div class="form-actions">
+	<a class="btn" data-ng-href="#/edit/{{item.id}}"><i class="icon-edit"></i> Edit</a>
+	<button type="button" class="btn btn-danger" data-ng-click="delete(item)"><i class="icon-trash"></i> Delete</button>
+</div>

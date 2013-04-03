@@ -3,41 +3,30 @@
 	<h1>Edit Event</h1>
 </div>
 <alert level="{{message.level}}" text="{{message.text}}"/>
-<form name="form" data-ng-submit="update(item)" class="form-horizontal">
+<form name="form" data-ng-submit="update(item)" class="form-horizontal" ng-controller="EventCtrl">
 	<input type="hidden" data-ng-model="item.id">
 	<input type="hidden" data-ng-model="item.version">
 
 	<div class="control-group" data-ng-class="{error: errors.eventLanguage}">
-		<label class="control-label" for="eventLanguage">Event Language</label>
-		<div class="controls">
-			<input type="text" id="eventLanguage" name="eventLanguage" required data-ng-model="item.eventLanguage">
-			<span class="help-inline" data-ng-show="errors.eventLanguage">{{errors.eventLanguage}}</span>
-		</div>
-	</div>
-	
-	<div class="control-group" data-ng-class="{error: errors.i18n}">
-		<label class="control-label" for="i18n">I18n</label>
-		<div class="controls">
-			<input type="text" id="i18n" name="i18n" required data-ng-model="item.i18n">
-			<span class="help-inline" data-ng-show="errors.i18n">{{errors.i18n}}</span>
-		</div>
-	</div>
-	
-	<div class="control-group" data-ng-class="{error: errors.meetings}">
-		<label class="control-label" for="meetings">Meetings</label>
-		<div class="controls">
-			<input type="text" id="meetings" name="meetings" required data-ng-model="item.meetings">
-			<span class="help-inline" data-ng-show="errors.meetings">{{errors.meetings}}</span>
-		</div>
-	</div>
-	
-	<div class="control-group" data-ng-class="{error: errors.participants}">
-		<label class="control-label" for="participants">Participants</label>
-		<div class="controls">
-			<input type="text" id="participants" name="participants" required data-ng-model="item.participants">
-			<span class="help-inline" data-ng-show="errors.participants">{{errors.participants}}</span>
-		</div>
-	</div>
+						<label class="control-label" for="eventLanguage">Event Language</label>
+						<div class="controls">
+							<input type="hidden" id="eventLanguage" name="eventLanguage" required data-ng-model="temp.eventLanguage">
+							<span class="help-inline" data-ng-show="errors.eventLanguage">{{errors.eventLanguage}}</span>
+							
+							<div class="input-prepend input-append">
+     							<span class="add-on"><i class="icon-flag"></i></span>
+								
+								<select id="eventLanguage" name="eventLanguage" data-ng-model="temp.eventLanguage" ng-options="obj.code as obj.displayName for obj in defaults.languages">
+        						</select>
+							<button  class="btn btn-success" type="button" ng-click="addLanguage(temp.eventLanguage)"><i class="icon-plus icon-white"></i></button>
+							</div>
+							
+						</div>
+					</div>
+					
+					<div data-i18ntabs="i18ntabs" i18n="item.i18n" templateurl="templateUrl">
+					 <div ng-include src="templateurl + '/i18nTabs.html'" ></div>
+					</div>
 	
 	<div class="form-actions">
 		<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Update</button>

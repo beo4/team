@@ -6,13 +6,29 @@
 				<alert level="{{message.level}}" text="{{message.text}}"/>
 				<form name="form" data-ng-submit="save(item)" class="form-horizontal" ng-controller="MeetingCtrl">
 				
-					<div data-i18ntabs="i18ntabs" i18n="item.i18n"></div>	
+					<div data-i18ntabs="i18ntabs" i18n="item.i18n" templateurl="templateUrl">
+					 <div ng-include src="templateurl + '/i18nTabs.html'" ></div>
+					</div>	
 					
 						
 					<div class="control-group" data-ng-class="{error: errors.start}">
 						<label class="control-label" for="start">Start</label>
 						<div class="controls">
-							<input type="text" id="start" name="start" required data-ng-model="item.start">
+						<div id="datetimepicker1" class="input-append date">
+						    <input data-format="dd.MM.yyyy hh:mm" type="text" id="start" name="start" required data-ng-model="item.start"></input>
+						    <span class="add-on">
+						      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+						      </i>
+						    </span>
+						  </div>
+						</div>
+						<script type="text/javascript">
+						  $(function() {
+						    $('#datetimepicker1').datetimepicker({
+						      language: 'pt-BR'
+						    });
+						  });
+						  </script>
 							<span class="help-inline" data-ng-show="errors.start">{{errors.start}}</span>
 						</div>
 					</div>
@@ -21,7 +37,21 @@
 					<div class="control-group" data-ng-class="{error: errors.end}">
 						<label class="control-label" for="end">End</label>
 						<div class="controls">
-							<input type="text" id="end" name="end" required data-ng-model="item.end">
+						<div id="datetimepicker2" class="input-append date">
+						    <input data-format="dd.MM.yyyy hh:mm" type="text" id="end" name="end" required data-ng-model="item.end"></input>
+						    <span class="add-on">
+						      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+						      </i>
+						    </span>
+						  </div>
+						</div>
+						<script type="text/javascript">
+						  $(function() {
+						    $('#datetimepicker2').datetimepicker({
+						      language: 'pt-BR'
+						    });
+						  });
+						  </script>
 							<span class="help-inline" data-ng-show="errors.end">{{errors.end}}</span>
 						</div>
 					</div>

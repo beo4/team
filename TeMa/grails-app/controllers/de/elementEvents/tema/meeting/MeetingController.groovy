@@ -1,5 +1,8 @@
 package de.elementEvents.tema.meeting
 
+import org.joda.time.LocalDateTime
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter
 import org.springframework.dao.DataIntegrityViolationException
 
 import de.elementEvents.tema.event.Event;
@@ -29,7 +32,9 @@ class MeetingController {
 		def jsonObject = request.JSON
 		def meetingInstance = new Meeting(request.JSON)
 		def i18ns = []
-		
+		DateTimeFormatter fmt = DateTimeFormat.forPattern("dd.MM.yyyy HH:mm");
+		meetingInstance.start.parse(jsonObject.start, fmt)
+		meetingInstance.end.parse(jsonObject.end, fmt)
 		for ( is in jsonObject.i18n) {
 			def meetingi18n = new Meeting_i18n(is)
 			def eventLanguage = EventLanguage.get(is.i18n.id)

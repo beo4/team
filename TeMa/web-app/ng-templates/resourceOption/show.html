@@ -1,0 +1,30 @@
+
+<div class="page-header">
+	<h1>Show ResourceOption</h1>
+</div>
+<alert level="{{message.level}}" text="{{message.text}}"/>
+<dl class="dl-horizontal">
+	
+	<dt>Available End</dt>
+	<dd data-ng-bind="item.availableEnd"></dd>
+	
+	<dt>Available Start</dt>
+	<dd data-ng-bind="item.availableStart"></dd>
+	
+	<dt>I18n</dt>
+	<dd data-ng-bind="item.i18n"></dd>
+	
+	<dt>Meeting</dt>
+	<dd data-ng-bind="item.meeting"></dd>
+	
+	<dt>Resource</dt>
+	<dd data-ng-bind="item.resource"></dd>
+	
+	<dt>Subscriptions</dt>
+	<dd data-ng-bind="item.subscriptions"></dd>
+	
+</dl>
+<div class="form-actions">
+	<a class="btn" data-ng-href="#/edit/{{item.id}}"><i class="icon-edit"></i> Edit</a>
+	<button type="button" class="btn btn-danger" data-ng-click="delete(item)"><i class="icon-trash"></i> Delete</button>
+</div>

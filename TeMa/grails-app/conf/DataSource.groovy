@@ -14,7 +14,7 @@ environments {
     development {
         dataSource {
             dbCreate = "update" // one of 'create', 'create-drop','update'
-            url = "jdbc:mysql://element-events.de/ee_tema?useUnicode=yes&characterEncoding=UTF-8"
+            url = "jdbc:mysql://213.239.202.50/ee_tema?useUnicode=yes&characterEncoding=UTF-8"
         }
         hibernate {
             show_sql = true
@@ -29,7 +29,7 @@ environments {
     production {
 		dataSource {
 			dbCreate = "update" // one of 'create', 'create-drop','update'
-			url = "jdbc:mysql://element-events.de/ee_tema?useUnicode=yes&characterEncoding=UTF-8"
+			url = "jdbc:mysql://213.239.202.50/ee_tema?useUnicode=yes&characterEncoding=UTF-8"
 		}
 		hibernate {
 			show_sql = true

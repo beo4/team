@@ -204,6 +204,7 @@ function ListCtrl($scope, $routeParams, $location, Grails, Flash) {
 function ShowCtrl($scope, $routeParams, $location, Grails, Flash) {
     $scope.message = Flash.getMessage();
     $scope.appUrl = $('body').data('app-url');
+    $scope.templateUrl = $('body').data('template-url');
 
     Grails.get({id: $routeParams.id}, function(item) {
         $scope.item = item;
@@ -219,6 +220,7 @@ function ShowCtrl($scope, $routeParams, $location, Grails, Flash) {
 
 function CreateCtrl($scope, $location, Grails, Flash) {
 	$scope.item = new Grails;
+	$scope.templateUrl = $('body').data('template-url');
 	
     $scope.save = function(item) {
         item.$save(function(response) {
@@ -229,8 +231,10 @@ function CreateCtrl($scope, $location, Grails, Flash) {
 }
 
 function EditCtrl($scope, $routeParams, $location, Grails, Flash) {
+	$scope.item = new Grails;
+	$scope.templateUrl = $('body').data('template-url');
     Grails.get({id: $routeParams.id}, function(item) {
-        $scope.item = item;
+    	angular.extend($scope.item, item);
     }, errorHandler.curry($scope, $location, Flash));
 
     $scope.update = function(item) {

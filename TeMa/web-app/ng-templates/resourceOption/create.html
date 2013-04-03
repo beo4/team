@@ -1,0 +1,78 @@
+
+				<div class="page-header">
+					<h1>ResourceOption</h1>
+				</div>
+			
+				<alert level="{{message.level}}" text="{{message.text}}"/>
+				<form name="form" data-ng-submit="save(item)" class="form-horizontal">
+				
+						
+					
+						
+					<div class="control-group" data-ng-class="{error: errors.availableEnd}">
+						<label class="control-label" for="availableEnd">Available End</label>
+						<div class="controls">
+							<input type="text" id="availableEnd" name="availableEnd" required data-ng-model="item.availableEnd">
+							<span class="help-inline" data-ng-show="errors.availableEnd">{{errors.availableEnd}}</span>
+						</div>
+					</div>
+					
+						
+					
+						
+					<div class="control-group" data-ng-class="{error: errors.availableStart}">
+						<label class="control-label" for="availableStart">Available Start</label>
+						<div class="controls">
+							<input type="text" id="availableStart" name="availableStart" required data-ng-model="item.availableStart">
+							<span class="help-inline" data-ng-show="errors.availableStart">{{errors.availableStart}}</span>
+						</div>
+					</div>
+					
+						
+					
+						
+					<div class="control-group" data-ng-class="{error: errors.i18n}">
+						<label class="control-label" for="i18n">I18n</label>
+						<div class="controls">
+							<input type="text" id="i18n" name="i18n" required data-ng-model="item.i18n">
+							<span class="help-inline" data-ng-show="errors.i18n">{{errors.i18n}}</span>
+						</div>
+					</div>
+					
+						
+					
+						
+					<div class="control-group" data-ng-class="{error: errors.meeting}">
+						<label class="control-label" for="meeting">Meeting</label>
+						<div class="controls">
+							<input type="text" id="meeting" name="meeting" required data-ng-model="item.meeting">
+							<span class="help-inline" data-ng-show="errors.meeting">{{errors.meeting}}</span>
+						</div>
+					</div>
+					
+						
+					
+						
+					<div class="control-group" data-ng-class="{error: errors.resource}">
+						<label class="control-label" for="resource">Resource</label>
+						<div class="controls">
+							<input type="text" id="resource" name="resource" required data-ng-model="item.resource">
+							<span class="help-inline" data-ng-show="errors.resource">{{errors.resource}}</span>
+						</div>
+					</div>
+					
+						
+					
+						
+					<div class="control-group" data-ng-class="{error: errors.subscriptions}">
+						<label class="control-label" for="subscriptions">Subscriptions</label>
+						<div class="controls">
+							<input type="text" id="subscriptions" name="subscriptions" required data-ng-model="item.subscriptions">
+							<span class="help-inline" data-ng-show="errors.subscriptions">{{errors.subscriptions}}</span>
+						</div>
+					</div>
+					
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Create</button>
+					</div>
+				</form>

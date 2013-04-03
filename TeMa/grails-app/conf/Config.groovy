@@ -118,4 +118,6 @@ grails.gorm.default.mapping = {
 	
 }
 
-jodatime.format.html5 = true
+jodatime {
+	format.org.joda.time.DateTime = "dd.MM.yyyy hh:mm"
+}

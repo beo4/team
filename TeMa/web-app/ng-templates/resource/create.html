@@ -1,0 +1,18 @@
+
+				<div class="page-header">
+					<h1>Resource</h1>
+				</div>
+			
+				<alert level="{{message.level}}" text="{{message.text}}"/>
+				<form name="form" data-ng-submit="save(item)" class="form-horizontal" ng-controller="ResourceCtrl">
+				
+						
+					<div data-i18ntabs="i18ntabs" i18n="item.i18n" templateurl="templateUrl">
+					 <div ng-include src="templateurl + '/i18nTabs.html'" ></div>
+					</div>
+						
+					
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Create</button>
+					</div>
+				</form>

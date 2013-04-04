@@ -109,3 +109,18 @@ pre.snippet .lineNumber {
 pre.snippet .error {
 	font-weight: bold;
 }
+
+div.uploadContainer {
+   position: relative;
+   width: 600px;
+   height: 100px;
+}
+
+div.uploadContainer input[type=file] {
+   visibility: hidden;
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+}

@@ -1,5 +1,6 @@
 package de.elementEvents.tema.user
 
+import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.event.EventLanguage;
 
 class User {
@@ -17,7 +18,11 @@ class User {
 	String firstname
 	String lastname
 	
+	String loginToken 
+	
 	EventLanguage language
+	
+	static belongsTo = [event: Event]
 
 	static constraints = {
 		username blank: false, unique: true
@@ -26,6 +31,8 @@ class User {
 		firstname blank: true, nullable: true
 		lastname blank: true, nullable: true
 		language blank: true, nullable: true
+		event blank: true, nullable: true
+		loginToken blank: true, nullable: true
 	}
 
 	static mapping = {
@@ -38,6 +45,8 @@ class User {
 
 	def beforeInsert() {
 		encodePassword()
+		// optionally, replace the dashes by adding .replaceAll('-','')
+        loginToken = UUID.randomUUID().toString().replaceAll('-','')
 	}
 
 	def beforeUpdate() {

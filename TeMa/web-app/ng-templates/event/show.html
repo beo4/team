@@ -28,6 +28,34 @@
 		</ul>
 	</div>
 </div>
+<div class="row-fluid" >
+<div class="span12">
+<h5>Participant for this Event <a class="btn" data-ng-href="{{appUrl}}user/#create/{{item.id}}"><i class="icon-plus"></i> add Participant</a></h5>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+		<th>Fisrtname</th>
+		
+		<th>Lastname</th>
+		
+		<th>Meeting</th>
+		
+        </tr>
+    </thead>
+    <tbody>
+        <tr data-ng-repeat="participant in item.participants" data-ng-click="show(item)">
+        
+			<td>{{participants.firstname}}</td>
+		
+			<td>{{participants.lastname}}</td>
+		
+			<td></td>
+        </tr>
+    </tbody>
+</table>
+<customUploader> </customUploader>
+</div>
+</div>
 
 <div class="form-actions">
 	<a class="btn" data-ng-href="#/edit/{{item.id}}"><i class="icon-edit"></i> Edit</a>

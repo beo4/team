@@ -1,0 +1,102 @@
+
+<div class="page-header">
+	<h1>Edit User</h1>
+</div>
+<alert level="{{message.level}}" text="{{message.text}}"/>
+<form name="form" data-ng-submit="update(item)" class="form-horizontal">
+	<input type="hidden" data-ng-model="item.id">
+	<input type="hidden" data-ng-model="item.version">
+
+	<div class="control-group" data-ng-class="{error: errors.username}">
+		<label class="control-label" for="username">Username</label>
+		<div class="controls">
+			<input type="text" id="username" name="username" required data-ng-model="item.username">
+			<span class="help-inline" data-ng-show="errors.username">{{errors.username}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.password}">
+		<label class="control-label" for="password">Password</label>
+		<div class="controls">
+			<input type="text" id="password" name="password" required data-ng-model="item.password">
+			<span class="help-inline" data-ng-show="errors.password">{{errors.password}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.email}">
+		<label class="control-label" for="email">Email</label>
+		<div class="controls">
+			<input type="text" id="email" name="email" required data-ng-model="item.email">
+			<span class="help-inline" data-ng-show="errors.email">{{errors.email}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.firstname}">
+		<label class="control-label" for="firstname">Firstname</label>
+		<div class="controls">
+			<input type="text" id="firstname" name="firstname" required data-ng-model="item.firstname">
+			<span class="help-inline" data-ng-show="errors.firstname">{{errors.firstname}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.lastname}">
+		<label class="control-label" for="lastname">Lastname</label>
+		<div class="controls">
+			<input type="text" id="lastname" name="lastname" required data-ng-model="item.lastname">
+			<span class="help-inline" data-ng-show="errors.lastname">{{errors.lastname}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.language}">
+		<label class="control-label" for="language">Language</label>
+		<div class="controls">
+			<input type="text" id="language" name="language" required data-ng-model="item.language">
+			<span class="help-inline" data-ng-show="errors.language">{{errors.language}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.event}">
+		<label class="control-label" for="event">Event</label>
+		<div class="controls">
+			<input type="text" id="event" name="event" required data-ng-model="item.event">
+			<span class="help-inline" data-ng-show="errors.event">{{errors.event}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.accountExpired}">
+		<label class="control-label" for="accountExpired">Account Expired</label>
+		<div class="controls">
+			<input type="text" id="accountExpired" name="accountExpired" required data-ng-model="item.accountExpired">
+			<span class="help-inline" data-ng-show="errors.accountExpired">{{errors.accountExpired}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.accountLocked}">
+		<label class="control-label" for="accountLocked">Account Locked</label>
+		<div class="controls">
+			<input type="text" id="accountLocked" name="accountLocked" required data-ng-model="item.accountLocked">
+			<span class="help-inline" data-ng-show="errors.accountLocked">{{errors.accountLocked}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.enabled}">
+		<label class="control-label" for="enabled">Enabled</label>
+		<div class="controls">
+			<input type="text" id="enabled" name="enabled" required data-ng-model="item.enabled">
+			<span class="help-inline" data-ng-show="errors.enabled">{{errors.enabled}}</span>
+		</div>
+	</div>
+	
+	<div class="control-group" data-ng-class="{error: errors.passwordExpired}">
+		<label class="control-label" for="passwordExpired">Password Expired</label>
+		<div class="controls">
+			<input type="text" id="passwordExpired" name="passwordExpired" required data-ng-model="item.passwordExpired">
+			<span class="help-inline" data-ng-show="errors.passwordExpired">{{errors.passwordExpired}}</span>
+		</div>
+	</div>
+	
+	<div class="form-actions">
+		<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Update</button>
+		<button type="button" class="btn btn-danger" data-ng-click="delete(item)"><i class="icon-trash"></i> Delete</button>
+	</div>
+</form>

@@ -1,0 +1,45 @@
+
+<div class="page-header">
+	<h1>Show User</h1>
+</div>
+<alert level="{{message.level}}" text="{{message.text}}"/>
+<dl class="dl-horizontal">
+	
+	<dt>Username</dt>
+	<dd data-ng-bind="item.username"></dd>
+	
+	<dt>Password</dt>
+	<dd data-ng-bind="item.password"></dd>
+	
+	<dt>Email</dt>
+	<dd data-ng-bind="item.email"></dd>
+	
+	<dt>Firstname</dt>
+	<dd data-ng-bind="item.firstname"></dd>
+	
+	<dt>Lastname</dt>
+	<dd data-ng-bind="item.lastname"></dd>
+	
+	<dt>Language</dt>
+	<dd data-ng-bind="item.language"></dd>
+	
+	<dt>Event</dt>
+	<dd data-ng-bind="item.event"></dd>
+	
+	<dt>Account Expired</dt>
+	<dd data-ng-bind="item.accountExpired"></dd>
+	
+	<dt>Account Locked</dt>
+	<dd data-ng-bind="item.accountLocked"></dd>
+	
+	<dt>Enabled</dt>
+	<dd data-ng-bind="item.enabled"></dd>
+	
+	<dt>Password Expired</dt>
+	<dd data-ng-bind="item.passwordExpired"></dd>
+	
+</dl>
+<div class="form-actions">
+	<a class="btn" data-ng-href="#/edit/{{item.id}}"><i class="icon-edit"></i> Edit</a>
+	<button type="button" class="btn btn-danger" data-ng-click="delete(item)"><i class="icon-trash"></i> Delete</button>
+</div>

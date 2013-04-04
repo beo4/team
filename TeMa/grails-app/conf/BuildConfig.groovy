@@ -30,6 +30,8 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
+		//mavenRepo "http://repo.grails.org/grails/libs-releases/"
+		//mavenRepo "http://m2repo.spockframework.org/ext/"
     }
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes eg.
@@ -57,5 +59,6 @@ grails.project.dependency.resolution = {
 		compile ":ckeditor:3.6.2.2"
 		compile ":joda-time:1.4"
 		compile ":angular-scaffolding:1.0-SNAPSHOT"
+		runtime ':excel-import:1.0.0'
     }
 }

@@ -1,33 +1,28 @@
 
 <div class="page-header">
-	<h1>User List</h1>
+	<h1>Subscription List</h1>
 </div>
 <alert level="{{message.level}}" text="{{message.text}}"/>
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
 		
-			<th>Firstname</th>
+			<th>Account</th>
 		
-			<th>Lastname</th>
-			
-			<th>Email</th>
+			<th>Meeting</th>
 		
-			<th>LoginToken</th>
+			<th>User</th>
 		
         </tr>
     </thead>
     <tbody>
         <tr data-ng-repeat="item in list" data-ng-click="show(item)">
 		
-			<td>{{item.firstname}}</td>
+			<td>{{item.account}}</td>
 		
-			<td>{{item.lastname}}</td>
-			
-			<td>{{item.email}}</td>
+			<td>{{item.meeting}}</td>
 		
-			<td>{{item.loginToken}}</td>
-		
+			<td>{{item.user}}</td>
 		
         </tr>
     </tbody>

@@ -1,61 +1,53 @@
-function EventCtrl($scope, $location, Grails, Flash) {
-	$scope.item.eventLanguage = [];
-	$scope.item.i18n = [];
+function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
+	$scope.message = Flash.getMessage();
 	
-	$scope.addLanguage = function(language) {
-		var locale = $scope.getI18n(language);
-	}
-	
-	$scope.defaults = Grails.create({}, function(response) {
-        $scope.defaults = response;
-    }, errorHandler.curry($scope, $location, Flash));
-	
-	$scope.getI18n = function(locale) {
-		Grails.newI18n({locale: locale}, function(response) {
-			$scope.item.eventLanguage.push(response.eventLanguage);
-			response.i18n.eventLanguage = response.eventLanguage
-			$scope.item.i18n.push(response.i18n);
+	$scope.loadParticipant = function() {
+		Grails.get({loginToken: $scope.loginToken}, function(item) {
+			$rootScope.participant = new Grails;
+			angular.extend($rootScope.participant, item.participant);
+			$rootScope.event = item.participant.event;
+			$rootScope.subscription = item.subscription;
+			$rootScope.event_i18n = item.event_i18n;
+			
+			if(!item.participant.language)
+					$location.path('/chooseLanguage');
+			else
+				$location.path('/welcome');
+	        
 	    }, errorHandler.curry($scope, $location, Flash));
+	};
+	
+	$scope.gotoStep2 = function(){
+		$location.path('/personelData');
 	}
 	
-    
+    $scope.updateParticipant = function(item) {
+        item.$update(function(response) {
+            Flash.success(response.message);
+            $rootScope.participant = new Grails;
+			angular.extend($rootScope.participant, item.participant);
+            if ($rootScope.event.meetingChoosable || !$rootScope.participant.meeting) {
+            	$location.path('/chooseMeeting');
+            } else {
+            	$location.path('/chooseOptions');
+            }
+            
+        }, errorHandler.curry($scope, $location, Flash));
+    };
 }
 
-function MeetingCtrl($scope, $routeParams, $location, Grails, Flash) {
-
-	$scope.item.event;
-	$scope.item.i18n = [];
+function MeetingCtrl($scope, $location, $rootScope, Grails, Flash) {
+	$scope.message = Flash.getMessage();
 	
-	$scope.defaults = Grails.create({eventId: + $routeParams.id}, function(response) {
-		$scope.item.event = response.event;
-		$scope.item.i18n = response.i18n;
-    }, errorHandler.curry($scope, $location, Flash));
-}
-
-
-function UserCtrl($scope, $routeParams, $location, Grails, Flash) {
-
-	$scope.item.event;
-	$scope.item.i18n = [];
+	$scope.participant = $rootScope.participant;
+	$scope.event_i18n = $rootScope.event_i18n;
+	$scope.event = $rootScope.event;
 	
-	$scope.defaults = Grails.create({eventId: + $routeParams.id}, function(response) {
-		$scope.item.event = response.event;
-		$scope.i18n = response.i18n;
+	Grails.getMeetings({participant: $scope.participant.id, event: $scope.event.id}, function(item) {
+        $scope.meetings = item;
     }, errorHandler.curry($scope, $location, Flash));
-}
-
-
-function ResourceCtrl($scope, $routeParams, $location, Grails, Flash) {
-
-	$scope.item.event;
-	$scope.item.i18n = [];
 	
-	$scope.defaults = Grails.create({eventId: + $routeParams.id}, function(response) {
-		$scope.item.event = response.event;
-		$scope.item.i18n = response.i18n;
-    }, errorHandler.curry($scope, $location, Flash));
 }
-
 
 scaffoldingModule.directive('i18ntabs', function(){
 	var baseUrl = $('body').data('template-url');

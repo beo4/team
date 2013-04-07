@@ -76,7 +76,7 @@
 						<dt><g:message code="meeting.subscriber.label" default="Subscriber" /></dt>
 						
 							<g:each in="${meetingInstance.subscriber}" var="s">
-							<dd><g:link controller="subscription" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></dd>
+							<dd><g:link controller="registration" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></dd>
 							</g:each>
 						
 					</g:if>

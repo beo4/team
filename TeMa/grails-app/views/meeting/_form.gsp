@@ -51,10 +51,10 @@
 	
 <ul class="one-to-many">
 <g:each in="${meetingInstance?.subscriber?}" var="s">
-    <li><g:link controller="subscription" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
+    <li><g:link controller="registration" action="show" id="${s.id}">${s?.encodeAsHTML()}</g:link></li>
 </g:each>
 <li class="add">
-<g:link controller="subscription" action="create" params="['meeting.id': meetingInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'subscription.label', default: 'Subscription')])}</g:link>
+<g:link controller="registration" action="create" params="['meeting.id': meetingInstance?.id]">${message(code: 'default.add.label', args: [message(code: 'subscription.label', default: 'Subscription')])}</g:link>
 </li>
 </ul>
 

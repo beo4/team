@@ -1,0 +1,16 @@
+
+		<div class="row-fluid">
+			<div>
+				Wilkommen {{participant.firstname}} {{participant.lastname}}
+			</div>
+			<div class="span12">
+				<h1>{{event_i18n.title}}</h1>
+				<h2>{{event_i18n.subtitle}}</h2>
+			</div>
+        </div>
+        <div class="row-fluid">
+				{{event_i18n.description}}
+        </div>
+        <div class="rwo-fluid">
+        		<button type="submit" class="btn btn-primary" ng-click="gotoStep2()">Weiter</button>
+        </div>

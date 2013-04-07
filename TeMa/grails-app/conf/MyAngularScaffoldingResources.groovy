@@ -18,8 +18,25 @@ modules = {
         resource id: 'css', url: [plugin: 'angular-scaffolding', dir: 'css', file: 'scaffolding.css']
     }
 	
+	'my-angular-registrationscaffolding' {
+		dependsOn 'jquery', 'angular-resource'
+		resource id: 'js', url: [dir: 'js', file: 'grails-registration.js']
+		resource id: 'js', url: [dir: 'js', file: 'registrationScaffolding.js']
+		resource id: 'css', url: [plugin: 'angular-scaffolding', dir: 'css', file: 'scaffolding.css']
+	}
+	
 	'my-angular-ui-scaffolding' {
 		dependsOn 'my-angular-scaffolding'
+		resource id: 'js', url: [dir: 'js', file: 'angular-ui.js']
+		resource id: 'js', url: [dir: 'js', file: 'angular-ui-ieshiv.js']
+		resource id: 'js', url: [dir: 'js', file: 'ui-bootstrap-tpls-0.1.0-SNAPSHOT.js']
+		resource id: 'css', url: [dir: 'css', file: 'angular-ui.css']
+		resource id: 'js', url: [dir: 'js', file: 'bootstrap-datetimepicker.min.js']
+		resource id: 'css', url: [dir: 'css', file: 'bootstrap-datetimepicker.min.css']
+	}
+	
+	'my-angular-ui-registrationscaffolding' {
+		dependsOn 'my-angular-registrationscaffolding'
 		resource id: 'js', url: [dir: 'js', file: 'angular-ui.js']
 		resource id: 'js', url: [dir: 'js', file: 'angular-ui-ieshiv.js']
 		resource id: 'js', url: [dir: 'js', file: 'ui-bootstrap-tpls-0.1.0-SNAPSHOT.js']
@@ -32,4 +49,10 @@ modules = {
         dependsOn 'my-angular-ui-scaffolding'
 		resource id: 'js', url: [dir: 'js', file: 'event.js']
     }
+	
+	'registration-angular-scaffolding' {
+		dependsOn 'my-angular-ui-registrationscaffolding'
+		resource id: 'js', url: [dir: 'js', file: 'registration.js']
+		resource id: 'css', url: [dir: 'css', file: 'gy.css']
+	}
 }

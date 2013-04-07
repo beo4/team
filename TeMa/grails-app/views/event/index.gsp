@@ -22,12 +22,7 @@
 								<g:message code="default.list.label" args="[entityName]" />
 							</a>
 						</li>
-						<li>
-							<a class="create" href="#create">
-								<i class="icon-plus"></i>
-								<g:message code="default.create.label" args="[entityName]" />
-							</a>
-						</li>
+						
 					</ul>
 				</div>
 			</div>

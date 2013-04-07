@@ -1,0 +1,38 @@
+
+		<div class="row-fluid">
+			<h1>{{event_i18n.title}}</h1>
+			<h2>{{event_i18n.subtitle}}</h2>
+		</div>
+		<div class="row-fluid">
+			<div class="offset1 span10">
+				
+			</div>
+		</div>
+		<form name="form" data-ng-submit="updateMeeting(participant)" class="form-horizontal">
+		<div class="row-fluid">
+			<div class="span6">
+					<div class="control-group" data-ng-class="{error: errors.lastname}">
+						<label class="control-label" for="lastname">Name</label>
+						<div class="controls">
+							<input type="text" id="lastname" name="lastname" required data-ng-model="participant.lastname">
+							<span class="help-inline" data-ng-show="errors.lastname">{{errors.lastname}}</span>
+						</div>
+					</div>
+			</div>
+			<div class="offset1 span5">
+				<div class="control-group" data-ng-class="{error: errors.account}">
+						<label class="control-label" for="account">Ich werde teilnehmen</label>
+						<div class="controls">
+							<input type="checkbox" id="account" name="account" data-ng-model="participant.account">
+							<span class="help-inline" data-ng-show="errors.account">{{errors.account}}</span>
+						</div>
+					</div>
+			</div>
+        </div>
+        <div class="row-fluid">
+        <div class="form-actions">
+						<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid">Weiter</button>
+		</div>
+        </div>
+        </form>
+

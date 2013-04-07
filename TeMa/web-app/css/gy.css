@@ -1,0 +1,405 @@
+img {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+ #logo img {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+/* ==========================================================================
+   Hero Header
+   ========================================================================== */
+.hero-header {
+  position: relative;
+  width: 980px;
+  margin: 0 auto 20px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+}
+.ie7 .hero-header {
+  overflow: hidden;
+}
+.hero-header .hero-header-carousel ul {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.hero-header .hero-header-carousel ul li {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+.hero-header-carousel .jcarousel-control {
+  position: absolute;
+  top: 20px;
+  width: 60px;
+  right: 20px;
+}
+.hero-header-carousel .jcarousel-control .jcarousel-prev,
+.hero-header-carousel .jcarousel-control .jcarousel-next {
+  text-indent: -99999em;
+  width: 26px;
+  height: 22px;
+  cursor: pointer;
+}
+.hero-header-carousel .jcarousel-control .jcarousel-prev {
+  background: url(/de_de/images/homepage-sprite_tcm2141-117543.png) no-repeat scroll -10px -402px transparent;
+  position: absolute;
+  left: 3px;
+}
+.hero-header-carousel .jcarousel-control .jcarousel-prev:hover {
+  background: url(/de_de/images/homepage-sprite_tcm2141-117543.png) no-repeat scroll -10px -402px transparent;
+}
+.hero-header-carousel .jcarousel-control .jcarousel-next {
+  background: url(/de_de/images/homepage-sprite_tcm2141-117543.png) no-repeat scroll -10px -466px transparent;
+  position: absolute;
+  right: 0px;
+}
+.hero-header-carousel .jcarousel-control .jcarousel-next:hover {
+  background: url(/de_de/images/homepage-sprite_tcm2141-117543.png) no-repeat scroll -10px -466px transparent;
+}
+.hero-header .thumbnails-wrapper {
+  position: absolute;
+  z-index: 3;
+  padding: 0;
+  top: 23px;
+  right: 80px;
+}
+.hero-header .thumbnails-wrapper ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-right: 4px;
+}
+.hero-header .thumbnails-wrapper ul li {
+  float: left;
+  height: 10px;
+  margin-left: 4px;
+}
+.ie7 .hero-header .thumbnails-wrapper ul li {
+  height: 10px;
+}
+.hero-header .thumbnails-wrapper ul li a {
+  outline: none;
+}
+.hero-header .thumbnails-wrapper ul li img {
+  height: 10px;
+}
+.ie7 .hero-header .thumbnails-wrapper ul li.selected a {
+  zoom: 1;
+}
+.hero-header .details {
+  position: absolute;
+  left: 20px;
+  width: 940px;
+  height: 135px;
+  bottom: 20px;
+}
+
+.hero-header .hero-header-carousel h1,
+.hero-header .hero-header-carousel h2,
+.hero-header .hero-header-carousel h3 {
+  margin: 0;
+}
+.hero-header .hero-header-carousel ul li h1,
+.hero-header .hero-header-carousel ul li h2 {
+    background: #004b90;
+}
+.hero-header .hero-header-carousel h1 {
+  font-size: 2.15em;
+  color: #FFFFFF;
+  font-family: 'HelveticaNeueW01-75Bold', 'HelveticaNeueW02-75Bold', 'HelveticaNeueW15-75Bold', 'HelveticaNeueW10-75Bold', Arial, sans-serif;
+  line-height: 1.1em;
+  padding: 0 4px 4px;
+  position: absolute;
+  top: 75px; 
+  left: 88px;
+}
+.hero-header .hero-header-carousel h2 {
+  font-size: 2.15em;
+  font-family: 'HelveticaNeueW01-75Bold', 'HelveticaNeueW02-75Bold', 'HelveticaNeueW15-75Bold', 'HelveticaNeueW10-75Bold', Arial, sans-serif;
+  line-height: 1em;
+  padding: 2px 4px 5px 4px;
+  position: absolute;
+  top: 109px;
+  left: 88px;
+}
+.hero-header .hero-header-carousel p {
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+  font-size: 1em;
+  font-style: italic;
+  letter-spacing: 0.09em;
+  margin: 0px;
+  position: absolute;
+  text-shadow: black 0px 0px 5px;
+  top: 164px;
+  left: 93px;
+  width: 373px;
+}
+.hero-header .hero-header-carousel p .parenthesis {
+    color: #ffdf0f;
+}
+.hero-header .hero-header-carousel a.innovation-link {
+  display: block;
+  color: #ffe01a;
+  text-decoration: none;
+  padding: 0 0 0 12px;
+  margin: 0;
+  font-size: 1.077em;
+  font-weight: bold;
+  background: url(/de_de/images/homepage-sprite_tcm2141-117543.png) no-repeat -10px -74px;
+  position: absolute;
+  top: 215px;
+  left: 50px;
+}
+.hero-header .hero-header-carousel a.innovation-link:hover,
+.hero-header .hero-header-carousel a.innovation-link:focus {
+  text-decoration: underline;
+}
+.hero-header .details a.action {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 0;
+  background: url(/de_de/images/homepage-sprite_tcm2141-117543.png) no-repeat -75px 0;
+}
+.ie7 .hero-header .details a.action {
+  background-position: -90px 20px;
+}
+.hero-header .details a.action:hover,
+.hero-header .details a.action:focus {
+  background: url(/de_de/images/homepage-sprite_tcm2141-117543.png) no-repeat -90px -210px;
+}
+.ie7 .hero-header .details a.action:hover,
+.ie7 .hero-header .details a.action:focus {
+  background-position: -90px -190px;
+}
+.hero-header .find-tires .other-vehicles {
+  float: left;
+  list-style: none;
+  font-size: 0.92em;
+  padding: 0;
+  border-top: 1px solid #2076c1;
+  margin-left: -4px;
+  width: 240px;
+  padding-top: 6px;
+}
+.ie7 .hero-header .find-tires .other-vehicles {
+  margin-top: 5px;
+  padding-top: 10px;
+}
+.hero-header .find-tires .other-vehicles li {
+  float: left;
+  padding-right: 0;
+  margin-right: 6px;
+  padding-left: 6px;
+}
+.hero-header .find-tires .other-vehicles li:last-child {
+  border: 0;
+}
+.hero-header .find-tires .other-vehicles li a {
+  text-decoration: none;
+  color: #97b9d7;
+  font-weight: bold;
+  background: url(/de_de/images/homepage-sprite_tcm2141-117543.png) no-repeat -10px -205px;
+  padding-left: 10px;
+}
+.hero-header .find-tires .other-vehicles li a:hover {
+  color: #FFFFFF;
+  text-decoration: underline;
+}
+.hero-details {
+  background-color: #0e5ba1;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  border-radius: 7px;
+  margin-top: 0px;
+  height: 133px;
+}
+.hero-details .find-tires {
+  width: 458px;
+  display: inline-block;
+  float: left;
+}
+.hero-header .find-tires h2 {
+  font-family: 'HelveticaNeueW01-55Roma', 'HelveticaNeueW02-55Roma', 'HelveticaNeueW15-55Roma', 'HelveticaNeueW10-55Roma', Arial, sans-serif;
+  font-size: 1.692em;
+  color: #FFFFFF;
+  font-weight: bold;
+  margin: 20px 0 0 0;
+}
+.hero-header .find-tires a.action:hover h2,
+.hero-header .find-tires a.action:hover h3 {
+  color: #ffe01a;
+}
+.hero-header .find-tires h3 {
+  font-family: 'HelveticaNeueW01-55Roma', 'HelveticaNeueW02-55Roma', 'HelveticaNeueW15-55Roma', 'HelveticaNeueW10-55Roma', Arial, sans-serif;
+  font-size: 1.231em;
+  font-weight: normal;
+  margin: -3px 0px 0px;
+}
+.hero-details .find-tires img {
+  float: left;
+  margin-top: -26px;
+  margin-left: 10px;
+  margin-right: 12px;
+}
+.ie7 .hero-details .find-tires img {
+  float: left;
+  margin-top: -6px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.hero-details .find-tires span {
+  color: #ffe01a;
+  margin-left: 1px;
+  margin-top: 3px;
+}
+.hero-details .cta-list {
+  width: 242px;
+  display: inline-block;
+  float: left;
+  background-color: #FFFFFF;
+  height: 133px;
+}
+.hero-details .cta-list ul {
+  padding: 0px 20px 0px 20px;
+  margin: 7px 0;
+}
+.hero-details .cta-list ul li {
+  padding: 12px 0px;
+  border-bottom: 1px solid #dfdede;
+}
+.hero-details .cta-list ul li:last-child {
+  border-bottom: none;
+}
+.hero-details .cta-list ul li a {
+  font-weight: bold;
+  display: block;
+  background: url(/de_de/images/homepage-sprite_tcm2141-117543.png) no-repeat right -139px;
+}
+.hero-details .hero-eu-tire-rating {
+  width: 240px;
+  display: inline-block;
+  float: left;
+  background-color: #f1f1f1;
+  height: 133px;
+  position: relative;
+  -webkit-border-radius: 0px 7px 7px 0px;
+  -moz-border-radius: 0px 7px 7px 0px;
+  border-radius: 0px 7px 7px 0px;
+}
+.hero-details .hero-eu-tire-rating h3 {
+  color: #004c8e;
+  margin-top: 19px;
+  padding-left: 20px;
+  font-family: Arial, sans-serif;
+  font-size: 1em;
+  width: 125px;
+}
+.hero-details .hero-eu-tire-rating p {
+  font-weight: normal;
+  color: #525252;
+  margin-top: 5px;
+  padding-left: 20px;
+  width: 90px;
+  font-size: 1em;
+}
+.ie7 .hero-details .hero-eu-tire-rating p {
+  margin-top: -10px;
+}
+.hero-details .hero-eu-tire-rating img {
+  position: absolute;
+  bottom: 0;
+  right: -10px;
+}
+
+.header {
+  background-color: #004c8e;
+  padding-bottom: 25px;
+  margin-bottom: 25px;
+}
+.header a {
+  outline: 0 !important;
+}
+.header-inner-wrapper {
+  margin: -2px auto 0;
+  padding: 0 20px;
+  width: 940px;
+}
+.header #logo {
+  margin-top: 27px;
+  float: left;
+}
+
+.header #logo img.print {
+	display: none;
+}
+/* the country selection and search form wrapper */
+.header-secondary-nav {
+  float: right;
+}
+.header-secondary-nav .country-selection,
+.header-secondary-nav .search-form-wrapper {
+  float: left;
+  font-size: 0.85em;
+}
+.header-secondary-nav .country-selection {
+  color: #fff;
+  margin-top: 34px;
+}
+.header-secondary-nav .country-selection a {
+  color: #b4d1ec;
+  text-decoration: none;
+}
+.header-secondary-nav .country-selection a:hover,
+.header-secondary-nav .country-selection a:focus {
+  color: #fff;
+}
+.header-secondary-nav .country-selection .current-country {
+  display: inline;
+  margin-right: 2px;
+}
+.header-secondary-nav .search {
+  float: left;
+  margin-left: 13px;
+  margin-top: 27px;
+  width: 196px;
+}
+.header-secondary-nav .search span {
+  display: none;
+  visibility: hidden;
+}
+.header-secondary-nav .search #q {
+  background: url(/de_de/images/search-field.gif_tcm2141-114644.gif) no-repeat scroll left top transparent;
+  border: none;
+  color: #fff;
+  font-size: 0.9em;
+  height: 11px;
+  padding: 8px 12px;
+  width: 142px;
+  float: left;
+}
+.ie8 .header-secondary-nav .search #q,
+.ie7 .header-secondary-nav .search #q,
+.ie6 .header-secondary-nav .search #q {
+  padding-top: 8px;
+}
+.ie8 .header-secondary-nav .search #q,
+.ie7 .header-secondary-nav .search #q {
+  height: 15px;
+}
+.header-secondary-nav .search #search-button {
+  float: right;
+  margin-left: -3px;
+}

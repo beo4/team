@@ -2,6 +2,7 @@ package de.elementEvents.tema.user
 
 import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.event.EventLanguage;
+import de.elementEvents.tema.meeting.Meeting
 
 class User {
 
@@ -18,7 +19,18 @@ class User {
 	String firstname
 	String lastname
 	
+	String street
+	String plz
+	String city
+	String country
+	
+	String phone
+	String mobile
+	
 	String loginToken 
+	
+	
+	boolean account = false
 	
 	EventLanguage language
 	

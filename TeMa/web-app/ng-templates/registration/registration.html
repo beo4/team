@@ -1,0 +1,27 @@
+		<div>
+		<div class="row-fluid">
+        	<div class="hero-unit">
+			  <h1>Wilkommen</h1>
+			  <p ng-show="!item.firstname" >
+			  	<p>Please Login</p>
+			  </p>
+			  <p ng-hide="!item.firstname" >
+			  	{{item.firstname}}
+			  </p>
+			  
+			</div>
+        </div>
+		<form class="form-horizontal" ng-submit="loadParticipant()">
+		  <div class="control-group">
+		    <label class="control-label" for="inputEmail">Registration Code</label>
+		    <div class="controls">
+		      <input type="text" id="inputEmail" placeholder="Registration Code" data-ng-model="loginToken">
+		    </div>
+		  </div>
+		  <div class="control-group">
+		    <div class="controls">
+		      <button type="submit" class="btn">Weiter</button>
+		    </div>
+		  </div>
+		</form>
+		</div>

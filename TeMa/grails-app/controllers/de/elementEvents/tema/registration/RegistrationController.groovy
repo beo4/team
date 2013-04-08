@@ -15,6 +15,7 @@ import grails.plugins.springsecurity.SpringSecurityService;
 import static javax.servlet.http.HttpServletResponse.*
 
 class RegistrationController {
+	static public main = true
 
     static final int SC_UNPROCESSABLE_ENTITY = 422
 

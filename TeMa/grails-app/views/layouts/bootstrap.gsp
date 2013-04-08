@@ -1,4 +1,5 @@
 <%@ page import="org.codehaus.groovy.grails.web.servlet.GrailsApplicationAttributes" %>
+<%@page import="org.codehaus.groovy.grails.commons.GrailsClassUtils"%> 
 <!doctype html>
 <html lang="en">
 	<head>
@@ -47,9 +48,17 @@
 					<div class="nav-collapse">
 						<ul class="nav">							
 							<li<%= request.forwardURI == "${createLink(uri: '/')}" ? ' class="active"' : '' %>><a href="${createLink(uri: '/')}">Home</a></li>
+							<sec:ifAllGranted roles="ROLE_ADMIN">
 							<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
 								<li<%= c.logicalPropertyName == controllerName ? ' class="active"' : '' %>><g:link controller="${c.logicalPropertyName}">${c.naturalName}</g:link></li>
 							</g:each>
+							</sec:ifAllGranted>
+							<sec:ifNotGranted roles="ROLE_ADMIN">
+							<g:each var="c" in="${grailsApplication.controllerClasses.findAll{ 
+												GrailsClassUtils.getStaticPropertyValue(it.clazz, 'main')}.sort{ it.fullName } }">
+								<li<%= c.logicalPropertyName == controllerName ? ' class="active"' : '' %>><g:link controller="${c.logicalPropertyName}">${c.naturalName}</g:link></li>
+							</g:each>
+							</sec:ifNotGranted>
 						</ul>
 					</div>
 				</div>

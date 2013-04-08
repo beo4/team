@@ -8,6 +8,7 @@ import grails.plugin.jodatime.converters.JodaConverters;
 import static javax.servlet.http.HttpServletResponse.*
 
 class UserController {
+	static public main = true
 
     static final int SC_UNPROCESSABLE_ENTITY = 422
 

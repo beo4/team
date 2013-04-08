@@ -45,6 +45,12 @@ class User {
 		language blank: true, nullable: true
 		event blank: true, nullable: true
 		loginToken blank: true, nullable: true
+		street blank: true, nullable: true
+		plz blank: true, nullable: true
+		city blank: true, nullable: true
+		country blank: true, nullable: true
+		phone blank: true, nullable: true
+		mobile blank: true, nullable: true
 	}
 
 	static mapping = {

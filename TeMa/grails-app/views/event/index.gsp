@@ -13,7 +13,7 @@
         <a href="#list-event" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
         <div class="row-fluid">
         	<div class="span3">
-				<div class="well" role="navigation">
+								<div class="well" role="navigation">
 					<ul class="nav nav-list">
 						<li class="nav-header">${entityName}</li>
 						<li>
@@ -22,7 +22,12 @@
 								<g:message code="default.list.label" args="[entityName]" />
 							</a>
 						</li>
-						
+						<li>
+							<a class="create" href="#create">
+								<i class="icon-plus"></i>
+								<g:message code="default.create.label" args="[entityName]" />
+							</a>
+						</li>
 					</ul>
 				</div>
 			</div>

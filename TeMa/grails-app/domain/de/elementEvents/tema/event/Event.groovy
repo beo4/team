@@ -5,8 +5,6 @@ import de.elementEvents.tema.resource.Resource;
 import de.elementEvents.tema.user.User;
 
 class Event {
-	
-	
 
 	static hasMany = [meetings: Meeting, resources: Resource, participants: User, i18n: Event_i18n, eventLanguage: EventLanguage]
 	
@@ -24,6 +22,5 @@ class Event {
 		i18n: lazy: false
 		i18n: 'join'
 	}
-	
 	
 }

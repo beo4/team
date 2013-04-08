@@ -10,6 +10,7 @@
 // if (System.properties["${appName}.config.location"]) {
 //    grails.config.locations << "file:" + System.properties["${appName}.config.location"]
 // }
+import grails.plugins.springsecurity.SecurityConfigType
 
 grails.project.groupId = appName // change this to alter the default package name and Maven publishing destination
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
@@ -98,7 +99,20 @@ grails.plugins.springsecurity.userLookup.userDomainClassName = 'de.elementEvents
 grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'de.elementEvents.tema.user.UserRole'
 grails.plugins.springsecurity.authority.className = 'de.elementEvents.tema.user.Role'
 grails.plugins.springsecurity.requestMap.className = 'de.elementEvents.tema.user.Requestmap'
-grails.plugins.springsecurity.securityConfigType = 'Requestmap'
+//grails.plugins.springsecurity.securityConfigType = 'Requestmap'
+grails.plugins.springsecurity.securityConfigType = SecurityConfigType.InterceptUrlMap
+
+grails.plugins.springsecurity.interceptUrlMap = [
+	'/event':         ['ROLE_ADMIN'],
+	'/meeting':         ['ROLE_ADMIN'],
+	'/eventLanguage':         ['ROLE_ADMIN'],
+	'/meeting_i18n':         ['ROLE_ADMIN'],
+	'/resource':         ['ROLE_ADMIN'],
+	'/resourceOption':         ['ROLE_ADMIN'],
+	'/user':         ['ROLE_ADMIN'],
+	'/user':         ['ROLE_ADMIN'],
+]
+
 
 // Added by the Joda-Time plugin:
 grails.gorm.default.mapping = {

@@ -64,7 +64,10 @@ class RegistrationController {
 			if (!subscriptionInstance){
 				subscriptionInstance = new Subscription();
 				subscriptionInstance.user = userInstance;
-			}
+			} 
+			
+			jsonResponse.meeting = subscriptionInstance.meeting
+			
 			
 			jsonResponse.subscription = subscriptionInstance
 			

@@ -19,7 +19,9 @@ class User {
 	
 	String email
 	String firstname
+	String middlename
 	String lastname
+	String title
 	
 	String street = ""
 	String plz = ""
@@ -28,6 +30,12 @@ class User {
 	
 	String phone = ""
 	String mobile = ""
+	
+	String company = ""
+	String position = ""
+	String companystreet = ""
+	String companyplz = ""
+	String companycity = ""
 	
 	String loginToken 
 	
@@ -53,6 +61,13 @@ class User {
 		country blank: true, nullable: true
 		phone blank: true, nullable: true
 		mobile blank: true, nullable: true
+		middlename  blank: true, nullable: true
+		title blank: true, nullable: true
+		company blank:true , nullable: true
+		position blank:true , nullable: true
+		companystreet blank:true , nullable: true
+		companyplz blank:true , nullable: true
+		companycity blank:true , nullable: true
 	}
 
 	static mapping = {

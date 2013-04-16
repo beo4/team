@@ -1,6 +1,6 @@
 modules = {
 	scaffolding {
-		dependsOn 'bootstrap'
+		dependsOn 'bootstrap-responsive-less'
 		resource url: 'css/scaffolding.css'
 	}
 }

@@ -29,14 +29,14 @@ class UserController {
 		int eventId = request.JSON.event.id
 		
 		userInstance.event = Event.get(eventId)
-		Salutation.fromString(request.JSON.salutation.name)
+		userInstance.setSalutation(Salutation.valueOf(request.JSON.salutation.name))
 		
         def responseJson = [:]
         if (userInstance.save(flush: true)) {
 			
 			if (request.JSON.meeting) {
 				def meeting = Meeting.get(request.JSON.meeting.id)
-				def subscription = new Subscription()
+				Subscription subscription = new Subscription()
 				subscription.meeting = meeting
 				subscription.user = userInstance
 					if (subscription.save(flush: true)) {

@@ -1,5 +1,6 @@
 function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 	$scope.message = Flash.getMessage();
+	$scope.isEmailChanged = false;
 	$rootScope.steps = [
 			{active:true, title: 'Home'},
 			{active:false, title: 'Anmeldung'},
@@ -24,6 +25,7 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 			angular.extend($rootScope.participant, item.participant);
 			$rootScope.event = item.participant.event;
 			$rootScope.subscription = item.subscription;
+			$rootScope.meeting = item.meeting;
 			$rootScope.event_i18n = item.event_i18n;
 			
 			if(!item.participant.language)
@@ -45,14 +47,32 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 	}
 	
     $scope.updateParticipant = function(item) {
+    	if ($scope.isEmailChanged) {
+    		
+    	}
+    	
         item.$update(function(response) {
             Flash.success(response.message);
             $rootScope.participant = new Grails;
 			angular.extend($rootScope.participant, item.participant);
-            if ($rootScope.event.meetingChoosable || !$rootScope.participant.meeting) {
-            	$location.path('/chooseMeeting');
+			$location.path('/end');
+            
+        }, errorHandler.curry($scope, $location, Flash));
+    };
+    
+    $scope.emailChanged = function() {
+    	$scope.isEmailChanged = true;
+    }
+    
+    $scope.updateAccount= function(item) {
+        item.$update(function(response) {
+            Flash.success(response.message);
+            $rootScope.participant = new Grails;
+			angular.extend($rootScope.participant, item.participant);
+            if ($rootScope.participant.account) {
+            	$location.path('/personelData');
             } else {
-            	$location.path('/chooseOptions');
+            	$location.path('/end');
             }
             
         }, errorHandler.curry($scope, $location, Flash));

@@ -19,9 +19,20 @@
 					</a>
 				</div>
 			</div>
+			<div class="container">
+			<div class="navbar">
+				<ul class="nav">
+					<li ng-repeat="step in steps" ng-class="{'active': step.active}"><a href="#">{{step.title}}</a></li>
+				</ul>
+				</div>
+			</div>
 		</div>
-        <div class="container" role="main" data-ng-view>
-        
+		<div class="container">
+		<div class="row gyteaser">
+				
+		</div>
+        <div class="row" role="main" data-ng-view>
+        </div>
         </div>
     </body>
 </html>

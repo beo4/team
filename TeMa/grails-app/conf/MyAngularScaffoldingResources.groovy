@@ -55,4 +55,8 @@ modules = {
 		resource id: 'js', url: [dir: 'js', file: 'registration.js']
 		resource id: 'css', url: [dir: 'css', file: 'gy.css']
 	}
+	
+	images {
+		resource url:'images/goodyear/goodyearmtfg.png', attrs:[width:980, height:420, alt:'Anschnallen']
+	}
 }

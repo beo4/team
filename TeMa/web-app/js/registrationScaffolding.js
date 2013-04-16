@@ -42,6 +42,7 @@ scaffoldingModule.config([
             when('/personelData', {templateUrl: baseUrl + '/personelData.html', controller: RegistrationCtrl}).
             when('/chooseMeeting', {templateUrl: baseUrl + '/chooseMeeting.html', controller: MeetingCtrl}).
             when('/chooseOptions', {templateUrl: baseUrl + '/chooseOptions.html', controller: RegistrationCtrl}).
+            when('/subscriptionDetails', {templateUrl: baseUrl + '/subscriptionDetails.html', controller: RegistrationCtrl}).
             otherwise({redirectTo: '/registration'});
     }
 ]).run( function($rootScope, $location) {

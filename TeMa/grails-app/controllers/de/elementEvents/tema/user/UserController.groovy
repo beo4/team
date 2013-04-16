@@ -3,6 +3,8 @@ package de.elementEvents.tema.user
 import org.springframework.dao.DataIntegrityViolationException
 
 import de.elementEvents.tema.event.Event;
+import de.elementEvents.tema.meeting.Meeting;
+import de.elementEvents.tema.subscription.Subscription;
 import grails.converters.JSON
 import grails.plugin.jodatime.converters.JodaConverters;
 import static javax.servlet.http.HttpServletResponse.*
@@ -27,9 +29,23 @@ class UserController {
 		int eventId = request.JSON.event.id
 		
 		userInstance.event = Event.get(eventId)
+		Salutation.fromString(request.JSON.salutation.name)
 		
         def responseJson = [:]
         if (userInstance.save(flush: true)) {
+			
+			if (request.JSON.meeting) {
+				def meeting = Meeting.get(request.JSON.meeting.id)
+				def subscription = new Subscription()
+				subscription.meeting = meeting
+				subscription.user = userInstance
+					if (subscription.save(flush: true)) {
+						response.status = SC_CREATED
+						responseJson.id = userInstance.id
+						responseJson.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
+					}
+				}
+			
             response.status = SC_CREATED
             responseJson.id = userInstance.id
             responseJson.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
@@ -52,6 +68,13 @@ class UserController {
 			User user = new User();
 			user.event = event
 		}
+		if (params.meetingId)
+		{
+			defaultsValues.meeting = Meeting.get(params.meetingId)
+		}
+		
+		defaultsValues.salutations = User.Salutation.values();
+		
 		JSON.use("deep")
 		JodaConverters.registerJsonAndXmlMarshallers()
 		render defaultsValues as JSON

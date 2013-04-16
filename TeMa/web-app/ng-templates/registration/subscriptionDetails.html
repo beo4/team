@@ -1,0 +1,20 @@
+
+		<div class="row-fluid">
+			<h1>{{event_i18n.title}}</h1>
+		</div>
+		<div>
+				<span ng-show="participant.salutation == 'MR'">Sehr geehrter Herr</span> 
+				<span ng-show="participant.salutation == 'MS' || participant.salutation == 'MRS'">Sehr geehrter Herr</span>
+				{{participant.firstname}} {{participant.lastname}}
+		</div>
+		
+		<div class="row-fluid">
+			<div class="offset1 span10">
+				wussten sie schon, dass Goodyear OE-Freigaben auf allen wichtigen Porsche Modellen besitzt? Zu diesem Anlass findet in diesem Sommer die 
+				<b>"Goodyear@Porsche Driving Experience 2013"</b> statt
+			</div>
+			<div class="offset1 span10">
+				Wir freuen uns sehr, sie vom {{subscription.meeting.start}} - {{subscription.meeting.end}} (2 &Uuml;bernachtungen) recht herzlich zu dieser Veranstalltung nach
+				Leipzig einladen zu dürfen.
+			</div>
+		</div>

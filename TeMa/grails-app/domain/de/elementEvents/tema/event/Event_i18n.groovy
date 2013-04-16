@@ -9,7 +9,7 @@ class Event_i18n {
 	
 	static belongsTo = [event: Event, eventLanguage: EventLanguage]
 	
-    static constraints = {
+    static mapping = {
 		description type: 'text'
     }
 }

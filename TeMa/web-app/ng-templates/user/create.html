@@ -6,6 +6,14 @@
 				<alert level="{{message.level}}" text="{{message.text}}"/>
 				<form name="form" data-ng-submit="save(item)" class="form-horizontal" ng-controller="UserCtrl">
 				
+					<div class="control-group" data-ng-class="{error: errors.firstname}">
+						<label class="control-label" for="firstname">Salutation</label>
+						<div class="controls">
+							<select type="text" id="salutation" name="salutation" ng-model="item.salutation" ng-options="salutation.name for salutation in item.salutations">
+      						</select>
+							<span class="help-inline" data-ng-show="errors.salutation">{{errors.salutation}}</span>
+						</div>
+					</div>
 						
 					<div class="control-group" data-ng-class="{error: errors.firstname}">
 						<label class="control-label" for="firstname">Firstname</label>
@@ -57,6 +65,14 @@
 						<div class="controls">
 						       {{item.event.i18n[0].title}}
 							<span class="help-inline" data-ng-show="errors.event">{{errors.event}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group" data-ng-class="{error: errors.meeting}" ng-show="item.meeting">
+						<label class="control-label" for="meeting">Meeting</label>
+						<div class="controls">
+						       {{item.meeting.i18n[0].title}}
+							<span class="help-inline" data-ng-show="errors.meeting">{{errors.meeting}}</span>
 						</div>
 					</div>
 						

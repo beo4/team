@@ -38,10 +38,20 @@ function UserCtrl($scope, $routeParams, $location, Grails, Flash) {
 	$scope.item.event;
 	$scope.item.i18n = [];
 	
-	$scope.defaults = Grails.create({eventId: + $routeParams.id}, function(response) {
-		$scope.item.event = response.event;
-		$scope.i18n = response.i18n;
-    }, errorHandler.curry($scope, $location, Flash));
+	if ($routeParams.meetingId){
+		$scope.defaults = Grails.create({'eventId': + $routeParams.id, 'meetingId': + $routeParams.meetingId}, function(response) {
+			$scope.item.event = response.event;
+			$scope.item.meeting = response.meeting;
+			$scope.item.salutations = response.salutations;
+			$scope.i18n = response.i18n;
+	    }, errorHandler.curry($scope, $location, Flash));
+	} else {
+		$scope.defaults = Grails.create({'eventId': + $routeParams.id}, function(response) {
+			$scope.item.event = response.event;
+			$scope.i18n = response.i18n;
+			$scope.item.salutations = response.salutations;
+	    }, errorHandler.curry($scope, $location, Flash));
+	}
 }
 
 

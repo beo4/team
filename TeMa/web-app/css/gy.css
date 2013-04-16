@@ -326,7 +326,6 @@ img {
 
 .header {
   background-color: #004c8e;
-  padding-bottom: 25px;
   margin-bottom: 25px;
 }
 .header a {
@@ -402,4 +401,28 @@ img {
 .header-secondary-nav .search #search-button {
   float: right;
   margin-left: -3px;
+}
+
+div.gyteaser {
+	height: 480px;
+	background-size: cover;
+    background-image:url('../images/goodyear/goodyearmtfg.png');
+    background-repeat:no-repeat;
+}
+
+.navbar .nav > .active > a, .navbar .nav > .active > a:hover, .navbar .nav > .active > a:focus {
+color: #ffe01a;
+text-decoration: none;
+background-color: transparent;
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+}
+
+.navbar .nav > li > a {
+float: none;
+padding: 10px 15px 10px;
+color: white;
+text-decoration: none;
+text-shadow: none;
 }

@@ -15,17 +15,19 @@ class User {
 	boolean accountLocked
 	boolean passwordExpired
 	
+	Salutation salutation
+	
 	String email
 	String firstname
 	String lastname
 	
-	String street
-	String plz
-	String city
-	String country
+	String street = ""
+	String plz = ""
+	String city = ""
+	String country = ""
 	
-	String phone
-	String mobile
+	String phone = ""
+	String mobile = ""
 	
 	String loginToken 
 	
@@ -76,4 +78,14 @@ class User {
 	protected void encodePassword() {
 		password = springSecurityService.encodePassword(password)
 	}
+}
+
+
+enum Salutation {
+	MR("Mr"), MS("Ms"), MRS("Mrs")
+	Salutation(String value) { this.value = value }
+	final String value
+	String getKey() { name() }
+	String toString() { value }
+	
 }

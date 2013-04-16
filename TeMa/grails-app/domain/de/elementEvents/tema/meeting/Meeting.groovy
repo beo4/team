@@ -16,5 +16,6 @@ class Meeting {
 	static hasMany = [subscriber: Subscription, i18n: Meeting_i18n]
 
     static constraints = {
+		subscriber nullable: true
     }
 }

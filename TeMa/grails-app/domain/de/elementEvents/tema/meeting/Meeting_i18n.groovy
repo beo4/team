@@ -12,7 +12,7 @@ class Meeting_i18n {
 	
 	static belongsTo = [meeting: Meeting, i18n: EventLanguage]
 	
-    static constraints = {
+    static mapping = {
 		description type: 'text'
     }
 }

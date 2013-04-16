@@ -1,5 +1,22 @@
 function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 	$scope.message = Flash.getMessage();
+	$rootScope.steps = [
+			{active:true, title: 'Home'},
+			{active:false, title: 'Anmeldung'},
+			{active:false, title: 'Teilnehmerdaten'},
+			{active:false, title: 'Registrierung'},
+			{active:false, title: 'Bestätigung'},
+	];
+	
+	$rootScope.setStep = function(activatestep) {
+		for (step in $rootScope.steps) {
+			if ($rootScope.steps[step].title == activatestep) {
+				$rootScope.steps[step].active = true;
+			} else {
+				$rootScope.steps[step].active = false;
+			}
+		}
+	}
 	
 	$scope.loadParticipant = function() {
 		Grails.get({loginToken: $scope.loginToken}, function(item) {
@@ -18,7 +35,13 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 	};
 	
 	$scope.gotoStep2 = function(){
-		$location.path('/personelData');
+		if ($rootScope.subscription) {
+			$location.path('/subscriptionDetails');
+			$rootScope.setStep('Anmeldung');
+		} else {
+			$location.path('/chooseMeeting');
+			$rootScope.setStep('Anmeldung');
+		}
 	}
 	
     $scope.updateParticipant = function(item) {

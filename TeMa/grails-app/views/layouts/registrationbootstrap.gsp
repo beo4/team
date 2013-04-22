@@ -13,7 +13,6 @@
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-
 		<r:require modules="scaffolding"/>
 
 		<!-- Le fav and touch icons -->
@@ -34,13 +33,17 @@
 
 		
 
-		<div class="container-fluid">
+		
 			<g:layoutBody/>
-
+		<div class="container-fluid">
 			<hr>
 
 			<footer>
-				<p>&copy; Element Event 2013</p>
+				<div class="pull-left">
+					<a href="#datenschutz" target="_blank">Datenschutzerkl&auml;rung</a>
+					<a href="#impressum" target="_blank">Impressum</a>
+				</div>
+				<div class="pull-right"><p>&copy; element-events 2013</p></div>
 			</footer>
 		</div>
 

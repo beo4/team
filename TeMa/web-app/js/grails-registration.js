@@ -12,6 +12,7 @@ angular.module('grailsService', ['ngResource']).factory('Grails', function($reso
 		getMeetings: {method: 'GET', params: {action: 'get'}},
 		update: {method: 'POST', params: {action: 'update'}},
 		save: {method: 'POST', params: {action: 'save'}},
+		saveTravelOptions: {method: 'POST', params: {action: 'saveTravelOptions'}},
 		account: {method: 'GET', params: {action: 'loadParticipantData'}},
 		delete: {method: 'POST', params: {action: 'delete'}}
 	});

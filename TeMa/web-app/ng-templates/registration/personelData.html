@@ -1,21 +1,23 @@
-
-		<div class="row-fluid">
+		
+		<div class="span11">
 			<h1>{{event_i18n.title}}</h1>
 			<h2>{{event_i18n.subtitle}}</h2>
 		</div>
-		<div class="row-fluid">
-			<div class="offset1 span10">
-				Bitte &uuml;berpr&uuml;fen Sie Ihre Daten.
+			<div class="span11">
+				Bitte pr&uuml;fen Sie Ihre Daten auf Richtigkeit und Vollst&auml;ndigkeit, um Sie gegebenenfalls zu
+korrigieren oder zu vervollst&auml;ndigen.
 			</div>
-		</div>
+			<div class="span11">
+			Bei den mit einem * gekennzeichneten Feldern handelt es sich um Pflichtfelder.
+			</div>
+		
 		<form name="form" data-ng-submit="updateParticipant(participant)" class="form-horizontal">
-		<div class="row-fluid">
-			<div class="span6">
-
+		<div class="row">
+		<div class="span6 offset1">
 					<div class="control-group" data-ng-class="{error: errors.firstname}">
 						<label class="control-label" for="salutation">Anrede*</label>
 						<div class="controls">
-							<select type="text" id="salutation" name="salutation" required ng-model="item.salutation" ng-options="salutation.name for salutation in item.salutations">
+							<select type="text" id="salutation" name="salutation" required ng-model="participant.salutation" ng-options="salutation.value for salutation in salutations">
       						</select>
 							<span class="help-inline" data-ng-show="errors.salutation">{{errors.salutation}}</span>
 						</div>
@@ -47,7 +49,7 @@
 					</div>
 					
 					<div class="control-group" data-ng-class="{error: errors.lastname}">
-						<label class="control-label" for="lastname">Name*</label>
+						<label class="control-label" for="lastname">Nachname*</label>
 						<div class="controls">
 							<input type="text" id="lastname" name="lastname" required data-ng-model="participant.lastname">
 							<span class="help-inline" data-ng-show="errors.lastname">{{errors.lastname}}</span>
@@ -92,8 +94,16 @@
 					<div class="control-group" data-ng-class="{error: errors.company}">
 						<label class="control-label" for="company">Firma*</label>
 						<div class="controls">
-							<input type="text" id="company" name="company" data-ng-model="participant.company">
+							<input type="text" id="company" name="company" required data-ng-model="participant.company">
 							<span class="help-inline" data-ng-show="errors.company">{{errors.company}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group" data-ng-class="{error: errors.companyadd}">
+						<label class="control-label" for="companyadd">Firmenzusatz</label>
+						<div class="controls">
+							<input type="text" id="companyadd" name="companyadd" data-ng-model="participant.companyadd">
+							<span class="help-inline" data-ng-show="errors.companyadd">{{errors.company}}</span>
 						</div>
 					</div>
 					
@@ -108,7 +118,7 @@
 					<div class="control-group" data-ng-class="{error: errors.companystreet}">
 						<label class="control-label" for="companystreet">Strasse, Hausnummer*</label>
 						<div class="controls">
-							<input type="text" id="companystreet" name="companystreet" data-ng-model="participant.companystreet">
+							<input type="text" id="companystreet" name="companystreet" required data-ng-model="participant.companystreet">
 							<span class="help-inline" data-ng-show="errors.companystreet">{{errors.companystreet}}</span>
 						</div>
 					</div>
@@ -124,13 +134,13 @@
 					<div class="control-group" data-ng-class="{error: errors.companycity}">
 						<label class="control-label" for="companycity">Ort*</label>
 						<div class="controls">
-							<input type="text" id="companycity" name="companycity" data-ng-model="participant.companycity">
+							<input type="text" id="companycity" name="companycity" required data-ng-model="participant.companycity">
 							<span class="help-inline" data-ng-show="errors.city">{{errors.companycity}}</span>
 						</div>
 					</div>
 					
 					<div class="control-group" data-ng-class="{error: errors.email}">
-						<label class="control-label" for="email()">Email</label>
+						<label class="control-label" for="email()">E-Mail</label>
 						<div class="controls">
 							<input type="text" id="email" data-ng-change="emailChanged()" name="email" required data-ng-model="participant.email">
 							<span class="help-inline" data-ng-show="errors.email">{{errors.email}}</span>
@@ -138,20 +148,24 @@
 					</div>
 					
 					<div class="control-group" ng-show="isEmailChanged" data-ng-class="{error: errors.email}">
-						<label class="control-label" for="emailrepeat">Email Wiederholung</label>
+						<label class="control-label" for="emailrepeat">E-Mail Wiederholung</label>
 						<div class="controls">
 							<input type="text" id="emailrepeat" name="emailrepeat" data-ng-model="participant.emailrepeat">
 							<span class="help-inline" data-ng-show="errors.emailrepeat">{{errors.emailrepeat}}</span>
 						</div>
 					</div>
-					
-					
-			</div>
-			<div class="offset1 span5">
-				
-			</div>
         </div>
-        <div class="row-fluid">
+        <div class="span4">
+	        <h3>Kontakt</h3>
+			<p>F&uuml;r Fragen zur Veranstalltung steht Ihnen das Goodyear Organisations-Team gerne zur Verfügung</p>
+			E-Mail: xy<br>
+			Telefon: xxxxx -xxxxxxxxx
+			<p>
+			Bitte kontaktieren Sie nicht direkt das Hotel
+			</p>
+        </div>
+        </div>
+        <div class="span11">
         <div class="form-actions">
 						<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid">Weiter</button>
 		</div>

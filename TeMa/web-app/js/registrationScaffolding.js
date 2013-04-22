@@ -43,20 +43,64 @@ scaffoldingModule.config([
             when('/chooseMeeting', {templateUrl: baseUrl + '/chooseMeeting.html', controller: MeetingCtrl}).
             when('/chooseOptions', {templateUrl: baseUrl + '/chooseOptions.html', controller: RegistrationCtrl}).
             when('/subscriptionDetails', {templateUrl: baseUrl + '/subscriptionDetails.html', controller: RegistrationCtrl}).
+            when('/impressum', {templateUrl: baseUrl + '/impressum.html', controller: RegistrationCtrl}).
+            when('/datenschutz', {templateUrl: baseUrl + '/datenschutz.html', controller: RegistrationCtrl}).
+            when('/end', {templateUrl: baseUrl + '/end.html', controller: RegistrationCtrl}).
             otherwise({redirectTo: '/registration'});
     }
-]).run( function($rootScope, $location) {
-
+]).run( function($rootScope, $location, Grails) {
+	var baseUrl = $('body').data('template-url');
     // register listener to watch route changes
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
       if ( $rootScope.participant == null ) {
         // no logged user, we should be going to #login
-        if ( next.$route.templateUrl == "/registration" ) {
-          // already going to #login, no redirect needed
-        } else {
-          // not going to #login, we should redirect now
-          $location.path( "/registration" );
-        }
+    	// lets see if somethin is in the session
+    	  try {
+			  if ( next.$route.templateUrl == baseUrl + "/registration.html" || next.$route.templateUrl == baseUrl + "/impressum.html" ||next.$route.templateUrl == baseUrl + "/datenschutz.html" ) {
+		          // already going to #login, no redirect needed
+		        } else {
+		          // not going to #login, we should redirect now
+		        	Grails.get({}, function(item) {
+						$rootScope.participant = new Grails;
+						angular.extend($rootScope.participant, item.participant);
+						$rootScope.event = item.participant.event;
+						$rootScope.subscription = item.subscription;
+						$rootScope.meeting = item.meeting;
+						$rootScope.event_i18n = item.event_i18n;
+						$rootScope.salutations = item.salutations;
+						
+						for (salutation in $rootScope.salutations) {
+							switch ($rootScope.salutations[salutation].name){
+							case "MR": 
+								$rootScope.salutations[salutation].value = "Herr"
+									break;
+							case "MS": 
+								$rootScope.salutations[salutation].value = "Frau"
+									break;
+							default:
+								$rootScope.salutations[salutation].value = "NN"
+								
+							}
+						}
+						
+						$rootScope.vegetarienOptions = [
+						                                {value:"Ich bin kein Vegetarier"},
+						                                {value:"Ich esse kein Fleisch, aber Fisch"},
+						                                {value:"Ich esse weder Fleisch noch Fisch"}
+						                                ];
+						$rootScope.veganOptions = [
+						                                {value:"Ja"},
+						                                {value:"Nein"}
+						                                ]
+				        
+				    }, function(){
+				    	 $location.path( "/registration" )
+				    });
+		         
+		        }
+    	  } catch (exeption) {
+    		  $location.path( "/registration" )
+    	  }
       }         
     });
  });
@@ -68,7 +112,8 @@ scaffoldingModule.directive('alert', function() {
 	var baseUrl = $('body').data('common-template-url');
 	return {
         restrict: 'E', // can only be used as an element
-        transclude: false, // the element should not contain any content so there's no need to transclude
+        transclude: false, // the element should not contain any content so
+							// there's no need to transclude
         scope: {
 			level: '@level',
 			text: '@text'
@@ -85,9 +130,11 @@ scaffoldingModule.directive('pagination', function() {
 	var baseUrl = $('body').data('common-template-url');
 	return {
         restrict: 'A', // can only be used as an attribute
-        transclude: false, // the element should not contain any content so there's no need to transclude
+        transclude: false, // the element should not contain any content so
+							// there's no need to transclude
         scope: {
-            total: '=total' // inherit the total property from the controller scope
+            total: '=total' // inherit the total property from the controller
+							// scope
         },
         controller: function($scope, $routeParams, $location) {
             $scope.max = parseInt($routeParams.max) || 10;
@@ -176,7 +223,7 @@ function toArray(element) {
 
 Function.prototype.curry = function() {
     if (arguments.length < 1) {
-        return this; //nothing to curry with - return function
+        return this; // nothing to curry with - return function
     }
     var __method = this;
     var args = toArray(arguments);
@@ -190,11 +237,13 @@ Function.prototype.curry = function() {
  */
 function errorHandler($scope, $location, Flash, response) {
     switch (response.status) {
-        case 404: // resource not found - return to the list and display message returned by the controller
+        case 404: // resource not found - return to the list and display
+					// message returned by the controller
             Flash.error(response.data.message);
             $location.path('/registration');
             break;
-        case 409: // optimistic locking failure - display error message on the page
+        case 409: // optimistic locking failure - display error message on the
+					// page
             $scope.message = {level: 'error', text: response.data.message};
             break;
         case 422: // validation error - display errors alongside form fields

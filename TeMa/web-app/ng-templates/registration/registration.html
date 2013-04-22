@@ -1,15 +1,13 @@
-		<div>
-		<div class="row-fluid">
-			
-        </div>
+		<div class="span12">
 		<form class="form-horizontal" ng-submit="loadParticipant()">
 		  <div class="control-group">
+			<p>
 		  <span class="help-block">
-			F&uuml;r ihre R&uuml;ckantwort zur o.g. Veranstaltung geben sie bitte nachfolgend Ihre Zugangsdaten ein und klicken anschlie&szlig;end den Login-Button
-			</span>
-		    <label class="control-label" for="inputEmail">Login Code</label>
+			F&uuml;r ihre R&uuml;ckantwort zur o.g. Veranstaltung geben Sie bitte nachfolgend Ihre Zugangsdaten ein und klicken anschlie&szlig;end den Login-Button.
+			</span></p>
+		    <label class="control-label" for="inputEmail">Login-Code</label>
 		    <div class="controls">
-		      <input type="text" id="inputEmail" placeholder="Login Code" data-ng-model="loginToken">
+		      <input type="text" id="loginToken" placeholder="Login-Code" data-ng-model="loginToken">
 		    </div>
 		  </div>
 		  <div class="control-group">

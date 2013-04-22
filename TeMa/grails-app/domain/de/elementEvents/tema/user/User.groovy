@@ -32,15 +32,20 @@ class User {
 	String mobile = ""
 	
 	String company = ""
+	String companyadd = ""
 	String position = ""
 	String companystreet = ""
 	String companyplz = ""
 	String companycity = ""
 	
+	
 	String loginToken 
+	
+	TravelOptions travelOptions
 	
 	
 	boolean account = false
+	boolean confirmed = false
 	
 	EventLanguage language
 	
@@ -64,10 +69,12 @@ class User {
 		middlename  blank: true, nullable: true
 		title blank: true, nullable: true
 		company blank:true , nullable: true
+		companyadd blank:true , nullable: true
 		position blank:true , nullable: true
 		companystreet blank:true , nullable: true
 		companyplz blank:true , nullable: true
 		companycity blank:true , nullable: true
+		travelOptions blank:true , nullable: true
 	}
 
 	static mapping = {
@@ -97,7 +104,7 @@ class User {
 
 
 enum Salutation {
-	MR("Mr"), MS("Ms"), MRS("Mrs")
+	MR("Herr"), MS("Frau")
 	Salutation(String value) { this.value = value }
 	final String value
 	String getKey() { name() }

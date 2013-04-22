@@ -53,10 +53,10 @@ modules = {
 	'registration-angular-scaffolding' {
 		dependsOn 'my-angular-ui-registrationscaffolding'
 		resource id: 'js', url: [dir: 'js', file: 'registration.js']
-		resource id: 'css', url: [dir: 'css', file: 'gy.css']
+		resource id: 'css', url: [dir: 'css', file: 'gy.less'] ,attrs:[rel: "stylesheet/less", type:'css']
 	}
 	
 	images {
-		resource url:'images/goodyear/goodyearmtfg.png', attrs:[width:980, height:420, alt:'Anschnallen']
+		resource url:'images/goodyear/3472_BildTitelseite.jpg', attrs:[width:980, height:420, alt:'Anschnallen']
 	}
 }

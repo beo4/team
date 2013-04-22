@@ -73,7 +73,7 @@ class UserController {
 			defaultsValues.meeting = Meeting.get(params.meetingId)
 		}
 		
-		defaultsValues.salutations = User.Salutation.values();
+		defaultsValues.salutations = Salutation.values();
 		
 		JSON.use("deep")
 		JodaConverters.registerJsonAndXmlMarshallers()

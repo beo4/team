@@ -2,12 +2,15 @@ package de.elementEvents.tema.registration
 
 import java.awt.GraphicsConfiguration.DefaultBufferCapabilities;
 
+import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils;
 import org.springframework.dao.DataIntegrityViolationException
 
 import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.event.Event_i18n;
 import de.elementEvents.tema.meeting.Meeting;
 import de.elementEvents.tema.subscription.Subscription
+import de.elementEvents.tema.user.Salutation;
+import de.elementEvents.tema.user.TravelOptions;
 import de.elementEvents.tema.user.User;
 import grails.converters.JSON
 import grails.plugin.jodatime.converters.JodaConverters;
@@ -42,11 +45,24 @@ class RegistrationController {
     }
 
     def get() {
-        def userInstance = User.findByLoginToken(params.loginToken)
+		def userInstance
+		if (params.loginToken) {
+			userInstance = User.findByLoginToken(params.loginToken)
+			if (userInstance){
+				SpringSecurityUtils.reauthenticate userInstance.username, null
+				
+			}
+			
+		} else if (springSecurityService.loggedIn) {
+			userInstance = User.get(springSecurityService.currentUser.id)
+		}
         if (userInstance) {
 			//login User
 			def jsonResponse = [:]
 			jsonResponse.participant = userInstance
+			if (springSecurityService.loggedIn) {
+				jsonResponse.isLoggedIn = true
+			}
 			def subscriptionInstance = Subscription.findByUser(userInstance);
 			def event = Event.get(userInstance.event.id)
 			def language = userInstance.language
@@ -70,6 +86,7 @@ class RegistrationController {
 			
 			
 			jsonResponse.subscription = subscriptionInstance
+			jsonResponse.salutations = Salutation.values();
 			
 			//springSecurityService.reauthenticate userInstance.username
 			JodaConverters.registerJsonAndXmlMarshallers()
@@ -89,6 +106,24 @@ class RegistrationController {
 
 		responseJson.meetings = meetings
 		
+		render responseJson as JSON
+		
+	}
+	
+	def saveTravelOptions() {
+		def travelOptionInstance = new TravelOptions(request.JSON)
+		
+		def responseJson = [:]
+		if (travelOptionInstance.save(flush: true)) {
+			response.status = SC_CREATED
+			responseJson.id = travelOptionInstance.id
+			responseJson.message = message(code: 'default.created.message', args: [message(code: 'subscription.label', default: 'Subscription'), travelOptionInstance.id])
+		} else {
+			response.status = SC_UNPROCESSABLE_ENTITY
+			responseJson.errors = travelOptionInstance.errors.fieldErrors.collectEntries {
+				[(it.field): message(error: it)]
+			}
+		}
 		render responseJson as JSON
 		
 	}

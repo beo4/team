@@ -88,7 +88,10 @@ log4j = {
            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
            'org.springframework',
            'org.hibernate',
-           'net.sf.ehcache.hibernate'
+           'net.sf.ehcache.hibernate',
+			'org.grails.plugin.resource'
+		   
+	debug 'grails.plugins.twitterbootstrap'
 }
 
 
@@ -134,4 +137,12 @@ grails.gorm.default.mapping = {
 
 jodatime {
 	format.org.joda.time.DateTime = "dd.MM.yyyy hh:mm"
+}
+
+grails.plugins.twitterbootstrap.fixtaglib = true
+grails.resources.modules = {
+	'custom-bootstrap' {
+		dependsOn 'bootstrap'
+		resource url:[dir: 'less', file: 'custom-bootstrap.less'],attrs:[rel: "stylesheet/less", type:'css']
+	}
 }

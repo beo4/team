@@ -13,15 +13,6 @@ body {
 }
 
 /* index page */
-
-img#github-ribbon {
-	position: absolute; 
-	top: 0; 
-	right: 0; 
-	border: 0;
-	z-index: 1030; /* no idea where this comes from, lowest value that works */
-}
-
 @media (max-width: 768px) {
 	/* prevent the brand name wrapping or overlapping the menu toggle */
 	.navbar .brand {
@@ -60,7 +51,7 @@ table th.desc a:after {
 	height: 14px;
 	margin-left: 0.3em;
 	vertical-align: text-top;
-	background-image: url(../plugins/twitter-bootstrap-2.1.1/img/glyphicons-halflings.png);
+	background-image: url(../plugins/twitter-bootstrap-2.3.0/img/glyphicons-halflings.png);
 	background-position: 14px 14px;
 	background-repeat: no-repeat;
 }

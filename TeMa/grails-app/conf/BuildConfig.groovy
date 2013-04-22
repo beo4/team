@@ -61,5 +61,7 @@ grails.project.dependency.resolution = {
 		compile ":joda-time:1.4"
 		compile ":angular-scaffolding:1.0-SNAPSHOT"
 		runtime ':excel-import:1.0.0'
+		
+		runtime ":cookie-session:2.0.7"
     }
 }

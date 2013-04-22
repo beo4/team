@@ -23,14 +23,17 @@ class ResourceController {
     }
 
     def save() {
-        def resourceInstance = new Resource(request.JSON)
+        def resourceInstance = new Resource()
 		def jsonObject = request.JSON
 		
 		for ( is in jsonObject.i18n) {
-			def resourcei18n = new Resource_i18n(is)
+			def resourcei18n = new Resource_i18n()
 			def eventLanguage = EventLanguage.get(is.i18n.id)
 			resourcei18n.i18n = eventLanguage
+			resourcei18n.name = is.name
+			resourcei18n.setDescription( is.description)
 			resourceInstance.addToI18n(resourcei18n)
+			resourcei18n.validate()
 		}
 		
 		int eventId = jsonObject.event.id

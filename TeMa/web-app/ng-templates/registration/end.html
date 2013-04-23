@@ -1,70 +1,21 @@
 
 		<div class="span12">
-			<h1>{{event_i18n.title}}</h1>
-		</div>
-		<div class="span12">
+		<p>
 				<span ng-show="participant.salutation.name == 'MR'">Sehr geehrter Herr</span> 
 				<span ng-show="participant.salutation.name == 'MS' || participant.salutation == 'MRS'">Sehr geehrter Frau</span>
-				{{participant.firstname}} {{participant.lastname}}
+				{{participant.firstname}} {{participant.lastname}},
+		</p>
 		</div>
 		
 		<div class="span10" ng-show="participant.account">
-			<p>
-			wir freuen uns sehr, Sie zur "Goodyear@Porsche Driving Experience 2013"" begr&uuml;&szlig;en zu d&uuml;rfen.
-			Nachfolgend erhalten Sie eine Zusammenfassung Ihrer Anmeldedaten.
-			</p>
-			<p>
-			<h6>Teilnehmerdaten</h6>
-			<ul><li>
-			{{participant.firstname}}</li><li>
-			{{participant.lastname}}</li><li>
-			{{participant.street}}</li><li>
-			{{participant.plz}} {{participant.city}}
-			</li></ul>
-			</p>
 			
 			
-			<div  ng-show="travelDetail.selectedTravelOption.name=='PKW'">
-			<h6>Reisedaten</h6>
-			<ul><li>
-				Ankunft: {{travelDetail.arrivalTime}}</li><li>
-				Amtliches Kennzeichen: {{travelDetail.licencePlate}}
-			</li></ul>
-			</div>
-			
-			<div  ng-show="travelDetail.selectedTravelOption.name=='BAHN'">
-				<h6>Ankunft</h6>
-				<ul><li>
-				Bahnhof: {{travelDetail.arrivalStation}}</li><li>
-				Datum: {{travelDetail.arrivalDate}} Uhrzeit: {{travelDetail.arrivalTime}}
-				</li></ul>
-				<h6>Abfahrt</h6>
-				<ul><li>
-				Bahnhof: {{travelDetail.departureStation}}</li><li>
-				Datum: {{travelDetail.departureDate}} Uhrzeit: {{travelDetail.departureTime}}
-				</li></ul>
-			</div>
-			
-			<div  ng-show="travelDetail.selectedTravelOption.name=='Flugzeug'">
-				<h6>Ankunft</h6>
-				<ul><li>
-				Flughafen: {{travelDetail.arrivalStation}}</li><li>
-				Datum: {{travelDetail.arrivalDate}} Uhrzeit: {{travelDetail.arrivalTime}}</li><li>
-				Airline: {{travelDetail.arrivalAirline}}
-				</li></ul>
-				<h6>Abfahrt</h6>
-				<ul><li>
-				Flughafen: {{travelDetail.departureStation}}</li><li>
-				Datum: {{travelDetail.departureDate}} Uhrzeit: {{travelDetail.departureTime}}</li><li>
-				 {{travelDetail.dapartureAirline}}
-				 </li></ul>
-			</div>
 			<div ng-show="!confirmedee">
-				Um Ihre Anmeldung erfolgreich abzuschlie&szlig;en klicken Sie auf den Best&auml;tigungs-Button. In K&uuml;rze erhalten Sie eine schriftliche Best&auml;tigung mit der Zusammenfassung Ihrer Anmeldung per E-Mail.
-				
+				<p>um Ihre Anmeldung erfolgreich abzuschlie&szlig;en klicken Sie auf den Best&auml;tigungs-Button. In K&uuml;rze erhalten Sie eine schriftliche Best&auml;tigung mit der Zusammenfassung Ihrer Anmeldung per E-Mail.
+				</p>
 				<form data-ng-submit="confirmParticipant(participant)" >
 				<label class="checkbox">
-			      <input type="checkbox" required ng-model="participant.confirmed"> Ich habe die Datenschutzerkl&auml;rung gelesen (<a href="#datenschutz" target="_blank">Datenschutzerkl&auml;rung</a>)
+			      <input type="checkbox" required ng-model="participant.confirmed"> Ich habe die Datenschutzerkl&auml;rung gelesen (<a href="#datenschutz" target="_blank">Datenschutzerkl&auml;rung</a>).
 			    </label>
 				
 				<div class="form-actions">
@@ -73,22 +24,26 @@
 				</form>
 			</div>
 			<div ng-show="confirmedee">
-				<b>Danke f&uuml;r Ihre Anmeldung. Ihre Daten wurden gespeichert.</b>
+				<p><b>Danke f&uuml;r Ihre Anmeldung. Ihre Daten wurden gespeichert.</b></p>
 			</div>
-			
+			<p>
 			Bitte informieren Sie uns umgehend, sollten Sie die Teilnahme an der Veranstaltung komplett stornieren m&uuml;ssen.
 			Eine &Auml;nderung Ihrer pers&ouml;nlichen Daten und/oder Reisedaten ist bis zum 14.06.2013 m&ouml;glich.
-			
-			
-			Mit freundlichen Gr&uuml;&szlig;en
+			</p>
+			<p>
+			Mit freundlichen Gr&uuml;&szlig;en</p>
+			<p>
 			Ihr Goodyear Organisation-Team
-				
+				</p>
 		</div>
-		<div ng-show="!participant.account">
+		<div ng-show="!participant.account"><p>
 		wir bedauern sehr, dass eine Teilnahme am "Goodyear@Porsche LEIPZIG 2013" f&uuml;r Sie nicht m&ouml;glich ist.
 		Wir w&uuml;rden uns freuen, Sie bei zuk&uuml;nftigen Veranstaltungen begr&uuml;&szlig;en zu d&uuml;rfen und w&uuml;nschen Ihnen bis dahin eine gute und sichere Fahrt.
-		 
-		Mit freundlichen Gr&uuml;&szlig;en
-		Ihr Goodyear Organisations-Team
+		 </p>
+		<p>
+			Mit freundlichen Gr&uuml;&szlig;en</p>
+			<p>
+			Ihr Goodyear Organisation-Team
+				</p>
 		
 		</div>

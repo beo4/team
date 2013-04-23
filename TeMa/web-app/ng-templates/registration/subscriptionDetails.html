@@ -1,27 +1,24 @@
 
 		<div class="span11">
-			<h1>{{event_i18n.title}}</h1>
-		</div>
-		<div class="span11">
-				<span ng-show="participant.salutation.name == 'MR'">Sehr geehrter Herr</span> 
+				<p><span ng-show="participant.salutation.name == 'MR'">Sehr geehrter Herr</span> 
 				<span ng-show="participant.salutation.name == 'MS' || participant.salutation == 'MRS'">Sehr geehrter Frau</span>
-				{{participant.firstname}} {{participant.lastname}}
+				{{participant.firstname}} {{participant.lastname}},</p>
 		</div>
 		
 		<div class="span11">
-				<p>wussten sie schon, dass Goodyear OE-Freigaben auf allen wichtigen Porsche Modellen besitzt? Zu diesem Anlass findet in diesem Sommer die 
-				<b>"Goodyear@Porsche LEIPZIG 2013"</b> statt.</p>
+				<p>wussten Sie schon, dass Goodyear OE-Freigaben auf allen wichtigen Porsche Modellen besitzt? Zu diesem Anlass findet in diesem Sommer die 
+				exklusive Produktschulung <b>"Goodyear@Porsche LEIPZIG 2013"</b> statt.</p>
 
-				<p>Wir freuen uns sehr, sie vom {{meeting.start}} - {{meeting.end}} (2 &Uuml;bernachtungen) recht herzlich zu dieser Veranstalltung nach
+				<p>Wir freuen uns sehr, Sie vom <b>{{meeting.start | date:'dd.MM.yyyy'}} - {{meeting.end | date:'dd.MM.yyyy'}} (2 &Uuml;bernachtungen)</b> recht herzlich zu dieser Veranstalltung nach
 				Leipzig einladen zu d&uuml;rfen.</p>
 		</div>
 		<div class="span11">
 			<form name="form" data-ng-submit="updateAccount(participant)" class="form-horizontal">
 				<div class="control-group" data-ng-class="{error: errors.account}">
-						<label class="radio" for="account"><input type="radio" value="true" required name="account" data-ng-model="participant.account"> Ich nehme sehr gerne an der Veranstaltung teil.</label>
+						<label class="radio" for="account"><input class="gyblue" type="radio" value="true" required name="account" data-ng-model="participant.account"> Ich nehme sehr gerne an der Veranstaltung teil.</label>
 					</div>
 				<div class="control-group" data-ng-class="{error: errors.account}">
-						<label class="radio" for="account"><input type="radio" value="false" required name="account" data-ng-model="participant.account"> Leider kann ich an der Veranstaltung nicht teilnehmen</label>
+						<label class="radio" for="account"><input class="gyblue" type="radio" value="false" required name="account" data-ng-model="participant.account"> Leider kann ich an der Veranstaltung nicht teilnehmen</label>
 					</div>
 					<div class="form-actions">
 						<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid">Weiter</button>

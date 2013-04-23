@@ -32,8 +32,12 @@
 		<div class="container">
 		<div class="row">
 				<div class="span12 gyteaser">
-				<h1 class="clearfix">Goodyear@Porsche LEIPZIG 2013</h1>
-				<h2 class="clearfix">Einsteigen - Anschnallen - Entspannen</h2>
+				<div>
+				<h1>Goodyear@Porsche LEIPZIG 2013.</h1>
+				</div>
+				<div>
+				<h2>Einsteigen - Anschnallen - Entspannen.</h2>
+				</div>
 		</div>
 		</div>
         <div class="row">

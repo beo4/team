@@ -11,6 +11,17 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 	
 	$rootScope.travelDetail = new Grails;
 	
+	$scope.doTheBack = function() {
+		  if ($location.$$path=== "/chooseOptions") {
+			  $location.path('/personelData');
+		  } else if ($location.$$path=== "/personelData") {
+			  $location.path('/subscriptionDetails');
+		  } else if ($location.$$path=== "/end") {
+			  $location.path('/chooseOptions');
+		  }
+		  
+	};
+	
 	$rootScope.getLoggedInUser = function(){
 		//try to load a logged in user
 		return Grails.get({}, function(item) {
@@ -201,55 +212,21 @@ function MeetingCtrl($scope, $location, $rootScope, Grails, Flash) {
 	
 }
 
-scaffoldingModule.directive('i18ntabs', function(){
+scaffoldingModule.directive('bsdtpicker', function(){
 	var baseUrl = $('body').data('template-url');
     return {
-        restrict: 'A',
-        scope: {i18n: '=',
-        	templateurl: '='},
+        restrict: 'C',
         // The linking function will add behavior to the template
         link: function(scope, element, attrs) {
-        },
-        controller: function($scope, $element, $dialog) {
+        	var options = {}
+        	if (attrs.pickdate!==undefined){
+        		options.pickDate = attrs.pickdate === "true";
+        	}
         	
-            $scope.select = function(pane) {
-                angular.forEach($scope.i18n, function(pane) {
-                    pane.selected = false;
-                });
-                pane.selected = true;
-            }
-            
-            $scope.deleteLanguage = function(pane) {
-                angular.forEach($scope.i18n, function(pane) {
-                    pane.selected = false;
-                });
-                $scope.panes.splice($scope.i18n.indexOf(pane),1);
-            }
-
-            this.addPane = function(pane) {
-                $scope.select(pane);
-            }
-            
-            $scope.openMessageBox = function(pane){
-        	    var baseUrl = $('body').data('template-url'),
-        	    	title = 'Delete ' + pane.languageName,
-        	        msg = 'Delete language and all data',
-        	    	btns = [{result:'cancel', label: 'Cancel'}, {result:'ok', label: 'OK', cssClass: 'btn-primary'}],
-        	    	model ={title: title,message: msg, buttons: btns},
-        	    	opts = {
-        	              backdrop: true,
-        	              keyboard: true,
-        	              backdropClick: true,
-        	              templateUrl:  baseUrl + '/template/dialog/message.html',
-        	              controller: 'MessageBoxController',
-        	              resolve: {model: model}
-        	            };
-        	    
-        	    var msgbox = $dialog.dialog(opts);
-                msgbox.open().then(function(result){
-                   if(result === 'yes') {$scope.deleteLanguage(pane);}
-                });
-        	  };
+        	if (attrs.language){
+        		options.language = attrs.language;
+        	}
+        	element.datetimepicker(options);
         }
       }
     }).

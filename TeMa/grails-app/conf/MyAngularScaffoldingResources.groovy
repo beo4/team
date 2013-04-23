@@ -1,14 +1,14 @@
 import grails.util.GrailsUtil
 
-def fileVersion = GrailsUtil.isDevelopmentEnv() ? '1.0.0' : '1.0.0.min'
+def fileVersion = GrailsUtil.isDevelopmentEnv() ? '' : '.min'
 
 modules = {
     angular {
-        resource id: 'js', url: [plugin: 'angular-scaffolding', dir: 'js/angular', file: "angular-${fileVersion}.js"], nominify: true
+        resource id: 'js', url: [dir: 'js/angular', file: "angular${fileVersion}.js"], nominify: true
     }
     'angular-resource' {
 		dependsOn 'angular'
-        resource id: 'js', url: [plugin: 'angular-scaffolding', dir: 'js/angular', file: "angular-resource-${fileVersion}.js"], nominify: true
+        resource id: 'js', url: [dir: 'js/angular', file: "angular-resource${fileVersion}.js"], nominify: true
     }
 
     'my-angular-scaffolding' {

@@ -56,7 +56,7 @@ scaffoldingModule.config([
         // no logged user, we should be going to #login
     	// lets see if somethin is in the session
     	  try {
-			  if ( next.$route.templateUrl == baseUrl + "/registration.html" || next.$route.templateUrl == baseUrl + "/impressum.html" ||next.$route.templateUrl == baseUrl + "/datenschutz.html" ) {
+			  if ( next.$$route.templateUrl == baseUrl + "/registration.html" || next.$$route.templateUrl == baseUrl + "/impressum.html" ||next.$$route.templateUrl == baseUrl + "/datenschutz.html" ) {
 		          // already going to #login, no redirect needed
 		        } else {
 		          // not going to #login, we should redirect now

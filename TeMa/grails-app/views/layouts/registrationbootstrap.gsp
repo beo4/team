@@ -13,7 +13,7 @@
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-		<r:require modules="scaffolding"/>
+		<r:require modules="scaffolding"/> 
 
 		<!-- Le fav and touch icons -->
 		<link rel="shortcut icon" href="${resource(dir: 'images', file: 'favicon.ico')}" type="image/x-icon">
@@ -40,8 +40,12 @@
 
 			<footer>
 				<div class="pull-left">
+				<span class="span2">
 					<a href="#datenschutz" target="_blank">Datenschutzerkl&auml;rung</a>
+				</span>
+				<span class="span2">
 					<a href="#impressum" target="_blank">Impressum</a>
+				</span>
 				</div>
 				<div class="pull-right"><p>&copy; element-events 2013</p></div>
 			</footer>

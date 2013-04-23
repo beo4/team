@@ -1,8 +1,3 @@
-		
-		<div class="span11">
-			<h1>{{event_i18n.title}}</h1>
-			<h2>{{event_i18n.subtitle}}</h2>
-		</div>
 			<div class="span11">
 				Bitte pr&uuml;fen Sie Ihre Daten auf Richtigkeit und Vollst&auml;ndigkeit, um Sie gegebenenfalls zu
 korrigieren oder zu vervollst&auml;ndigen.
@@ -17,7 +12,7 @@ korrigieren oder zu vervollst&auml;ndigen.
 					<div class="control-group" data-ng-class="{error: errors.firstname}">
 						<label class="control-label" for="salutation">Anrede*</label>
 						<div class="controls">
-							<select type="text" id="salutation" name="salutation" required ng-model="participant.salutation" ng-options="salutation.value for salutation in salutations">
+							<select type="text" id="salutation" name="salutation" required ng-model="participant.salutation" ng-options="salutation as salutation.value for salutation in salutations">
       						</select>
 							<span class="help-inline" data-ng-show="errors.salutation">{{errors.salutation}}</span>
 						</div>
@@ -157,12 +152,13 @@ korrigieren oder zu vervollst&auml;ndigen.
         </div>
         <div class="span4">
 	        <h3>Kontakt</h3>
-			<p>F&uuml;r Fragen zur Veranstalltung steht Ihnen das Goodyear Organisations-Team gerne zur Verfügung</p>
-			E-Mail: xy<br>
-			Telefon: xxxxx -xxxxxxxxx
-			<p>
-			Bitte kontaktieren Sie nicht direkt das Hotel
-			</p>
+					<p>F&uuml;r Fragen zur Veranstalltung steht Ihnen das Goodyear Organisations-Team gerne zur Verf&uumlgung:</p>
+					<p>E-Mail: xy<br>
+					Telefon: xxxxx -xxxxxxxxx
+					</p>
+					<p>
+					Bitte kontaktieren Sie nicht direkt das Hotel.
+					</p>
         </div>
         </div>
         <div class="span11">

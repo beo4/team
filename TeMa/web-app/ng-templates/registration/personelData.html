@@ -1,9 +1,9 @@
 			<div class="span11">
-				Bitte pr&uuml;fen Sie Ihre Daten auf Richtigkeit und Vollst&auml;ndigkeit, um Sie gegebenenfalls zu
-korrigieren oder zu vervollst&auml;ndigen.
-			</div>
-			<div class="span11">
+			<p>
+			Bitte pr&uuml;fen Sie Ihre Daten auf Richtigkeit und Vollst&auml;ndigkeit, um Sie gegebenenfalls zu
+			korrigieren oder zu vervollst&auml;ndigen.<br>
 			Bei den mit einem * gekennzeichneten Feldern handelt es sich um Pflichtfelder.
+			</p>
 			</div>
 		
 		<form name="form" data-ng-submit="updateParticipant(participant)" class="form-horizontal">
@@ -12,7 +12,8 @@ korrigieren oder zu vervollst&auml;ndigen.
 					<div class="control-group" data-ng-class="{error: errors.firstname}">
 						<label class="control-label" for="salutation">Anrede*</label>
 						<div class="controls">
-							<select type="text" id="salutation" name="salutation" required ng-model="participant.salutation" ng-options="salutation as salutation.value for salutation in salutations">
+							<select type="text" id="salutation" name="salutation" data-required 
+							ng-model="participant.salutation.name" ng-options="salutation.name as salutation.value for salutation in salutations">
       						</select>
 							<span class="help-inline" data-ng-show="errors.salutation">{{errors.salutation}}</span>
 						</div>
@@ -152,7 +153,7 @@ korrigieren oder zu vervollst&auml;ndigen.
         </div>
         <div class="span4">
 	        <h3>Kontakt</h3>
-					<p>F&uuml;r Fragen zur Veranstalltung steht Ihnen das Goodyear Organisations-Team gerne zur Verf&uumlgung:</p>
+					<p>F&uuml;r Fragen zur Veranstaltung steht Ihnen das Goodyear Organisation-Team gerne zur Verf&uumlgung:</p>
 					<p>E-Mail: xy<br>
 					Telefon: xxxxx -xxxxxxxxx
 					</p>
@@ -163,7 +164,7 @@ korrigieren oder zu vervollst&auml;ndigen.
         </div>
         <div class="span11">
         <div class="form-actions">
-						<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid">Weiter</button>
+						<button type="submit" class="btn btn-primary">Weiter</button>
 		</div>
         </div>
         </form>

@@ -36,6 +36,8 @@ scaffoldingModule.config([
     '$routeProvider',
     function($routeProvider) {
         var baseUrl = $('body').data('template-url');
+        
+        
         $routeProvider.
             when('/registration', {templateUrl: baseUrl + '/registration.html', controller: RegistrationCtrl}).
             when('/welcome', {templateUrl: baseUrl + '/welcome.html', controller: RegistrationCtrl}).
@@ -47,10 +49,30 @@ scaffoldingModule.config([
             when('/datenschutz', {templateUrl: baseUrl + '/datenschutz.html', controller: RegistrationCtrl}).
             when('/end', {templateUrl: baseUrl + '/end.html', controller: RegistrationCtrl}).
             otherwise({redirectTo: '/registration'});
+        
     }
 ]).run( function($rootScope, $location, Grails) {
 	var baseUrl = $('body').data('template-url');
     // register listener to watch route changes
+	
+	$rootScope.steps = [
+        			{active:true, title: 'Home'},
+        			{active:false, title: 'Anmeldung'},
+        			{active:false, title: 'Teilnehmerdaten'},
+        			{active:false, title: 'Registrierung'},
+        			{active:false, title: 'Bestätigung'},
+        	];
+	
+	$rootScope.setStep = function(activatestep) {
+		for (step in $rootScope.steps) {
+			if ($rootScope.steps[step].title == activatestep) {
+				$rootScope.steps[step].active = true;
+			} else {
+				$rootScope.steps[step].active = false;
+			}
+		}
+	}
+	
     $rootScope.$on( "$routeChangeStart", function(event, next, current) {
       if ( $rootScope.participant == null ) {
         // no logged user, we should be going to #login
@@ -101,7 +123,27 @@ scaffoldingModule.config([
     	  } catch (exeption) {
     		  $location.path( "/registration" )
     	  }
-      }         
+      }
+      
+      switch ($location.path()) {
+      	case "/registration": 
+      		$rootScope.setStep('Home');
+      		break;
+      	case "/end": 
+      		$rootScope.setStep('Bestätigung');
+      		break;
+      	case "/chooseMeeting": 
+      	case "/subscriptionDetails":
+      		$rootScope.setStep('Anmeldung');
+      		break;
+      	case "/personelData": 
+      		$rootScope.setStep('Teilnehmerdaten');
+      		break;
+      	case "/chooseOptions": 
+      		$rootScope.setStep('Registrierung');
+      		break;
+
+      }
     });
  });
 

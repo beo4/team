@@ -1,15 +1,7 @@
 function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 	$scope.message = Flash.getMessage();
 	$scope.isEmailChanged = false;
-	$rootScope.steps = [
-			{active:true, title: 'Home'},
-			{active:false, title: 'Anmeldung'},
-			{active:false, title: 'Teilnehmerdaten'},
-			{active:false, title: 'Registrierung'},
-			{active:false, title: 'Bestätigung'},
-	];
-	
-	$rootScope.travelDetail = new Grails;
+	$scope.travelDetail = new Grails;
 	
 	$scope.doTheBack = function() {
 		  if ($location.$$path=== "/chooseOptions") {
@@ -53,18 +45,16 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 				                                {value:"Ich esse weder Fleisch noch Fisch"}
 				                                ];
 				$rootScope.veganOptions = [
-				                                {value:"Ja"},
-				                                {value:"Nein"}
-				                                ]
+				                                {value:"Nein"},
+				                                {value:"Ja"}
+				                          ]
 				
 				if(!item.participant.language)
 						$location.path('/chooseLanguage');
 				else if ($rootScope.subscription) {
 					$location.path('/subscriptionDetails');
-					$rootScope.setStep('Anmeldung');
 				} else {
 					$location.path('/chooseMeeting');
-					$rootScope.setStep('Anmeldung');
 				}
 		        
 		    }, errorHandler.curry($scope, $location, Flash));
@@ -75,15 +65,6 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 	                            Bahn: {name: 'Bahn', active:false},
 	                            Flugzeug: {name: 'Flugzeug', active:false},
 	}	
-	$rootScope.setStep = function(activatestep) {
-		for (step in $rootScope.steps) {
-			if ($rootScope.steps[step].title == activatestep) {
-				$rootScope.steps[step].active = true;
-			} else {
-				$rootScope.steps[step].active = false;
-			}
-		}
-	}
 	
 	$scope.loadParticipant = function() {
 		Grails.get({loginToken: $scope.loginToken}, function(item) {
@@ -117,16 +98,15 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 			$rootScope.veganOptions = [
 			                                {value:"Ja"},
 			                                {value:"Nein"}
-			                                ]
+			                                ];
+			$rootScope.allreadySubscribed = item.participant.confirmed;
 			
 			if(!item.participant.language)
 					$location.path('/chooseLanguage');
 			else if ($rootScope.subscription) {
 				$location.path('/subscriptionDetails');
-				$rootScope.setStep('Anmeldung');
 			} else {
 				$location.path('/chooseMeeting');
-				$rootScope.setStep('Anmeldung');
 			}
 	        
 	    }, errorHandler.curry($scope, $location, Flash));
@@ -135,10 +115,8 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 	$scope.gotoStep2 = function(){
 		if ($rootScope.subscription) {
 			$location.path('/subscriptionDetails');
-			$rootScope.setStep('Anmeldung');
 		} else {
 			$location.path('/chooseMeeting');
-			$rootScope.setStep('Anmeldung');
 		}
 	}
 	
@@ -230,43 +208,14 @@ scaffoldingModule.directive('bsdtpicker', function(){
         }
       }
     }).
-    directive('i18npane', function() {
+    directive('stepNav', function() {
     	var baseUrl = $('body').data('template-url');
         return {
-          require: '^i18ntabs',
-          restrict: 'A',
-          link: function(scope, element, attrs, tabsCtrl) {
+          restrict: 'C',
+          scope: {
+              menustep: '='
+            },
+          link: function(scope, element, attrs) {
           }
         };
-      }).directive('customUploader', function(){
-    	    return {
-    	        restrict: 'E',
-    	        scope: {},
-    	        template: '<div class="custom-uploader-container">Drop Files Here<input type="file" class="custom-uploader-input"/><button ng-click="upload()" ng-disabled="notReady">Upload</button></div>',
-    	        controller: function($scope, $customUploaderService) {
-    	           $scope.notReady = true;
-    	           $scope.upload = function() {
-    	              //scope.files is set in the linking function below.
-    	        	  Grails.uploadUserFile($scope.files)
-    	           };
-    	           $customUploaderService.onUploadProgress = function(progress) {
-    	              //do something here.
-    	           };
-    	           $customUploaderService.onComplete = function(result) {
-    	              // do something here.
-    	           };
-    	        },
-    	        link: function(scope, elem, attr, ctrl) {
-    	           fileInput = elem.find('input[type="file"]');
-    	           fileInput.bind('change', function(e) {               
-    	                scope.notReady = e.target.files.length > 0;
-    	                scope.files = [];
-    	                for(var i = 0; i < e.target.files.length; i++) {
-    	                    //set files in the scope
-    	                    var file = e.target.files[i];
-    	                    scope.files.push({ name: file.name, type: file.type, size: file.size });
-    	                }
-    	           });
-    	        }
-    	    }
-    	 });
+      })

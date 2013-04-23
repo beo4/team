@@ -104,7 +104,7 @@ class User {
 
 
 enum Salutation {
-	MR("Herr"), MS("Frau")
+	MS("Frau"), MR("Herr")
 	Salutation(String value) { this.value = value }
 	final String value
 	String getKey() { name() }

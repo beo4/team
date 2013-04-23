@@ -24,7 +24,7 @@
 			<div class="container">
 			<div class="navbar">
 				<ul class="nav">
-					<li ng-repeat="step in steps" ng-class="{'active': step.active}" active="step.active"><a href="#">{{step.title}}</a></li>
+					<li ng-repeat="step in steps" ng-class="{'active': step.active}"><a href="#">{{step.title}}</a></li>
 				</ul>
 				</div>
 			</div>

@@ -63,6 +63,24 @@ scaffoldingModule.config([
         			{active:false, title: 'Bestätigung'},
         	];
 	
+	$rootScope.vegetarienOptions = [
+	                                {value:"Ich bin kein Vegetarier"},
+	                                {value:"Ich esse kein Fleisch, aber Fisch"},
+	                                {value:"Ich esse weder Fleisch noch Fisch"}
+	                                ];
+	$rootScope.veganOptions = [
+	                                {value:"Nein"},
+	                                {value:"Ja"}
+	                          ];
+	
+	$rootScope.travelOptions = {
+	                            PKW: {name: 'PKW', active:false},
+	                            Bahn: {name: 'Bahn', active:false},
+	                            Flugzeug: {name: 'Flugzeug', active:false},
+	};
+	
+	$rootScope.travelDetail = new Grails;
+	
 	$rootScope.setStep = function(activatestep) {
 		for (step in $rootScope.steps) {
 			if ($rootScope.steps[step].title == activatestep) {

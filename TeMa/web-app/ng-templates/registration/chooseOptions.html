@@ -53,7 +53,7 @@
 							<div class="span7"
 								data-ng-show="travelDetail.selectedTravelOption">
 								<legend>
-									<small>Ankunft:</small>
+									<small>Anreise:</small>
 								</legend>
 								<div class="control-group"
 									data-ng-hide="travelDetail.selectedTravelOption.name=='PKW'"
@@ -62,8 +62,8 @@
 									<div class="controls">
 										<div id="datetimepicker1" class="input-append date bsdtpicker"
 											data-pickdate="true">
-											<input data-format="dd.MM.yyyy" type="text" id="start"
-												name="start" data-ng-model="item.start"></input> <span
+											<input data-format="dd.MM.yyyy" type="text" id="arrivalDate"
+												name="arrivalDate" data-ng-model="travelDetail.arrivalDate"></input> <span
 												class="add-on" data-required> <i
 												data-time-icon="icon-time" data-date-icon="icon-calendar">
 											</i>
@@ -97,20 +97,20 @@
 								</div>
 
 								<div class="control-group"
-									data-ng-class="{error: errors.departureAirline}"
+									data-ng-class="{error: errors.arrivalAirline}"
 									data-ng-show="travelDetail.selectedTravelOption.name=='Flugzeug'">
-									<label class="control-label" for="departureAirline">Airline</label>
+									<label class="control-label" for="arrivalAirline">Airline</label>
 									<div class="controls">
-										<input type="text" id="departureStation"
-											name="departureAirline"
-											data-ng-model="travelDetail.departureAirline"> <span
-											class="help-inline" data-ng-show="errors.station">{{errors.departureAirline}}</span>
+										<input type="text" id="arrivalAirline"
+											name="arrivalAirline"
+											data-ng-model="travelDetail.arrivalAirline"> <span
+											class="help-inline" data-ng-show="errors.arrivalAirline">{{errors.arrivalAirline}}</span>
 									</div>
 								</div>
 
 								<div class="control-group"
 									data-ng-class="{error: errors.arrivalDate}">
-									<label class="control-label" for="arrivalTime"> Ankunft</label>
+									<label class="control-label" for="arrivalTime">Ankunft</label>
 									<div class="controls">
 										<div id="timepicker1" class="input-append date bsdtpicker"
 											data-pickdate="false">
@@ -143,7 +143,7 @@
 									</p>
 								</div>
 								<legend ng-hide="travelDetail.selectedTravelOption.name=='PKW'">
-									<small>Abfahrt:</small>
+									<small>Abreise:</small>
 								</legend>
 								<div class="control-group"
 									data-ng-hide="travelDetail.selectedTravelOption.name=='PKW'"
@@ -205,7 +205,9 @@
 									data-ng-hide="travelDetail.selectedTravelOption.name=='PKW'"
 									data-ng-class="{error: errors.departureTime}">
 									<label class="control-label" for="departureTime">
-										Abfahrt</label>
+										<span data-ng-show="travelDetail.selectedTravelOption.name=='Flugzeug'">Abflug</span>
+										<span data-ng-show="travelDetail.selectedTravelOption.name=='Bahn'">Abfahrt</span>
+									</label>
 									<div class="controls">
 										<div id="timepicker2" class="input-append date bsdtpicker"
 											data-pickdate="false">
@@ -295,6 +297,7 @@
 					<div class="span12">
 					<div class="span11">
 						<div class="form-actions">
+							<a href="#personelData" class="btn btn-primary">Zur&uuml;ck</a>
 							<button type="submit" class="btn btn-primary">Weiter</button>
 						</div>
 					</div>

@@ -1,7 +1,6 @@
 function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 	$scope.message = Flash.getMessage();
 	$scope.isEmailChanged = false;
-	$scope.travelDetail = new Grails;
 	
 	$scope.doTheBack = function() {
 		  if ($location.$$path=== "/chooseOptions") {
@@ -39,15 +38,6 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 					}
 				}
 				
-				$rootScope.vegetarienOptions = [
-				                                {value:"Ich bin kein Vegetarier"},
-				                                {value:"Ich esse kein Fleisch, aber Fisch"},
-				                                {value:"Ich esse weder Fleisch noch Fisch"}
-				                                ];
-				$rootScope.veganOptions = [
-				                                {value:"Nein"},
-				                                {value:"Ja"}
-				                          ]
 				
 				if(!item.participant.language)
 						$location.path('/chooseLanguage');
@@ -60,11 +50,6 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 		    }, errorHandler.curry($scope, $location, Flash));
 	}
 	
-	$rootScope.travelOptions = {
-	                            PKW: {name: 'PKW', active:false},
-	                            Bahn: {name: 'Bahn', active:false},
-	                            Flugzeug: {name: 'Flugzeug', active:false},
-	}	
 	
 	$scope.loadParticipant = function() {
 		Grails.get({loginToken: $scope.loginToken}, function(item) {
@@ -90,15 +75,6 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
 				}
 			}
 			
-			$rootScope.vegetarienOptions = [
-			                                {value:"Ich bin kein Vegetarier"},
-			                                {value:"Ich esse kein Fleisch, aber Fisch"},
-			                                {value:"Ich esse weder Fleisch noch Fisch"}
-			                                ];
-			$rootScope.veganOptions = [
-			                                {value:"Ja"},
-			                                {value:"Nein"}
-			                                ];
 			$rootScope.allreadySubscribed = item.participant.confirmed;
 			
 			if(!item.participant.language)
@@ -146,12 +122,11 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
     };
     
     $scope.updateOptions = function(item) {
-
         item.$saveTravelOptions(function(response) {
             Flash.success(response.message);
-            $rootScope.participant = new Grails;
+            //$rootScope.participant = new Grails;
 			$location.path('/end');
-            
+			
         }, errorHandler.curry($scope, $location, Flash));
         
         $location.path('/end');
@@ -165,7 +140,7 @@ function RegistrationCtrl($scope, $location, $rootScope, Grails, Flash) {
     	item.confirmed=false;
         item.$update(function(response) {
             Flash.success(response.message);
-            $rootScope.participant = new Grails;
+            //$rootScope.participant = new Grails;
 			angular.extend($rootScope.participant, item.participant);
             if ($rootScope.participant.account) {
             	$location.path('/personelData');
@@ -190,13 +165,14 @@ function MeetingCtrl($scope, $location, $rootScope, Grails, Flash) {
 	
 }
 
-scaffoldingModule.directive('bsdtpicker', function(){
+scaffoldingModule.directive('bsdtpicker', function($parse){
 	var baseUrl = $('body').data('template-url');
     return {
         restrict: 'C',
         // The linking function will add behavior to the template
         link: function(scope, element, attrs) {
-        	var options = {}
+        	var options = {pickSeconds: false},
+        	    ngModel = $parse(element.find('input').data('ng-model'));
         	if (attrs.pickdate!==undefined){
         		options.pickDate = attrs.pickdate === "true";
         	}
@@ -205,6 +181,22 @@ scaffoldingModule.directive('bsdtpicker', function(){
         		options.language = attrs.language;
         	}
         	element.datetimepicker(options);
+        	
+        	element.on('changeDate', function(e) {
+        		  console.log(e.date.toString());
+        		  console.log(e.localDate.toString());
+        		  scope.$apply(function(scope){
+                      // Change binded variable
+        			  if (attrs.pickdate)
+        				  ngModel.assign(scope, ("0" + e.date.getDate()).substr(-2,2) + "." + ("0"+(e.date.getMonth() + 1)).substr(-2,2) + "." + e.date.getFullYear());
+        		  });
+        		});
+        	
+        	element.on('changeTime', function(e) {
+      		  console.log(e.date.toString());
+      		  console.log(e.localDate.toString());
+      		 
+      		});
         }
       }
     }).

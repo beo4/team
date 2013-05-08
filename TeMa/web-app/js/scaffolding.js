@@ -40,6 +40,7 @@ scaffoldingModule.config([
             when('/create', {templateUrl: baseUrl + '/create.html', controller: CreateCtrl}).
             when('/create/:id', {templateUrl: baseUrl + '/create.html', controller: CreateCtrl}).
             when('/create/:id/:meetingId', {templateUrl: baseUrl + '/create.html', controller: CreateCtrl}).
+            when('/upload/:id/:meetingId', {templateUrl: baseUrl + '/upload.html', controller: CreateCtrl}).
             when('/edit/:id', {templateUrl: baseUrl + '/edit.html', controller: EditCtrl}).
             when('/list', {templateUrl: baseUrl + '/list.html', controller: ListCtrl}).
             when('/show/:id', {templateUrl: baseUrl + '/show.html', controller: ShowCtrl}).
@@ -61,7 +62,7 @@ scaffoldingModule.directive('alert', function() {
         },
         templateUrl: baseUrl + '/alert.html',
         replace: true
-    }
+    };
 });
 
 /**
@@ -109,7 +110,7 @@ scaffoldingModule.directive('pagination', function() {
         },
         templateUrl: baseUrl + '/pagination.html',
         replace: false
-    }
+    };
 });
 
 /**
@@ -153,8 +154,51 @@ scaffoldingModule.directive('sortable', function() {
 		},
 		templateUrl: baseUrl + '/sortable.html',
 		replace: false
-	}
-});
+	};
+}).directive(
+		'bsdtpicker',
+		function($parse) {
+			var baseUrl = $('body').data('template-url');
+			return {
+				restrict : 'C',
+				// The linking function will add behavior to the
+				// template
+				link : function(scope, element, attrs) {
+					var options = {
+						pickSeconds : false
+					}, ngModel = $parse(element.find('input').data(
+							'ng-model'));
+					if (attrs.pickdate !== undefined) {
+						options.pickDate = attrs.pickdate === "true";
+					}
+
+					if (attrs.language) {
+						options.language = attrs.language;
+					}
+					element.datetimepicker(options);
+
+					element
+							.on(
+									'changeDate',
+									function(e) {
+										console.log(e.date.toString());
+										console.log(e.localDate.toString());
+										scope.$apply(function(scope) {
+													// Change binded
+													// variable
+													if (attrs.pickdate)
+														ngModel.assign(scope,("0" + e.date.getDate()).substr(-2,2) + "."+ ("0" + (e.date.getMonth() + 1)).substr(-2,2)+ "."+ e.date.getFullYear());
+												});
+									});
+
+					element.on('changeTime', function(e) {
+						console.log(e.date.toString());
+						console.log(e.localDate.toString());
+
+					});
+				}
+			};
+		});
 
 function toArray(element) {
     return Array.prototype.slice.call(element);
@@ -168,8 +212,8 @@ Function.prototype.curry = function() {
     var args = toArray(arguments);
     return function() {
         return __method.apply(this, args.concat(toArray(arguments)));
-    }
-}
+    };
+};
 
 /**
  * Generic $resource error handler used by all controllers.

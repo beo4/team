@@ -2,7 +2,7 @@
 		<div class="span12">
 		<p>
 				<span ng-show="participant.salutation.name == 'MR'">Sehr geehrter Herr</span> 
-				<span ng-show="participant.salutation.name == 'MS' || participant.salutation == 'MRS'">Sehr geehrter Frau</span>
+				<span ng-show="participant.salutation.name == 'MS' || participant.salutation == 'MRS'">Sehr geehrte Frau</span>
 				{{participant.firstname}} {{participant.lastname}},
 		</p>
 		</div>
@@ -10,7 +10,7 @@
 		<div class="span10" ng-show="participant.account">
 			<div ng-show="!confirmedee">
 			<p>
-			<span ng-hide="allreadySubscribed">wir freuen uns sehr, Sie zur <b>&bdquo;Goodyear@Porsche LEIPZIG 2013&rdquo;</b> begr&uuml;&szlig;en zu d&uuml;rfen. N</span><span ng-show="allreadySubscribed">n</span>achfolgend erhalten Sie eine Zusammenfassung Ihrer Anmeldedaten.
+			<span ng-hide="allreadySubscribed">wir freuen uns sehr, Sie zur <b>&bdquo;GOODYEAR@PORSCHE LEIPZIG 2013&rdquo;</b> begr&uuml;&szlig;en zu d&uuml;rfen. N</span><span ng-show="allreadySubscribed">n</span>achfolgend erhalten Sie eine Zusammenfassung Ihrer Anmeldedaten.
 			</p>
 			<p>
 			<h6>Teilnehmerdaten</h6>
@@ -23,39 +23,39 @@
 			</p>
 			
 			
-			<div  ng-show="travelDetail.selectedTravelOption.name=='PKW'">
-			<h6>Reisedaten</h6>
+			<div  ng-show="participantTravelOptions.selectedTravelOption=='PKW'">
+			<h6>Anreise</h6>
 			<ul><li>
-				Ankunft: {{travelDetail.arrivalTime}}</li><li>
-				Amtliches Kennzeichen: {{travelDetail.licencePlate}}
+				Ankunft: {{participantTravelOptions.arrivalDate}} {{participantTravelOptions.arrivalTime}}</li><li>
+				Amtliches Kennzeichen: {{participantTravelOptions.licencePlate}}
 			</li></ul>
 			</div>
 			
-			<div  ng-show="travelDetail.selectedTravelOption.name=='BAHN'">
-				<h6>Ankunft</h6>
+			<div  ng-show="participantTravelOptions.selectedTravelOption=='Bahn'">
+				<h6>Anreise</h6>
 				<ul><li>
-				Bahnhof: {{travelDetail.arrivalStation}}</li><li>
-				Datum: {{travelDetail.arrivalDate}} Uhrzeit: {{travelDetail.arrivalTime}}
+				Bahnhof: {{participantTravelOptions.arrivalStation}}</li><li>
+				Datum: {{participantTravelOptions.arrivalDate}} Uhrzeit: {{participantTravelOptions.arrivalTime}}
 				</li></ul>
-				<h6>Abfahrt</h6>
+				<h6>Abreise</h6>
 				<ul><li>
-				Bahnhof: {{travelDetail.departureStation}}</li><li>
-				Datum: {{travelDetail.departureDate}} Uhrzeit: {{travelDetail.departureTime}}
+				Bahnhof: {{participantTravelOptions.departureStation}}</li><li>
+				Datum: {{participantTravelOptions.departureDate}} Uhrzeit: {{participantTravelOptions.departureTime}}
 				</li></ul>
 			</div>
 			
-			<div  ng-show="travelDetail.selectedTravelOption.name=='Flugzeug'">
-				<h6>Ankunft</h6>
+			<div  ng-show="participantTravelOptions.selectedTravelOption=='Flugzeug'">
+				<h6>Anreise</h6>
 				<ul><li>
-				Flughafen: {{travelDetail.arrivalStation}}</li><li>
-				Datum: {{travelDetail.arrivalDate}} Uhrzeit: {{travelDetail.arrivalTime}}</li><li>
-				Airline: {{travelDetail.arrivalAirline}}
+				Flughafen: {{participantTravelOptions.arrivalStation}}</li><li>
+				Datum: {{participantTravelOptions.arrivalDate}} Uhrzeit: {{participantTravelOptions.arrivalTime}}</li><li>
+				Airline: {{participantTravelOptions.arrivalAirline}}
 				</li></ul>
-				<h6>Abfahrt</h6>
+				<h6>Abreise</h6>
 				<ul><li>
-				Flughafen: {{travelDetail.departureStation}}</li><li>
-				Datum: {{travelDetail.departureDate}} Uhrzeit: {{travelDetail.departureTime}}</li><li>
-				 {{travelDetail.dapartureAirline}}
+				Flughafen: {{participantTravelOptions.departureStation}}</li><li>
+				Datum: {{participantTravelOptions.departureDate}} Uhrzeit: {{participantTravelOptions.departureTime}}</li><li>
+				Airline:  {{participantTravelOptions.dapartureAirline}}
 				 </li></ul>
 			</div>
 			
@@ -87,7 +87,7 @@
 		</div>
 		<div class="span10" ng-show="!participant.account">
 		<p>
-		wir bedauern sehr, dass eine Teilnahme am <b>&bdquo;Goodyear@Porsche LEIPZIG 2013&rdquo;</b> f&uuml;r Sie nicht m&ouml;glich ist.
+		wir bedauern sehr, dass eine Teilnahme am <b>&bdquo;GOODYEAR@PORSCHE LEIPZIG 2013&rdquo;</b> f&uuml;r Sie nicht m&ouml;glich ist.
 		Wir w&uuml;rden uns freuen, Sie bei zuk&uuml;nftigen Veranstaltungen begr&uuml;&szlig;en zu d&uuml;rfen und w&uuml;nschen Ihnen bis dahin eine gute und sichere Fahrt.
 		 </p>
 		<p>

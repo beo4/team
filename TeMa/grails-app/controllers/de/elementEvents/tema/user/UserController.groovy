@@ -1,10 +1,15 @@
 package de.elementEvents.tema.user
 
+import java.lang.annotation.Target;
+import java.text.SimpleDateFormat;
+
+import org.apache.poi.ss.util.WorkbookUtil;
 import org.springframework.dao.DataIntegrityViolationException
 
 import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.meeting.Meeting;
 import de.elementEvents.tema.subscription.Subscription;
+import de.elementEvents.tema.user.importer.UserExcelImporter;
 import grails.converters.JSON
 import grails.plugin.jodatime.converters.JodaConverters;
 import static javax.servlet.http.HttpServletResponse.*
@@ -14,7 +19,9 @@ class UserController {
 
     static final int SC_UNPROCESSABLE_ENTITY = 422
 
-    static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    static allowedMethods = [save: "POST", update: "POST", upload: "POST", delete: "POST"]
+    
+    def excelImportService
 
     def index() { }
 
@@ -84,16 +91,124 @@ class UserController {
 		
 		def file = request.getFile('file')
 		
-		def defaultsValues = [event: event]
-		
-		if (event) {
-			User user = new User();
-			user.event = event
-		}
-		JSON.use("deep")
+        def event
+        def meeting
+        if (params.eventId)
+        {
+            event = Event.get(params.eventId)
+        }
+        if (params.meetingId)
+        {
+            meeting = Meeting.get(params.meetingId)
+        }
+        
+        //save the file in tmp
+        def storagePath = new File("tmp")
+        if(!storagePath.exists()) {
+            if (storagePath.mkdirs()){
+            } else {
+            }
+        }
+        def userInstanceList = []
+        if (!file.isEmpty()) {
+            def tmpSave = new File("${storagePath}/tmp.xls");
+            if (tmpSave.exists()){
+                tmpSave.delete()
+            }
+            file.transferTo(tmpSave)
+            UserExcelImporter importer = new UserExcelImporter(tmpSave.absoluteFile)
+            def userlist = importer.getUser()
+            
+            userlist.each {
+                def userInstance = User.findByUsername(it.email)
+                if (userInstance){
+                    userInstance.properties = it
+                } else {
+                    userInstance = new User(it)
+                }
+                userInstance.event = event
+                if (it.salutation=="Herr")
+                    userInstance.salutation = Salutation.MR
+                else {
+                    userInstance.salutation = Salutation.MS
+                }
+               if (!userInstance.username){
+                   userInstance.username = userInstance.email
+                   userInstance.password = userInstance.email
+               }
+               userInstance.street = userInstance.street + " " +it.streetnumber
+               
+               if (it.arrivalDate || it.departureDate) {
+                   def travelOptionsInstance
+                   if (!userInstance.travelOptions) {
+                       travelOptionsInstance = new TravelOptions()
+                       userInstance.travelOptions = travelOptionsInstance
+                       
+                   }
+                  else {
+                       travelOptionsInstance = userInstance.travelOptions
+                  }
+                  
+                  SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
+                  
+                  travelOptionsInstance.user = userInstance
+                  if (it.arrivalDate)
+                  userInstance.travelOptions.arrivalDate =  sdf.format(it.arrivalDate)
+                  if (it.departureDate)
+                  userInstance.travelOptions.departureDate = sdf.format(it.departureDate)
+               }
+               
+               userInstance.validate()
+               if (userInstance.save(flush: true)) {
+                   def subscription = Subscription.findByUserAndMeeting(userInstance,meeting)
+                    if (!subscription){
+                        subscription = new Subscription()
+                        subscription.meeting = meeting
+                        subscription.user = userInstance
+                            if (subscription.save(flush: true)) {
+                                userInstanceList.add(userInstance)
+                            }
+                    }
+                    
+                }
+                
+            }
+        }
+
 		JodaConverters.registerJsonAndXmlMarshallers()
-		render defaultsValues as JSON
+		render userInstanceList as JSON
 	}
+    
+    def fileCreate() {
+        def defaultsValues = [eventId:0,meetingId:0 ] 
+        if (params.eventId)
+        {
+            defaultsValues.eventId = params.eventId
+        }
+        if (params.meetingId)
+        {
+            defaultsValues.meetingId = params.meetingId
+        }
+        
+        [meetingId:defaultsValues.meetingId,eventId:defaultsValues.eventId]
+        
+    }
+    
+    def exportFile() {
+        def meetingInstance
+        
+        if (params.meetingId)
+        {
+            meetingInstance = Meeting.get(params.meetingId)
+            
+            meetingInstance.subscriber.each {
+                it.user
+            }
+        }
+        
+        
+        
+    }
 
     def get() {
         def userInstance = User.get(params.id)
@@ -140,6 +255,28 @@ class UserController {
 
         render responseJson as JSON
     }
+    
+    def upload() {
+        def event = Event.get(params.eventId)
+        
+        def defaultsValues = [event: event]
+        
+        if (event) {
+            User user = new User();
+            user.event = event
+        }
+        if (params.meetingId)
+        {
+            defaultsValues.meeting = Meeting.get(params.meetingId)
+        }
+        
+        def responseJson = [:]
+        
+        responseJson.defaults = defaultsValues
+        
+        render responseJson as JSON
+        
+    }
 
     def delete() {
         def userInstance = User.get(params.id)
@@ -164,4 +301,6 @@ class UserController {
         def responseJson = [message: message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'User'), params.id])]
         render responseJson as JSON
     }
+    
+    
 }

@@ -71,7 +71,7 @@
 					<div class="control-group" data-ng-class="{error: errors.meeting}" ng-show="item.meeting">
 						<label class="control-label" for="meeting">Meeting</label>
 						<div class="controls">
-						       {{item.meeting.i18n[0].title}}
+						       {{item.meeting.i18n[0].title}} {{item.meeting.i18n[0].subtitle}}
 							<span class="help-inline" data-ng-show="errors.meeting">{{errors.meeting}}</span>
 						</div>
 					</div>

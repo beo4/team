@@ -1,15 +1,15 @@
 
 		<div class="span11">
 				<p><span ng-show="participant.salutation.name == 'MR'">Sehr geehrter Herr</span> 
-				<span ng-show="participant.salutation.name == 'MS' || participant.salutation == 'MRS'">Sehr geehrter Frau</span>
+				<span ng-show="participant.salutation.name == 'MS' || participant.salutation == 'MRS'">Sehr geehrte Frau</span>
 				{{participant.firstname}} {{participant.lastname}},</p>
 		</div>
 		
 		<div class="span11">
 				<p>wussten Sie schon, dass Goodyear OE-Freigaben auf allen wichtigen Porsche Modellen besitzt? Zu diesem Anlass findet in diesem Sommer die 
-				exklusive Produktschulung <b>&bdquo;Goodyear@Porsche LEIPZIG 2013&rdquo;</b> statt.</p>
+				exklusive Produktschulung <b>&bdquo;GOODYEAR@PORSCHE LEIPZIG 2013&rdquo;</b> statt.</p>
 
-				<p>Wir freuen uns sehr, Sie vom <b>{{meeting.start | date:'dd.MM.yyyy'}} - {{meeting.end | date:'dd.MM.yyyy'}} (2 &Uuml;bernachtungen)</b> recht herzlich zu dieser Veranstalltung nach
+				<p>Wir freuen uns sehr, Sie vom <b>{{participantTravelOptions.arrivalDate | date:'dd.MM.yyyy'}} - {{participantTravelOptions.departureDate | date:'dd.MM.yyyy'}} ({{differenceInDays(participantTravelOptions.arrivalDate,participantTravelOptions.departureDate)}} &Uuml;bernachtungen)</b> recht herzlich zu dieser Veranstalltung nach
 				Leipzig einladen zu d&uuml;rfen.</p>
 		</div>
 		<div class="span11">

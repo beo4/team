@@ -42,6 +42,7 @@ class User {
 	String loginToken 
 	
 	TravelOptions travelOptions
+    OtherOption otherOptions
 	
 	
 	boolean account = false
@@ -75,10 +76,15 @@ class User {
 		companyplz blank:true , nullable: true
 		companycity blank:true , nullable: true
 		travelOptions blank:true , nullable: true
+        otherOptions blank:true , nullable: true
+        travelOptions unique: true
+        otherOptions unique: true
 	}
 
 	static mapping = {
 		password column: '`password`'
+        travelOptions cascade:'all-delete-orphan'
+        otherOptions cascade:'all-delete-orphan'
 	}
 
 	Set<Role> getAuthorities() {
@@ -109,5 +115,4 @@ enum Salutation {
 	final String value
 	String getKey() { name() }
 	String toString() { value }
-	
 }

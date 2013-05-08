@@ -2,6 +2,7 @@
 <!doctype html>
 <html lang="en">
 	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE" />
 		<meta charset="utf-8">
 		<title><g:layoutTitle default="${meta(name: 'app.name')}"/></title>
 		<meta name="description" content="">
@@ -25,7 +26,7 @@
 		<r:layoutResources/>
 	</head>
 
-	<body data-ng-app="${pageProperty(name: 'body.data-ng-app')}"
+	<body  data-ng-app="scaffolding" 
 		  data-base-url="${pageProperty(name: 'body.data-base-url', default: createLink(action: 'index').replaceAll(/index$/, ''))}"
 		  data-app-url="${createLink(uri: '/')}"
 		  data-template-url="${pageProperty(name: 'body.data-template-url', default: createLink(uri: "/ng-templates/$controllerName"))}"

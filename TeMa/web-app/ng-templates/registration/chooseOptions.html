@@ -7,7 +7,7 @@
 </div>
 <div class="row">
 	<div class="span12">
-		<form name="form" data-ng-submit="updateOptions(travelDetail)"
+		<form name="form" data-ng-submit="updateOptions(participant)"
 			class="form-horizontal">
 			<fieldset>
 				<div class="span11">Meine individuelle An- und Abreise erfolgt
@@ -20,8 +20,8 @@
 									<label class="control-label" for="pkw">{{travelOptions.PKW.name}}</label>
 									<div class="controls">
 										<input name="UseBools" type="radio"
-											data-ng-model="travelDetail.selectedTravelOption"
-											data-ng-value="travelOptions.PKW"> <span
+											data-ng-model="participant.travelOptions.selectedTravelOption"
+											data-ng-value="travelOptions.PKW.name"> <span
 											class="help-inline" data-ng-show="errors.pkw">{{errors.pkw}}</span>
 									</div>
 								</div>
@@ -31,9 +31,9 @@
 									<label class="control-label" for="pkw">{{travelOptions.Bahn.name}}</label>
 									<div class="controls">
 										<input name="UseBools" type="radio"
-											data-ng-model="travelDetail.selectedTravelOption"
-											data-ng-value="travelOptions.Bahn"> <span
-											class="help-inline" data-ng-show="errors.pkw">{{errors.pkw}}</span>
+											data-ng-model="participant.travelOptions.selectedTravelOption"
+											data-ng-value="travelOptions.Bahn.name"> <span
+											class="help-inline" data-ng-show="errors.bahn">{{errors.bahn}}</span>
 									</div>
 								</div>
 							</div>
@@ -42,68 +42,67 @@
 									<label class="control-label" for="pkw">{{travelOptions.Flugzeug.name}}</label>
 									<div class="controls">
 										<input name="UseBools" type="radio"
-											data-ng-model="travelDetail.selectedTravelOption"
-											data-ng-value="travelOptions.Flugzeug"> <span
-											class="help-inline" data-ng-show="errors.pkw">{{errors.pkw}}</span>
+											data-ng-model="participant.travelOptions.selectedTravelOption"
+											data-ng-value="travelOptions.Flugzeug.name"> <span
+											class="help-inline" data-ng-show="errors.flugzeug">{{errors.flugzeug}}</span>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="row">
 							<div class="span7"
-								data-ng-show="travelDetail.selectedTravelOption">
+								data-ng-show="participant.travelOptions.selectedTravelOption">
 								<legend>
 									<small>Anreise:</small>
 								</legend>
 								<div class="control-group"
-									data-ng-hide="travelDetail.selectedTravelOption.name=='PKW'"
 									data-ng-class="{error: errors.arrivalDate}">
 									<label class="control-label" for="arrivalDate"> Datum</label>
 									<div class="controls">
 										<div id="datetimepicker1" class="input-append date bsdtpicker"
 											data-pickdate="true">
 											<input data-format="dd.MM.yyyy" type="text" id="arrivalDate"
-												name="arrivalDate" data-ng-model="travelDetail.arrivalDate"></input> <span
+												name="arrivalDate" data-ng-model="participant.travelOptions.arrivalDate"></input> <span
 												class="add-on" data-required> <i
 												data-time-icon="icon-time" data-date-icon="icon-calendar">
 											</i>
 											</span>
 										</div>
 									</div>
-									<span class="help-inline" data-ng-show="errors.arrivalDate">{{travelDetail.arrivalDate}}</span>
+									<span class="help-inline" data-ng-show="errors.arrivalDate">{{participant.travelOptions.arrivalDate}}</span>
 								</div>
 
 								<div class="control-group"
 									data-ng-class="{error: errors.arrivalStation}"
-									data-ng-show="travelDetail.selectedTravelOption.name=='Bahn'">
+									data-ng-show="participant.travelOptions.selectedTravelOption=='Bahn'">
 									<label class="control-label" for="arrivalStation">Bahnhof</label>
 									<div class="controls">
-										<input type="text" id="licenceplate" name="arrivalStation"
-											data-ng-model="travelDetail.arrivalStation"> <span
+										<input type="text" id="arrivalStation" name="arrivalStation"
+											data-ng-model="participant.travelOptions.arrivalStation"> <span
 											class="help-inline" data-ng-show="errors.arrivalStation">{{errors.arrivalStation}}</span>
 									</div>
 								</div>
 
 								<div class="control-group"
 									data-ng-class="{error: errors.arrivalAirport}"
-									data-ng-show="travelDetail.selectedTravelOption.name=='Flugzeug'">
+									data-ng-show="participant.travelOptions.selectedTravelOption=='Flugzeug'">
 									<label class="control-label" for="arrivalAirport">
 										Flughafen</label>
 									<div class="controls">
 										<input type="text" id="arrivalAirport" name="arrivalAirport"
-											data-ng-model="travelDetail.arrivalAirport"> <span
+											data-ng-model="participant.travelOptions.arrivalAirport"> <span
 											class="help-inline" data-ng-show="errors.arrivalAirport">{{errors.arrivalAirport}}</span>
 									</div>
 								</div>
 
 								<div class="control-group"
 									data-ng-class="{error: errors.arrivalAirline}"
-									data-ng-show="travelDetail.selectedTravelOption.name=='Flugzeug'">
+									data-ng-show="participant.travelOptions.selectedTravelOption=='Flugzeug'">
 									<label class="control-label" for="arrivalAirline">Airline</label>
 									<div class="controls">
 										<input type="text" id="arrivalAirline"
 											name="arrivalAirline"
-											data-ng-model="travelDetail.arrivalAirline"> <span
+											data-ng-model="participant.travelOptions.arrivalAirline"> <span
 											class="help-inline" data-ng-show="errors.arrivalAirline">{{errors.arrivalAirline}}</span>
 									</div>
 								</div>
@@ -112,118 +111,117 @@
 									data-ng-class="{error: errors.arrivalDate}">
 									<label class="control-label" for="arrivalTime">Ankunft</label>
 									<div class="controls">
-										<div id="timepicker1" class="input-append date bsdtpicker"
+										<div id="timepicker1" class="input-append date"
 											data-pickdate="false">
 											<input data-format="hh:mm" type="text" id="arrivalTime"
-												name="arrivalTime" data-ng-model="travelDetail.arrivalTime"
+												name="arrivalTime" data-ng-model="participant.travelOptions.arrivalTime"
 												data-ng-required></input> <span class="add-on"> <i
-												data-time-icon="icon-time" data-date-icon="icon-calendar">
+												class="icon-time" >
 											</i>
 											</span>
 										</div>
 									</div>
-									<span class="help-inline" data-ng-show="errors.arrivalTime">{{travelDetail.arrivalTime}}</span>
+									<span class="help-inline" data-ng-show="errors.arrivalTime">{{participant.travelOptions.arrivalTime}}</span>
 								</div>
 								<div class="control-group"
-									data-ng-show="travelDetail.selectedTravelOption.name=='PKW'"
+									data-ng-show="participant.travelOptions.selectedTravelOption=='PKW'"
 									data-ng-class="{error: errors.firstname}">
-									<label class="control-label" for="licenceplate">Autokennzeichen*</label>
+									<label class="control-label" for="licencePlate">Autokennzeichen*</label>
 									<div class="controls">
-										<input type="text" id="licenceplate" name="licenceplate"
-											data-ng-model="travelDetail.licenceplate"
-											data-ng-required="travelDetail.selectedTravelOption.name=='PKW'">
-										<span class="help-inline" data-ng-show="errors.licenceplate">{{errors.licenceplate}}</span>
+										<input type="text" id="licencePlate" name="licencePlate"
+											data-ng-model="participant.travelOptions.licencePlate"
+											data-ng-required="participant.travelOptions.selectedTravelOption=='PKW'">
+										<span class="help-inline" data-ng-show="errors.licencePlate">{{errors.licencePlate}}</span>
 									</div>
 								</div>
 								<div
-									data-ng-show="travelDetail.selectedTravelOption.name=='PKW'">
+									data-ng-show="participant.travelOptions.selectedTravelOption=='PKW'">
 									<p>
 										<span class="help-block"> Ein Hotelparkplatz wird
 											f&uuml;r Sie reserviert. </span>
 									</p>
 								</div>
-								<legend ng-hide="travelDetail.selectedTravelOption.name=='PKW'">
+								<legend>
 									<small>Abreise:</small>
 								</legend>
 								<div class="control-group"
-									data-ng-hide="travelDetail.selectedTravelOption.name=='PKW'"
 									data-ng-class="{error: errors.arrivalDate}">
-									<label class="control-label" for="dapartureDate"> Datum</label>
+									<label class="control-label" for="departureDate"> Datum</label>
 									<div class="controls">
 										<div id="datetimepicker2" class="input-append date bsdtpicker"
 											data-pickdate="true" data-language="de-DE">
 											<input data-format="dd.MM.yyyy" type="text" id="start"
-												name="dapartureDate"
-												data-ng-model="travelDetail.dapartureDate"></input> <span
+												name="departureDate"
+												data-ng-model="participant.travelOptions.departureDate"></input> <span
 												class="add-on"> <i data-time-icon="icon-time"
 												data-date-icon="icon-calendar"> </i>
 											</span>
 										</div>
 									</div>
-									<span class="help-inline" data-ng-show="errors.arrivalDate">{{travelDetail.dapartureDate}}</span>
+									<span class="help-inline" data-ng-show="errors.departureDate">{{participant.travelOptions.departureDate}}</span>
 								</div>
 
 								<div class="control-group"
 									data-ng-class="{error: errors.departureStation}"
-									data-ng-show="travelDetail.selectedTravelOption.name=='Bahn'">
+									data-ng-show="participant.travelOptions.selectedTravelOption=='Bahn'">
 									<label class="control-label" for="departureStation">
 										Bahnhof</label>
 									<div class="controls">
 										<input type="text" id="departureStation"
 											name="departureStation"
-											data-ng-model="travelDetail.departureStation"> <span
+											data-ng-model="participant.travelOptions.departureStation"> <span
 											class="help-inline" data-ng-show="errors.station">{{errors.departureStation}}</span>
 									</div>
 								</div>
 
 								<div class="control-group"
 									data-ng-class="{error: errors.departureAirport}"
-									data-ng-show="travelDetail.selectedTravelOption.name=='Flugzeug'">
+									data-ng-show="participant.travelOptions.selectedTravelOption=='Flugzeug'">
 									<label class="control-label" for="departureAirport">
 										Flughafen</label>
 									<div class="controls">
 										<input type="text" id="departureAirport"
 											name="departureAirport"
-											data-ng-model="travelDetail.departureAirport"> <span
+											data-ng-model="participant.travelOptions.departureAirport"> <span
 											class="help-inline" data-ng-show="errors.departureAirport">{{errors.departureAirport}}</span>
 									</div>
 								</div>
 
 								<div class="control-group"
 									data-ng-class="{error: errors.departureAirline}"
-									data-ng-show="travelDetail.selectedTravelOption.name=='Flugzeug'">
+									data-ng-show="participant.travelOptions.selectedTravelOption=='Flugzeug'">
 									<label class="control-label" for="departureStation">Airline</label>
 									<div class="controls">
 										<input type="text" id="departureStation"
 											name="departureAirline"
-											data-ng-model="travelDetail.departureAirline"> <span
+											data-ng-model="participant.travelOptions.departureAirline"> <span
 											class="help-inline" data-ng-show="errors.station">{{errors.departureAirline}}</span>
 									</div>
 								</div>
 
 								<div class="control-group"
-									data-ng-hide="travelDetail.selectedTravelOption.name=='PKW'"
+									data-ng-hide="participant.travelOptions.selectedTravelOption=='PKW'"
 									data-ng-class="{error: errors.departureTime}">
 									<label class="control-label" for="departureTime">
-										<span data-ng-show="travelDetail.selectedTravelOption.name=='Flugzeug'">Abflug</span>
-										<span data-ng-show="travelDetail.selectedTravelOption.name=='Bahn'">Abfahrt</span>
+										<span data-ng-show="participant.travelOptions.selectedTravelOption=='Flugzeug'">Abflug</span>
+										<span data-ng-show="participant.travelOptions.selectedTravelOption=='Bahn'">Abfahrt</span>
 									</label>
 									<div class="controls">
-										<div id="timepicker2" class="input-append date bsdtpicker"
+										<div id="timepickerDeparture" class="input-append date"
 											data-pickdate="false">
 											<input data-format="hh:mm" type="text" id="departureTime"
-												name="departureTime"
-												data-ng-model="travelDetail.departureTime"></input> <span
-												class="add-on"> <i data-time-icon="icon-time"
-												data-date-icon="icon-calendar"> </i>
+												name="departureTime" data-ng-model="participant.travelOptions.departureTime"></input> 
+												<span class="add-on"> <i
+												class="icon-time">
+											</i>
 											</span>
 										</div>
 									</div>
-									<span class="help-inline" data-ng-show="errors.arrivalDate">{{travelDetail.arrivalDate}}</span>
+									<span class="help-inline" data-ng-show="errors.travelOptions.departureTime">{{participant.travelOptions.departureTime}}</span>
 								</div>
 
 								<div
-									data-ng-show="travelDetail.selectedTravelOption.name=='Flugzeug' || travelDetail.selectedTravelOption.name=='Bahn'">
+									data-ng-show="participant.travelOptions.selectedTravelOption=='Flugzeug' || participant.travelOptions.selectedTravelOption=='Bahn'">
 									<p>Bitte f&uuml;llen Sie die Felder aus, sofern die Inhalte
 										bereits bekannt sind.</p>
 									<p>Der Anmeldebest&auml;tigung liegt eine
@@ -236,7 +234,7 @@
 								<p>F&uuml;r Fragen zur Veranstaltung steht Ihnen das
 									Goodyear Organisation-Team gerne zur Verf&uuml;gung:</p>
 								<p>
-									E-Mail: xy<br> Telefon: xxxxx -xxxxxxxxx
+									E-Mail: <a href="mailto:support@goodyear-at-porsche.de">support@goodyear-at-porsche.de</a><br> Telefon: +49.8031.9010.860
 								</p>
 								<p>Bitte kontaktieren Sie nicht direkt das Hotel.</p>
 
@@ -248,32 +246,30 @@
 				<div class="row">
 					<div class="span7 offset1">
 						<div class="control-group"
-							data-ng-class="{error: errors.vegetarien}">
-							<label class="control-label" for="vegetarien">Vegetarier*</label>
+							data-ng-class="{error: errors.vegatarian}">
+							<label class="control-label" for="vegatarian">Vegetarier*</label>
 							<div class="controls">
-								<select id="vegetarien" name="vegetarien"
-									data-required="required" data-ng-model="participant.vegetarien"
-									data-ng-init="participant.vegetarien = vegetarienOptions[0]"
-									data-ng-options="vegetarien.value for vegetarien in vegetarienOptions">
-								</select> <span class="help-inline" data-ng-show="errors.vegetarien">{{errors.vegatarien}}</span>
+								<select id="vegatarian" name="vegatarian"
+									data-required="required" data-ng-model="participant.otherOptions.vegatarian"
+									data-ng-options="vegetarien.value as vegetarien.value for vegetarien in vegetarienOptions">
+								</select> <span class="help-inline" data-ng-show="errors.vegatarian">{{errors.vegatarian}}</span>
 							</div>
 						</div>
 						<div class="control-group" data-ng-class="{error: errors.vegan}">
 							<label class="control-label" for="vegan">Veganer*</label>
 							<div class="controls">
 								<select id="vegan" name="vegan" data-required="required"
-									data-ng-model="participant.vegan"
-									data-ng-init="participant.vegan = veganOptions[0]"
-									data-ng-options="vegan.value for vegan in veganOptions">
-								</select> <span class="help-inline" data-ng-show="errors.vegan">{{errors.vegan}}</span>
+									data-ng-model="participant.otherOptions.vegan"
+									data-ng-options="vegan.value as vegan.text for vegan in veganOptions">
+								</select> <span class="help-inline" data-ng-show="errors.otherOptions.vegan">{{errors.otherOptions.vegan}}</span>
 							</div>
 						</div>
 						<div class="control-group" data-ng-class="{error: errors.allergy}">
 							<label class="control-label" for="vegetarien">Allergien</label>
 							<div class="controls">
 								<input type="text" id="allergy" name="allergy"
-									data-ng-model="participant.allergy"> <span
-									class="help-inline" data-ng-show="errors.allergy">{{errors.allergy}}</span>
+									data-ng-model="participant.otherOptions.allergy"> <span
+									class="help-inline" data-ng-show="errors.otherOptions.allergy">{{errors.otherOptions.allergy}}</span>
 							</div>
 						</div>
 
@@ -281,8 +277,8 @@
 							<label class="control-label" for="wishes">Sonderw&uuml;nsche</label>
 							<div class="controls">
 								<input type="text" id="wishes" name="wishes"
-									data-ng-model="participant.wishes"> <span
-									class="help-inline" data-ng-show="errors.wishes">{{errors.wishes}}</span>
+									data-ng-model="participant.otherOptions.wishes"> <span
+									class="help-inline" data-ng-show="errors.otherOptions.wishes">{{errors.otherOptions.wishes}}</span>
 							</div>
 						</div>
 						<div>

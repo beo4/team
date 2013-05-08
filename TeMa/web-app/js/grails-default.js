@@ -11,6 +11,7 @@ angular.module('grailsService', ['ngResource']).factory('Grails', function($reso
 		get: {method: 'GET', params: {action: 'get'}},
 		save: {method: 'POST', params: {action: 'save'}},
 		update: {method: 'POST', params: {action: 'update'}},
+		upload: {method: 'POST', params: {action: 'upload'}},
 		newI18n:{method: 'GET', params: {action: 'addI18n'}},
 		uploadUserFile:{method: 'POST', params: {action: 'fileUpload'}},
 		delete: {method: 'POST', params: {action: 'delete'}}

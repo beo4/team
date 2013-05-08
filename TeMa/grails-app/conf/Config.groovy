@@ -20,6 +20,9 @@ grails.mime.types = [
     atom:          'application/atom+xml',
     css:           'text/css',
     csv:           'text/csv',
+    pdf:            'application/pdf',
+    rtf:            'application/rtf',
+    excel:          'application/vnd.ms-excel',
     form:          'application/x-www-form-urlencoded',
     html:          ['text/html','application/xhtml+xml'],
     js:            'text/javascript',
@@ -150,3 +153,17 @@ grails.resources.modules = {
 }
 
 grails.plugin.location.'angular-scaffolding' = "../grails-angular-scaffolding"
+
+
+grails {
+    mail {
+      host = "smtp.1und1.de"
+      port = 587
+      username = "noreply@behounek.de"
+      password = "Initial1@NEU"
+      props = ["mail.smtp.auth":"true",
+               "mail.smtp.socketFactory.port":"587"]
+      
+    }
+ }
+grails.mail.default.from="support@goodyear-at-porsche.de"

@@ -20,7 +20,7 @@
 							</g:link>
 						</li>
 						<li class="active">
-							<g:link class="create" action="create">
+							<g:link class="create" action="fileCreate">
 								<i class="icon-plus icon-white"></i>
 								<g:message code="default.create.label" args="[entityName]" />
 							</g:link>
@@ -50,17 +50,12 @@
 				</g:hasErrors>
 
 				<fieldset>
-					<g:form class="form-horizontal" action="create" >
-						<fieldset>
-							<f:all bean="userInstance"/>
-							<div class="form-actions">
-								<button type="submit" class="btn btn-primary">
-									<i class="icon-ok icon-white"></i>
-									<g:message code="default.button.create.label" default="Create" />
-								</button>
-							</div>
-						</fieldset>
-					</g:form>
+					<g:uploadForm name="myUpload" action="createFromFile">
+						<g:hiddenField name="eventId" value="${eventId}"/>
+						<g:hiddenField name="meetingId" value="${meetingId}"/>
+					    <input type="file" name="file" />
+					    <g:submitButton name="upload"/>
+					</g:uploadForm>
 				</fieldset>
 				
 			</div>

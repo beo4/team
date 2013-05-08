@@ -21,7 +21,7 @@
 							</g:link>
 						</li>
 						<li>
-							<g:link class="create" action="create">
+							<g:link class="create" action="fileCreate">
 								<i class="icon-plus"></i>
 								<g:message code="default.create.label" args="[entityName]" />
 							</g:link>

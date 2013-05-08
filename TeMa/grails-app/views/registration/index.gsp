@@ -4,12 +4,12 @@
 <html>
     <head>
         <meta name="layout" content="registrationbootstrap">
-        <g:set var="entityName" value="${message(code: 'subscription.label', default: 'Subscription')}" />
+        <g:set var="entityName" value="${message(code: 'registration.label', default: 'Registration')}" />
         <title><g:message code="default.list.label" args="[entityName]" /></title>
 
         <r:require module="registration-angular-scaffolding"/>
     </head>
-    <body data-ng-app="scaffolding" data-base-url="${createLink(uri: '/registration/')}">
+    <body data-base-url="${createLink(uri: '/registration/')}">
         <div class="header">
         <div class="container">
 			<div class="row">
@@ -24,7 +24,7 @@
 			<div class="container">
 			<div class="navbar">
 				<ul class="nav">
-					<li ng-repeat="step in steps" ng-class="{'active': step.active}"><a href="#">{{step.title}}</a></li>
+					<li data-ng-repeat="step in steps" data-ng-class="{'active': step.active}"><a href="#">{{step.title}}</a></li>
 				</ul>
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 		<div class="row">
 				<div class="span12 gyteaser">
 				<div>
-				<h1>Goodyear@Porsche LEIPZIG 2013.</h1>
+				<h1>GOODYEAR@PORSCHE LEIPZIG 2013.</h1>
 				</div>
 				<div>
 				<h2>Einsteigen - Anschnallen - Entspannen.</h2>

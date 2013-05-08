@@ -7,6 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException
 
 import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.event.EventLanguage;
+import de.elementEvents.tema.user.User;
 import grails.converters.JSON
 import grails.plugin.jodatime.converters.JodaConverters;
 import static javax.servlet.http.HttpServletResponse.*
@@ -16,15 +17,39 @@ class MeetingController {
     static final int SC_UNPROCESSABLE_ENTITY = 422
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    
+    def exportService
+    def grailsApplication  //inject GrailsApplication
 
     def index() { }
 
     def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		response.setIntHeader('X-Pagination-Total', Meeting.count())
-		JSON.use("deep")
 		JodaConverters.registerJsonAndXmlMarshallers()
 		render Meeting.list(params) as JSON
+    }
+    
+    def exportList() {
+        response.contentType = grailsApplication.config.grails.mime.types[params.format]
+        
+        List fields = ["salutation", "title","firstname", "middlename","lastname", "loginToken", "street","plz", "city","mobile","company", "companyadd","position","companystreet","companyplz","companycity","travelOptions.arrivalDate","travelOptions.departureDate"]
+        Map labels = ["salutation" :"Anrede", "title":"Titel","firstname":"Vorname", "middlename":"Zusatzname","lastname":"Nachname", "street":"Strasse","plz":"PLZ", "city":"Ort","mobile":"Telefon","company":"Firma", "companyadd":"Firma2","position":"Position","companystreet":"Firmen Adresse","companyplz":"Fimen PLZ","companycity":"Firmen Ort","travelOptions.arrivalDate":"Ankuft Datum","travelOptions.departureDate":"Abreise Datum"]
+        Map formatters = [:]
+        
+        
+        if (params.meetingId){
+            def meetingInstance =  Meeting.get(params.meetingId)
+            def firstLocalisation = meetingInstance.i18n.asList()[0]
+            def filename = firstLocalisation.title + "_" + firstLocalisation.subtitle 
+            Map parameters = [title: "${firstLocalisation.title + "_" + firstLocalisation.subtitle}"]
+            response.setHeader("Content-disposition", "attachment; filename=${filename}.${params.extension}")
+            
+            def userList = meetingInstance.subscriber*.user
+            exportService.export(params.format, response.outputStream,userList, fields, labels,formatters,parameters)
+        }
+       
+
     }
 
     def save() {

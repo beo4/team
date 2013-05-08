@@ -1,0 +1,39 @@
+
+				<div class="page-header">
+					<h1>User</h1>
+				</div>
+			
+				<alert level="{{message.level}}" text="{{message.text}}"/>
+				<form name="form" data-ng-submit="upload(item)" class="form-horizontal" ng-controller="UserFileCtrl">
+				
+									
+					<div class="control-group" data-ng-class="{error: errors.event}">
+						<label class="control-label" for="event">Event</label>
+						<div class="controls">
+						       {{item.event.i18n[0].title}}
+							<span class="help-inline" data-ng-show="errors.event">{{errors.event}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group" data-ng-class="{error: errors.meeting}" ng-show="item.meeting">
+						<label class="control-label" for="meeting">Meeting</label>
+						<div class="controls">
+						       {{item.meeting.i18n[0].title}} {{item.meeting.i18n[0].subtitle}}
+							<span class="help-inline" data-ng-show="errors.meeting">{{errors.meeting}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group" data-ng-class="{error: errors.meeting}" ng-show="item.meeting">
+						<label class="control-label" for="meeting">Teilnehmerliste</label>
+						<div class="controls">
+						       <input type="file" id="img" name="img" ng-model="item.file"/>
+							<span class="help-inline" data-ng-show="errors.meeting">{{errors.file}}</span>
+						</div>
+					</div>
+						
+					
+					
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Create</button>
+					</div>
+				</form>

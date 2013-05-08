@@ -18,7 +18,7 @@
 	<div class="span3 meetinglist">
 		<h5>Meetings <a class="btn" data-ng-href="{{appUrl}}meeting/#create/{{item.id}}"><i class="icon-plus"></i> add</a></h5>
 		<ul class="dl-horizontal">
-			<li ng-repeat="meeting in item.meetings"><a href="{{appUrl}}meeting/#show/{{meeting.id}}">{{meeting.i18n[0].title}}</a></li>
+			<li ng-repeat="meeting in item.meetings"><a href="{{appUrl}}meeting/#show/{{meeting.id}}">{{meeting.i18n[0].title}} {{meeting.i18n[0].subtitle}}</a></li>
 		</ul>
 	</div>
 	<div class="span3 resourceslist">

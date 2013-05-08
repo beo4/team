@@ -4,17 +4,20 @@ import java.awt.GraphicsConfiguration.DefaultBufferCapabilities;
 
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils;
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.mail.MailException
 
 import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.event.Event_i18n;
 import de.elementEvents.tema.meeting.Meeting;
 import de.elementEvents.tema.subscription.Subscription
+import de.elementEvents.tema.user.OtherOption
 import de.elementEvents.tema.user.Salutation;
 import de.elementEvents.tema.user.TravelOptions;
 import de.elementEvents.tema.user.User;
 import grails.converters.JSON
 import grails.plugin.jodatime.converters.JodaConverters;
 import grails.plugins.springsecurity.SpringSecurityService;
+import groovy.text.SimpleTemplateEngine
 import static javax.servlet.http.HttpServletResponse.*
 
 class RegistrationController {
@@ -25,6 +28,7 @@ class RegistrationController {
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
 	def springSecurityService
+    def mailService
 
     def index() { }
 
@@ -49,7 +53,7 @@ class RegistrationController {
 		if (params.loginToken) {
 			userInstance = User.findByLoginToken(params.loginToken)
 			if (userInstance){
-				SpringSecurityUtils.reauthenticate userInstance.username, null
+				SpringSecurityUtils.reauthenticate userInstance.username,""
 				
 			}
 			
@@ -86,7 +90,9 @@ class RegistrationController {
 			
 			
 			jsonResponse.subscription = subscriptionInstance
-			jsonResponse.salutations = Salutation.values();
+			jsonResponse.salutations = Salutation.values()
+            jsonResponse.travelOptions = userInstance.travelOptions
+            jsonResponse.otherOptions = userInstance.otherOptions
 			
 			//springSecurityService.reauthenticate userInstance.username
 			JodaConverters.registerJsonAndXmlMarshallers()
@@ -111,18 +117,45 @@ class RegistrationController {
 	}
 	
 	def saveTravelOptions() {
-		def travelOptionInstance = new TravelOptions(request.JSON)
+        def jsonObject = request.JSON
+        
+        def userInstance = User.get(request.JSON.id)
+        def travelOptionsInstance
+        if (!userInstance.travelOptions){
+            travelOptionsInstance = new TravelOptions(request.JSON.travelOptions)
+            userInstance.travelOptions
+        }
+        else {
+            travelOptionsInstance = userInstance.travelOptions
+            travelOptionsInstance.properties = request.JSON.travelOptions
+        }
+        //travelOptionsInstance.selectedTravelOption = jsonObject.travelOptions.selectedTravelOption.name
+        
+        def otherOptionsInstance
+        if (!userInstance.otherOptions){
+            otherOptionsInstance = new OtherOption(request.JSON.otherOptions)
+            userInstance.otherOptions = otherOptionsInstance
+        }
+        else {
+            otherOptionsInstance = userInstance.otherOptions
+            otherOptionsInstance.properties = request.JSON.otherOptions
+        }
+        
+        
 		
 		def responseJson = [:]
-		if (travelOptionInstance.save(flush: true)) {
-			response.status = SC_CREATED
-			responseJson.id = travelOptionInstance.id
-			responseJson.message = message(code: 'default.created.message', args: [message(code: 'subscription.label', default: 'Subscription'), travelOptionInstance.id])
+		if (travelOptionsInstance.save(flush: true) && otherOptionsInstance.save(flush: true) && userInstance.save(flush: true)) {
+            response.status = SC_OK
+            responseJson.id = userInstance.id
+            responseJson.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
+            responseJson.participant = userInstance
+            responseJson.travelOptions = travelOptionsInstance
+            responseJson.otherOptions = otherOptionsInstance
 		} else {
-			response.status = SC_UNPROCESSABLE_ENTITY
-			responseJson.errors = travelOptionInstance.errors.fieldErrors.collectEntries {
-				[(it.field): message(error: it)]
-			}
+			 response.status = SC_UNPROCESSABLE_ENTITY
+            responseJson.errors = userInstance.errors.fieldErrors.collectEntries {
+                [(it.field): message(error: it)]
+            }
 		}
 		render responseJson as JSON
 		
@@ -156,13 +189,16 @@ class RegistrationController {
             responseJson.id = userInstance.id
             responseJson.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
 			responseJson.participant = userInstance
+            if (userInstance.confirmed){
+                sendNotificationEmail(userInstance)
+            }
         } else {
             response.status = SC_UNPROCESSABLE_ENTITY
             responseJson.errors = userInstance.errors.fieldErrors.collectEntries {
                 [(it.field): message(error: it)]
             }
         }
-
+        
         render responseJson as JSON
     }
 
@@ -189,4 +225,19 @@ class RegistrationController {
         def responseJson = [message: message(code: 'default.not.found.message', args: [message(code: 'user.label', default: 'Participant'), params.loginToken])]
         render responseJson as JSON
     }
+    
+    
+    private sendNotificationEmail(User user){
+        mailService.sendMail {
+            multipart true
+            to user.email
+            from "support@goodyear-at-porsche.de"
+            replyTo "support@goodyear-at-porsche.de"
+            subject "Teilnahmebestätigung"
+            html g.render(template:"/email/emailTmpl",
+                model:[participant:user])
+            attachBytes 'Anfahrtsbeschreibung.pdf','application/pdf', grailsApplication.parentContext.getResource('email/Anfahrtsbeschreibung.pdf').getFile().readBytes()
+          }
+    }
+    
 }

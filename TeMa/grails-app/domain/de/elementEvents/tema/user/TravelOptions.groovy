@@ -4,14 +4,14 @@ import org.joda.time.DateTime;
 
 class TravelOptions {
 	
-	DateTime arrivalDate
-	DateTime arrivalTime
+	String arrivalDate
+	String arrivalTime
 	String arrivalStation
 	String arrivalAirport
 	String arrivalAirline
 	String licencePlate
-	DateTime departureDate
-	DateTime departureTime
+	String departureDate
+	String departureTime
 	String departureStation
 	String departureAirport
 	String departureAirline
@@ -30,6 +30,7 @@ class TravelOptions {
 		departureAirport blank: true, nullable: true
 		departureAirline blank: true, nullable: true
 		selectedTravelOption blank: true, nullable: true
+        
     }
 	
 	static belongsTo = [user: User]

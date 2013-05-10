@@ -15,11 +15,18 @@
 			<p>
 			<h6>Teilnehmerdaten</h6>
 			<ul><li>
-			{{participant.firstname}}</li><li>
-			{{participant.lastname}}</li><li>
-			{{participant.street}}</li><li>
-			{{participant.plz}} {{participant.city}}
-			</li></ul>
+			{{participant.salutation.value}} {{participant.title}} {{participant.firstname}} {{participant.lastname}}</li><li>
+			{{participant.street}}</li>
+			<li data-ng-show="participant.plz">{{participant.plz}} {{participant.city}}</li>
+			<li data-ng-show="participant.mobile">{{participant.mobile}}</li>
+			<li data-ng-show="participant.company">{{participant.company}}</li>
+			<li data-ng-show="participant.companyadd">{{participant.companyadd}}</li>
+			<li data-ng-show="participant.position">{{participant.position}}</li>
+			<li data-ng-show="participant.companystreet">{{participant.companystreet}}</li>
+			<li data-ng-show="participant.companyplz">{{participant.companyplz}} {{participant.companycity}}</li>
+			<li data-ng-show="participant.email">{{participant.email}}</li>
+			
+			</ul>
 			</p>
 			
 			
@@ -29,6 +36,10 @@
 				Ankunft: {{participantTravelOptions.arrivalDate}} {{participantTravelOptions.arrivalTime}}</li><li>
 				Amtliches Kennzeichen: {{participantTravelOptions.licencePlate}}
 			</li></ul>
+			<h6>Abreise</h6>
+				<ul><li>
+				Datum: {{participantTravelOptions.departureDate}}
+				</li></ul>
 			</div>
 			
 			<div  ng-show="participantTravelOptions.selectedTravelOption=='Bahn'">
@@ -59,12 +70,26 @@
 				 </li></ul>
 			</div>
 			
+			<div>
+			<h6>Spezielle Anforderungen</h6>
+			<ul>
+			<li ng-show="participantOtherOptions.vegatarian">{{participantOtherOptions.vegatarian}}</li>
+			<li ng-show="participantOtherOptions.vegan">Ich bin Veganer</li>
+			<li ng-show="participantOtherOptions.allergy">Allergien: {{participantOtherOptions.allergy}}</li>
+			<li ng-show="participantOtherOptions.wishes">Sonderw&uuml;nsche: {{participantOtherOptions.wishes}}</li>
+			</ul>
+			</div>
+			
 				<p>Um Ihre Anmeldung erfolgreich abzuschlie&szlig;en klicken Sie auf den Best&auml;tigungs-Button. In K&uuml;rze erhalten Sie eine schriftliche Best&auml;tigung mit der Zusammenfassung Ihrer Anmeldung per E-Mail.
 				</p>
 				<form data-ng-submit="confirmParticipant(participant)" >
-				<label class="checkbox">
-			      <input type="checkbox" required ng-model="participant.confirmed"> Ich habe die Datenschutzerkl&auml;rung gelesen (<a href="#datenschutz" target="_blank">Datenschutzerkl&auml;rung</a>).
+				<div class="control-group" data-ng-class="{error: errors.confirmed}">
+				<label class="checkbox" >
+			      <input type="checkbox" ng-model="participant.confirmed"> Ich habe die Datenschutzerkl&auml;rung gelesen (<a href="#datenschutz" target="_blank">Datenschutzerkl&auml;rung</a>) und akzeptiert.
+			      <span class="help-inline" data-ng-show="errors.confirmed">{{errors.confirmed}}</span>
+			      
 			    </label>
+			    </div>
 				
 				<div class="form-actions">
 							<a href="#chooseOptions" class="btn btn-primary">Zur&uuml;ck</a>

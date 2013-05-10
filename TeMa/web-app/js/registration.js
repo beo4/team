@@ -128,13 +128,15 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 
 	$scope.confirmParticipant = function(item) {
 
-		item.$update(function(response) {
-			Flash.success(response.message);
-			$rootScope.participant = new Grails();
-			angular.extend($rootScope.participant, response.participant);
-			$scope.confirmedee = true;
-
-		}, errorHandler.curry($scope, $location, Flash));
+			item.$confirm(function(response) {
+				Flash.success(response.message);
+				$rootScope.participant = new Grails();
+				angular.extend($rootScope.participant, response.participant);
+				$scope.confirmedee = true;
+	
+			}, errorHandler.curry($scope, $location, Flash));
+			
+		
 	};
 
 	$scope.updateOptions = function(item) {

@@ -33,8 +33,8 @@ class MeetingController {
     def exportList() {
         response.contentType = grailsApplication.config.grails.mime.types[params.format]
         
-        List fields = ["salutation", "title","firstname", "middlename","lastname", "loginToken", "street","plz", "city","mobile","company", "companyadd","position","companystreet","companyplz","companycity","travelOptions.arrivalDate","travelOptions.departureDate"]
-        Map labels = ["salutation" :"Anrede", "title":"Titel","firstname":"Vorname", "middlename":"Zusatzname","lastname":"Nachname", "street":"Strasse","plz":"PLZ", "city":"Ort","mobile":"Telefon","company":"Firma", "companyadd":"Firma2","position":"Position","companystreet":"Firmen Adresse","companyplz":"Fimen PLZ","companycity":"Firmen Ort","travelOptions.arrivalDate":"Ankuft Datum","travelOptions.departureDate":"Abreise Datum"]
+        List fields = ["salutation", "title","firstname", "middlename","lastname", "email","loginToken", "street","plz", "city","mobile","company", "companyadd","position","companystreet","companyplz","companycity","travelOptions.arrivalDate","travelOptions.departureDate"]
+        Map labels = ["salutation" :"Anrede", "title":"Titel","firstname":"Vorname", "email":"Email","middlename":"Zusatzname","lastname":"Nachname", "street":"Strasse","plz":"PLZ", "city":"Ort","mobile":"Telefon","company":"Firma", "companyadd":"Firma2","position":"Position","companystreet":"Firmen Adresse","companyplz":"Fimen PLZ","companycity":"Firmen Ort","travelOptions.arrivalDate":"Ankuft Datum","travelOptions.departureDate":"Abreise Datum"]
         Map formatters = [:]
         
         

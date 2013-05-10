@@ -14,39 +14,42 @@ public class UserExcelImporter extends AbstractExcelImporter {
         sheet:'Gruppe 1',
         startRow: 1,
         columnMap:  [
-                'G':'company',
-                'H':'salutation',
-                'I':'firstname',
-                'J':'lastname',
-                'K':'companyadd',
-                'L':'street',
-                'M':'streetnumber',
-                'O':'city',
-                'N':'plz',
-                'R':'email',
-                'P':'mobile',
-                'S':'arrivalDate',
-                'T':'departureDate'
+                'K':'company',
+                'L':'companyadd',
+                'A':'salutation',
+                'B':'title',
+                'C':'firstname',
+                'D':"middlename",
+                'E':'lastname',
+                'G':'street',
+                'I':'city',
+                'H':'plz',
+                'S':'email',
+                'J':'mobile',
+                'Q':'arrivalDate',
+                'R':'departureDate'
         ]
     ]
+    
     
     static Map CONFIG_USER_COLUMN_MAP_G2 = [
         sheet:'Gruppe 2',
         startRow: 1,
         columnMap:  [
-                'G':'company',
-                'H':'salutation',
-                'I':'firstname',
-                'J':'lastname',
-                'K':'companyadd',
-                'L':'street',
-                'M':'streetnumber',
-                'O':'city',
-                'N':'plz',
-                'R':'email',
-                'P':'mobile',
-                'S':'arrivalDate',
-                'T':'departureDate'
+                'K':'company',
+                'L':'companyadd',
+                'A':'salutation',
+                'B':'title',
+                'C':'firstname',
+                'D':"middlename",
+                'E':'lastname',
+                'G':'street',
+                'I':'city',
+                'H':'plz',
+                'S':'email',
+                'J':'mobile',
+                'Q':'arrivalDate',
+                'R':'departureDate'
         ]
     ]
     
@@ -54,39 +57,40 @@ public class UserExcelImporter extends AbstractExcelImporter {
         sheet:'Gruppe 3',
         startRow: 1,
         columnMap:  [
-                'G':'company',
-                'H':'salutation',
-                'I':'firstname',
-                'J':'lastname',
-                'K':'companyadd',
-                'L':'street',
-                'M':'streetnumber',
-                'O':'city',
-                'N':'plz',
-                'R':'email',
-                'P':'mobile',
-                'S':'arrivalDate',
-                'T':'departureDate'
+                'K':'company',
+                'L':'companyadd',
+                'A':'salutation',
+                'B':'title',
+                'C':'firstname',
+                'D':"middlename",
+                'E':'lastname',
+                'G':'street',
+                'I':'city',
+                'H':'plz',
+                'S':'email',
+                'J':'mobile',
+                'Q':'arrivalDate',
+                'R':'departureDate'
         ]
     ]
 	static Map CONFIG_USER_COLUMN_MAP_G4 = [
         sheet:'Gruppe 4',
         startRow: 1,
         columnMap:  [
-                'G':'company',
-                'H':'salutation',
-                'J':'firstname',
-                'K':'lastname',
-                'Z':'companyadd',
-                'M':'street',
-                'N':'streetnumber',
-                'P':'city',
-                'O':'plz',
+                'K':'company',
+                'L':'companyadd',
+                'A':'salutation',
+                'B':'title',
+                'C':'firstname',
+                'D':"middlename",
+                'E':'lastname',
+                'G':'street',
+                'I':'city',
+                'H':'plz',
                 'S':'email',
-                'Z':'mobile',
-                'I':'title',
-                'U':'departureDate',
-                'T':'arrivalDate'
+                'J':'mobile',
+                'Q':'arrivalDate',
+                'R':'departureDate'
         ]
     ]
     
@@ -94,14 +98,20 @@ public class UserExcelImporter extends AbstractExcelImporter {
         sheet:'Gruppe 5',
         startRow: 1,
         columnMap:  [
-                'A':'company',
-                'D':'salutation',
-                'E':'firstname',
-                'F':'lastname',
-                'B':'companyadd',
-                'K':'email',
-                'N':'departureDate',
-                'M':'arrivalDate'
+                'K':'company',
+                'L':'companyadd',
+                'A':'salutation',
+                'B':'title',
+                'C':'firstname',
+                'D':"middlename",
+                'E':'lastname',
+                'G':'street',
+                'I':'city',
+                'H':'plz',
+                'S':'email',
+                'J':'mobile',
+                'Q':'arrivalDate',
+                'R':'departureDate'
         ]
     ]
     
@@ -131,6 +141,6 @@ public class UserExcelImporter extends AbstractExcelImporter {
 	}
 	
 	List<Map> getUser() {
-		List userList = excelImportService.columns(workbook, CONFIG_USER_COLUMN_MAP_G5, null, propertyConfigurationMap)
+		List userList = excelImportService.columns(workbook, CONFIG_USER_COLUMN_MAP_G3, null, propertyConfigurationMap)
 	  }
 }

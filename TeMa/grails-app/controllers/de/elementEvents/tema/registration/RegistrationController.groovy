@@ -160,6 +160,42 @@ class RegistrationController {
 		render responseJson as JSON
 		
 	}
+    
+    def confirm() {
+       def userInstance = User.get(params.id)
+        if (!userInstance) {
+            notFound params.id
+            return
+        }
+
+        def responseJson = [:]
+
+        if (request.JSON.version != null) {
+            if (userInstance.version > request.JSON.version) {
+                response.status = SC_CONFLICT
+                responseJson.message = message(code: 'default.optimistic.locking.failure',
+                        args: [message(code: 'user.label', default: 'User')],
+                        default: 'Another user has updated this Subscription while you were editing')
+                cache false
+                render responseJson as JSON
+                return
+            }
+        }
+
+        userInstance.properties = request.JSON
+        
+        if (!userInstance.confirmed) {
+            response.status = SC_UNPROCESSABLE_ENTITY
+            
+            responseJson.errors = ["confirmed":'Bitte aktzeptieren Sie die Datenschutzerklärung']
+            render responseJson as JSON
+            return
+        } else {
+        
+        update()
+        }
+   
+    }
 
     def update() {
         def userInstance = User.get(params.id)

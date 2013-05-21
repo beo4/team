@@ -67,5 +67,7 @@ grails.project.dependency.resolution = {
 		compile ":codenarc:0.18.1"
 		compile ':jslint:0.5'
         compile ":mail:1.0.1"
+        
+        compile ":excel-export:0.1.4"
     }
 }

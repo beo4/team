@@ -1,6 +1,7 @@
 package de.elementEvents.tema.event
 
 import org.springframework.dao.DataIntegrityViolationException
+import pl.touk.excel.export.WebXlsxExporter
 import grails.converters.JSON
 import grails.plugin.jodatime.converters.JodaConverters;
 import static javax.servlet.http.HttpServletResponse.*
@@ -11,6 +12,8 @@ class EventController {
     static final int SC_UNPROCESSABLE_ENTITY = 422
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
+    
+    def exportService
 
     def index() { }
 
@@ -165,5 +168,106 @@ class EventController {
         response.status = SC_NOT_FOUND
         def responseJson = [message: message(code: 'default.not.found.message', args: [message(code: 'event.label', default: 'Event'), params.id])]
         render responseJson as JSON
+    }
+    
+    def exportList() {
+        response.contentType = grailsApplication.config.grails.mime.types[params.format]
+        
+        List fields = ["salutation", "title","firstname", "middlename","lastname", "email","loginToken", "street","plz", "city","mobile","company", "companyadd","position","companystreet","companyplz","companycity","travelOptions.arrivalDate","travelOptions.departureDate"]
+        Map labels = ["salutation" :"Anrede", "title":"Titel","firstname":"Vorname", "email":"Email","middlename":"Zusatzname","lastname":"Nachname", "street":"Strasse","plz":"PLZ", "city":"Ort","mobile":"Telefon","company":"Firma", "companyadd":"Firma2","position":"Position","companystreet":"Firmen Adresse","companyplz":"Fimen PLZ","companycity":"Firmen Ort","travelOptions.arrivalDate":"Ankuft Datum","travelOptions.departureDate":"Abreise Datum"]
+        Map formatters = [:]
+        
+        
+        if (params.eventId){
+            def eventInstance =  Event.get(params.eventId)
+            def firstLocalisation = eventInstance.i18n.asList()[0]
+            def filename = firstLocalisation.title + "_" + firstLocalisation.subtitle
+            Map parameters = [title: "${firstLocalisation.title + "_" + firstLocalisation.subtitle}"]
+            response.setHeader("Content-disposition", "attachment; filename=${filename}.${params.extension}")
+            
+            def userList = eventInstance.meetings*.subscriber*.user
+            exportService.export(params.format, response.outputStream,userList, fields, labels,formatters,parameters)
+        }
+       
+
+    }
+    
+    def exportList2() {
+        
+        def row1 = [
+            "Login Token",
+            "Registrierungsstatus",
+            "Anrede",
+            "Titel",
+            "Vorname",
+            "Zweitname",
+            "Nachname",
+            "Straße, Hausnr.",
+            "PLZ",
+            "Ort",
+            "Mobilnr.",
+            "Anreise per PKW/ Bahn/ Flugzeug",
+            "Anreisedatum",
+            "Anreiseflughafen / Bahnhof / Nummernschild",
+            "Anreise Airline",
+            "Airline Ankunftszeit",
+            "Abreisedatum",
+            "Abreiseflughafen / Bahnhof",
+            "Abreise Airline",
+            "Abflugszeit",
+            "Spezielle Anforderungen",
+            "Firma",
+            "Firmenzusatz",
+            "Position",
+            "Straße, Hausnr.",
+            "PLZ",
+            "Ort",
+            "Email"            
+            ]
+        
+        
+        def withProperties = [
+            "loginToken", 
+            "status",
+            "salutation.value", 
+            "title",
+            "firstname", 
+            "middlename",
+            "lastname", 
+            "street",
+            "plz", 
+            "city",
+            "mobile",
+            "travelOptions.selectedTravelOption",
+            "travelOptions.arrivalDate",
+            "travelOptions.arrivalPlace",
+            "travelOptions.arrivalAirline",
+            "travelOptions.arrivalTime",
+            "travelOptions.departureDate",
+            "travelOptions.departurePlace",
+            "travelOptions.departureAirline",
+            "travelOptions.departureTime",
+            "otherOptionsString",
+            "company", "companyadd","position","companystreet","companyplz","companycity","email"
+            ]
+      
+        if (params.eventId){
+            def eventInstance =  Event.get(params.eventId)
+            def firstLocalisation = eventInstance.i18n.asList()[0]
+            def filename = firstLocalisation.title + "_" + firstLocalisation.subtitle
+            def user = eventInstance.participants.toList()
+            
+
+            
+            new WebXlsxExporter().with {
+                setResponseHeaders(response)
+                int index = 0
+                fillRow(row1,index)
+                index++
+                add(user ,withProperties,1)
+                save(response.outputStream)
+            }
+        }
+        
     }
 }

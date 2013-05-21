@@ -115,6 +115,27 @@ public class UserExcelImporter extends AbstractExcelImporter {
         ]
     ]
     
+    static Map CONFIG_USER_COLUMN_MAP_NEU = [
+        sheet:'1',
+        startRow: 1,
+        columnMap:  [
+                'A':'salutation',
+                'B':'title',
+                'C':'firstname',
+                'D':"middlename",
+                'E':'lastname',
+                'H':'street',
+                'J':'city',
+                'I':'plz',
+                'L':'company',
+                'M':'companyadd',
+                'F':'email',
+                'S':'arrivalDate',
+                'Y':'departureDate',
+                'K': 'mobile'
+        ]
+    ]
+    
     static Map propertyConfigurationMap = [
         company:([expectedType: ExpectedPropertyType.StringType, defaultValue:null]),
         firstname:([expectedType: ExpectedPropertyType.StringType, defaultValue:null]),
@@ -141,6 +162,6 @@ public class UserExcelImporter extends AbstractExcelImporter {
 	}
 	
 	List<Map> getUser() {
-		List userList = excelImportService.columns(workbook, CONFIG_USER_COLUMN_MAP_G3, null, propertyConfigurationMap)
+		List userList = excelImportService.columns(workbook, CONFIG_USER_COLUMN_MAP_NEU, null, propertyConfigurationMap)
 	  }
 }

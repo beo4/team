@@ -32,9 +32,15 @@ class MeetingController {
     
     def exportList() {
         response.contentType = grailsApplication.config.grails.mime.types[params.format]
+
         
-        List fields = ["salutation", "title","firstname", "middlename","lastname", "email","loginToken", "street","plz", "city","mobile","company", "companyadd","position","companystreet","companyplz","companycity","travelOptions.arrivalDate","travelOptions.departureDate"]
-        Map labels = ["salutation" :"Anrede", "title":"Titel","firstname":"Vorname", "email":"Email","middlename":"Zusatzname","lastname":"Nachname", "street":"Strasse","plz":"PLZ", "city":"Ort","mobile":"Telefon","company":"Firma", "companyadd":"Firma2","position":"Position","companystreet":"Firmen Adresse","companyplz":"Fimen PLZ","companycity":"Firmen Ort","travelOptions.arrivalDate":"Ankuft Datum","travelOptions.departureDate":"Abreise Datum"]
+        List fields = ["salutation", "title","firstname", "middlename","lastname", "email","loginToken", "street","plz", "city","mobile","company", "companyadd","position","companystreet","companyplz","companycity","travelOptions.selectedTravelOption","travelOptions.arrivalDate","travelOptions.arrivalTime","travelOptions.arrivalStation","travelOptions.arrivalAirport","travelOptions.arrivalAirline",
+                       "travelOptions.licencePlate", "travelOptions.departureDate","travelOptions.departureTime","travelOptions.departureStation","travelOptions.departureAirport","travelOptions.departureAirline",
+                       "otherOptions.vegatarian","otherOptions.vegan","otherOptions.allergy","otherOptions.wishes",
+                       "account","confirmed"]
+        Map labels = ["salutation" :"Anrede", "title":"Titel","firstname":"Vorname", "email":"Email","middlename":"Zusatzname","lastname":"Nachname", "street":"Strasse","plz":"PLZ", "city":"Ort","mobile":"Telefon","company":"Firma", "companyadd":"Firma2","position":"Position","companystreet":"Firmen Adresse","companyplz":"Fimen PLZ","companycity":"Firmen Ort","account":"Teilnahme","confirmed":"Datenschutz aktzeptiert","travelOptions.arrivalDate":"Ankuft Datum","travelOptions.departureDate":"Abreise Datum",
+                      "travelOptions.selectedTravelOption":"Reiseart","travelOptions.arrivalTime":"Ankunft Zeit","travelOptions.arrivalStation":"Ankunft Bahnhof","travelOptions.arrivalAirport":"Ankunft Flughafen","travelOptions.arrivalAirline":"Ankunft Fluglinie","travelOptions.licencePlate":"Kennzeichen", "travelOptions.departureTime":"Abreise Zeit","travelOptions.departureStation":"Abreise Bahnhof","travelOptions.departureAirport":"Abreise Flughafen","travelOptions.departureAirline":"Abreise Fluglinie",
+                      "otherOptions.vegatarian":"Vegetarier","otherOptions.vegan":"Veganer","otherOptions.allergy":"Allergie","otherOptions.wishes":"Sonderwuensche"]
         Map formatters = [:]
         
         

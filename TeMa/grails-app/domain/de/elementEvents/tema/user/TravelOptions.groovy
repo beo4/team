@@ -32,6 +32,14 @@ class TravelOptions {
 		selectedTravelOption blank: true, nullable: true
         
     }
+    
+    public getDeparturePlace() {
+        departureStation ? departureStation : departureAirport
+    }
+    
+    public getArrivalPlace() {
+        arrivalStation ? arrivalStation : arrivalAirport ? arrivalAirport : licencePlate
+    }
 	
 	static belongsTo = [user: User]
 }

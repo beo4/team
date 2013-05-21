@@ -157,6 +157,7 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 
 	$scope.updateAccount = function(item) {
 		item.confirmed = false;
+		item.state = 'CONFIRMED';
 		item.$update(function(response) {
 			Flash.success(response.message);
 			// $rootScope.participant = new Grails;

@@ -36,7 +36,7 @@
 				<h1>GOODYEAR@PORSCHE LEIPZIG 2013.</h1>
 				</div>
 				<div>
-				<h2>Einsteigen - Anschnallen - Entspannen.</h2>
+				<h2>Das ultimative Markenerlebnis.</h2>
 				</div>
 		</div>
 		</div>

@@ -47,6 +47,10 @@ class User {
 	
 	boolean account = false
 	boolean confirmed = false
+    
+    Status state = Status.UDEF
+    
+    
 	
 	EventLanguage language
 	
@@ -79,6 +83,7 @@ class User {
         otherOptions blank:true , nullable: true
         travelOptions unique: true
         otherOptions unique: true
+        state blank:true , nullable: true
 	}
 
 	static mapping = {
@@ -106,6 +111,21 @@ class User {
 	protected void encodePassword() {
 		password = springSecurityService.encodePassword(password)
 	}
+    
+    public getOtherOptionsString () {
+        def returnString = ""
+        if (otherOptions){ 
+            otherOptions.vegan ? returnString += "Veganer \n " : ""
+            otherOptions.vegatarian ? returnString += otherOptions.vegatarian + " \n " :""
+            otherOptions.allergy ? returnString += "Allergien: " + otherOptions.allergy + " \n " :""
+            otherOptions.wishes ? returnString += "Sonderwünsche: " + otherOptions.wishes + " \n " :""
+        }
+        return returnString
+    }
+    
+    public getStatus () {
+        (state && state != Status.UDEF) ?  account : "unbekannt"
+    }
 }
 
 
@@ -115,4 +135,12 @@ enum Salutation {
 	final String value
 	String getKey() { name() }
 	String toString() { value }
+}
+
+enum Status {
+    UDEF("undefined"), CONFIRMED("confirmed"), REFUSED('refused')
+    Status(String value) { this.value = value }
+    final String value
+    String getKey() { name() }
+    String toString() { value }
 }

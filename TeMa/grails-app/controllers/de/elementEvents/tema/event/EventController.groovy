@@ -197,6 +197,7 @@ class EventController {
         def row1 = [
             "Login Token",
             "Registrierungsstatus",
+            "Datenschutz",
             "Anrede",
             "Titel",
             "Vorname",
@@ -229,6 +230,7 @@ class EventController {
         def withProperties = [
             "loginToken", 
             "status",
+            "confirmed",
             "salutation.value", 
             "title",
             "firstname", 

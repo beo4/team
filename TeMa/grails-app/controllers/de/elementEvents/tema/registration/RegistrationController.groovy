@@ -129,6 +129,17 @@ class RegistrationController {
             travelOptionsInstance = userInstance.travelOptions
             travelOptionsInstance.properties = request.JSON.travelOptions
         }
+        
+        def responseJson = [:]
+        if (!travelOptionsInstance.selectedTravelOption) {
+            response.status = SC_UNPROCESSABLE_ENTITY
+            
+            responseJson.errors = ["selectedTravelOption":'Bitte wählen Sie eine Option aus']
+            render responseJson as JSON
+            return
+        }
+        
+        
         //travelOptionsInstance.selectedTravelOption = jsonObject.travelOptions.selectedTravelOption.name
         
         def otherOptionsInstance
@@ -141,9 +152,21 @@ class RegistrationController {
             otherOptionsInstance.properties = request.JSON.otherOptions
         }
         
-        
+        if (!otherOptionsInstance.vegatarian) {
+            response.status = SC_UNPROCESSABLE_ENTITY
+            
+            responseJson.errors = ["vegatarian":'Bitte wählen Sie eine Option aus']
+            render responseJson as JSON
+            return
+        }
+        if (otherOptionsInstance.vegan==null) {
+            response.status = SC_UNPROCESSABLE_ENTITY
+            
+            responseJson.errors = ["vegan":'Bitte wählen Sie eine Option aus']
+            render responseJson as JSON
+            return
+        }
 		
-		def responseJson = [:]
 		if (travelOptionsInstance.save(flush: true) && otherOptionsInstance.save(flush: true) && userInstance.save(flush: true)) {
             response.status = SC_OK
             responseJson.id = userInstance.id
@@ -152,7 +175,7 @@ class RegistrationController {
             responseJson.travelOptions = travelOptionsInstance
             responseJson.otherOptions = otherOptionsInstance
 		} else {
-			 response.status = SC_UNPROCESSABLE_ENTITY
+			response.status = SC_UNPROCESSABLE_ENTITY
             responseJson.errors = userInstance.errors.fieldErrors.collectEntries {
                 [(it.field): message(error: it)]
             }

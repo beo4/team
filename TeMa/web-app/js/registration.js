@@ -140,6 +140,8 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 	};
 
 	$scope.updateOptions = function(item) {
+		
+				
 		item.$saveTravelOptions(function(response) {
 			Flash.success(response.message);
 			// $rootScope.participant = new Grails;

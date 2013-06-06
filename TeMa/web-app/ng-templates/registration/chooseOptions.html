@@ -14,39 +14,39 @@
 					per:</div>
 				<div class="row">
 					<div class="span11 offset1">
+					<div class="control-group" data-ng-class="{error: errors.selectedTravelOption}">
+						<span class="help-inline" data-ng-show="errors.selectedTravelOption">{{errors.selectedTravelOption}}</span>
 						<div class="row">
 							<div class="span3">
-								<div class="control-group" data-ng-class="{error: errors.pkw}">
 									<label class="control-label" for="pkw">{{travelOptions.PKW.name}}</label>
 									<div class="controls">
 										<input name="UseBools" type="radio"
 											data-ng-model="participant.travelOptions.selectedTravelOption"
 											data-ng-value="travelOptions.PKW.name"> <span
-											class="help-inline" data-ng-show="errors.pkw">{{errors.pkw}}</span>
+											class="help-inline" data-ng-show="errors.pkw"
+											required="required">{{errors.pkw}}</span>
 									</div>
-								</div>
 							</div>
 							<div class="span3">
-								<div class="control-group" data-ng-class="{error: errors.pkw}">
 									<label class="control-label" for="pkw">{{travelOptions.Bahn.name}}</label>
 									<div class="controls">
 										<input name="UseBools" type="radio"
 											data-ng-model="participant.travelOptions.selectedTravelOption"
 											data-ng-value="travelOptions.Bahn.name"> <span
-											class="help-inline" data-ng-show="errors.bahn">{{errors.bahn}}</span>
+											class="help-inline" data-ng-show="errors.bahn"
+											required="required">{{errors.bahn}}</span>
 									</div>
-								</div>
 							</div>
 							<div class="span3">
-								<div class="control-group" data-ng-class="{error: errors.pkw}">
 									<label class="control-label" for="pkw">{{travelOptions.Flugzeug.name}}</label>
 									<div class="controls">
 										<input name="UseBools" type="radio"
 											data-ng-model="participant.travelOptions.selectedTravelOption"
 											data-ng-value="travelOptions.Flugzeug.name"> <span
-											class="help-inline" data-ng-show="errors.flugzeug">{{errors.flugzeug}}</span>
+											class="help-inline" data-ng-show="errors.flugzeug"
+											required="required">{{errors.flugzeug}}</span>
 									</div>
-								</div>
+							</div>
 							</div>
 						</div>
 						<div class="row">
@@ -250,7 +250,7 @@
 							<label class="control-label" for="vegatarian">Vegetarier*</label>
 							<div class="controls">
 								<select id="vegatarian" name="vegatarian"
-									data-required="required" data-ng-model="participant.otherOptions.vegatarian"
+									required="required" data-ng-model="participant.otherOptions.vegatarian"
 									data-ng-options="vegetarien.value as vegetarien.value for vegetarien in vegetarienOptions">
 								</select> <span class="help-inline" data-ng-show="errors.vegatarian">{{errors.vegatarian}}</span>
 							</div>
@@ -258,10 +258,10 @@
 						<div class="control-group" data-ng-class="{error: errors.vegan}">
 							<label class="control-label" for="vegan">Veganer*</label>
 							<div class="controls">
-								<select id="vegan" name="vegan" data-required="required"
+								<select id="vegan" name="vegan" required="required"
 									data-ng-model="participant.otherOptions.vegan"
 									data-ng-options="vegan.value as vegan.text for vegan in veganOptions">
-								</select> <span class="help-inline" data-ng-show="errors.otherOptions.vegan">{{errors.otherOptions.vegan}}</span>
+								</select> <span class="help-inline" data-ng-show="errors.vegan">{{errors.vegan}}</span>
 							</div>
 						</div>
 						<div class="control-group" data-ng-class="{error: errors.allergy}">

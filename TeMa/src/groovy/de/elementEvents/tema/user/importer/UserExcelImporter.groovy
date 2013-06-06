@@ -120,19 +120,16 @@ public class UserExcelImporter extends AbstractExcelImporter {
         startRow: 1,
         columnMap:  [
                 'A':'salutation',
-                'B':'title',
                 'C':'firstname',
-                'D':"middlename",
-                'E':'lastname',
+                'D':'lastname',
                 'H':'street',
-                'J':'city',
-                'I':'plz',
-                'L':'company',
-                'M':'companyadd',
-                'F':'email',
-                'S':'arrivalDate',
-                'Y':'departureDate',
-                'K': 'mobile'
+                'K':'city',
+                'J':'plz',
+                'B':'company',
+                'N':'email',
+                'F':'arrivalDate',
+                'G':'departureDate',
+                'L':'mobile'
         ]
     ]
     

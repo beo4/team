@@ -9,7 +9,9 @@ import org.springframework.mail.MailException
 import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.event.Event_i18n;
 import de.elementEvents.tema.meeting.Meeting;
+import de.elementEvents.tema.meeting.Meeting_i18n;
 import de.elementEvents.tema.subscription.Subscription
+import de.elementEvents.tema.user.MarketplaceOptions;
 import de.elementEvents.tema.user.OtherOption
 import de.elementEvents.tema.user.Salutation;
 import de.elementEvents.tema.user.TravelOptions;
@@ -88,11 +90,13 @@ class RegistrationController {
 			
 			jsonResponse.meeting = subscriptionInstance.meeting
 			
+            if (userInstance.language != null) {
+                jsonResponse.meeting_i18n = Meeting_i18n.findByMeetingAndI18n(subscriptionInstance.meeting, userInstance.language)
+            }
 			
 			jsonResponse.subscription = subscriptionInstance
 			jsonResponse.salutations = Salutation.values()
-            jsonResponse.travelOptions = userInstance.travelOptions
-            jsonResponse.otherOptions = userInstance.otherOptions
+            jsonResponse.marketplaceOptions = userInstance.marketplaceOptions
 			
 			//springSecurityService.reauthenticate userInstance.username
 			JodaConverters.registerJsonAndXmlMarshallers()
@@ -240,14 +244,20 @@ class RegistrationController {
 				return
             }
         }
-
+        
         userInstance.properties = request.JSON
-
+        
+        
+        def marketplaceOptionsArr = request.JSON.marketplaceOptions
+        def marketplaceOptions = userInstance.marketplaceOptions
+        marketplaceOptions.properties = marketplaceOptionsArr
+        
         if (userInstance.save(flush: false)) {
             response.status = SC_OK
             responseJson.id = userInstance.id
             responseJson.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
 			responseJson.participant = userInstance
+            responseJson.marketplaceOptions = userInstance.marketplaceOptions
             if (userInstance.confirmed){
                 sendNotificationEmail(userInstance)
             }

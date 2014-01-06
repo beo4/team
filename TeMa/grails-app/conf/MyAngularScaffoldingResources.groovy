@@ -57,7 +57,6 @@ modules = {
 	}
 	
 	images {
-		resource url:'images/goodyear/3472_BildTitelseite.jpg', attrs:[width:980, height:420, alt:'Anschnallen']
-        resource url:'images/goodyear/PL12MODOX0030.jpg', attrs:[width:980, height:420, alt:'Das ultimative Markenerlebnis']
+		resource url:'images/SLK2014Logo.jpg', attrs:[height:318, alt:'Serviceleiterkonferenz']
 	}
 }

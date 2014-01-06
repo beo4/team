@@ -1,14 +1,12 @@
-			<div class="span11">
+
 			<p>
-			Bitte pr&uuml;fen Sie Ihre Daten auf Richtigkeit und Vollst&auml;ndigkeit, um Sie gegebenenfalls zu
-			korrigieren oder zu vervollst&auml;ndigen.<br>
-			Bei den mit einem * gekennzeichneten Feldern handelt es sich um Pflichtfelder.
+			Bitte f&uuml;llen Sie alle mit * gekennzeichneten Felder aus.
 			</p>
-			</div>
+
 		
+		<div class="grey-body">
 		<form name="form" data-ng-submit="updateParticipant(participant)" class="form-horizontal">
-		<div class="row">
-		<div class="span6 offset1">
+			<fieldset>
 					<div class="control-group" data-ng-class="{error: errors.firstname}">
 						<label class="control-label" for="salutation">Anrede*</label>
 						<div class="controls">
@@ -51,89 +49,68 @@
 							<span class="help-inline" data-ng-show="errors.lastname">{{errors.lastname}}</span>
 						</div>
 					</div>
-					<div>
-						Privatadresse:
-					</div>
-					
-					<div class="control-group" data-ng-class="{error: errors.street}">
-						<label class="control-label" for="street">Strasse, Hausnummer*</label>
-						<div class="controls">
-							<input type="text" id="street" name="street" required data-ng-model="participant.street">
-							<span class="help-inline" data-ng-show="errors.street">{{errors.street}}</span>
+					</fieldset>
+					<fieldset>
+					<legend>
+						Angaben zur Firma
+					</legend>
+					<div class="row-fluid">
+							<div class="span6">
+								<div class="control-group" data-ng-class="{error: errors.companystreet}">
+									<label class="control-label" for="companystreet">Strasse, Hausnummer*</label>
+									<div class="controls">
+										<input type="text" id="companystreet" name="companystreet" required data-ng-model="participant.companystreet">
+										<span class="help-inline" data-ng-show="errors.companystreet">{{errors.companystreet}}</span>
+									</div>
+								</div>
+								
+								<div class="control-group" data-ng-class="{error: errors.companyplz}">
+									<label class="control-label" for="companyplz">PLZ*</label>
+									<div class="controls">
+										<input type="text" id="companyplz" name="companyplz" required data-ng-model="participant.companyplz">
+										<span class="help-inline" data-ng-show="errors.companyplz">{{errors.companyplz}}</span>
+									</div>
+								</div>
+								
+								<div class="control-group" data-ng-class="{error: errors.companycity}">
+									<label class="control-label" for="companycity">Ort*</label>
+									<div class="controls">
+										<input type="text" id="companycity" name="companycity" required data-ng-model="participant.companycity">
+										<span class="help-inline" data-ng-show="errors.city">{{errors.companycity}}</span>
+									</div>
+								</div>
+								
+								<div class="control-group" data-ng-class="{error: errors.company}">
+									<label class="control-label" for="company">Firma*</label>
+									<div class="controls">
+										<input type="text" id="company" name="company" required data-ng-model="participant.company">
+										<span class="help-inline" data-ng-show="errors.company">{{errors.company}}</span>
+									</div>
+								</div>
+								
+								<div class="control-group" data-ng-class="{error: errors.companyadd}">
+									<label class="control-label" for="companyadd">Firmenzusatz</label>
+									<div class="controls">
+										<input type="text" id="companyadd" name="companyadd" data-ng-model="participant.companyadd">
+										<span class="help-inline" data-ng-show="errors.companyadd">{{errors.company}}</span>
+									</div>
+								</div>
+							</div>
+						<div class="span6">
+						<div class="control-group" data-ng-class="{error: errors.position}">
+							<label class="control-label" for="position">Position*</label>
+							<div class="controls">
+								<input type="text" id="position" name="position" required data-ng-model="participant.position">
+								<span class="help-inline" data-ng-show="errors.position">{{errors.position}}</span>
+							</div>
+						</div>
 						</div>
 					</div>
-					
-					<div class="control-group" data-ng-class="{error: errors.plz}">
-						<label class="control-label" for="plz">PLZ*</label>
-						<div class="controls">
-							<input type="text" id="plz" name="plz" required data-ng-model="participant.plz">
-							<span class="help-inline" data-ng-show="errors.plz">{{errors.plz}}</span>
-						</div>
-					</div>
-					
-					<div class="control-group" data-ng-class="{error: errors.city}">
-						<label class="control-label" for="city">Ort*</label>
-						<div class="controls">
-							<input type="text" id="city" name="city" required data-ng-model="participant.city">
-							<span class="help-inline" data-ng-show="errors.city">{{errors.city}}</span>
-						</div>
-					</div>
-					
-					<div class="control-group" data-ng-class="{error: errors.mobile}">
-						<label class="control-label" for="mobile">Telefon-/Mobilnummer*</label>
-						<div class="controls">
-							<input type="text" id="mobile" name="mobile" required data-ng-model="participant.mobile">
-							<span class="help-inline" data-ng-show="errors.mobile">{{errors.mobile}}</span>
-						</div>
-					</div>
-					
-					<div class="control-group" data-ng-class="{error: errors.company}">
-						<label class="control-label" for="company">Firma*</label>
-						<div class="controls">
-							<input type="text" id="company" name="company" required data-ng-model="participant.company">
-							<span class="help-inline" data-ng-show="errors.company">{{errors.company}}</span>
-						</div>
-					</div>
-					
-					<div class="control-group" data-ng-class="{error: errors.companyadd}">
-						<label class="control-label" for="companyadd">Firmenzusatz</label>
-						<div class="controls">
-							<input type="text" id="companyadd" name="companyadd" data-ng-model="participant.companyadd">
-							<span class="help-inline" data-ng-show="errors.companyadd">{{errors.company}}</span>
-						</div>
-					</div>
-					
-					<div class="control-group" data-ng-class="{error: errors.position}">
-						<label class="control-label" for="position">Position*</label>
-						<div class="controls">
-							<input type="text" id="position" name="position" required data-ng-model="participant.position">
-							<span class="help-inline" data-ng-show="errors.position">{{errors.position}}</span>
-						</div>
-					</div>
-					
-					<div class="control-group" data-ng-class="{error: errors.companystreet}">
-						<label class="control-label" for="companystreet">Strasse, Hausnummer*</label>
-						<div class="controls">
-							<input type="text" id="companystreet" name="companystreet" required data-ng-model="participant.companystreet">
-							<span class="help-inline" data-ng-show="errors.companystreet">{{errors.companystreet}}</span>
-						</div>
-					</div>
-					
-					<div class="control-group" data-ng-class="{error: errors.companyplz}">
-						<label class="control-label" for="companyplz">PLZ*</label>
-						<div class="controls">
-							<input type="text" id="companyplz" name="companyplz" required data-ng-model="participant.companyplz">
-							<span class="help-inline" data-ng-show="errors.companyplz">{{errors.companyplz}}</span>
-						</div>
-					</div>
-					
-					<div class="control-group" data-ng-class="{error: errors.companycity}">
-						<label class="control-label" for="companycity">Ort*</label>
-						<div class="controls">
-							<input type="text" id="companycity" name="companycity" required data-ng-model="participant.companycity">
-							<span class="help-inline" data-ng-show="errors.city">{{errors.companycity}}</span>
-						</div>
-					</div>
+					</fieldset>
+					<fieldset>
+					<legend>
+						Kontakt
+					</legend>					
 					
 					<div class="control-group" data-ng-class="{error: errors.email}">
 						<label class="control-label" for="email()">E-Mail</label>
@@ -150,21 +127,13 @@
 							<span class="help-inline" data-ng-show="errors.emailrepeat">{{errors.emailrepeat}}</span>
 						</div>
 					</div>
-        </div>
-        <div class="span4">
-	        <h3>Kontakt</h3>
-					<p>F&uuml;r Fragen zur Veranstaltung steht Ihnen das Goodyear Organisation-Team gerne zur Verf&uumlgung:</p>
-					<p>E-Mail: <a href="mailto:support@goodyear-at-porsche.de">support@goodyear-at-porsche.de</a><br>
-					Telefon: +49.8031.9010.860
-					</p>
-					<p>
-					Bitte kontaktieren Sie nicht direkt das Hotel.
-					</p>
-        </div>
-        </div>
-        <div class="span11">
+</fieldset>
+        
+        
+
         <div class="form-actions">
 						<button type="submit" class="btn btn-primary">Weiter</button>
 		</div>
-        </div>
+
         </form>
+		</div>

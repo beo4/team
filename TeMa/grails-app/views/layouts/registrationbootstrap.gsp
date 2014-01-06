@@ -37,6 +37,15 @@
 		
 			<g:layoutBody/>
 		<div class="container-fluid">
+			<div class="pull-left">
+				<span class="span10 offset2">
+					Sollten Sie organisatorische oder technische Fragen haben, steht Ihnen Ihr Organisationsteam gerne telefonisch
+					 unter der Rufnummer 08031 - 90 10 866 oder per E-Mail unter 
+					<g:link url="mailto:info@vwn-serviceleiterkonferenz.de">info@vwn-serviceleiterkonferenz.de</g:link> zur Verf&uuml;gung.
+				</span>
+			</div>
+		</div>
+		<div class="container-fluid">
 			<hr>
 
 			<footer>

@@ -43,6 +43,7 @@ class User {
 	
 	TravelOptions travelOptions
     OtherOption otherOptions
+    MarketplaceOptions marketplaceOptions
 	
 	
 	boolean account = false
@@ -82,7 +83,8 @@ class User {
 		travelOptions blank:true , nullable: true
         otherOptions blank:true , nullable: true
         travelOptions unique: true
-        otherOptions unique: true
+        otherOptions unique: true , nullable: true
+        marketplaceOptions unique: true , nullable: true
         state blank:true , nullable: true
 	}
 
@@ -90,6 +92,7 @@ class User {
 		password column: '`password`'
         travelOptions cascade:'all-delete-orphan'
         otherOptions cascade:'all-delete-orphan'
+        marketplaceOptions cascade:'all-delete-orphan'
 	}
 
 	Set<Role> getAuthorities() {
@@ -99,7 +102,7 @@ class User {
 	def beforeInsert() {
 		encodePassword()
 		// optionally, replace the dashes by adding .replaceAll('-','')
-        loginToken = UUID.randomUUID().toString().replaceAll('-','')
+        loginToken = UUID.randomUUID().toString().replaceAll('-','').subSequence(0, 8)
 	}
 
 	def beforeUpdate() {

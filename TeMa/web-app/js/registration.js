@@ -17,12 +17,12 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
     };
 
 	$scope.doTheBack = function() {
-		if ($location.$$path === "/chooseOptions") {
+		if ($location.$$path === "/chooseMarketplace") {
 			$location.path('/personelData');
 		} else if ($location.$$path === "/personelData") {
 			$location.path('/subscriptionDetails');
 		} else if ($location.$$path === "/end") {
-			$location.path('/chooseOptions');
+			$location.path('/chooseMarketplace');
 		}
 
 	};
@@ -75,6 +75,7 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 			$rootScope.subscription = item.subscription;
 			$rootScope.meeting = item.meeting;
 			$rootScope.event_i18n = item.event_i18n;
+			$rootScope.meeting_i18n = item.meeting_i18n;
 			$rootScope.salutations = item.salutations;
 
 			for (var salutation in $rootScope.salutations) {
@@ -121,7 +122,8 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 			Flash.success(response.message);
 			$rootScope.participant = new Grails();
 			angular.extend($rootScope.participant, response.participant);
-			$location.path('/chooseOptions');
+			angular.extend($rootScope.participant.marketplaceOptions, response.marketplaceOptions);
+			$location.path('/chooseMarketplace');
 
 		}, errorHandler.curry($scope, $location, Flash));
 	};

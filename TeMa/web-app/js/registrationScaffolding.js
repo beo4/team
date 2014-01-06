@@ -55,8 +55,8 @@ scaffoldingModule
 			}).when('/personelData', {
 				templateUrl : baseUrl + '/personelData.html',
 				controller : 'RegistrationCtrl'
-			}).when('/chooseOptions', {
-				templateUrl : baseUrl + '/chooseOptions.html',
+			}).when('/chooseMarketplace', {
+				templateUrl : baseUrl + '/chooseMarketplace.html',
 				controller : 'RegistrationCtrl'
 			}).when('/subscriptionDetails', {
 				templateUrl : baseUrl + '/subscriptionDetails.html',
@@ -91,32 +91,11 @@ scaffoldingModule
 						title : 'Teilnehmerdaten'
 					}, {
 						active : false,
-						title : 'Registrierung'
+						title : 'Marktplatz'
 					}, {
 						active : false,
 						title : 'Bestätigung'
 					} ];
-
-					$rootScope.vegetarienOptions = [ {
-						value : "Ich bin kein Vegetarier"
-					}, {
-						value : "Ich esse kein Fleisch, aber Fisch"
-					}, {
-						value : "Ich esse weder Fleisch noch Fisch"
-					} ];
-					$rootScope.veganOptions = [ {
-						value : "false",
-						text : "Nein"
-					}, {
-						value : "true",
-						text: "Ja"
-					} ];
-
-					$rootScope.travelOptions = {
-                            PKW: {name: 'PKW', active:false},
-                            Bahn: {name: 'Bahn', active:false},
-                            Flugzeug: {name: 'Flugzeug', active:false}
-                            };
 
 					$rootScope.travelDetail = new Grails();
 
@@ -161,6 +140,7 @@ scaffoldingModule
 																		$rootScope.meeting = item.meeting;
 																		$rootScope.event_i18n = item.event_i18n;
 																		$rootScope.salutations = item.salutations;
+																		$rootScope.marketplace = item.marketplace;
 
 																		for ( var salutation in $rootScope.salutations) {
 																			switch ($rootScope.salutations[salutation].name) {
@@ -203,10 +183,9 @@ scaffoldingModule
 											$rootScope
 													.setStep('Teilnehmerdaten');
 											break;
-										case "/chooseOptions":
+										case "/chooseMarketplace":
 											$rootScope.setStep('Registrierung');
-											$rootScope.participant.travelOptions = $rootScope.participantTravelOptions;
-											$rootScope.participant.otherOptions = $rootScope.participantOtherOptions;
+											$rootScope.participant.marketplaceOptions = $rootScope.marketplaceOptions;
 											break;
 
 										}

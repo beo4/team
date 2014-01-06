@@ -6,11 +6,23 @@
 		</div>
 		
 		<div class="span11">
-				<p>wussten Sie schon, dass Goodyear OE-Freigaben auf allen wichtigen Porsche Modellen besitzt? Zu diesem Anlass findet in diesem Sommer die 
-				exklusive Produktschulung <b>&bdquo;GOODYEAR@PORSCHE LEIPZIG 2013&rdquo;</b> statt.</p>
+				<p>herzlich willkommen zur Online-Registrierung f&uuml;r die Serviceleiter-Konferenz von Volkswagen Nutzfahrzeuge.</p>
 
-				<p>Wir freuen uns sehr, Sie vom <b>{{participantTravelOptions.arrivalDate | date:'dd.MM.yyyy'}} - {{participantTravelOptions.departureDate | date:'dd.MM.yyyy'}} ({{differenceInDays(participantTravelOptions.arrivalDate,participantTravelOptions.departureDate)}} &Uuml;bernachtungen)</b> recht herzlich zu dieser Veranstalltung nach
-				Leipzig einladen zu d&uuml;rfen.</p>
+				<p>Wir laden Sie herzlich ein, an dieser Veranstaltung teilzunehmen. Aus organisatorischen Gr&uuml;nden haben wir Sie f&uuml;r die Veranstaltung am
+				 <b>{{meeting.start | date:'dd.MM.yyyy'}}</b> in {{meeting_i18n.subtitle}} vorgesehen, die in an folgendem Veranstaltungsort stattfindet:</p>
+				 
+				 <p>
+				 {{meeting_i18n.description}}
+				 </p>
+				 
+				 <p>
+				 Wenn Sie an der Veranstaltung teilnehmen m&ouml;chten, klicken Sie bitte unten links auf den Button &quot;Zur Anmeldung&quot;.<br/>
+				 Sollten Sie an der Veranstaltung nicht teilnehmen k&ouml;nnen, teilen Sie uns dies bitte durch Klicken auf den &quot;Absage&quot;-Button mit.
+				 </p>
+				 
+				 <p>
+				 Wenn Sie pers&ouml;nlich verhindert sind, jedoch eine Vertretung schicken m&ouml;chten, klicken Sie bitte auf die Schaltfl&auml;che<br/>&quot;Vertretung schicken&quot;.
+				 </p>
 		</div>
 		<div class="span11">
 			<form name="form" data-ng-submit="updateAccount(participant)" class="form-horizontal">

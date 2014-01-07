@@ -1,84 +1,164 @@
 
 		<div class="span12">
+		<h2>
+		&Uuml;bersicht Ihrer Daten.
+		</h2>
+		
 		<p>
 				<span ng-show="participant.salutation.name == 'MR'">Sehr geehrter Herr</span> 
 				<span ng-show="participant.salutation.name == 'MS' || participant.salutation == 'MRS'">Sehr geehrte Frau</span>
 				{{participant.firstname}} {{participant.lastname}},
 		</p>
+		
+		
 		</div>
 		
 		<div class="span10" ng-show="participant.account">
 			<div ng-show="!confirmedee">
 			<p>
-			<span ng-hide="allreadySubscribed">wir freuen uns sehr, Sie zur <b>&bdquo;GOODYEAR@PORSCHE LEIPZIG 2013&rdquo;</b> begr&uuml;&szlig;en zu d&uuml;rfen. N</span><span ng-show="allreadySubscribed">n</span>achfolgend erhalten Sie eine Zusammenfassung Ihrer Anmeldedaten.
+			<p>
+			vielen Dank f&uuml;r Ihre Anmeldung. Ihre Angaben werden bei uns erst registriert, wenn Sie diese durch einen Klick auf den Button 
+			&quot;Speichern &amp; Senden&quot; best&auml;tigt haben. Wir freuen uns, Sie auf der Serviceleiter-Konferenz von Volkswagen Nutzfahreuge am 
+			<b>{{meeting.start | date:'dd.MM.yyyy'}}</b> in {{meeting_i18n.subtitle}} begr&uuml;&szlig;en zu d&uuml;rfen.
 			</p>
 			<p>
-			<h6>Teilnehmerdaten</h6>
-			<ul><li>
-			{{participant.salutation.value}} {{participant.title}} {{participant.firstname}} {{participant.lastname}}</li><li>
-			{{participant.street}}</li>
-			<li data-ng-show="participant.plz">{{participant.plz}} {{participant.city}}</li>
-			<li data-ng-show="participant.mobile">{{participant.mobile}}</li>
-			<li data-ng-show="participant.company">{{participant.company}}</li>
-			<li data-ng-show="participant.companyadd">{{participant.companyadd}}</li>
-			<li data-ng-show="participant.position">{{participant.position}}</li>
-			<li data-ng-show="participant.companystreet">{{participant.companystreet}}</li>
-			<li data-ng-show="participant.companyplz">{{participant.companyplz}} {{participant.companycity}}</li>
-			<li data-ng-show="participant.email">{{participant.email}}</li>
-			
-			</ul>
+			{{meeting_i18n.description}}
 			</p>
+			<p>
+			Sie erhalten in wenigen Minuten eine Best&auml;tigungs-E-Mail f&uuml;r Ihre Unterlagen. Eine Anfahrtsskizze sowie weitere Informationen zur Konferenz erhalten Sie kurz vor der Veranstaltung in einer gesonderten E-Mail. Alle Details k&ouml;nnen Sie jederzeit per Mausklick auf der Ihnen bekannten Internetseite www.xxx-xxxxxxxxxxxx.de, mit Ihrem bereits bekannten Code abfragen. Sollten ihr Anmeldeprozess einmal unterbrochen worden sein oder sich nachtr&auml;glich &Auml;nderungen ergeben, so k&ouml;nnen Sie sich ebenfalls jederzeit einloggen und die gew&uuml;nschten &Auml;nderungen vornehmen. 
+			</p>
+			<p>
+			Zum Abgleich noch einmal Ihre angegebenen Daten:
 			
+					<legend>
+						Angaben zur Person
+					</legend>
+					<div class="row-fluid">
+							<div class="span4">
+								Anrede
+							</div>
+							<div class="span6">
+								{{participant.salutation.value}}
+							</div>
+					</div>
+						
+					<div class="row-fluid">
+							<div class="span4">
+								Titel (akademisch)
+							</div>
+							<div class="span6">
+								{{participant.title}}
+							</div>
+					</div>
+
+					<div class="row-fluid">
+							<div class="span4">
+								Vorname
+							</div>
+							<div class="span6">
+								{{participant.firstname}}
+							</div>
+					</div>
+					
+					<div class="row-fluid">
+							<div class="span4">
+								Zweitname
+							</div>
+							<div class="span6">
+								{{participant.middlename}}
+							</div>
+					</div>
+					
+					<div class="row-fluid">
+							<div class="span4">
+								Nachname
+							</div>
+							<div class="span6">
+								{{participant.lastname}}
+							</div>
+					</div>
+
+					<legend>
+						Angaben zur Firma
+					</legend>
+					<div class="row-fluid">
+							<div class="span4">
+									Strasse, Hausnummer
+							</div>
+							<div class="span6">
+								{{participant.companystreet}}
+							</div>
+					</div>
+					<div class="row-fluid">
+							<div class="span4">
+								PLZ
+							</div>
+							<div class="span6">
+								{{participant.companyplz}}
+							</div>
+					</div>
+					<div class="row-fluid">			
+							<div class="span4">Ort</div>
+							<div class="span6">
+									{{participant.companycity}}
+							</div>
+					</div>
+					<div class="row-fluid">			
+							<div class="span4">
+								Firma
+							</div>
+							<div class="span6">
+										{{participant.company}}
+							</div>
+					</div>
+					<div class="row-fluid">
+							<div class="span4">
+								Firmenzusatz
+							</div>
+							<div class="span6">
+								{{participant.companyadd}}
+							</div>
+					</div>
+					<div class="row-fluid">
+							<div class="span4">
+								Position
+							</div>
+							<div class="span6">
+								{{participant.position}}
+							</div>
+					</div>
+					
+					<legend>
+						Kontakt
+					</legend>			
 			
-			<div  ng-show="participantTravelOptions.selectedTravelOption=='PKW'">
-			<h6>Anreise</h6>
-			<ul><li>
-				Ankunft: {{participantTravelOptions.arrivalDate}} {{participantTravelOptions.arrivalTime}}</li><li>
-				Amtliches Kennzeichen: {{participantTravelOptions.licencePlate}}
-			</li></ul>
-			<h6>Abreise</h6>
-				<ul><li>
-				Datum: {{participantTravelOptions.departureDate}}
-				</li></ul>
-			</div>
-			
-			<div  ng-show="participantTravelOptions.selectedTravelOption=='Bahn'">
-				<h6>Anreise</h6>
-				<ul><li>
-				Bahnhof: {{participantTravelOptions.arrivalStation}}</li><li>
-				Datum: {{participantTravelOptions.arrivalDate}} Uhrzeit: {{participantTravelOptions.arrivalTime}}
-				</li></ul>
-				<h6>Abreise</h6>
-				<ul><li>
-				Bahnhof: {{participantTravelOptions.departureStation}}</li><li>
-				Datum: {{participantTravelOptions.departureDate}} Uhrzeit: {{participantTravelOptions.departureTime}}
-				</li></ul>
-			</div>
-			
-			<div  ng-show="participantTravelOptions.selectedTravelOption=='Flugzeug'">
-				<h6>Anreise</h6>
-				<ul><li>
-				Flughafen: {{participantTravelOptions.arrivalStation}}</li><li>
-				Datum: {{participantTravelOptions.arrivalDate}} Uhrzeit: {{participantTravelOptions.arrivalTime}}</li><li>
-				Airline: {{participantTravelOptions.arrivalAirline}}
-				</li></ul>
-				<h6>Abreise</h6>
-				<ul><li>
-				Flughafen: {{participantTravelOptions.departureStation}}</li><li>
-				Datum: {{participantTravelOptions.departureDate}} Uhrzeit: {{participantTravelOptions.departureTime}}</li><li>
-				Airline:  {{participantTravelOptions.dapartureAirline}}
-				 </li></ul>
-			</div>
-			
-			<div>
-			<h6>Spezielle Anforderungen</h6>
-			<ul>
-			<li ng-show="participantOtherOptions.vegatarian">{{participantOtherOptions.vegatarian}}</li>
-			<li ng-show="participantOtherOptions.vegan">Ich bin Veganer</li>
-			<li ng-show="participantOtherOptions.allergy">Allergien: {{participantOtherOptions.allergy}}</li>
-			<li ng-show="participantOtherOptions.wishes">Sonderw&uuml;nsche: {{participantOtherOptions.wishes}}</li>
-			</ul>
-			</div>
+					<div class="row-fluid">
+							<div class="span4">
+								Telefon
+							</div>
+							<div class="span6">
+								{{participant.phone}}
+							</div>
+					</div>
+					
+					<div class="row-fluid">
+							<div class="span4">
+								Fax
+							</div>
+							<div class="span6">
+								{{participant.fax}}
+							</div>
+					</div>
+
+					<div class="row-fluid">
+							<div class="span4">
+								E-Mail
+							</div>
+							<div class="span6">
+								{{participant.email}}
+							</div>
+					</div>
+								
 			
 				<p>Um Ihre Anmeldung erfolgreich abzuschlie&szlig;en klicken Sie auf den Best&auml;tigungs-Button. In K&uuml;rze erhalten Sie eine schriftliche Best&auml;tigung mit der Zusammenfassung Ihrer Anmeldung per E-Mail.
 				</p>
@@ -93,7 +173,7 @@
 				
 				<div class="form-actions">
 							<a href="#chooseMarketplace" class="btn btn-primary">Zur&uuml;ck</a>
-							<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid">Best&auml;tigen</button>
+							<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid">Speichern &amp; Senden</button>
 				</div>
 				</form>
 			</div>

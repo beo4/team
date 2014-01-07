@@ -69,6 +69,7 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 		}, function(item) {
 			$rootScope.participant = new Grails();
 			angular.extend($rootScope.participant, item.participant);
+			angular.extend($rootScope.participant.marketplaceOptions, item.marketplaceOptions);
 			$rootScope.participantTravelOptions = item.travelOptions;
 			$rootScope.participantOtherOptions = item.otherOptions;
 			$rootScope.event = item.participant.event;
@@ -134,6 +135,7 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 				Flash.success(response.message);
 				$rootScope.participant = new Grails();
 				angular.extend($rootScope.participant, response.participant);
+				angular.extend($rootScope.participant.marketplaceOptions, response.marketplaceOptions);
 				$scope.confirmedee = true;
 	
 			}, errorHandler.curry($scope, $location, Flash));
@@ -144,10 +146,11 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 	$scope.updateOptions = function(item) {
 		
 				
-		item.$saveTravelOptions(function(response) {
+		item.$update(function(response) {
 			Flash.success(response.message);
-			// $rootScope.participant = new Grails;
+			$rootScope.participant = new Grails;
 			angular.extend($rootScope.participant, response.participant);
+			angular.extend($rootScope.participant.marketplaceOptions, response.marketplaceOptions);
 			$location.path('/end');
 			
 		}, errorHandler.curry($scope, $location, Flash));
@@ -166,6 +169,7 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 			Flash.success(response.message);
 			// $rootScope.participant = new Grails;
 			angular.extend($rootScope.participant, item.participant);
+			angular.extend($rootScope.participant.marketplaceOptions, item.marketplaceOptions);
 			if ($rootScope.participant.account) {
 				$location.path('/personelData');
 			} else {

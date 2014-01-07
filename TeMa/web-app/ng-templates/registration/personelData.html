@@ -112,6 +112,22 @@
 						Kontakt
 					</legend>					
 					
+					<div class="control-group" data-ng-class="{error: errors.phone}">
+						<label class="control-label" for="email()">Telefon</label>
+						<div class="controls">
+							<input type="text" id="phone" name="phone" required data-ng-model="participant.phone">
+							<span class="help-inline" data-ng-show="errors.phone">{{errors.phone}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group" data-ng-class="{error: errors.fax}">
+						<label class="control-label" for="fax">Fax</label>
+						<div class="controls">
+							<input type="text" id="fax" name="fax" required data-ng-model="participant.fax">
+							<span class="help-inline" data-ng-show="errors.fax">{{errors.fax}}</span>
+						</div>
+					</div>
+					
 					<div class="control-group" data-ng-class="{error: errors.email}">
 						<label class="control-label" for="email()">E-Mail</label>
 						<div class="controls">

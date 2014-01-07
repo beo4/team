@@ -12,6 +12,7 @@ angular.module('grailsService', ['ngResource']).factory('Grails', function($reso
 		confirm: {method: 'POST', params: {action: 'confirm'}},
 		save: {method: 'POST', params: {action: 'save'}},
 		saveTravelOptions: {method: 'POST', params: {action: 'saveTravelOptions'}},
+		updateMarketplaceOptions: {method: 'POST', params: {action: 'updateMarketplaceOptions'}},
 		account: {method: 'GET', params: {action: 'loadParticipantData'}}
 	});
 });

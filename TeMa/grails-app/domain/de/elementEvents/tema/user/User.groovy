@@ -30,6 +30,7 @@ class User {
 	
 	String phone = ""
 	String mobile = ""
+    String fax = ""
 	
 	String company = ""
 	String companyadd = ""
@@ -71,6 +72,7 @@ class User {
 		city blank: true, nullable: true
 		country blank: true, nullable: true
 		phone blank: true, nullable: true
+        fax blank: true, nullable: true
 		mobile blank: true, nullable: true
 		middlename  blank: true, nullable: true
 		title blank: true, nullable: true

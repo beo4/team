@@ -184,8 +184,7 @@ scaffoldingModule
 													.setStep('Teilnehmerdaten');
 											break;
 										case "/chooseMarketplace":
-											$rootScope.setStep('Registrierung');
-											$rootScope.participant.marketplaceOptions = $rootScope.marketplaceOptions;
+											$rootScope.setStep('Marktplatz');
 											break;
 
 										}

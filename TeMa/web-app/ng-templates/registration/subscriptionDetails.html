@@ -27,13 +27,16 @@
 		<div class="span11">
 			<form name="form" data-ng-submit="updateAccount(participant)" class="form-horizontal">
 				<div class="control-group" data-ng-class="{error: errors.account}">
-						<label class="radio" for="account"><input class="gyblue" type="radio" value="true" required name="account" data-ng-model="participant.account"> Ich nehme sehr gerne an der Veranstaltung teil.</label>
-					</div>
+					<label class="radio" for="account"><input type="radio" value="true" required name="account" data-ng-model="participant.account"> Ich nehme sehr gerne an der Veranstaltung teil.</label>
+				</div>
 				<div class="control-group" data-ng-class="{error: errors.account}">
-						<label class="radio" for="account"><input class="gyblue" type="radio" value="false" required name="account" data-ng-model="participant.account"> Leider kann ich an der Veranstaltung nicht teilnehmen.</label>
-					</div>
-					<div class="form-actions">
-						<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid">Weiter</button>
-					</div>
+					<label class="radio" for="account"><input type="radio" value="representativ" required name="account" data-ng-model="participant.account"> Ich m&ouml;chte einen Vertreter schicken, kann selber aber nicht kommen</label>
+				</div>
+				<div class="control-group" data-ng-class="{error: errors.account}">
+					<label class="radio" for="account"><input type="radio" value="false" required name="account" data-ng-model="participant.account"> Leider kann ich an der Veranstaltung nicht teilnehmen.</label>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid">Weiter</button>
+				</div>
 			</form>
 		</div>

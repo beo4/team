@@ -166,4 +166,4 @@ grails {
       
     }
  }
-grails.mail.default.from="support@goodyear-at-porsche.de"
+grails.mail.default.from="support@vwn-serviceleiterkonferenz.de"

@@ -128,6 +128,21 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 
 		}, errorHandler.curry($scope, $location, Flash));
 	};
+	
+	$scope.createRepresentativ = function(item) {
+		item.meeting = $rootScope.meeting;
+		item.event = $rootScope.event;
+		item.language = $rootScope.participant.language;
+		
+		item.$createRepresentativ(function(response) {
+			Flash.success(response.message);
+			$rootScope.participant = new Grails();
+			angular.extend($rootScope.participant, response.participant);
+			angular.extend($rootScope.participant.marketplaceOptions, response.marketplaceOptions);
+			$location.path('/chooseMarketplace');
+
+		}, errorHandler.curry($scope, $location, Flash));
+	};
 
 	$scope.confirmParticipant = function(item) {
 
@@ -163,8 +178,12 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 	};
 
 	$scope.updateAccount = function(item) {
+		var representativ = false;
+		
 		item.confirmed = false;
 		item.state = 'CONFIRMED';
+		representativ = (item.account === "representativ") ? !(item.account = false):true; 
+		
 		item.$update(function(response) {
 			Flash.success(response.message);
 			// $rootScope.participant = new Grails;
@@ -173,7 +192,12 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 			if ($rootScope.participant.account) {
 				$location.path('/personelData');
 			} else {
-				$location.path('/end');
+				if (representativ) {
+					$rootScope.item = new Grails;
+					$location.path('/chooseRepresentative'); 
+				}  else {
+					$location.path('/end');
+				}
 			}
 
 		}, errorHandler.curry($scope, $location, Flash));

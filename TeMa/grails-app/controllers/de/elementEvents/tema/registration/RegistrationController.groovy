@@ -2,6 +2,8 @@ package de.elementEvents.tema.registration
 
 import java.awt.GraphicsConfiguration.DefaultBufferCapabilities;
 
+import javax.validation.Validation;
+
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils;
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.mail.MailException
@@ -308,5 +310,53 @@ class RegistrationController {
             attachBytes 'Anfahrtsbeschreibung.pdf','application/pdf', grailsApplication.parentContext.getResource('email/Anfahrtsbeschreibung.pdf').getFile().readBytes()
           }
     }
+    
+    def createRepresentativ() {
+        def userInstance = new User(request.JSON)
+        int eventId = request.JSON.event.id
+        
+        userInstance.event = Event.get(eventId)
+        userInstance.setSalutation(Salutation.valueOf(request.JSON.salutation.name))
+        
+        userInstance.username = UUID.randomUUID().toString().replaceAll("-", "");
+        userInstance.password = UUID.randomUUID().toString().replaceAll("-", "");
+        
+        def responseJson = [:]
+        
+        
+        if (request.JSON.emailrepeat != userInstance.email) {
+            response.status = SC_UNPROCESSABLE_ENTITY
+            responseJson.errors = userInstance.errors.rejectValue("email", "nicht identisch")
+            responseJson.errors = userInstance.errors.fieldErrors.collectEntries {
+                [(it.field): message(error: it)]
+            }
+            
+            
+        }else if (userInstance.save(flush: true)) {
+            
+            if (request.JSON.meeting) {
+                def meeting = Meeting.get(request.JSON.meeting.id)
+                Subscription subscription = new Subscription()
+                subscription.meeting = meeting
+                subscription.user = userInstance
+                    if (subscription.save(flush: true)) {
+                        response.status = SC_CREATED
+                        responseJson.id = userInstance.id
+                        responseJson.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
+                    }
+                }
+            
+            response.status = SC_CREATED
+            responseJson.id = userInstance.id
+            responseJson.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
+        } else {
+            response.status = SC_UNPROCESSABLE_ENTITY
+            responseJson.errors = userInstance.errors.fieldErrors.collectEntries {
+                [(it.field): message(error: it)]
+            }
+        }
+        render responseJson as JSON
+    }
+    
     
 }

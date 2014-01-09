@@ -6,6 +6,9 @@
 		
 		<div class="grey-body">
 		<form name="form" data-ng-submit="updateParticipant(participant)" class="form-horizontal">
+		<legend>
+						Angaben zur Person
+					</legend>
 			<fieldset>
 					<div class="control-group" data-ng-class="{error: errors.firstname}">
 						<label class="control-label" for="salutation">Anrede*</label>
@@ -31,14 +34,6 @@
 						<div class="controls">
 							<input type="text" id="firstname" name="firstname" required data-ng-model="participant.firstname">
 							<span class="help-inline" data-ng-show="errors.firstname">{{errors.description}}</span>
-						</div>
-					</div>
-					
-					<div class="control-group" data-ng-class="{error: errors.firstname}">
-						<label class="control-label" for="firstname">Zweitname</label>
-						<div class="controls">
-							<input type="text" id="middlename" name="middlename" data-ng-model="participant.middlename">
-							<span class="help-inline" data-ng-show="errors.middlename">{{errors.description}}</span>
 						</div>
 					</div>
 					
@@ -81,7 +76,7 @@
 								</div>
 								
 								<div class="control-group" data-ng-class="{error: errors.company}">
-									<label class="control-label" for="company">Firma*</label>
+									<label class="control-label" for="company">Betrieb*</label>
 									<div class="controls">
 										<input type="text" id="company" name="company" required data-ng-model="participant.company">
 										<span class="help-inline" data-ng-show="errors.company">{{errors.company}}</span>
@@ -89,7 +84,7 @@
 								</div>
 								
 								<div class="control-group" data-ng-class="{error: errors.companyadd}">
-									<label class="control-label" for="companyadd">Firmenzusatz</label>
+									<label class="control-label" for="companyadd">Betriebsnummer</label>
 									<div class="controls">
 										<input type="text" id="companyadd" name="companyadd" data-ng-model="participant.companyadd">
 										<span class="help-inline" data-ng-show="errors.companyadd">{{errors.company}}</span>
@@ -148,7 +143,7 @@
         
 
         <div class="form-actions">
-						<button type="submit" class="btn btn-primary">Weiter</button>
+						<button type="submit" class="btn btn-primary pull-right">Weiter <i class="icon-play"></i></button>
 		</div>
 
         </form>

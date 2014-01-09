@@ -1,18 +1,14 @@
-
-		<div class="span11">
+				<h2>Willkommen in ihrem pers&ouml;nlichen Anmeldeportal.</h2>
 				<p><span ng-show="participant.salutation.name == 'MR'">Sehr geehrter Herr</span> 
 				<span ng-show="participant.salutation.name == 'MS' || participant.salutation == 'MRS'">Sehr geehrte Frau</span>
 				{{participant.firstname}} {{participant.lastname}},</p>
-		</div>
 		
-		<div class="span11">
 				<p>herzlich willkommen zur Online-Registrierung f&uuml;r die Serviceleiter-Konferenz von Volkswagen Nutzfahrzeuge.</p>
 
 				<p>Wir laden Sie herzlich ein, an dieser Veranstaltung teilzunehmen. Aus organisatorischen Gr&uuml;nden haben wir Sie f&uuml;r die Veranstaltung am
-				 <b>{{meeting.start | date:'dd.MM.yyyy'}}</b> in {{meeting_i18n.subtitle}} vorgesehen, die in an folgendem Veranstaltungsort stattfindet:</p>
+				 <b>{{meeting.start | date:'dd.MM.yyyy'}}</b> in <b>{{meeting_i18n.subtitle}}</b> vorgesehen, die in an folgendem Veranstaltungsort stattfindet:</p>
 				 
-				 <p>
-				 {{meeting_i18n.description}}
+				 <p ng-bind-html-unsafe="meeting_i18n.description">
 				 </p>
 				 
 				 <p>
@@ -23,20 +19,14 @@
 				 <p>
 				 Wenn Sie pers&ouml;nlich verhindert sind, jedoch eine Vertretung schicken m&ouml;chten, klicken Sie bitte auf die Schaltfl&auml;che<br/>&quot;Vertretung schicken&quot;.
 				 </p>
-		</div>
-		<div class="span11">
-			<form name="form" data-ng-submit="updateAccount(participant)" class="form-horizontal">
-				<div class="control-group" data-ng-class="{error: errors.account}">
-					<label class="radio" for="account"><input type="radio" value="true" required name="account" data-ng-model="participant.account"> Ich nehme sehr gerne an der Veranstaltung teil.</label>
-				</div>
-				<div class="control-group" data-ng-class="{error: errors.account}">
-					<label class="radio" for="account"><input type="radio" value="representativ" required name="account" data-ng-model="participant.account"> Ich m&ouml;chte einen Vertreter schicken, kann selber aber nicht kommen</label>
-				</div>
-				<div class="control-group" data-ng-class="{error: errors.account}">
-					<label class="radio" for="account"><input type="radio" value="false" required name="account" data-ng-model="participant.account"> Leider kann ich an der Veranstaltung nicht teilnehmen.</label>
-				</div>
-				<div class="form-actions">
-					<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid">Weiter</button>
-				</div>
+			<form name="form" class="form-horizontal">
+				<span class="span3">
+					<button class="btn btn-primary" ng-click="updateAccount(participant, 'CONFIRMED')">Zur Anmeldung <i class="icon-play"></i></button>
+				</span>
+				<span class="span3">
+					<button class="btn btn-primary" ng-click="updateAccount(participant, 'REPRESENTATIV') ">Vertretung schicken<i class="icon-play"></i></button>
+				</span>
+				<span class="span3">
+					<button class="btn btn-primary" ng-click="updateAccount(participant, 'REFUSED') ">Absage<i class="icon-play"></i></button>
+				</span>
 			</form>
-		</div>

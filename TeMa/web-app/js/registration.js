@@ -97,7 +97,9 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 
 			if (!item.participant.language)
 				$location.path('/chooseLanguage');
-			else if ($rootScope.subscription) {
+			else if (item.participant.state.name === "REPRESENTATIV") {
+				$location.path('/representativ');
+			} else if ($rootScope.subscription) {
 				$location.path('/subscriptionDetails');
 			} else {
 				$location.path('/chooseMeeting');
@@ -136,10 +138,7 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 		
 		item.$createRepresentativ(function(response) {
 			Flash.success(response.message);
-			$rootScope.participant = new Grails();
-			angular.extend($rootScope.participant, response.participant);
-			angular.extend($rootScope.participant.marketplaceOptions, response.marketplaceOptions);
-			$location.path('/chooseMarketplace');
+			$location.path('/chooseRepresentativeEnd');
 
 		}, errorHandler.curry($scope, $location, Flash));
 	};
@@ -177,12 +176,11 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 		$scope.isEmailChanged = true;
 	};
 
-	$scope.updateAccount = function(item) {
+	$scope.updateAccount = function(item, state) {
 		var representativ = false;
-		
+		item.state = state;
 		item.confirmed = false;
-		item.state = 'CONFIRMED';
-		representativ = (item.account === "representativ") ? !(item.account = false):true; 
+		item.state ===  "CONFIRMED" ? item.account = true : item.account = false;
 		
 		item.$update(function(response) {
 			Flash.success(response.message);
@@ -192,7 +190,7 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 			if ($rootScope.participant.account) {
 				$location.path('/personelData');
 			} else {
-				if (representativ) {
+				if (item.state.name === "REPRESENTATIV") {
 					$rootScope.item = new Grails;
 					$location.path('/chooseRepresentative'); 
 				}  else {

@@ -143,7 +143,7 @@ enum Salutation {
 }
 
 enum Status {
-    UDEF("undefined"), CONFIRMED("confirmed"), REFUSED('refused')
+    UDEF("undefined"), CONFIRMED("confirmed"), REFUSED('refused'), REPRESENTATIV('representativ')
     Status(String value) { this.value = value }
     final String value
     String getKey() { name() }

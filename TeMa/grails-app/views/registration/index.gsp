@@ -35,7 +35,9 @@
 		</div>
 		</div>
         <div class="row-fluid">
-        	<div class="span7 offset3 mainContent" role="main" data-ng-view>
+        	<div class="span8 offset2" >
+        	<div class="span11 offset1 mainContent" role="main" data-ng-view>
+        	</div>
         	</div>
         </div>
         </div>

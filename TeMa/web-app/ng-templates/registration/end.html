@@ -1,5 +1,4 @@
 
-		<div class="span12">
 		<h2>
 		&Uuml;bersicht Ihrer Daten.
 		</h2>
@@ -10,22 +9,19 @@
 				{{participant.firstname}} {{participant.lastname}},
 		</p>
 		
-		
-		</div>
-		
-		<div class="span10" ng-show="participant.account">
+		<div ng-show="participant.account">
 			<div ng-show="!confirmedee">
-			<p>
 			<p>
 			vielen Dank f&uuml;r Ihre Anmeldung. Ihre Angaben werden bei uns erst registriert, wenn Sie diese durch einen Klick auf den Button 
 			&quot;Speichern &amp; Senden&quot; best&auml;tigt haben. Wir freuen uns, Sie auf der Serviceleiter-Konferenz von Volkswagen Nutzfahreuge am 
 			<b>{{meeting.start | date:'dd.MM.yyyy'}}</b> in {{meeting_i18n.subtitle}} begr&uuml;&szlig;en zu d&uuml;rfen.
 			</p>
+			<p ng-bind-html-unsafe="meeting_i18n.description">
+				 </p>
 			<p>
-			{{meeting_i18n.description}}
-			</p>
+			Sie erhalten in wenigen Minuten eine Best&auml;tigungs-E-Mail f&uuml;r Ihre Unterlagen. Eine Anfahrtsskizze sowie weitere Informationen zur Konferenz erhalten Sie kurz vor der Veranstaltung in einer gesonderten E-Mail. </p>
 			<p>
-			Sie erhalten in wenigen Minuten eine Best&auml;tigungs-E-Mail f&uuml;r Ihre Unterlagen. Eine Anfahrtsskizze sowie weitere Informationen zur Konferenz erhalten Sie kurz vor der Veranstaltung in einer gesonderten E-Mail. Alle Details k&ouml;nnen Sie jederzeit per Mausklick auf der Ihnen bekannten Internetseite www.xxx-xxxxxxxxxxxx.de, mit Ihrem bereits bekannten Code abfragen. Sollten ihr Anmeldeprozess einmal unterbrochen worden sein oder sich nachtr&auml;glich &Auml;nderungen ergeben, so k&ouml;nnen Sie sich ebenfalls jederzeit einloggen und die gew&uuml;nschten &Auml;nderungen vornehmen. 
+			Alle Details k&ouml;nnen Sie jederzeit per Mausklick auf der Ihnen bekannten Internetseite www.xxx-xxxxxxxxxxxx.de, mit Ihrem bereits bekannten Code abfragen. Sollten ihr Anmeldeprozess einmal unterbrochen worden sein oder sich nachtr&auml;glich &Auml;nderungen ergeben, so k&ouml;nnen Sie sich ebenfalls jederzeit einloggen und die gew&uuml;nschten &Auml;nderungen vornehmen. 
 			</p>
 			<p>
 			Zum Abgleich noch einmal Ihre angegebenen Daten:
@@ -160,7 +156,8 @@
 					</div>
 								
 			
-				<p>Um Ihre Anmeldung erfolgreich abzuschlie&szlig;en klicken Sie auf den Best&auml;tigungs-Button. In K&uuml;rze erhalten Sie eine schriftliche Best&auml;tigung mit der Zusammenfassung Ihrer Anmeldung per E-Mail.
+				<p>
+				Um Ihre Anmeldung erfolgreich abzuschlie&szlig;en klicken Sie auf den Best&auml;tigungs-Button. In K&uuml;rze erhalten Sie eine schriftliche Best&auml;tigung mit der Zusammenfassung Ihrer Anmeldung per E-Mail.
 				</p>
 				<form data-ng-submit="confirmParticipant(participant)" >
 				<div class="control-group" data-ng-class="{error: errors.confirmed}">
@@ -172,8 +169,8 @@
 			    </div>
 				
 				<div class="form-actions">
-							<a href="#chooseMarketplace" class="btn btn-primary">Zur&uuml;ck</a>
-							<button type="submit" class="btn btn-primary" data-ng-disabled="form.$invalid">Speichern &amp; Senden</button>
+							<button data-ng-click="doTheBack()" class="btn btn-primary"><i class="icon-play flip-horizontal"></i>Zur&uuml;ck</button>
+							<button type="submit" class="btn btn-primary pull-right" data-ng-disabled="form.$invalid">Speichern &amp; Senden</button>
 				</div>
 				</form>
 			</div>
@@ -181,16 +178,13 @@
 				<p><b>Danke f&uuml;r Ihre Anmeldung. Ihre Daten wurden gespeichert.</b></p>
 			</div>
 			<p>
-			Bitte informieren Sie uns umgehend, sollten Sie die Teilnahme an der Veranstaltung komplett stornieren m&uuml;ssen.
-			Eine &Auml;nderung Ihrer pers&ouml;nlichen Daten und/oder Reisedaten ist bis zum 14.06.2013 m&ouml;glich.
+			Mit freundlichen Gr&uuml;&szlig;en
 			</p>
-			<p>
-			Mit freundlichen Gr&uuml;&szlig;en</p>
 			<p>
 			Ihr VW Nutzfahrzeuge Organsiation-Team.
 				</p>
 		</div>
-		<div class="span10" ng-show="!participant.account">
+		<div ng-show="!participant.account">
 		<p>
 		wir bedauern sehr, dass eine Teilnahme f&uuml;r Sie an der Serviceleiter Konferenz 2014 nicht m&ouml;glich ist.<br/>Falls Sie wieder Erwarten doch teilnehmen m&ouml;chten, k&ouml;nnen Sie sich jederzeit wieder f&uuml;r die Veranstaltung,<br/>mit Ihrem pers&ouml;nlichen Login Code anmelden.<br/><br/>Wir w&uuml;rden uns sehr freuen Sie im n&auml;chsten Jahr wieder zu dieser Veranstatlung begr&uuml;&szlig;en zu d&uuml;rfen.<br/><br/>
 		 </p>

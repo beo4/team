@@ -38,9 +38,9 @@
 			<g:layoutBody/>
 		<div class="container-fluid">
 			<div class="pull-left">
-				<span class="span10 offset2">
+				<span class="span9 offset2">
 					Sollten Sie organisatorische oder technische Fragen haben, steht Ihnen Ihr Organisationsteam gerne telefonisch
-					 unter der Rufnummer 08031 - 90 10 866 oder per E-Mail unter 
+					 unter der <span style="white-space: nowrap;">Rufnummer 08031 - 90 10 866</span> oder per E-Mail unter 
 					<g:link url="mailto:info@vwn-serviceleiterkonferenz.de">info@vwn-serviceleiterkonferenz.de</g:link> zur Verf&uuml;gung.
 				</span>
 			</div>
@@ -49,15 +49,14 @@
 			<hr>
 
 			<footer>
-				<div class="pull-left">
+				<div class="pull-right">
 				<span class="span2">
 					<a href="#datenschutz" target="_blank">Datenschutzerkl&auml;rung</a>
 				</span>
 				<span class="span2">
 					<a href="#impressum" target="_blank">Impressum</a>
 				</span>
-				</div>
-				<div class="pull-right"><p>&copy; element-events 2013</p></div>
+				<span class="span2">&copy; VW Nutzfahrzeuge 2014</span></div>
 			</footer>
 		</div>
 

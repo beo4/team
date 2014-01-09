@@ -16,6 +16,7 @@ import de.elementEvents.tema.subscription.Subscription
 import de.elementEvents.tema.user.MarketplaceOptions;
 import de.elementEvents.tema.user.OtherOption
 import de.elementEvents.tema.user.Salutation;
+import de.elementEvents.tema.user.Status;
 import de.elementEvents.tema.user.TravelOptions;
 import de.elementEvents.tema.user.User;
 import grails.converters.JSON
@@ -320,6 +321,7 @@ class RegistrationController {
         
         userInstance.username = UUID.randomUUID().toString().replaceAll("-", "");
         userInstance.password = UUID.randomUUID().toString().replaceAll("-", "");
+        
         
         def responseJson = [:]
         

@@ -1,0 +1,65 @@
+<p>
+Bitte geben Sie die pers&ouml;nlichen Daten Ihrer Vertretung ein.<br/>
+nach Klicken auf den Button &quot;Speichern und Senden&quot; erh&auml;lt Ihre Vertretung in K&uuml;rze Ihre Einladung mit dem 
+pers&ouml;nlichen Zugangscode.
+</p>
+<p>
+Bitte f&uuml;llen Sie allem mit * gekennzeichneten Felder aus.
+</p>
+
+				<form name="form" data-ng-submit="createRepresentativ(item)" class="form-horizontal">
+					<div class="row-fluid">
+						<div class="span6">
+							<div class="control-group" data-ng-class="{error: errors.firstname}">
+								<label class="control-label" for="firstname">Salutation</label>
+								<div class="controls">
+									<select type="text" id="salutation" name="salutation" ng-model="item.salutation" ng-options="salutation.value for salutation in salutations">
+		      						</select>
+									<span class="help-inline" data-ng-show="errors.salutation">{{errors.salutation}}</span>
+								</div>
+							</div>
+								
+							<div class="control-group" data-ng-class="{error: errors.firstname}">
+								<label class="control-label" for="firstname">Firstname</label>
+								<div class="controls">
+									<input type="text" id="firstname" name="firstname" required data-ng-model="item.firstname">
+									<span class="help-inline" data-ng-show="errors.firstname">{{errors.firstname}}</span>
+								</div>
+							</div>
+							
+								
+							
+								
+							<div class="control-group" data-ng-class="{error: errors.lastname}">
+								<label class="control-label" for="lastname">Lastname</label>
+								<div class="controls">
+									<input type="text" id="lastname" name="lastname" required data-ng-model="item.lastname">
+									<span class="help-inline" data-ng-show="errors.lastname">{{errors.lastname}}</span>
+								</div>
+							</div>
+						</div>					
+						
+						
+						<div class="span6">
+							<div class="control-group" data-ng-class="{error: errors.email}">
+								<label class="control-label" for="email">Email*</label>
+								<div class="controls">
+									<input type="email" id="email" name="email" required data-ng-model="item.email">
+									<span class="help-inline" data-ng-show="errors.email">{{errors.email}}</span>
+								</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.email}">
+								<label class="control-label" for="email">Email best&auml;tigen*</label>
+								<div class="controls">
+									<input type="email" id="email" name="email" required data-ng-model="item.emailrepeat">
+									<span class="help-inline" data-ng-show="errors.email">{{errors.emailrepeat}}</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="form-actions">
+						<button type="submit" class="btn btn-primary pull-right" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Speichern &amp; weiter</button>
+					</div>
+				</form>
+

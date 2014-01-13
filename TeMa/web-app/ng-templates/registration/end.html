@@ -58,15 +58,6 @@
 					
 					<div class="row-fluid">
 							<div class="span4">
-								Zweitname
-							</div>
-							<div class="span6">
-								{{participant.middlename}}
-							</div>
-					</div>
-					
-					<div class="row-fluid">
-							<div class="span4">
 								Nachname
 							</div>
 							<div class="span6">
@@ -101,7 +92,7 @@
 					</div>
 					<div class="row-fluid">			
 							<div class="span4">
-								Firma
+								Betrieb
 							</div>
 							<div class="span6">
 										{{participant.company}}
@@ -109,10 +100,10 @@
 					</div>
 					<div class="row-fluid">
 							<div class="span4">
-								Firmenzusatz
+								Betriebsnummer
 							</div>
 							<div class="span6">
-								{{participant.companyadd}}
+								{{participant.companynr}}
 							</div>
 					</div>
 					<div class="row-fluid">
@@ -154,11 +145,68 @@
 								{{participant.email}}
 							</div>
 					</div>
-								
+							
+					<legend>
+						Marktplatzthemen
+					</legend>
+						
+					<div class="row-fluid">
+							<div class="span10">
+
+					<span ng-show="participant.marketplaceOptions.aufbauherstellermanagement && participant.marketplaceOptions.aufbauherstellermanagement!=null">Aufbauherstellermanagement</span>
+					
+					<span ng-show="participant.marketplaceOptions.spezialfahrzeuge && participant.marketplaceOptions.spezialfahrzeuge != null">Business Unit Spezialfahrzeuge</span>
+
+<span ng-show="participant.marketplaceOptions.careport && participant.marketplaceOptions.careport != null">Care Port</span>
+
+<span ng-show="participant.marketplaceOptions.classicparts && participant.marketplaceOptions.classicparts != null">Classic Parts</span>
+				
+<span ng-show="participant.marketplaceOptions.euromobil && participant.marketplaceOptions.euromobil != null">Euromobil</span>
+				
+<span ng-show="participant.marketplaceOptions.feldbeobachtung && participant.marketplaceOptions.feldbeobachtung != null">Feldbeobachtung</span>
+				
+<span ng-show="participant.marketplaceOptions.gewahrleistung && participant.marketplaceOptions.gewahrleistung != null">Gew&auml;hrleistung</span>
+
+<span ng-show="participant.marketplaceOptions.grosskundenbetreuung && participant.marketplaceOptions.grosskundenbetreuung != null">Gro&szlig;kundenbetreuung</span>
+				
+<span ng-show="participant.marketplaceOptions.heritage && participant.marketplaceOptions.heritage != null">Heritage</span>
+				
+<span ng-show="participant.marketplaceOptions.ihvpost && participant.marketplaceOptions.ihvpost != null">IHV Post</span>
+				
+<span ng-show="participant.marketplaceOptions.unfallverhutung && participant.marketplaceOptions.unfallverhutung != null">Unfallverh&uuml;tungsvorschrift</span>
+
+<span ng-show="participant.marketplaceOptions.inspektion && participant.marketplaceOptions.inspektion != null">Inspektion &amp; Wartung</span>
+				
+<span ng-show="participant.marketplaceOptions.kbaservice && participant.marketplaceOptions.kbaservice != null">KBA Service</span>
+				
+<span ng-show="participant.marketplaceOptions.marktchancen && participant.marketplaceOptions.marktchancen != null">Marktchancen</span>
+				
+				<span ng-show="participant.marketplaceOptions.originalteile && participant.marketplaceOptions.originalteile != null">Original Teile</span>
+				
+				<span ng-show="participant.marketplaceOptions.serviceapp && participant.marketplaceOptions.serviceapp != null">Service APP</span>
+				
+				<span ng-show="participant.marketplaceOptions.planungimah && participant.marketplaceOptions.planungimah != null">Planungssysteme im AH</span>
+				
+				<span ng-show="participant.marketplaceOptions.produktbetreuung && participant.marketplaceOptions.produktbetreuung != null">Produktbetreuung</span>
+				
+				<span ng-show="participant.marketplaceOptions.servicemarketing && participant.marketplaceOptions.servicemarketing != null">Service Marketing</span>
+				
+				<span ng-show="participant.marketplaceOptions.servicequalifizierungen && participant.marketplaceOptions.servicequalifizierungen != null">Service Qualifizierungen</span>
+				
+				<span ng-show="participant.marketplaceOptions.servicestandards && participant.marketplaceOptions.servicestandards != null">Service Standards</span>
+				
+				<span ng-show="participant.marketplaceOptions.skpcommerce && participant.marketplaceOptions.skpcommerce != null">SKPcommerce</span>
+				
+				<span ng-show="participant.marketplaceOptions.taxi && participant.marketplaceOptions.taxi != null">Taxi</span>
+				
+				<span ng-show="participant.marketplaceOptions.leasing && participant.marketplaceOptions.leasing != null">Volkswagen Leasing</span>
+				
+				<span ng-show="participant.marketplaceOptions.merchandising && participant.marketplaceOptions.merchandising != null">VW Zubeh&ouml;r &amp; Merchandising</span>
+				
+			    <span ng-show="participant.marketplaceOptions.other && participant.marketplaceOptions.other != null">{{participant.marketplaceOptions.other}}</span>
+							</div>
+					</div>
 			
-				<p>
-				Um Ihre Anmeldung erfolgreich abzuschlie&szlig;en klicken Sie auf den Best&auml;tigungs-Button. In K&uuml;rze erhalten Sie eine schriftliche Best&auml;tigung mit der Zusammenfassung Ihrer Anmeldung per E-Mail.
-				</p>
 				<form data-ng-submit="confirmParticipant(participant)" >
 				<div class="control-group" data-ng-class="{error: errors.confirmed}">
 				<label class="checkbox" >

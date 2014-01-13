@@ -34,7 +34,9 @@ class User {
 	
 	String company = ""
 	String companyadd = ""
+    String companynr = ""
 	String position = ""
+    String positionAddon = ""
 	String companystreet = ""
 	String companyplz = ""
 	String companycity = ""
@@ -49,6 +51,7 @@ class User {
 	
 	boolean account = false
 	boolean confirmed = false
+    boolean representative = false
     
     Status state = Status.UDEF
     

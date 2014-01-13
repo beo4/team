@@ -175,6 +175,14 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 	$scope.emailChanged = function() {
 		$scope.isEmailChanged = true;
 	};
+	
+	$scope.isSelected = function(object) {
+		if (object instanceof String || object instanceof boolean) {
+			return object != null && object
+		}
+		
+		return false
+	}
 
 	$scope.updateAccount = function(item, state) {
 		var representativ = false;

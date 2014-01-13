@@ -29,6 +29,8 @@ class RegistrationController {
 	static public main = true
 
     static final int SC_UNPROCESSABLE_ENTITY = 422
+    
+    static final String EMAIL = "info@serviceleiterkonferenz.de"
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
@@ -303,10 +305,23 @@ class RegistrationController {
         mailService.sendMail {
             multipart true
             to user.email
-            from "support@goodyear-at-porsche.de"
-            replyTo "support@goodyear-at-porsche.de"
+            from EMAIL
+            replyTo EMAIL
             subject "Teilnahmebestätigung"
             html g.render(template:"/email/emailTmpl",
+                model:[participant:user])
+            attachBytes 'Anfahrtsbeschreibung.pdf','application/pdf', grailsApplication.parentContext.getResource('email/Anfahrtsbeschreibung.pdf').getFile().readBytes()
+          }
+    }
+    
+    private sendRepresentativNotificationEmail(User user){
+        mailService.sendMail {
+            multipart true
+            to user.email
+            from EMAIL
+            replyTo EMAIL
+            subject "Einladung"
+            html g.render(template:"/email/emailRepTmpl",
                 model:[participant:user])
             attachBytes 'Anfahrtsbeschreibung.pdf','application/pdf', grailsApplication.parentContext.getResource('email/Anfahrtsbeschreibung.pdf').getFile().readBytes()
           }
@@ -322,6 +337,7 @@ class RegistrationController {
         userInstance.username = UUID.randomUUID().toString().replaceAll("-", "");
         userInstance.password = UUID.randomUUID().toString().replaceAll("-", "");
         
+        userInstance.representative = true        
         
         def responseJson = [:]
         
@@ -347,6 +363,8 @@ class RegistrationController {
                         responseJson.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
                     }
                 }
+            
+            sendRepresentativNotificationEmail(userInstance)
             
             response.status = SC_CREATED
             responseJson.id = userInstance.id

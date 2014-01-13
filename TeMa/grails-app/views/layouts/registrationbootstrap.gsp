@@ -36,6 +36,10 @@
 
 		
 			<g:layoutBody/>
+		<div class="row-fluid">
+			<div class="span12">
+			</div>
+		</div>
 		<div class="container-fluid">
 			<div class="pull-left">
 				<span class="span9 offset2">

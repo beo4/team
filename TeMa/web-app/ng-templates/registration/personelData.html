@@ -83,11 +83,11 @@
 									</div>
 								</div>
 								
-								<div class="control-group" data-ng-class="{error: errors.companyadd}">
-									<label class="control-label" for="companyadd">Betriebsnummer</label>
+								<div class="control-group" data-ng-class="{error: errors.companynr}">
+									<label class="control-label" for="companynr">Betriebsnummer</label>
 									<div class="controls">
-										<input type="text" id="companyadd" name="companyadd" data-ng-model="participant.companyadd">
-										<span class="help-inline" data-ng-show="errors.companyadd">{{errors.company}}</span>
+										<input type="text" id="companyadd" name="companyadd" data-ng-model="participant.companynr">
+										<span class="help-inline" data-ng-show="errors.companynr">{{errors.companynr}}</span>
 									</div>
 								</div>
 							</div>
@@ -95,8 +95,30 @@
 						<div class="control-group" data-ng-class="{error: errors.position}">
 							<label class="control-label" for="position">Position*</label>
 							<div class="controls">
-								<input type="text" id="position" name="position" required data-ng-model="participant.position">
+								<select class="form-control" data-ng-model="participant.position">
+								  <option>Serviceleiter</option>
+								  <option>Gesch&auml;ftsf&uuml;hrer</option>
+								  <option>Gesamtserviceleiter</option>
+								  <option>Sonstiges</option>
+								</select>
 								<span class="help-inline" data-ng-show="errors.position">{{errors.position}}</span>
+							</div>
+						</div>
+						<div class="control-group" data-ng-class="{error: errors.position}" data-ng-show="participant.position=='Gesamtserviceleiter'">
+							<label class="control-label" for="position">Ich komme f&uuml;r</label>
+							<div class="controls">
+								<select class="form-control" data-ng-model="participant.positionAddon">
+								  <option selected value="single">1 Betrieb</option>
+								  <option value="multi">mehrere Betriebe</option>
+								</select>
+								<span class="help-inline" data-ng-show="errors.position">{{errors.position}}</span>
+							</div>
+						</div>
+						<div class="control-group" data-ng-class="{error: errors.companyadd}" data-ng-show="participant.positionAddon=='multi'">
+							<label class="control-label" for="companyadd">zus&auml;tzliche Betriebsnummer</label>
+							<div class="controls">
+								<input type="text" id="companyadd" name="companyadd" data-ng-model="participant.companyadd">
+								<span class="help-inline" data-ng-show="errors.companyadd">{{errors.company}}</span>
 							</div>
 						</div>
 						</div>
@@ -108,7 +130,7 @@
 					</legend>					
 					
 					<div class="control-group" data-ng-class="{error: errors.phone}">
-						<label class="control-label" for="email()">Telefon</label>
+						<label class="control-label" for="email()">Telefon*</label>
 						<div class="controls">
 							<input type="text" id="phone" name="phone" required data-ng-model="participant.phone">
 							<span class="help-inline" data-ng-show="errors.phone">{{errors.phone}}</span>
@@ -118,7 +140,7 @@
 					<div class="control-group" data-ng-class="{error: errors.fax}">
 						<label class="control-label" for="fax">Fax</label>
 						<div class="controls">
-							<input type="text" id="fax" name="fax" required data-ng-model="participant.fax">
+							<input type="text" id="fax" name="fax" data-ng-model="participant.fax">
 							<span class="help-inline" data-ng-show="errors.fax">{{errors.fax}}</span>
 						</div>
 					</div>

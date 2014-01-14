@@ -97,7 +97,7 @@ scaffoldingModule
 						title : 'Anmeldung'
 					}, {
 						active : false,
-						title : 'Teilnehmerdaten'
+						title : 'Registrierung'
 					}, {
 						active : false,
 						title : 'Marktplatz'

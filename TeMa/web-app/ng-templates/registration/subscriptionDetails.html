@@ -1,7 +1,9 @@
 				<h2>Willkommen in ihrem pers&ouml;nlichen Anmeldeportal.</h2>
+				<div class="row-fluid"><span class="span12"></span></div>
 				<p><span ng-show="participant.salutation.name == 'MR'">Sehr geehrter Herr</span> 
 				<span ng-show="participant.salutation.name == 'MS' || participant.salutation == 'MRS'">Sehr geehrte Frau</span>
 				{{participant.firstname}} {{participant.lastname}},</p>
+
 		
 				<p>herzlich willkommen zur Online-Registrierung f&uuml;r die Serviceleiter-Konferenz von Volkswagen Nutzfahrzeuge.</p>
 
@@ -12,21 +14,25 @@
 				 </p>
 				 
 				 <p>
-				 Wenn Sie an der Veranstaltung teilnehmen m&ouml;chten, klicken Sie bitte unten links auf den Button &quot;Zur Anmeldung&quot;.<br/>
-				 Sollten Sie an der Veranstaltung nicht teilnehmen k&ouml;nnen, teilen Sie uns dies bitte durch Klicken auf den &quot;Absage&quot;-Button mit.
+				 Wenn Sie an der Veranstaltung teilnehmen m&ouml;chten, klicken Sie bitte unten links auf den Button &quot;Zur Anmeldung&quot;.
 				 </p>
 				 
 				 <p ng-hide="participant.representative">
 				 Wenn Sie pers&ouml;nlich verhindert sind, jedoch eine Vertretung schicken m&ouml;chten, klicken Sie bitte auf die Schaltfl&auml;che<br/>&quot;Vertretung schicken&quot;.
 				 </p>
+				 
+				 <p>
+				 Sollten Sie an der Veranstaltung nicht teilnehmen k&ouml;nnen, teilen Sie uns dies bitte durch Klicken auf den &quot;Absage&quot;-Button mit.
+				 </p>
+				 <div class="row-fluid"><span class="span12"></span></div>
 			<form name="form" class="form-horizontal">
-				<span class="span3">
-					<button class="btn btn-primary" ng-click="updateAccount(participant, 'CONFIRMED')">Zur Anmeldung <i class="icon-play"></i></button>
+				<span class="span2">
+					<button class="btn btn-primary btn-block" ng-click="updateAccount(participant, 'CONFIRMED')">Zur Anmeldung <i class="icon-play"></i></button>
 				</span>
-				<span class="span3" ng-hide="participant.representative">
-					<button class="btn btn-primary" ng-click="updateAccount(participant, 'REPRESENTATIV') ">Vertretung schicken<i class="icon-play"></i></button>
+				<span class="span2 offset1" ng-hide="participant.representative">
+					<button class="btn btn-primary btn-block" ng-click="updateAccount(participant, 'REPRESENTATIV') ">Vertretung schicken<i class="icon-play"></i></button>
 				</span>
-				<span class="span3">
-					<button class="btn btn-primary" ng-click="updateAccount(participant, 'REFUSED') ">Absage<i class="icon-play"></i></button>
+				<span class="span2 offset1">
+					<button class="btn btn-primary btn-block" ng-click="updateAccount(participant, 'REFUSED') ">Absage<i class="icon-play"></i></button>
 				</span>
 			</form>

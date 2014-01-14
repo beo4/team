@@ -1,3 +1,4 @@
+<h2>Kontaktdaten Vertretung.</h2>
 <p>
 Bitte geben Sie die pers&ouml;nlichen Daten Ihrer Vertretung ein.<br/>
 nach Klicken auf den Button &quot;Speichern und Senden&quot; erh&auml;lt Ihre Vertretung in K&uuml;rze Ihre Einladung mit dem 
@@ -11,16 +12,16 @@ Bitte f&uuml;llen Sie allem mit * gekennzeichneten Felder aus.
 					<div class="row-fluid">
 						<div class="span6">
 							<div class="control-group" data-ng-class="{error: errors.firstname}">
-								<label class="control-label" for="firstname">Salutation</label>
+								<label class="control-label" for="firstname">Anrede*</label>
 								<div class="controls">
-									<select type="text" id="salutation" name="salutation" ng-model="item.salutation" ng-options="salutation.value for salutation in salutations">
+									<select type="text" id="salutation" name="salutation" required ng-model="item.salutation" ng-options="salutation.value for salutation in salutations">
 		      						</select>
 									<span class="help-inline" data-ng-show="errors.salutation">{{errors.salutation}}</span>
 								</div>
 							</div>
 								
 							<div class="control-group" data-ng-class="{error: errors.firstname}">
-								<label class="control-label" for="firstname">Firstname</label>
+								<label class="control-label" for="firstname">Vorname*</label>
 								<div class="controls">
 									<input type="text" id="firstname" name="firstname" required data-ng-model="item.firstname">
 									<span class="help-inline" data-ng-show="errors.firstname">{{errors.firstname}}</span>
@@ -31,7 +32,7 @@ Bitte f&uuml;llen Sie allem mit * gekennzeichneten Felder aus.
 							
 								
 							<div class="control-group" data-ng-class="{error: errors.lastname}">
-								<label class="control-label" for="lastname">Lastname</label>
+								<label class="control-label" for="lastname">Lastname*</label>
 								<div class="controls">
 									<input type="text" id="lastname" name="lastname" required data-ng-model="item.lastname">
 									<span class="help-inline" data-ng-show="errors.lastname">{{errors.lastname}}</span>
@@ -56,9 +57,26 @@ Bitte f&uuml;llen Sie allem mit * gekennzeichneten Felder aus.
 									<span class="help-inline" data-ng-show="errors.email">{{errors.emailrepeat}}</span>
 								</div>
 							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.companynr}">
+								<label class="control-label" for="companynr">Betriebsnummer*</label>
+								<div class="controls">
+									<input type="text" id="companyadd" name="companyadd" required data-ng-model="item.companynr">
+									<span class="help-inline" data-ng-show="errors.companynr">{{errors.companynr}}</span>
+								</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.phone}">
+								<label class="control-label" for="email()">Telefon*</label>
+								<div class="controls">
+									<input type="text" id="phone" name="phone" required data-ng-model="item.phone">
+									<span class="help-inline" data-ng-show="errors.phone">{{errors.phone}}</span>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="form-actions">
+						<button type='button' data-ng-click="doTheBack()" class="btn btn-primary"><i class="icon-play flip-horizontal"></i>Zur&uuml;ck</button>
 						<button type="submit" class="btn btn-primary pull-right" data-ng-disabled="form.$invalid"><i class="icon-ok"></i> Speichern &amp; weiter</button>
 					</div>
 				</form>

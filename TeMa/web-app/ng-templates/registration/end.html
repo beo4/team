@@ -1,8 +1,16 @@
-
-		<h2>
-		&Uuml;bersicht Ihrer Daten.
-		</h2>
-		
+		<div ng-show="confirmedee || participant.account">
+			<h2>Logout.</h2>
+		</div>
+		<div ng-show="!participant.account">
+			<h2>Absage.</h2>
+		</div>
+		<div ng-show="participant.account && !confirmedee">
+			<h2>
+			Best&auml;tigung.
+			</h2>
+			<p>Schritt 3 von 3</p>
+		</div>
+		<div class="row-fluid"><span class="span12"></span></div>
 		<p>
 				<span ng-show="participant.salutation.name == 'MR'">Sehr geehrter Herr</span> 
 				<span ng-show="participant.salutation.name == 'MS' || participant.salutation == 'MRS'">Sehr geehrte Frau</span>
@@ -14,15 +22,11 @@
 			<p>
 			vielen Dank f&uuml;r Ihre Anmeldung. Ihre Angaben werden bei uns erst registriert, wenn Sie diese durch einen Klick auf den Button 
 			&quot;Speichern &amp; Senden&quot; best&auml;tigt haben. Wir freuen uns, Sie auf der Serviceleiter-Konferenz von Volkswagen Nutzfahreuge am 
-			<b>{{meeting.start | date:'dd.MM.yyyy'}}</b> in {{meeting_i18n.subtitle}} begr&uuml;&szlig;en zu d&uuml;rfen.
+			<b>{{meeting.start | date:'dd.MM.yyyy'}}</b> in <b>{{meeting_i18n.subtitle}}</b> begr&uuml;&szlig;en zu d&uuml;rfen.
 			</p>
 			<p ng-bind-html-unsafe="meeting_i18n.description">
 				 </p>
-			<p>
-			Sie erhalten in wenigen Minuten eine Best&auml;tigungs-E-Mail f&uuml;r Ihre Unterlagen. Eine Anfahrtsskizze sowie weitere Informationen zur Konferenz erhalten Sie kurz vor der Veranstaltung in einer gesonderten E-Mail. </p>
-			<p>
-			Alle Details k&ouml;nnen Sie jederzeit per Mausklick auf der Ihnen bekannten Internetseite www.xxx-xxxxxxxxxxxx.de, mit Ihrem bereits bekannten Code abfragen. Sollten ihr Anmeldeprozess einmal unterbrochen worden sein oder sich nachtr&auml;glich &Auml;nderungen ergeben, so k&ouml;nnen Sie sich ebenfalls jederzeit einloggen und die gew&uuml;nschten &Auml;nderungen vornehmen. 
-			</p>
+			
 			<p>
 			Zum Abgleich noch einmal Ihre angegebenen Daten:
 			
@@ -208,28 +212,25 @@
 					</div>
 			
 				<form data-ng-submit="confirmParticipant(participant)" >
-				<div class="control-group" data-ng-class="{error: errors.confirmed}">
-				<label class="checkbox" >
-			      <input type="checkbox" ng-model="participant.confirmed"> Ich habe die Datenschutzerkl&auml;rung gelesen (<a href="#datenschutz" target="_blank">Datenschutzerkl&auml;rung</a>) und akzeptiert.
-			      <span class="help-inline" data-ng-show="errors.confirmed">{{errors.confirmed}}</span>
-			      
-			    </label>
-			    </div>
-				
 				<div class="form-actions">
-							<button data-ng-click="doTheBack()" class="btn btn-primary"><i class="icon-play flip-horizontal"></i>Zur&uuml;ck</button>
+							<button data-ng-click="doTheBack()" class="btn btn-primary"><i class="icon-play flip-horizontal"></i>Korrektur der Daten</button>
 							<button type="submit" class="btn btn-primary pull-right" data-ng-disabled="form.$invalid">Speichern &amp; Senden</button>
 				</div>
 				</form>
 			</div>
 			<div ng-show="confirmedee">
 				<p><b>Danke f&uuml;r Ihre Anmeldung. Ihre Daten wurden gespeichert.</b></p>
+				<p>
+				Sie erhalten in wenigen Minuten eine Best&auml;tigungs-E-Mail f&uuml;r Ihre Unterlagen. Eine Anfahrtsskizze sowie weitere Informationen zur Konferenz erhalten Sie kurz vor der Veranstaltung in einer gesonderten E-Mail. </p>
+				<p>
+				Alle Details k&ouml;nnen Sie jederzeit per Mausklick auf der Ihnen bekannten Internetseite www.xxx-xxxxxxxxxxxx.de, mit Ihrem bereits bekannten Code abfragen. Sollten ihr Anmeldeprozess einmal unterbrochen worden sein oder sich nachtr&auml;glich &Auml;nderungen ergeben, so k&ouml;nnen Sie sich ebenfalls jederzeit einloggen und die gew&uuml;nschten &Auml;nderungen vornehmen. 
+				</p>
 			</div>
 			<p>
 			Mit freundlichen Gr&uuml;&szlig;en
 			</p>
 			<p>
-			Ihr VW Nutzfahrzeuge Organsiation-Team.
+			Ihr VW Nutzfahrzeuge Organsiationsteam.
 				</p>
 		</div>
 		<div ng-show="!participant.account">

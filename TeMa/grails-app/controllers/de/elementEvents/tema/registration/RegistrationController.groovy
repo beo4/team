@@ -9,6 +9,7 @@ import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.mail.MailException
 
 import de.elementEvents.tema.event.Event;
+import de.elementEvents.tema.event.EventLanguage;
 import de.elementEvents.tema.event.Event_i18n;
 import de.elementEvents.tema.meeting.Meeting;
 import de.elementEvents.tema.meeting.Meeting_i18n;
@@ -314,7 +315,9 @@ class RegistrationController {
           }
     }
     
-    private sendRepresentativNotificationEmail(User user){
+    private sendRepresentativNotificationEmail(User user, Meeting meeting){
+        Meeting_i18n i18n = Meeting_i18n.findByMeetingAndI18n(meeting, user.language)
+        
         mailService.sendMail {
             multipart true
             to user.email
@@ -322,7 +325,7 @@ class RegistrationController {
             replyTo EMAIL
             subject "Einladung"
             html g.render(template:"/email/emailRepTmpl",
-                model:[participant:user])
+                model:[participant:user, meeting_i18n:i18n, meeting:meeting])
             attachBytes 'Anfahrtsbeschreibung.pdf','application/pdf', grailsApplication.parentContext.getResource('email/Anfahrtsbeschreibung.pdf').getFile().readBytes()
           }
     }
@@ -333,6 +336,8 @@ class RegistrationController {
         
         userInstance.event = Event.get(eventId)
         userInstance.setSalutation(Salutation.valueOf(request.JSON.salutation.name))
+        
+        userInstance.language = EventLanguage.get(request.JSON.language.id)
         
         userInstance.username = UUID.randomUUID().toString().replaceAll("-", "");
         userInstance.password = UUID.randomUUID().toString().replaceAll("-", "");
@@ -360,11 +365,12 @@ class RegistrationController {
                     if (subscription.save(flush: true)) {
                         response.status = SC_CREATED
                         responseJson.id = userInstance.id
+                        sendRepresentativNotificationEmail(userInstance, subscription.meeting)
                         responseJson.message = message(code: 'default.created.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
                     }
                 }
             
-            sendRepresentativNotificationEmail(userInstance)
+            
             
             response.status = SC_CREATED
             responseJson.id = userInstance.id

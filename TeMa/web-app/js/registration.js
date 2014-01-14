@@ -21,6 +21,8 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 			$location.path('/personelData');
 		} else if ($location.$$path === "/personelData") {
 			$location.path('/subscriptionDetails');
+		} else if ($location.$$path === "/chooseRepresentative") {
+			$location.path('/subscriptionDetails');
 		} else if ($location.$$path === "/end") {
 			$location.path('/chooseMarketplace');
 		}
@@ -144,7 +146,7 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 	};
 
 	$scope.confirmParticipant = function(item) {
-
+			item.confirmed = true;
 			item.$confirm(function(response) {
 				Flash.success(response.message);
 				$rootScope.participant = new Grails();

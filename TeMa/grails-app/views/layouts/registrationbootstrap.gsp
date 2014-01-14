@@ -41,13 +41,15 @@
 			</div>
 		</div>
 		<div class="container-fluid">
-			<div class="pull-left">
-				<span class="span9 offset2">
-					Sollten Sie organisatorische oder technische Fragen haben, steht Ihnen Ihr Organisationsteam gerne telefonisch
+		<div class="row-fluid">
+				<div class="span8 offset2" >
+        	<div class="span11 offset1">
+        		Sollten Sie organisatorische oder technische Fragen haben, steht Ihnen Ihr Organisationsteam gerne telefonisch
 					 unter der <span style="white-space: nowrap;">Rufnummer 08031 - 90 10 866</span> oder per E-Mail unter 
 					<g:link url="mailto:info@vwn-serviceleiterkonferenz.de">info@vwn-serviceleiterkonferenz.de</g:link> zur Verf&uuml;gung.
-				</span>
-			</div>
+        	</div>
+        	</div>
+        	</div>
 		</div>
 		<div class="container-fluid">
 			<hr>
@@ -55,12 +57,15 @@
 			<footer>
 				<div class="pull-right">
 				<span class="span2">
-					<a href="#datenschutz" target="_blank">Datenschutzerkl&auml;rung</a>
+					<a href="http://www.volkswagen-nutzfahrzeuge.de/de/tools/navigation/footer/rechtliches/anbieterkennzeichnung.html" target="_blank">Impressum</a>
 				</span>
 				<span class="span2">
-					<a href="#impressum" target="_blank">Impressum</a>
+					<a href="http://www.volkswagen-nutzfahrzeuge.de/de/tools/navigation/footer/rechtliches.html" target="_blank">Rechtliches</a>
 				</span>
-				<span class="span2">&copy; VW Nutzfahrzeuge 2014</span></div>
+				<span class="span2">
+					<a href="http://www.volkswagen-nutzfahrzeuge.de/de.html" target="_blank">VW Nutzfahrzeuge</a>
+				</span>
+				</div>
 			</footer>
 		</div>
 

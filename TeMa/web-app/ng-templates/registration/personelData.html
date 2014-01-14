@@ -1,4 +1,5 @@
-
+<h2>Registrierung.</h2>
+<p>Schritt 1 von 3</p>
 			<p>
 			Bitte f&uuml;llen Sie alle mit * gekennzeichneten Felder aus.
 			</p>
@@ -76,17 +77,17 @@
 								</div>
 								
 								<div class="control-group" data-ng-class="{error: errors.company}">
-									<label class="control-label" for="company">Betrieb*</label>
+									<label class="control-label" for="company">Betrieb</label>
 									<div class="controls">
-										<input type="text" id="company" name="company" required data-ng-model="participant.company">
+										<input type="text" id="company" name="company" data-ng-model="participant.company">
 										<span class="help-inline" data-ng-show="errors.company">{{errors.company}}</span>
 									</div>
 								</div>
 								
 								<div class="control-group" data-ng-class="{error: errors.companynr}">
-									<label class="control-label" for="companynr">Betriebsnummer</label>
+									<label class="control-label" for="companynr">Betriebsnummer*</label>
 									<div class="controls">
-										<input type="text" id="companyadd" name="companyadd" data-ng-model="participant.companynr">
+										<input type="text" id="companyadd" name="companyadd" required data-ng-model="participant.companynr">
 										<span class="help-inline" data-ng-show="errors.companynr">{{errors.companynr}}</span>
 									</div>
 								</div>
@@ -165,6 +166,7 @@
         
 
         <div class="form-actions">
+        				<button data-ng-click="doTheBack()" class="btn btn-primary"><i class="icon-play flip-horizontal"></i>Zur&uuml;ck</button>
 						<button type="submit" class="btn btn-primary pull-right">Weiter <i class="icon-play"></i></button>
 		</div>
 

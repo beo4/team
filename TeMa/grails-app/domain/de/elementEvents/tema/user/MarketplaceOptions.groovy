@@ -27,6 +27,12 @@ class MarketplaceOptions {
     Boolean taxi
     Boolean leasing
     Boolean merchandising
+    Boolean direktexpress
+    Boolean onlinesz
+    Boolean originalteilelogistik
+    Boolean partnerbetreuung
+    Boolean oldtimer
+    Boolean nutzfahrzeuge 
     
     String other
     
@@ -59,6 +65,13 @@ class MarketplaceOptions {
         leasing blank: true, nullable: true
         merchandising blank: true, nullable: true
         other blank: true, nullable: true
+        direktexpress blank: true, nullable: true
+        onlinesz blank: true, nullable: true
+        originalteilelogistik blank: true, nullable: true
+        partnerbetreuung blank: true, nullable: true
+        oldtimer blank: true, nullable: true
+        nutzfahrzeuge blank: true, nullable: true
+        
         
     }
     

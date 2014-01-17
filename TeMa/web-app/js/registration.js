@@ -133,10 +133,17 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 		}, errorHandler.curry($scope, $location, Flash));
 	};
 	
-	$scope.createRepresentativ = function(item) {
+	$scope.createRepresentativ = function(item, participant) {
 		item.meeting = $rootScope.meeting;
 		item.event = $rootScope.event;
 		item.language = $rootScope.participant.language;
+		
+		participant.$update(function(participant) {
+			Flash.success(response.message);
+			// $rootScope.participant = new Grails;
+			angular.extend($rootScope.participant, item.participant);
+			angular.extend($rootScope.participant.marketplaceOptions, item.marketplaceOptions);
+		}, errorHandler.curry($scope, $location, Flash));
 		
 		item.$createRepresentativ(function(response) {
 			Flash.success(response.message);
@@ -192,23 +199,22 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 		item.confirmed = false;
 		item.state ===  "CONFIRMED" ? item.account = true : item.account = false;
 		
-		item.$update(function(response) {
-			Flash.success(response.message);
-			// $rootScope.participant = new Grails;
-			angular.extend($rootScope.participant, item.participant);
-			angular.extend($rootScope.participant.marketplaceOptions, item.marketplaceOptions);
-			if ($rootScope.participant.account) {
-				$location.path('/personelData');
-			} else {
-				if (item.state.name === "REPRESENTATIV") {
-					$rootScope.item = new Grails;
-					$location.path('/chooseRepresentative'); 
-				}  else {
-					$location.path('/end');
+		if (item.state === "REPRESENTATIV") {
+			$rootScope.item = new Grails;
+			$location.path('/chooseRepresentative'); 
+		} else {
+			item.$update(function(response) {
+				Flash.success(response.message);
+				// $rootScope.participant = new Grails;
+				angular.extend($rootScope.participant, item.participant);
+				angular.extend($rootScope.participant.marketplaceOptions, item.marketplaceOptions);
+				if ($rootScope.participant.account) {
+					$location.path('/personelData');
+				} else {
+						$location.path('/end');
 				}
-			}
-
-		}, errorHandler.curry($scope, $location, Flash));
+			}, errorHandler.curry($scope, $location, Flash));
+		}
 	};
 });
 

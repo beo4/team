@@ -14,9 +14,7 @@
         <div class="container-fluid">
 			<div class="row-fluid">
 				<div id="logo" class="span12">
-					<a href="/de_de/index.jsp">
 						<img src="${ g.resource( dir:'images', file:'VWN.png' ) }" alt="Volkswagen Nutzfahrzeuge" height="108" width="118">
-					</a>
 				</div>
 			</div>
 			</div>
@@ -30,7 +28,7 @@
 		</div>
 		<div class="container-fluid">
 		<div class="row-fluid">
-				<div class="span12 gyteaser">
+				<div class="offset1 span10 gyteaser">
 				
 		</div>
 		</div>

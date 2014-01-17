@@ -57,6 +57,7 @@ modules = {
 	}
 	
 	images {
-		resource url:'images/SLK2014Logo.jpg', attrs:[height:318, alt:'Serviceleiterkonferenz']
+		resource url:'images/VWN-SLK2014-Keyvisual-FINAL-1080.jpg', attrs:[height:318, alt:'Serviceleiterkonferenz']
+        resource url:'images/VWN-SLK2014-Keyvisual-FINAL-460.jpg', attrs:[height:200, alt:'Serviceleiterkonferenz']
 	}
 }

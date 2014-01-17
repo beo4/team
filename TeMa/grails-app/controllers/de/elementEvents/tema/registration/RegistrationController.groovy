@@ -5,6 +5,7 @@ import java.awt.GraphicsConfiguration.DefaultBufferCapabilities;
 import javax.validation.Validation;
 
 import org.codehaus.groovy.grails.plugins.springsecurity.SpringSecurityUtils;
+import org.codehaus.groovy.grails.web.mapping.LinkGenerator;
 import org.springframework.dao.DataIntegrityViolationException
 import org.springframework.mail.MailException
 
@@ -22,6 +23,7 @@ import de.elementEvents.tema.user.TravelOptions;
 import de.elementEvents.tema.user.User;
 import grails.converters.JSON
 import grails.plugin.jodatime.converters.JodaConverters;
+import grails.plugin.rendering.pdf.PdfRenderingService;
 import grails.plugins.springsecurity.SpringSecurityService;
 import groovy.text.SimpleTemplateEngine
 import static javax.servlet.http.HttpServletResponse.*
@@ -31,12 +33,19 @@ class RegistrationController {
 
     static final int SC_UNPROCESSABLE_ENTITY = 422
     
-    static final String EMAIL = "info@serviceleiterkonferenz.de"
+    static final String EMAIL = "support@vwn.serviceleiterkonferenz.de"
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 	
 	def springSecurityService
     def mailService
+    def pdfRenderingService
+    LinkGenerator grailsLinkGenerator
+    
+    String serverUrl() {
+        // Generate: http://localhost:8080/link-generator
+        grailsLinkGenerator.serverBaseURL
+    }
 
     def index() { }
 
@@ -303,6 +312,15 @@ class RegistrationController {
     
     
     private sendNotificationEmail(User user){
+        def subscriptionInstance = Subscription.findByUser(user);
+        def serverUrl = serverUrl()
+        
+        Meeting_i18n i18n = Meeting_i18n.findByMeetingAndI18n(subscriptionInstance.meeting, user.language)
+        
+        ByteArrayOutputStream bytes = pdfRenderingService.render(template: "/pdf/confirmation", model: [participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl])
+        
+        def fileName = 'Teilnehmerdaten ' + user.firstname + ' ' + user.lastname + '.pdf'
+        
         mailService.sendMail {
             multipart true
             to user.email
@@ -310,14 +328,15 @@ class RegistrationController {
             replyTo EMAIL
             subject "Teilnahmebestätigung"
             html g.render(template:"/email/emailTmpl",
-                model:[participant:user])
-            attachBytes 'Anfahrtsbeschreibung.pdf','application/pdf', grailsApplication.parentContext.getResource('email/Anfahrtsbeschreibung.pdf').getFile().readBytes()
+                model:[participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl])
+            attachBytes UUID.randomUUID().toString().replaceAll("-", ""),'application/pdf', bytes.toByteArray()
           }
+        bytes.close()    
     }
     
     private sendRepresentativNotificationEmail(User user, Meeting meeting){
         Meeting_i18n i18n = Meeting_i18n.findByMeetingAndI18n(meeting, user.language)
-        
+        def serverUrl = serverUrl()
         mailService.sendMail {
             multipart true
             to user.email
@@ -325,7 +344,7 @@ class RegistrationController {
             replyTo EMAIL
             subject "Einladung"
             html g.render(template:"/email/emailRepTmpl",
-                model:[participant:user, meeting_i18n:i18n, meeting:meeting])
+                model:[participant:user, meeting_i18n:i18n, meeting:meeting, serverUrl:serverUrl])
             attachBytes 'Anfahrtsbeschreibung.pdf','application/pdf', grailsApplication.parentContext.getResource('email/Anfahrtsbeschreibung.pdf').getFile().readBytes()
           }
     }
@@ -339,8 +358,8 @@ class RegistrationController {
         
         userInstance.language = EventLanguage.get(request.JSON.language.id)
         
-        userInstance.username = UUID.randomUUID().toString().replaceAll("-", "");
-        userInstance.password = UUID.randomUUID().toString().replaceAll("-", "");
+        userInstance.username = UUID.randomUUID().toString().replaceAll("-", "")
+        userInstance.password = UUID.randomUUID().toString().replaceAll("-", "")
         
         userInstance.representative = true        
         

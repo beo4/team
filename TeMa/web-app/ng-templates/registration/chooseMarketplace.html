@@ -1,6 +1,7 @@
 		<h2>Marktplatzthemen.</h2>
-		<p>Schritt 2 von 3</p>
-		Bitte teilen Sie uns mit, welche der folgenden Themen Sie im Rahmen der Serviceleiter-Konferenz besonders interessieren.
+		<p>Schritt 2 von 4</p>
+		Bitte teilen Sie uns mit, welche der folgenden Themen Sie im Rahmen der Serviceleiter-Konferenz besonders interessieren.<br>
+		Bitte w&auml;hlen Sie mindestens ein Thema.
 		<div class="grey-body">
 		<form name="form" class="form-horizontal marketplace">
 			<fieldset>
@@ -29,10 +30,10 @@
 				</div>
 				
 				<div class="control-group" data-ng-class="{error: errors.classicparts}">
-						<label class="control-label" for="title">Classic Parts</label>
+						<label class="control-label" for="title">Direkt Express</label>
 						<div class="controls">
-							<input type="checkbox" id="classicparts" name="classicparts" data-ng-model="participant.marketplaceOptions.classicparts">
-							<span class="help-inline" data-ng-show="errors.classicparts">{{errors.classicparts}}</span>
+							<input type="checkbox" id="direktexpress" name="direktexpress" data-ng-model="participant.marketplaceOptions.direktexpress">
+							<span class="help-inline" data-ng-show="errors.direktexpress">{{errors.direktexpress}}</span>
 						</div>
 				</div>
 				
@@ -68,27 +69,11 @@
 						</div>
 				</div>
 				
-				<div class="control-group" data-ng-class="{error: errors.heritage}">
-						<label class="control-label" for="title">Heritage</label>
-						<div class="controls">
-							<input type="checkbox" id="heritage" name="heritage" data-ng-model="participant.marketplaceOptions.heritage">
-							<span class="help-inline" data-ng-show="errors.heritage">{{errors.heritage}}</span>
-						</div>
-				</div>
-				
 				<div class="control-group" data-ng-class="{error: errors.ihvpost}">
 						<label class="control-label" for="title">IHV Post</label>
 						<div class="controls">
 							<input type="checkbox" id="ihvpost" name="ihvpost" data-ng-model="participant.marketplaceOptions.ihvpost">
 							<span class="help-inline" data-ng-show="errors.ihvpost">{{errors.ihvpost}}</span>
-						</div>
-				</div>
-				
-				<div class="control-group" data-ng-class="{error: errors.unfallverhutung}">
-						<label class="control-label" for="title">Unfallverh&uuml;tungsvorschrift</label>
-						<div class="controls">
-							<input type="checkbox" id="unfallverhutung" name="unfallverhutung" data-ng-model="participant.marketplaceOptions.unfallverhutung">
-							<span class="help-inline" data-ng-show="errors.unfallverhutung">{{errors.unfallverhutung}}</span>
 						</div>
 				</div>
 				
@@ -101,7 +86,7 @@
 				</div>
 				
 				<div class="control-group" data-ng-class="{error: errors.kbaservice}">
-						<label class="control-label" for="title">KBA Service</label>
+						<label class="control-label" for="title">Kundenbindungsanalyse Service</label>
 						<div class="controls">
 							<input type="checkbox" id="kbaservice" name="kbaservice" data-ng-model="participant.marketplaceOptions.kbaservice">
 							<span class="help-inline" data-ng-show="errors.kbaservice">{{errors.kbaservice}}</span>
@@ -109,10 +94,18 @@
 				</div>
 				
 				<div class="control-group" data-ng-class="{error: errors.marktchancen}">
-						<label class="control-label" for="title">Marktchancen</label>
+						<label class="control-label" for="title">Marktchancen Web Reporting</label>
 						<div class="controls">
 							<input type="checkbox" id="marktchancen" name="marktchancen" data-ng-model="participant.marketplaceOptions.marktchancen">
 							<span class="help-inline" data-ng-show="errors.marktchancen">{{errors.marktchancen}}</span>
+						</div>
+				</div>
+				
+				<div class="control-group" data-ng-class="{error: errors.onlinesz}">
+						<label class="control-label" for="title">Onlineauftritt Service und Zubeh&ouml;r</label>
+						<div class="controls">
+							<input type="checkbox" id="onlinesz" name="onlinesz" data-ng-model="participant.marketplaceOptions.onlinesz">
+							<span class="help-inline" data-ng-show="errors.onlinesz">{{errors.onlinesz}}</span>
 						</div>
 				</div>
 				
@@ -124,11 +117,19 @@
 						</div>
 				</div>
 				
-				<div class="control-group" data-ng-class="{error: errors.serviceapp}">
-						<label class="control-label" for="title">Service APP</label>
+				<div class="control-group" data-ng-class="{error: errors.originalteilelogistik}">
+						<label class="control-label" for="title">Original Teile Logistik GmbH</label>
 						<div class="controls">
-							<input type="checkbox" id="serviceapp" name="serviceapp" data-ng-model="participant.marketplaceOptions.serviceapp">
-							<span class="help-inline" data-ng-show="errors.serviceapp">{{errors.serviceapp}}</span>
+							<input type="checkbox" id="originalteilelogistik" name="originalteilelogistik" data-ng-model="participant.marketplaceOptions.originalteilelogistik">
+							<span class="help-inline" data-ng-show="errors.originalteilelogistik}">{{errors.originalteilelogistik}}}</span>
+						</div>
+				</div>
+				
+				<div class="control-group" data-ng-class="{error: errors.partnerbetreuung}">
+						<label class="control-label" for="title">Partnerbetreuung</label>
+						<div class="controls">
+							<input type="checkbox" id="partnerbetreuung" name="partnerbetreuung" data-ng-model="participant.marketplaceOptions.partnerbetreuung">
+							<span class="help-inline" data-ng-show="errors.partnerbetreuung">{{errors.partnerbetreuung}}</span>
 						</div>
 				</div>
 				
@@ -188,6 +189,22 @@
 						</div>
 				</div>
 				
+				<div class="control-group" data-ng-class="{error: errors.unfallverhutung}">
+						<label class="control-label" for="title">Unfallverh&uuml;tungsvorschrift</label>
+						<div class="controls">
+							<input type="checkbox" id="unfallverhutung" name="unfallverhutung" data-ng-model="participant.marketplaceOptions.unfallverhutung">
+							<span class="help-inline" data-ng-show="errors.unfallverhutung">{{errors.unfallverhutung}}</span>
+						</div>
+				</div>
+		
+				<div class="control-group" data-ng-class="{error: errors.classicparts}">
+						<label class="control-label" for="title">Volkswagen Classic Parts</label>
+						<div class="controls">
+							<input type="checkbox" id="classicparts" name="classicparts" data-ng-model="participant.marketplaceOptions.classicparts">
+							<span class="help-inline" data-ng-show="errors.classicparts">{{errors.classicparts}}</span>
+						</div>
+				</div>
+		
 				<div class="control-group" data-ng-class="{error: errors.leasing}">
 						<label class="control-label" for="title">Volkswagen Leasing</label>
 						<div class="controls">
@@ -196,8 +213,32 @@
 						</div>
 				</div>
 				
+				<div class="control-group" data-ng-class="{error: errors.nutzfahrzeuge}">
+						<label class="control-label" for="title">Volkswagen Nutzfahrzeuge</label>
+						<div class="controls">
+							<input type="checkbox" id="nutzfahrzeuge" name="nutzfahrzeuge" data-ng-model="participant.marketplaceOptions.nutzfahrzeuge">
+							<span class="help-inline" data-ng-show="errors.nutzfahrzeuge">{{errors.nutzfahrzeuge}}</span>
+						</div>
+				</div>
+				
+				<div class="control-group" data-ng-class="{error: errors.oldtimer}">
+						<label class="control-label" for="title">Oldtimer</label>
+						<div class="controls">
+							<input type="checkbox" id="oldtimer" name="oldtimer" data-ng-model="participant.marketplaceOptions.oldtimer">
+							<span class="help-inline" data-ng-show="errors.oldtimer">{{errors.oldtimer}}</span>
+						</div>
+				</div>
+				
+				<div class="control-group" data-ng-class="{error: errors.serviceapp}">
+						<label class="control-label" for="title">Volkswagen Service App</label>
+						<div class="controls">
+							<input type="checkbox" id="serviceapp" name="serviceapp" data-ng-model="participant.marketplaceOptions.serviceapp">
+							<span class="help-inline" data-ng-show="errors.serviceapp">{{errors.serviceapp}}</span>
+						</div>
+				</div>
+				
 				<div class="control-group" data-ng-class="{error: errors.merchandising}">
-						<label class="control-label" for="title">VW Zubeh&ouml;r &amp; Merchandising</label>
+						<label class="control-label" for="title">VW Zubeh&ouml;r &amp; Lifestyle</label>
 						<div class="controls">
 							<input type="checkbox" id="merchandising" name="merchandising" data-ng-model="participant.marketplaceOptions.merchandising">
 							<span class="help-inline" data-ng-show="errors.merchandising">{{errors.merchandising}}</span>

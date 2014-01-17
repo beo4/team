@@ -46,7 +46,7 @@
         	<div class="span11 offset1">
         		Sollten Sie organisatorische oder technische Fragen haben, steht Ihnen Ihr Organisationsteam gerne telefonisch
 					 unter der <span style="white-space: nowrap;">Rufnummer 08031 - 90 10 866</span> oder per E-Mail unter 
-					<g:link url="mailto:info@vwn-serviceleiterkonferenz.de">info@vwn-serviceleiterkonferenz.de</g:link> zur Verf&uuml;gung.
+					<g:link url="mailto:support@vwn.serviceleiterkonferenz.de">support@vwn.serviceleiterkonferenz.de</g:link> zur Verf&uuml;gung.
         	</div>
         	</div>
         	</div>
@@ -56,15 +56,11 @@
 
 			<footer>
 				<div class="pull-right">
-				<span class="span2">
-					<a href="http://www.volkswagen-nutzfahrzeuge.de/de/tools/navigation/footer/rechtliches/anbieterkennzeichnung.html" target="_blank">Impressum</a>
-				</span>
-				<span class="span2">
-					<a href="http://www.volkswagen-nutzfahrzeuge.de/de/tools/navigation/footer/rechtliches.html" target="_blank">Rechtliches</a>
-				</span>
-				<span class="span2">
-					<a href="http://www.volkswagen-nutzfahrzeuge.de/de.html" target="_blank">VW Nutzfahrzeuge</a>
-				</span>
+					<a href="http://www.volkswagen-nutzfahrzeuge.de/de/tools/navigation/footer/rechtliches/anbieterkennzeichnung.html" target="_blank">Impressum</a>&nbsp;|&nbsp;
+					<a href="http://www.volkswagen-nutzfahrzeuge.de/de/tools/navigation/footer/rechtliches.html" target="_blank">Rechtliches</a>&nbsp;|&nbsp;
+					<a href="http://www.volkswagen-commercial-vehicles.com/" target="_blank">International</a>&nbsp;|&nbsp;
+					<a href="http://www.volkswagen.de/de.html" target="_blank">Volkswagen AG</a>&nbsp;|&nbsp;
+					<a href="http://www.volkswagen-nutzfahrzeuge.de/de.html" target="_blank">Volkswagen Nutzfahrzeuge</a>
 				</div>
 			</footer>
 		</div>

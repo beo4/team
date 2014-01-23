@@ -133,30 +133,10 @@ class UserController {
                     userInstance.salutation = Salutation.MS
                 }
                if (!userInstance.username){
-                   userInstance.username = userInstance.email
+                   userInstance.username = userInstance.email+UUID.randomUUID().toString().replaceAll('-','').subSequence(0, 8)
                    userInstance.password = userInstance.email
                }
-               userInstance.street = userInstance.street + " " +it.streetnumber
-               
-               if (it.arrivalDate || it.departureDate) {
-                   def travelOptionsInstance
-                   if (!userInstance.travelOptions) {
-                       travelOptionsInstance = new TravelOptions()
-                       userInstance.travelOptions = travelOptionsInstance
-                       
-                   }
-                  else {
-                       travelOptionsInstance = userInstance.travelOptions
-                  }
-                  
-                  SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
-                  
-                  travelOptionsInstance.user = userInstance
-                  if (it.arrivalDate)
-                  userInstance.travelOptions.arrivalDate =  sdf.format(it.arrivalDate)
-                  if (it.departureDate)
-                  userInstance.travelOptions.departureDate = sdf.format(it.departureDate)
-               }
+               userInstance.street = userInstance.street
                
                userInstance.validate()
                if (userInstance.save(flush: true)) {
@@ -165,7 +145,7 @@ class UserController {
                         subscription = new Subscription()
                         subscription.meeting = meeting
                         subscription.user = userInstance
-                            if (subscription.save(flush: true)) {
+                            if (subscription.save(flush: false)) {
                                 userInstanceList.add(userInstance)
                             }
                     }

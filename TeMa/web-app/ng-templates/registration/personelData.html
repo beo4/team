@@ -155,7 +155,7 @@
 					</div>
 					
 					<div class="control-group" data-ng-class="{error: errors.email}">
-						<label class="control-label" for="email()">E-Mail</label>
+						<label class="control-label" for="email()">E-Mail*</label>
 						<div class="controls">
 							<input class="input-block-level" type="text" id="email" data-ng-change="emailChanged()" name="email" required data-ng-model="participant.email">
 							<span class="help-inline" data-ng-show="errors.email">{{errors.email}}</span>
@@ -163,7 +163,7 @@
 					</div>
 					
 					<div class="control-group" ng-show="isEmailChanged" data-ng-class="{error: errors.email}">
-						<label class="control-label" for="emailrepeat">E-Mail Wiederholung</label>
+						<label class="control-label" for="emailrepeat">E-Mail Wiederholung*</label>
 						<div class="controls">
 							<input class="input-block-level" type="text" id="emailrepeat" name="emailrepeat" data-ng-model="participant.emailrepeat">
 							<span class="help-inline" data-ng-show="errors.emailrepeat">{{errors.emailrepeat}}</span>

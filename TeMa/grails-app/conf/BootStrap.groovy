@@ -1,6 +1,8 @@
 import org.joda.time.DateTime;
 
 import grails.converters.JSON;
+import de.elementEvents.tema.event.Event;
+import de.elementEvents.tema.meeting.Meeting;
 import de.elementEvents.tema.user.Role;
 import de.elementEvents.tema.user.Salutation;
 import de.elementEvents.tema.user.User;
@@ -19,8 +21,29 @@ class BootStrap { def springSecurityService
 		JSON.registerObjectMarshaller(DateTime) {
 			return it?.format("dd.MM.yyyy")
 		 }
+        
+        JSON.registerObjectMarshaller(Event) {
+            def returnArray = [:]
+            returnArray['id'] = it.id
+            returnArray['meetings'] = it.meetings
+            returnArray['i18n'] = it.i18n
+            returnArray['eventLanguage'] = it.eventLanguage
+            returnArray['resources'] = it.resources
+            return returnArray
+        }
+        
+        JSON.registerObjectMarshaller(Meeting) {
+            def returnArray = [:]
+            returnArray['i18n'] = it.i18n
+            returnArray['id'] = it.id
+            returnArray['start'] = it.start
+            returnArray['end'] = it.end
+            returnArray['event'] = it.event
+            return returnArray
+        }
 		
     }
     def destroy = {
     }
+    
 }

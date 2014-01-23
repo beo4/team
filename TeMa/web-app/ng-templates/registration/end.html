@@ -30,13 +30,14 @@
 			vielen Dank f&uuml;r Ihre Anmeldung. Ihre Angaben werden bei uns erst
 			registriert, wenn Sie diese durch einen Klick auf die
 			Schaltfl&auml;che &quot;Speichern &amp; Senden&quot; best&auml;tigt
-			haben. Wir freuen uns, Sie auf der Serviceleiter-Konferenz von
+			haben. Wir freuen uns, Sie auf der Serviceleiter Konferenz von
 			Volkswagen Nutzfahreuge am <b>{{meeting.start |
 				date:'dd.MM.yyyy'}}</b> in <b>{{meeting_i18n.subtitle}}</b>
 			begr&uuml;&szlig;en zu d&uuml;rfen.
 		</p>
+		<strong>
 		<p ng-bind-html-unsafe="meeting_i18n.description"></p>
-
+		</strong>
 		<p>
 			Zum Abgleich noch einmal Ihre angegebenen Daten:
 
@@ -142,8 +143,7 @@
 					Teile Logistik GmbH</span> <span
 					ng-show="participant.marketplaceOptions.partnerbetreuung && participant.marketplaceOptions.partnerbetreuung != null">Partnerbetreuung</span>
 				<span
-					ng-show="participant.marketplaceOptions.planungimah && participant.marketplaceOptions.planungimah != null">Planungssysteme
-					im AH</span> <span
+					ng-show="participant.marketplaceOptions.planungimah && participant.marketplaceOptions.planungimah != null">Planungssysteme im Autohaus</span> <span
 					ng-show="participant.marketplaceOptions.produktbetreuung && participant.marketplaceOptions.produktbetreuung != null">Produktbetreuung</span>
 				<span
 					ng-show="participant.marketplaceOptions.servicemarketing && participant.marketplaceOptions.servicemarketing != null">Service
@@ -176,11 +176,11 @@
 
 		<form data-ng-submit="confirmParticipant(participant)">
 			<div class="form-actions">
-				<button data-ng-click="doTheBack()" class="btn btn-primary">
+				<button data-ng-click="doTheBack()" class="btn btn-primary" data-ng-disabled="sending">
 					<i class="icon-play flip-horizontal"></i>Korrektur der Daten
 				</button>
 				<button type="submit" class="btn btn-primary pull-right"
-					data-ng-disabled="form.$invalid">Speichern &amp; Senden</button>
+					 data-ng-disabled="sending" id="submitconfirme">Speichern &amp; Senden</button>
 			</div>
 		</form>
 		</p>
@@ -194,14 +194,14 @@
 			Informationen zur Konferenz erhalten Sie kurz vor der Veranstaltung
 			in einer gesonderten E-Mail.</p>
 		<p>Alle Details k&ouml;nnen Sie jederzeit per Mausklick auf der
-			Ihnen bekannten Internetseite www.xxx-xxxxxxxxxxxx.de, mit Ihrem
-			bereits bekannten Code abfragen. Sollten ihr Anmeldeprozess einmal
+			Ihnen bekannten Internetseite https://vwn.serviceleiterkonferenz.de, mit Ihrem
+			bereits bekannten Code abfragen. Sollte ihr Anmeldeprozess einmal
 			unterbrochen worden sein oder sich nachtr&auml;glich &Auml;nderungen
 			ergeben, so k&ouml;nnen Sie sich jederzeit wieder einloggen und
 			die gew&uuml;nschten &Auml;nderungen vornehmen.</p>
 	</div>
 	<p>Mit freundlichen Gr&uuml;&szlig;en</p>
-	<p>Ihr Serviceleiterkonferenz 2014 Organsiationsteam.</p>
+	<p>Ihr Serviceleiter Konferenz 2014 Organsiationsteam.</p>
 </div>
 <div ng-show="!participant.account">
 	<p>
@@ -211,9 +211,9 @@
 		jederzeit wieder f&uuml;r die Veranstaltung,<br />mit Ihrem
 		pers&ouml;nlichen Login Code anmelden.<br />
 		<br />Wir w&uuml;rden uns sehr freuen Sie im n&auml;chsten Jahr wieder
-		zu dieser Veranstatlung begr&uuml;&szlig;en zu d&uuml;rfen.<br />
+		zu dieser Veranstaltung begr&uuml;&szlig;en zu d&uuml;rfen.<br />
 		<br />
 	</p>
-	<p>Ihr Serviceleiterkonferenz 2014 Organsiationsteam.</p>
+	<p>Ihr Serviceleiter Konferenz 2014 Organsiationsteam.</p>
 
 </div>

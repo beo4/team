@@ -9,21 +9,18 @@
 	<dd data-ng-bind="item.end"></dd>
 	
 	<dt>Event</dt>
-	<dd data-ng-bind="item.event"></dd>
+	<dd data-ng-repeat="i18n in item.event.i18n">{{i18n.title}}</dd>
 	
-	<dt>I18n</dt>
-	<dd data-ng-bind="item.i18n"></dd>
+	<dt>Sprachen</dt>
+	<dd data-ng-repeat="i18n in item.i18n">{{i18n.title}}</dd>
+	
 	
 	<dt>Start</dt>
 	<dd data-ng-bind="item.start"></dd>
 	
-	<dt>Subscriber</dt>
-	<dd data-ng-bind="item.subscriber"></dd>
-	
 </dl>
 <div class="form-actions">
 	<a class="btn" data-ng-href="{{appUrl}}user/fileCreate?eventId={{item.event.id}}&meetingId={{item.id}}"><i class="icon-plus"></i> add Participant</a>
-	<a class="btn" data-ng-href="{{appUrl}}user/#upload/{{item.event.id}}/{{item.id}}"><i class="icon-plus"></i> add Participant</a>
 	<a class="btn" data-ng-href="#/edit/{{item.id}}"><i class="icon-edit"></i> Edit</a>
 	<button type="button" class="btn btn-danger" data-ng-click="delete(item)"><i class="icon-trash"></i> Delete</button>
 </div>

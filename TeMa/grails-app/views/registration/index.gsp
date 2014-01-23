@@ -5,7 +5,7 @@
     <head>
         <meta name="layout" content="registrationbootstrap">
         <g:set var="entityName" value="${message(code: 'registration.label', default: 'Registration')}" />
-        <title><g:message code="default.list.label" args="[entityName]" /></title>
+        <title><g:message code="registration.default.label"/></title>
 
         <r:require module="registration-angular-scaffolding"/>
     </head>
@@ -22,6 +22,10 @@
 			<div class="navbar">
 				<ul class="nav">
 					<li data-ng-repeat="step in steps" data-ng-class="{'active': step.active}"><a href="#">{{step.title}}</a></li>
+				</ul>
+				<ul class="nav pull-right">
+					<li><g:link action="download" target='_blank'>Download</g:link></li>
+					<li><g:link action="faq" target='_blank'>FAQ</g:link></li>
 				</ul>
 				</div>
 			</div>

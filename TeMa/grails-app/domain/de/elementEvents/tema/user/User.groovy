@@ -34,6 +34,9 @@ class User {
 	
 	String company = ""
 	String companyadd = ""
+    String companyadd1 = ""
+    String companyadd2 = ""
+    String companyadd3 = ""
     String companynr = ""
 	String position = ""
     String positionAddon = ""
@@ -81,6 +84,9 @@ class User {
 		title blank: true, nullable: true
 		company blank:true , nullable: true
 		companyadd blank:true , nullable: true
+        companyadd1 blank:true , nullable: true
+        companyadd2 blank:true , nullable: true
+        companyadd3 blank:true , nullable: true
 		position blank:true , nullable: true
 		companystreet blank:true , nullable: true
 		companyplz blank:true , nullable: true

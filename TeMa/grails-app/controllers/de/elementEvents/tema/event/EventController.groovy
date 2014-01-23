@@ -20,6 +20,7 @@ class EventController {
     def list() {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		response.setIntHeader('X-Pagination-Total', Event.count())
+        
 		def jsonResult = Event.list(params)
 		JodaConverters.registerJsonAndXmlMarshallers()
 		render jsonResult as JSON
@@ -58,7 +59,7 @@ class EventController {
     def get() {
         def eventInstance = Event.get(params.id)
         if (eventInstance) {
-			JSON.use("deep")
+			//JSON.use("deep")
 			JodaConverters.registerJsonAndXmlMarshallers()
 			render eventInstance as JSON
         } else {

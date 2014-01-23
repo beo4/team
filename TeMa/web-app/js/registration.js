@@ -138,11 +138,7 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 		item.event = $rootScope.event;
 		item.language = $rootScope.participant.language;
 		
-		participant.$update(function(participant) {
-			Flash.success(response.message);
-			// $rootScope.participant = new Grails;
-			angular.extend($rootScope.participant, item.participant);
-			angular.extend($rootScope.participant.marketplaceOptions, item.marketplaceOptions);
+		participant.$update(function(response) {
 		}, errorHandler.curry($scope, $location, Flash));
 		
 		item.$createRepresentativ(function(response) {
@@ -154,8 +150,10 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 
 	$scope.confirmParticipant = function(item) {
 			item.confirmed = true;
+			$scope.sending=true;
 			item.$confirm(function(response) {
 				Flash.success(response.message);
+				$scope.sending=false;
 				$rootScope.participant = new Grails();
 				angular.extend($rootScope.participant, response.participant);
 				angular.extend($rootScope.participant.marketplaceOptions, response.marketplaceOptions);

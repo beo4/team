@@ -48,6 +48,14 @@ class RegistrationController {
     }
 
     def index() { }
+    
+    def faq() { 
+        render(view:"faq");
+    }
+    
+    def download() {
+        render(view:"download");
+    }
 
     def save() {
         def subscriptionInstance = new Subscription(request.JSON)
@@ -329,7 +337,9 @@ class RegistrationController {
             subject "Teilnahmebestätigung"
             html g.render(template:"/email/emailTmpl",
                 model:[participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl])
-            attachBytes UUID.randomUUID().toString().replaceAll("-", ""),'application/pdf', bytes.toByteArray()
+            attach UUID.randomUUID().toString().replaceAll("-", ""),'application/pdf', bytes.toByteArray()
+            inline 'VWN','image/png', grailsApplication.parentContext.getResource('images/VWN.png').getFile().readBytes()
+            inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/VWN-SLK2014-Keyvisual-FINAL-460.jpg').getFile().readBytes()
           }
         bytes.close()    
     }
@@ -345,7 +355,8 @@ class RegistrationController {
             subject "Einladung"
             html g.render(template:"/email/emailRepTmpl",
                 model:[participant:user, meeting_i18n:i18n, meeting:meeting, serverUrl:serverUrl])
-            attachBytes 'Anfahrtsbeschreibung.pdf','application/pdf', grailsApplication.parentContext.getResource('email/Anfahrtsbeschreibung.pdf').getFile().readBytes()
+            inline 'VWN','image/png', grailsApplication.parentContext.getResource('images/VWN.png').getFile().readBytes()
+            inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/VWN-SLK2014-Keyvisual-FINAL-460.jpg').getFile().readBytes()
           }
     }
     

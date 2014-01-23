@@ -1,6 +1,21 @@
 <%@page import="org.joda.time.LocalDateTime;de.elementEvents.tema.user.Salutation" %>
-<body style="font-family:'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif">
-<div style="max-width: 600px">
+<html>
+<head>
+<style type="text/css">
+@import url(http://www.volkswagen-nutzfahrzeuge.de/de.font_config.css);
+</style>
+</head>
+<body style="font-family: 'VWD4 Black', 'VWD4 Book' , Arial, 'Lucida Grande', sans-serif">
+<div style="max-width: 800px">
+<div style="width: 100%; clear:both;">
+	<div style="float:left;">
+		<img src="cid:VWN" alt="Volkswagen Nutzfahrzeuge" height="108" width="118"/>
+	</div>
+	<div style="float:right;">
+		<img src="cid:VWN-SLK2014" height="174" width="389" alt="Volkswagen Nutzfahrzeuge" />
+	</div>
+</div>
+<p style="clear:both;"></p>
 <g:if test="${participant.salutation == Salutation.MR }"> 
 <div style="float:left">Sehr geehrter Herr ${participant.firstname} ${participant.lastname},</div>
 </g:if>
@@ -34,7 +49,7 @@ Bitte melden Sie sich unter folgendem Link bis zum <joda:format value="${meeting
 </p>
 <p>  <g:link absolute="/">${serverUrl}</g:link> </p>
 <p>
-Ihr pers&ouml;nlicher Zugangscode lautet: ${participant.loginToken}
+Ihr pers&ouml;nlicher Zugangscode lautet: <strong>${participant.loginToken}</strong>
 </p>
 <table style="width: 100%">
 	<tr>
@@ -63,7 +78,7 @@ Ihr pers&ouml;nlicher Zugangscode lautet: ${participant.loginToken}
 	</tr>
 </table>
 <p>
-F&uuml;r R&uuml;ckfragen zu Ihrer Anmeldung steht Ihnen das Organisationsteam unter slk@vwn-veranstaltung.de zur Verf&uuml;gung.
+F&uuml;r R&uuml;ckfragen zu Ihrer Anmeldung steht Ihnen das Organisationsteam unter support@vwn.serviceleiterkonferenz.de zur Verf&uuml;gung.
 </p>
 <p>
 Weiterf&uuml;hrende Informationen zur Konferenz und eine Best&auml;tigung per E-Mail erhalten Sie im Anschluss an Ihre Anmeldung. 
@@ -75,7 +90,7 @@ Weiterf&uuml;hrende Informationen zur Konferenz und eine Best&auml;tigung per E-
 
 <p>
 Mit freundlichen Gr&uuml;&szlig;en<br>
-Ihr Serviceleiterkonferenz 2014 Organsiationteam.
+Ihr Serviceleiter Konferenz 2014 Organsiationsteam.
 </p>
 <p>
 fon. +49.8031.9010.860<br>
@@ -83,3 +98,4 @@ support@vwn.serviceleiterkonferenz.de
 </p>
 </div>
 </body>
+</html>

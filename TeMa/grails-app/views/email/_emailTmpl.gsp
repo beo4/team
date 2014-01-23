@@ -51,7 +51,7 @@ Eine &Auml;nderung Ihrer pers&ouml;nlichen Daten ist bis zum
 </p>
 <p>
 Mit freundlichen Gr&uuml;&szlig;en<br>
-Ihr Serviceleiter Konferenz 2014 Organsiationteam.
+Ihr Serviceleiter Konferenz 2014 Organisationsteam.
 </p>
 <p>
 Hotline: 08031/3010866<br>

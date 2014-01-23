@@ -337,7 +337,7 @@ class RegistrationController {
             subject "Teilnahmebestätigung"
             html g.render(template:"/email/emailTmpl",
                 model:[participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl])
-            attach UUID.randomUUID().toString().replaceAll("-", ""),'application/pdf', bytes.toByteArray()
+            attach fileName,'application/pdf', bytes.toByteArray()
             inline 'VWN','image/png', grailsApplication.parentContext.getResource('images/VWN.png').getFile().readBytes()
             inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/VWN-SLK2014-Keyvisual-FINAL-460.jpg').getFile().readBytes()
           }

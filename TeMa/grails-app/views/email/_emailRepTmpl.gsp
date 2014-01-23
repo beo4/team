@@ -90,7 +90,7 @@ Weiterf&uuml;hrende Informationen zur Konferenz und eine Best&auml;tigung per E-
 
 <p>
 Mit freundlichen Gr&uuml;&szlig;en<br>
-Ihr Serviceleiter Konferenz 2014 Organsiationsteam.
+Ihr Serviceleiter Konferenz 2014 Organisationsteam.
 </p>
 <p>
 fon. +49.8031.9010.860<br>

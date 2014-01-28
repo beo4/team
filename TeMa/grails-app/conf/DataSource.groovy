@@ -17,7 +17,7 @@ environments {
             url = "jdbc:mysql://213.239.202.50/ee_tema?useUnicode=yes&characterEncoding=UTF-8"
         }
         hibernate {
-            show_sql = true
+            show_sql = false
         }
     }
     test {
@@ -32,7 +32,7 @@ environments {
 			url = "jdbc:mysql://213.239.202.50/ee_tema?useUnicode=yes&characterEncoding=UTF-8"
 		}
 		hibernate {
-			show_sql = true
+			show_sql = false
 		}
     }
 }

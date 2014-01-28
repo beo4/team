@@ -22,25 +22,25 @@ class BootStrap { def springSecurityService
 			return it?.format("dd.MM.yyyy")
 		 }
         
-        JSON.registerObjectMarshaller(Event) {
-            def returnArray = [:]
-            returnArray['id'] = it.id
-            returnArray['meetings'] = it.meetings
-            returnArray['i18n'] = it.i18n
-            returnArray['eventLanguage'] = it.eventLanguage
-            returnArray['resources'] = it.resources
-            return returnArray
-        }
-        
-        JSON.registerObjectMarshaller(Meeting) {
-            def returnArray = [:]
-            returnArray['i18n'] = it.i18n
-            returnArray['id'] = it.id
-            returnArray['start'] = it.start
-            returnArray['end'] = it.end
-            returnArray['event'] = it.event
-            return returnArray
-        }
+//        JSON.registerObjectMarshaller(Event) {
+//            def returnArray = [:]
+//            returnArray['id'] = it.id
+//            returnArray['meetings'] = it.meetings
+//            returnArray['i18n'] = it.i18n
+//            returnArray['eventLanguage'] = it.eventLanguage
+//            returnArray['resources'] = it.resources
+//            return returnArray
+//        }
+//        
+//        JSON.registerObjectMarshaller(Meeting) {
+//            def returnArray = [:]
+//            returnArray['i18n'] = it.i18n
+//            returnArray['id'] = it.id
+//            returnArray['start'] = it.start
+//            returnArray['end'] = it.end
+//            returnArray['event'] = it.event
+//            return returnArray
+//        }
 		
     }
     def destroy = {

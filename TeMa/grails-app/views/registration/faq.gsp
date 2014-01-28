@@ -97,7 +97,7 @@
 							</div>
 							<div id="collapseSix" class="accordion-body collapse in">
 								<div class="accordion-inner">
-								Sie k&ouml;nnen sich bis ??? Tage vor Veranstaltungsbeginn, mit Ihrem pers&ouml;nlichen Code jederzeit erneut einloggen und Ihre Teilnahme an der Veranstaltung absagen. Sollte Ihre Absage sich innerhalb des oben genannten Zeitraums bewegen, bitten wir Sie sich kurz pers&ouml;nlich bei unserem Organisationsteam unter 08031/9010866 abzumelden.
+								Sie k&ouml;nnen sich bis 14 Tage vor Veranstaltungsbeginn, mit Ihrem pers&ouml;nlichen Code jederzeit erneut einloggen und Ihre Teilnahme an der Veranstaltung absagen. Sollte Ihre Absage sich innerhalb des oben genannten Zeitraums bewegen, bitten wir Sie sich kurz pers&ouml;nlich bei unserem Organisationsteam unter 08031/9010866 abzumelden.
 								</div>
 							</div>
 						</div>

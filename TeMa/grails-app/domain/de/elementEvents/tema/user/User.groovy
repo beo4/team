@@ -140,6 +140,10 @@ class User {
     public getStatus () {
         (state && state != Status.UDEF) ?  account : "unbekannt"
     }
+    
+    public getPostalSalutation() {
+        return (salutation == Salutation.MR) ? "Sehr geehrter Herr" : "Sehr geehrte Frau"
+    }
 }
 
 

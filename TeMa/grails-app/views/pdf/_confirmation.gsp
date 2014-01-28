@@ -33,19 +33,35 @@
     size: 210mm 297mm;
   }
   
+  body {
+	font-family: 'VWD4 Black', 'VWD4 Book', Arial, sans-serif;
+	font-size: 12px;
+	line-height: 15px;
+	color: #333333;
+	}
+  
   table {
   	width: 100%
+  }
+  
+  h2 {
+  	display: block;
+	width: 100%;
+	padding: 0;
+	margin-bottom: 10px;
+	font-size: 15px;
+	line-height: 20px;
+	color: #333333;
+	border: 0;
+	border-bottom: 1px solid #ff871f;
   }
 	
 </style>
 </head>
 <body style="font-family: 'VWD4 Black', 'VWD4 Book', Arial, 'Lucida Grande', sans-serif">
 <div style="width: 100%; clear:both;">
-	<div style="float:left;">
-		<img src="${serverUrl}/images/VWN.png" alt="Volkswagen Nutzfahrzeuge" height="108" width="118"/>
-	</div>
 	<div style="float:right;">
-		<img src="${serverUrl}/images/VWN-SLK2014-Keyvisual-FINAL-460.jpg" height="108" alt="Volkswagen Nutzfahrzeuge" />
+		<rendering:inlinePng bytes="${vwlogo}" />
 	</div>
 </div>
 <p>&nbsp;</p>
@@ -60,7 +76,13 @@
 </p>
 <p>&nbsp;</p>
 <p style="text-align: justify;">
-vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014 von Volkswagen Nutzfahrzeuge.
+vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014 von Volkswagen Nutzfahrzeuge. Sie wurden f&uuml;r folgende Konferenz angemeldet.
+</p>
+<p style="text-align: center;"><strong>
+Volkswagen Nutzfahrzeuge Serviceleiter Konferenz 2014<br/>
+am <joda:format value="${meeting.start}" pattern="dd.MM.yyyy"/> um 09:30 Uhr<br/>
+im ${meeting_i18n.subtitle} ein.<br/>
+Konferenzbeginn ist um 10:00 Uhr.</strong>
 </p>
 <div class="container-fluid">
 			Zum Abgleich noch einmal Ihre angegebenen Daten:
@@ -69,18 +91,10 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 						Angaben zur Person
 					</h2>
 					<table>
-					<tr>
-							<td width="30%">
-								Titel (akademisch)
-							</td>
-							<td>
-								${participant.title}
-							</td>
-					</tr>
 
 					<tr>
 							<td width="30%">
-								Vorname
+								Vorname:
 							</td>
 							<td>
 								${participant.firstname}
@@ -88,7 +102,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 					</tr>
 					<tr>
 							<td width="30%">
-							  Nachname
+							  Nachname:
 							</td>
 							<td>
 								${participant.lastname}
@@ -100,7 +114,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 					<table>
 					<tr>
 							<td width="30%">
-									Strasse, Hausnummer
+									Strasse, Hausnummer:
 							</td>
 							<td>
 								${participant.companystreet}
@@ -108,7 +122,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 					</tr>
 					<tr>
 							<td>
-								PLZ
+								PLZ:
 							</td>
 							<td>
 								${participant.companyplz}
@@ -116,7 +130,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 					</tr>
 					<tr>
 							<td>
-							Ort
+							Ort:
 </td>
 							<td>
 									${participant.companycity}
@@ -124,7 +138,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 					</tr>
 					<tr>
 							<td>
-								Betrieb
+								Betrieb:
 							</td>
 							<td>
 										${participant.company}
@@ -132,7 +146,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 					</tr>
 					<tr>
 							<td>
-								Betriebsnummer
+								Betriebsnummer:
 							</td>
 							<td>
 								${participant.companynr}
@@ -140,7 +154,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 					</tr>
 					<tr>
 							<td>
-								Position
+								Position:
 							</td>
 							<td>
 								${participant.position}
@@ -153,7 +167,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 			<table>
 					<tr>
 							<td width="30%">
-								Telefon
+								Telefon:
 							</td>
 							<td>
 								${participant.phone}
@@ -162,7 +176,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 					
 					<tr>
 							<td>
-								Fax
+								Fax:
 							</td>
 							<td>
 								${participant.fax}
@@ -171,7 +185,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 
 					<tr>
 							<td>
-								E-Mail
+								E-Mail:
 							</td>
 							<td>
 								${participant.email}
@@ -179,7 +193,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 					</tr>
 		</table>
 					<h2>
-						Marktplatzthemen
+						Marktplatzthemen:
 					</h2>
 						
 					<div class="row-fluid">
@@ -221,42 +235,19 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014
 					</div>
 
 </div>
-<table style="width: 100%">
-	<tr>
-		<td>
-		i.V.					
-		</td>
-		<td>
-		i.V.
-		</td>
-	</tr>
-	<tr>
-		<td>
-		M. Rampas					
-		</td>
-		<td>
-		J. Peschke
-		</td>
-	</tr>
-	<tr>
-		<td>
-		Leiterin Service Deutschland					
-		</td>
-		<td>
-		Leiter Service Marktbetreuung 
-		</td>
-	</tr>
-</table>
 <p>
-F&uuml;r R&uuml;ckfragen zu Ihrer Anmeldung steht Ihnen das Organisationsteam unter support@vwn.serviceleiterkonferenz.de zur Verf&uuml;gung.
+F&uuml;r R&uuml;ckfragen zu Ihrer Anmeldung steht Ihnen das Organisationsteam unter der E-Mail support@vwn.serviceleiterkonferenz.de oder telefonisch unter 08031/9010866 zur Verf&uuml;gung.
 </p>
 
 <p>
 Mit freundlichen Gr&uuml;&szlig;en<br/>
-Ihr Serviceleiter Konferenz 2014 Organsiationteam.<br/>
-fon. +49.8031.9010.860<br/>
-support@vwn.serviceleiterkonferenz.de
+Ihr Serviceleiter Konferenz 2014 Organisationsteam.<br/>
 </p>
+</div>
+<div style="width: 100%; clear:both;">
+	<div style="float:right;">
+		<rendering:inlineJpeg bytes="${slklogo}"/>
+	</div>
 </div>
 </body>
 </html>

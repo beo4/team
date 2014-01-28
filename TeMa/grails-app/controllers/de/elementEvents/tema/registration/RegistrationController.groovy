@@ -325,7 +325,10 @@ class RegistrationController {
         
         Meeting_i18n i18n = Meeting_i18n.findByMeetingAndI18n(subscriptionInstance.meeting, user.language)
         
-        ByteArrayOutputStream bytes = pdfRenderingService.render(template: "/pdf/confirmation", model: [participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl])
+        def vwLogo = grailsApplication.parentContext.getResource('images/VWN_klein.png').getFile().getBytes()
+        def slkLogo = grailsApplication.parentContext.getResource('images/VWN-SLK2014-Keyvisual-FINAL-small.jpg').getFile().getBytes()
+        
+        ByteArrayOutputStream bytes = pdfRenderingService.render(template: "/pdf/confirmation", model: [participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl, vwlogo:vwLogo, slklogo:slkLogo])
         
         def fileName = 'Teilnehmerdaten ' + user.firstname + ' ' + user.lastname + '.pdf'
         

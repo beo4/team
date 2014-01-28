@@ -1,4 +1,3 @@
-<%@ page import="de.elementEvents.tema.user.User" %>
 
 
 

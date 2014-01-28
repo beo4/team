@@ -4,9 +4,11 @@ import org.joda.time.LocalDateTime
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter
 import org.springframework.dao.DataIntegrityViolationException
+import org.springframework.web.util.HtmlUtils;
 
 import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.event.EventLanguage;
+import de.elementEvents.tema.subscription.Subscription;
 import de.elementEvents.tema.user.User;
 import grails.converters.JSON
 import grails.plugin.jodatime.converters.JodaConverters;
@@ -32,27 +34,37 @@ class MeetingController {
     
     def exportList() {
         response.contentType = grailsApplication.config.grails.mime.types[params.format]
+        
+        
+        List fields = ["user.companyadd", "user.salutation", "user.postalSalutation", "user.title","user.firstname", "user.middlename","user.lastname", "user.email","user.loginToken", "user.street","user.plz", "user.city","user.mobile","user.company", "user.position","user.companystreet","user.companyplz","user.companycity",
+                       "meeting.start","meeting.getDeadline","meeting.i18n.first().description", "user.account","user.confirmed"]
+        Map labels = ["user.companyadd":"Betriebsnummer","user.salutation" :"Anrede", "user.postalSalutation": "Anrede Brief", "user.title":"Titel","user.firstname":"Vorname", "user.email":"Email","user.middlename":"Zusatzname","user.lastname":"Nachname", "user.street":"Strasse","user.plz":"PLZ", "user.city":"Ort","user.mobile":"Telefon","user.company":"Firma", "user.position":"Position","companystreet":"Firmen Adresse","companyplz":"Fimen PLZ","user.companycity":"Firmen Ort","user.account":"Teilnahme","user.confirmed":"Datenschutz aktzeptiert",
+                      ,"meeting.start":"VA Datum","meeting.getDeadline":"Deadline","meeting.getDefaultDescription":"VA Ort"]
+        
+        
+        // Formatter closure
+        def dateformat = { domain, value ->
+            DateTimeFormatter fmt = DateTimeFormat.forPattern("dd.MM.yyyy");
+            return fmt.print(value)
+        }
+        
+        def decodeHTML = {domain, value ->
+            return HtmlUtils.htmlUnescape(value[0]).replaceAll("<br/>", " ")
+        }
 
-        
-        List fields = ["salutation", "title","firstname", "middlename","lastname", "email","loginToken", "street","plz", "city","mobile","company", "companyadd","position","companystreet","companyplz","companycity","travelOptions.selectedTravelOption","travelOptions.arrivalDate","travelOptions.arrivalTime","travelOptions.arrivalStation","travelOptions.arrivalAirport","travelOptions.arrivalAirline",
-                       "travelOptions.licencePlate", "travelOptions.departureDate","travelOptions.departureTime","travelOptions.departureStation","travelOptions.departureAirport","travelOptions.departureAirline",
-                       "otherOptions.vegatarian","otherOptions.vegan","otherOptions.allergy","otherOptions.wishes",
-                       "account","confirmed"]
-        Map labels = ["salutation" :"Anrede", "title":"Titel","firstname":"Vorname", "email":"Email","middlename":"Zusatzname","lastname":"Nachname", "street":"Strasse","plz":"PLZ", "city":"Ort","mobile":"Telefon","company":"Firma", "companyadd":"Firma2","position":"Position","companystreet":"Firmen Adresse","companyplz":"Fimen PLZ","companycity":"Firmen Ort","account":"Teilnahme","confirmed":"Datenschutz aktzeptiert","travelOptions.arrivalDate":"Ankuft Datum","travelOptions.departureDate":"Abreise Datum",
-                      "travelOptions.selectedTravelOption":"Reiseart","travelOptions.arrivalTime":"Ankunft Zeit","travelOptions.arrivalStation":"Ankunft Bahnhof","travelOptions.arrivalAirport":"Ankunft Flughafen","travelOptions.arrivalAirline":"Ankunft Fluglinie","travelOptions.licencePlate":"Kennzeichen", "travelOptions.departureTime":"Abreise Zeit","travelOptions.departureStation":"Abreise Bahnhof","travelOptions.departureAirport":"Abreise Flughafen","travelOptions.departureAirline":"Abreise Fluglinie",
-                      "otherOptions.vegatarian":"Vegetarier","otherOptions.vegan":"Veganer","otherOptions.allergy":"Allergie","otherOptions.wishes":"Sonderwuensche"]
-        Map formatters = [:]
-        
+        Map formatters = ["meeting.start" : dateformat, "meeting.getDeadline" : dateformat, "meeting.i18n.first().description" : decodeHTML]
         
         if (params.meetingId){
             def meetingInstance =  Meeting.get(params.meetingId)
+            
             def firstLocalisation = meetingInstance.i18n.asList()[0]
             def filename = firstLocalisation.title + "_" + firstLocalisation.subtitle 
             Map parameters = [title: "${firstLocalisation.title + "_" + firstLocalisation.subtitle}"]
             response.setHeader("Content-disposition", "attachment; filename=${filename}.${params.extension}")
             
-            def userList = meetingInstance.subscriber*.user
-            exportService.export(params.format, response.outputStream,userList, fields, labels,formatters,parameters)
+            def subscriptionList = Subscription.findAllByMeeting(meetingInstance)
+            
+            exportService.export(params.format, response.outputStream,subscriptionList, fields, labels,formatters,parameters)
         }
        
 

@@ -134,9 +134,10 @@ class UserController {
                 }
                if (!userInstance.username){
                    userInstance.username = userInstance.email+UUID.randomUUID().toString().replaceAll('-','').subSequence(0, 8)
-                   userInstance.password = userInstance.email
+                   userInstance.password = userInstance.username
                }
                userInstance.street = userInstance.street
+               
                
                userInstance.validate()
                if (userInstance.save(flush: true)) {

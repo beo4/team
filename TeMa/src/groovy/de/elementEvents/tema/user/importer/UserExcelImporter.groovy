@@ -14,6 +14,7 @@ public class UserExcelImporter extends AbstractExcelImporter {
         sheet:'Tabelle1',
         startRow: 1,
         columnMap:  [
+                'A':'companyadd',
                 'B':'title',
                 'C':'firstname',
                 'D':'lastname',

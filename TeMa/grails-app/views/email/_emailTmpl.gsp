@@ -33,16 +33,10 @@ Im Anhang finden Sie noch einmal eine &Uuml;bersicht Ihrer relevanten Anmeldedat
 Sollten sich bez&uuml;glich Ihrer Anmeldung kurzfristig &Auml;nderungen ergeben, k&ouml;nnen Sie sich jederzeit unter folgendem Link: </p>
 <p><g:link url="https://vwn.serviceleiterkonferenz.de/#/registration">https://vwn.serviceleiterkonferenz.de</g:link></p>
 <p>mit ihrem Code:</p>
-<p><strong> ${participant.loginToken} </strong></p><p>einloggen.
-F&uuml;r Fragen steht Ihnen jederzeit unser Organisationsteam unter der Hotline 08031/9010866 zur Verf&uuml;gung. 
+<p><strong> ${participant.loginToken} </strong></p><p>einloggen.</p>
+<p>
+F&uuml;r R&uuml;ckfragen zu Ihrer Anmeldung steht Ihnen das Organisationsteam unter der E-Mail support@vwn.serviceleiterkonferenz.de oder telefonisch unter 08031/9010866 zur Verf&uuml;gung.
 </p>
-<p style="text-align: center;"><strong>
-Volkswagen Nutzfahrzeuge Serviceleiter Konferenz 2014<br/>
-am <joda:format value="${meeting.start}" pattern="dd.MM.yyyy"/> um 09:30 Uhr<br/>
-im ${meeting_i18n.subtitle} ein.<br/>
-Konferenzbeginn ist um 10:00 Uhr.</strong>
-</p>
-
 <div>
 <p>
 
@@ -52,10 +46,6 @@ Eine &Auml;nderung Ihrer pers&ouml;nlichen Daten ist bis zum
 <p>
 Mit freundlichen Gr&uuml;&szlig;en<br>
 Ihr Serviceleiter Konferenz 2014 Organisationsteam.
-</p>
-<p>
-Hotline: 08031/3010866<br>
-E-Mail: support@vwn.serviceleiterkonferenz.de
 </p>
 </div>
 	

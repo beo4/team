@@ -37,9 +37,9 @@ class MeetingController {
         
         
         List fields = ["user.companyadd", "user.salutation", "user.postalSalutation", "user.title","user.firstname", "user.middlename","user.lastname", "user.email","user.loginToken", "user.street","user.plz", "user.city","user.mobile","user.company", "user.position","user.companystreet","user.companyplz","user.companycity",
-                       "meeting.start","meeting.getDeadline","meeting.i18n.first().description", "user.account","user.confirmed"]
+                       "meeting.start","meeting.getDeadline","meeting.i18n.first().description", "user.account","user.confirmed","user.representative", "user.status"]
         Map labels = ["user.companyadd":"Betriebsnummer","user.salutation" :"Anrede", "user.postalSalutation": "Anrede Brief", "user.title":"Titel","user.firstname":"Vorname", "user.email":"Email","user.middlename":"Zusatzname","user.lastname":"Nachname", "user.street":"Strasse","user.plz":"PLZ", "user.city":"Ort","user.mobile":"Telefon","user.company":"Firma", "user.position":"Position","companystreet":"Firmen Adresse","companyplz":"Fimen PLZ","user.companycity":"Firmen Ort","user.account":"Teilnahme","user.confirmed":"Datenschutz aktzeptiert",
-                      ,"meeting.start":"VA Datum","meeting.getDeadline":"Deadline","meeting.getDefaultDescription":"VA Ort"]
+                      ,"meeting.start":"VA Datum","meeting.getDeadline":"Deadline","meeting.getDefaultDescription":"VA Ort","user.representative":"Vertretung", "user.status":"Anmeldestatus"]
         
         
         // Formatter closure

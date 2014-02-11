@@ -97,7 +97,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 								Vorname:
 							</td>
 							<td>
-								${participant.firstname}
+								${participant.firstname.encodeAsHTML()}
 							</td>
 					</tr>
 					<tr>
@@ -105,7 +105,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 							  Nachname:
 							</td>
 							<td>
-								${participant.lastname}
+								${participant.lastname.encodeAsHTML()}
 							</td>
 					</tr>
 
@@ -117,7 +117,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 									Strasse, Hausnummer:
 							</td>
 							<td>
-								${participant.companystreet}
+								${participant.companystreet.encodeAsHTML()}
 							</td>
 					</tr>
 					<tr>
@@ -125,7 +125,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 								PLZ:
 							</td>
 							<td>
-								${participant.companyplz}
+								${participant.companyplz.encodeAsHTML()}
 							</td>
 					</tr>
 					<tr>
@@ -133,7 +133,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 							Ort:
 </td>
 							<td>
-									${participant.companycity}
+									${participant.companycity.encodeAsHTML()}
 							</td>
 					</tr>
 					<tr>
@@ -141,7 +141,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 								Betrieb:
 							</td>
 							<td>
-										${participant.company}
+										${participant.company.encodeAsHTML()}
 							</td>
 					</tr>
 					<tr>
@@ -149,7 +149,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 								Betriebsnummer:
 							</td>
 							<td>
-								${participant.companynr}
+								${participant.companynr.encodeAsHTML()}
 							</td>
 					</tr>
 					<tr>
@@ -157,7 +157,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 								Position:
 							</td>
 							<td>
-								${participant.position}
+								${participant.position.encodeAsHTML()}
 							</td>
 					</tr>
 					</table>
@@ -170,7 +170,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 								Telefon:
 							</td>
 							<td>
-								${participant.phone}
+								${participant.phone.encodeAsHTML()}
 							</td>
 					</tr>
 					
@@ -179,7 +179,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 								Fax:
 							</td>
 							<td>
-								${participant.fax}
+								${participant.fax.encodeAsHTML()}
 							</td>
 					</tr>
 
@@ -188,7 +188,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 								E-Mail:
 							</td>
 							<td>
-								${participant.email}
+								${participant.email.encodeAsHTML()}
 							</td>
 					</tr>
 		</table>
@@ -244,7 +244,7 @@ Mit freundlichen Gr&uuml;&szlig;en<br/>
 Ihr Serviceleiter Konferenz 2014 Organisationsteam.<br/>
 </p>
 </div>
-<div style="width: 100%; clear:both;">
+<div style="width: 100%; clear:both; margin-top:30px">
 	<div style="float:right;">
 		<rendering:inlineJpeg bytes="${slklogo}"/>
 	</div>

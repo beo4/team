@@ -1,5 +1,7 @@
 package de.elementEvents.tema.user
 
+import java.lang.annotation.Retention;
+
 import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.event.EventLanguage;
 import de.elementEvents.tema.meeting.Meeting
@@ -138,7 +140,22 @@ class User {
     }
     
     public getStatus () {
-        (state && state != Status.UDEF) ?  account : "unbekannt"
+        switch (state) {
+        case Status.UDEF:
+            return "unbekannt"
+            break;
+        case Status.REPRESENTATIV:
+            return "Vertretung geschickt";
+            break;
+        case Status.CONFIRMED:
+            return "zugesagt";
+            break;
+        case Status.REFUSED:
+            return "abgesagt";
+            break;
+        default:
+            "unbekannt";
+        }
     }
     
     public getPostalSalutation() {

@@ -47,7 +47,7 @@ Bitte beachten Sie, dass diese Einladung unter dem Vorbehalt der Genehmigung dur
 <p  style="text-align: justify;">
 Bitte melden Sie sich unter folgendem Link bis zum <joda:format value="${meeting.start.minusDays(21)}" pattern="dd.MM.yyyy"/> verbindlich an oder ab. Sie haben auch die M&ouml;glichkeit einen Vertreter zu schicken.
 </p>
-<p>  <g:link absolute="/">${serverUrl}</g:link> </p>
+<p>  <g:link url="https://vwn.serviceleiterkonferenz.de/#/registration">https://vwn.serviceleiterkonferenz.de</g:link> </p>
 <p>
 Ihr pers&ouml;nlicher Zugangscode lautet: <strong>${participant.loginToken}</strong>
 </p>

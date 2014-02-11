@@ -325,7 +325,7 @@ class RegistrationController {
         
         Meeting_i18n i18n = Meeting_i18n.findByMeetingAndI18n(subscriptionInstance.meeting, user.language)
         
-        def vwLogo = grailsApplication.parentContext.getResource('images/VWN_klein.png').getFile().getBytes()
+        def vwLogo = grailsApplication.parentContext.getResource('images/VWN.png').getFile().getBytes()
         def slkLogo = grailsApplication.parentContext.getResource('images/VWN-SLK2014-Keyvisual-FINAL-small.jpg').getFile().getBytes()
         
         ByteArrayOutputStream bytes = pdfRenderingService.render(template: "/pdf/confirmation", model: [participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl, vwlogo:vwLogo, slklogo:slkLogo])
@@ -334,6 +334,7 @@ class RegistrationController {
         
         mailService.sendMail {
             multipart true
+            bcc EMAIL
             to user.email
             from EMAIL
             replyTo EMAIL
@@ -352,6 +353,7 @@ class RegistrationController {
         def serverUrl = serverUrl()
         mailService.sendMail {
             multipart true
+            bcc "support@vwn.serviceleiterkonferenz.de"
             to user.email
             from EMAIL
             replyTo EMAIL

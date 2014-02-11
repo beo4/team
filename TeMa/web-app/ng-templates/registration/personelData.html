@@ -16,7 +16,7 @@
 					<div class="control-group" data-ng-class="{error: errors.firstname}">
 						<label class="control-label" for="salutation">Anrede*</label>
 						<div class="controls">
-							<select class="input-block-level" type="text" id="salutation" name="salutation" data-required 
+							<select class="input-block-level" type="text" id="salutation" name="salutation" ng-required="true" 
 							ng-model="participant.salutation.name" ng-options="salutation.name as salutation.value for salutation in salutations">
       						</select>
 							<span class="help-inline" data-ng-show="errors.salutation">{{errors.salutation}}</span>
@@ -35,7 +35,7 @@
 					<div class="control-group" data-ng-class="{error: errors.firstname}">
 						<label class="control-label" for="firstname">Vorname*</label>
 						<div class="controls">
-							<input class="input-block-level" type="text" id="firstname" name="firstname" required data-ng-model="participant.firstname">
+							<input class="input-block-level" type="text" id="firstname" name="firstname" ng-required="true" data-ng-model="participant.firstname">
 							<span class="help-inline" data-ng-show="errors.firstname">{{errors.description}}</span>
 						</div>
 					</div>
@@ -43,7 +43,7 @@
 					<div class="control-group" data-ng-class="{error: errors.lastname}">
 						<label class="control-label" for="lastname">Nachname*</label>
 						<div class="controls">
-							<input class="input-block-level" type="text" id="lastname" name="lastname" required data-ng-model="participant.lastname">
+							<input class="input-block-level" type="text" id="lastname" name="lastname" ng-required="true" data-ng-model="participant.lastname">
 							<span class="help-inline" data-ng-show="errors.lastname">{{errors.lastname}}</span>
 						</div>
 					</div>
@@ -59,7 +59,7 @@
 								<div class="control-group" data-ng-class="{error: errors.companystreet}">
 									<label class="control-label" for="companystreet">Strasse, Hausnummer*</label>
 									<div class="controls">
-										<input class="input-block-level" type="text" id="companystreet" name="companystreet" required data-ng-model="participant.companystreet">
+										<input class="input-block-level" type="text" id="companystreet" name="companystreet" ng-required="true" data-ng-model="participant.companystreet">
 										<span class="help-inline" data-ng-show="errors.companystreet">{{errors.companystreet}}</span>
 									</div>
 								</div>
@@ -67,7 +67,7 @@
 								<div class="control-group" data-ng-class="{error: errors.companyplz}">
 									<label class="control-label" for="companyplz">PLZ*</label>
 									<div class="controls">
-										<input class="input-block-level" type="text" id="companyplz" name="companyplz" required data-ng-model="participant.companyplz">
+										<input class="input-block-level" type="text" id="companyplz" name="companyplz" ng-required="true" data-ng-model="participant.companyplz">
 										<span class="help-inline" data-ng-show="errors.companyplz">{{errors.companyplz}}</span>
 									</div>
 								</div>
@@ -75,7 +75,7 @@
 								<div class="control-group" data-ng-class="{error: errors.companycity}">
 									<label class="control-label" for="companycity">Ort*</label>
 									<div class="controls">
-										<input class="input-block-level" type="text" id="companycity" name="companycity" required data-ng-model="participant.companycity">
+										<input class="input-block-level" type="text" id="companycity" name="companycity" ng-required="true" data-ng-model="participant.companycity">
 										<span class="help-inline" data-ng-show="errors.city">{{errors.companycity}}</span>
 									</div>
 								</div>
@@ -91,7 +91,7 @@
 								<div class="control-group" data-ng-class="{error: errors.companynr}">
 									<label class="control-label" for="companynr">Betriebsnummer*</label>
 									<div class="controls">
-										<input class="input-block-level" type="text" id="companyadd" name="companyadd" required data-ng-model="participant.companynr">
+										<input class="input-block-level" type="text" id="companyadd" name="companyadd" ng-required="true" data-ng-model="participant.companynr">
 										<span class="help-inline" data-ng-show="errors.companynr">{{errors.companynr}}</span>
 									</div>
 								</div>
@@ -141,7 +141,7 @@
 					<div class="control-group" data-ng-class="{error: errors.phone}">
 						<label class="control-label" for="email()">Telefon*</label>
 						<div class="controls">
-							<input class="input-block-level" type="text" id="phone" name="phone" required data-ng-model="participant.phone">
+							<input class="input-block-level" type="text" id="phone" name="phone" ng-required="true" data-ng-model="participant.phone">
 							<span class="help-inline" data-ng-show="errors.phone">{{errors.phone}}</span>
 						</div>
 					</div>
@@ -157,7 +157,7 @@
 					<div class="control-group" data-ng-class="{error: errors.email}">
 						<label class="control-label" for="email()">E-Mail*</label>
 						<div class="controls">
-							<input class="input-block-level" type="text" id="email" data-ng-change="emailChanged()" name="email" required data-ng-model="participant.email">
+							<input class="input-block-level" type="text" id="email" data-ng-change="emailChanged()" name="email" data-ng-required="true" data-ng-model="participant.email">
 							<span class="help-inline" data-ng-show="errors.email">{{errors.email}}</span>
 						</div>
 					</div>

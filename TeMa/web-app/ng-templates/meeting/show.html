@@ -5,22 +5,29 @@
 <alert level="{{message.level}}" text="{{message.text}}"/>
 <dl class="dl-horizontal">
 	
-	<dt>End</dt>
-	<dd data-ng-bind="item.end"></dd>
+	<dt>Titel</dt>
+	<dd data-ng-repeat="i18ns in item.i18n">{{i18ns.title}}</dd>
 	
-	<dt>Event</dt>
-	<dd data-ng-repeat="i18n in item.event.i18n">{{i18n.title}}</dd>
+	<dt>Subtitel</dt>
+	<dd data-ng-repeat="i18ns in item.i18n">{{i18ns.subtitle}}</dd>
 	
-	<dt>Sprachen</dt>
-	<dd data-ng-repeat="i18n in item.i18n">{{i18n.title}}</dd>
+	<dt>Beschreibung</dt>
+	<dd data-ng-repeat="i18ns in item.i18n"><p ng-bind-html-unsafe="i18ns.description"></p></dd>
 	
+	<dt>Registrierung</dt>
+	<dd data-ng-repeat="i18ns in item.i18n"><p ng-bind-html-unsafe="i18ns.description"></p></dd>
 	
 	<dt>Start</dt>
 	<dd data-ng-bind="item.start"></dd>
 	
+	<dt>End</dt>
+	<dd data-ng-bind="item.end"></dd>
+	
 </dl>
 <div class="form-actions">
 	<a class="btn" data-ng-href="{{appUrl}}user/fileCreate?eventId={{item.event.id}}&meetingId={{item.id}}"><i class="icon-plus"></i> add Participant</a>
+	<a class="btn" data-ng-href="{{appUrl}}meeting/exportList?format=excel&extension=xls&meetingId={{item.id}}"><i class="icon-download"></i>Download Excel List</a>
+	<button type="button" class="btn btn-danger" ng-class="{'btn-danger': item.registrationEnabled, 'btn-success': !item.registrationEnabled}" data-ng-click="toggleRegistrationStatus(item)" data-ng-text><i class="icon-time"></i>{{!item.registrationEnabled && '&Ouml;ffne' || 'Schliesse'}} Registrierung </button>
 	<a class="btn" data-ng-href="#/edit/{{item.id}}"><i class="icon-edit"></i> Edit</a>
 	<button type="button" class="btn btn-danger" data-ng-click="delete(item)"><i class="icon-trash"></i> Delete</button>
 </div>

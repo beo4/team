@@ -23,7 +23,9 @@ class EventController {
         
 		def jsonResult = Event.list(params)
 		JodaConverters.registerJsonAndXmlMarshallers()
+        JSON.use("eventList"){
 		render jsonResult as JSON
+        }
     }
 
     def save() {
@@ -59,9 +61,10 @@ class EventController {
     def get() {
         def eventInstance = Event.get(params.id)
         if (eventInstance) {
-			//JSON.use("deep")
-			JodaConverters.registerJsonAndXmlMarshallers()
-			render eventInstance as JSON
+			JSON.use("eventView"){
+    			JodaConverters.registerJsonAndXmlMarshallers()
+    			render eventInstance as JSON
+			}
         } else {
 			notFound params.id
 		}

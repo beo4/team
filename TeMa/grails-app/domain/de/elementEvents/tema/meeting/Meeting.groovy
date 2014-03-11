@@ -13,6 +13,8 @@ class Meeting {
 	LocalDateTime start
 	LocalDateTime end
 	
+    boolean registrationEnabled
+    
 	static belongsTo = [event: Event]
 	
 	static hasMany = [subscriber: Subscription, i18n: Meeting_i18n]
@@ -27,5 +29,28 @@ class Meeting {
     
     public getDefaultDescription() {
         return subscriber.first().description
+    }
+    
+    public getDefaultTitle() {
+        return i18n.first().title
+    }
+    
+    public getDefaultSubtitle() {
+        return i18n.first().subtitle
+    }
+    
+    static marshalling={
+        json{
+            meetingView{
+                deep "i18n","eventLanguage"
+                attribute "start","end","subscriber"
+            }
+            meetingList{
+                deep "i18n","eventLanguage"
+                attribute "start","end"
+                ignore "subscriber"
+            }
+
+        }
     }
 }

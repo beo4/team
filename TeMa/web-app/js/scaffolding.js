@@ -44,6 +44,7 @@ scaffoldingModule.config([
             when('/edit/:id', {templateUrl: baseUrl + '/edit.html', controller: EditCtrl}).
             when('/list', {templateUrl: baseUrl + '/list.html', controller: ListCtrl}).
             when('/show/:id', {templateUrl: baseUrl + '/show.html', controller: ShowCtrl}).
+            when('/toggleRegistration/:id', {templateUrl: baseUrl + '/show.html', controller: ShowCtrl}).
             otherwise({redirectTo: '/list'});
     }
 ]);
@@ -259,6 +260,13 @@ function ShowCtrl($scope, $routeParams, $location, Grails, Flash) {
         item.$delete(function(response) {
             Flash.success(response.message);
             $location.path('/list');
+        }, errorHandler.curry($scope, $location, Flash));
+    };
+    
+    $scope.toggleRegistrationStatus = function(item) {
+        item.$toggleRegistration(function(response) {
+            Flash.success(response.message);
+            $location.path('/show/' + response.id);
         }, errorHandler.curry($scope, $location, Flash));
     };
 }

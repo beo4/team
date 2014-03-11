@@ -99,7 +99,9 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 
 			if (!item.participant.language)
 				$location.path('/chooseLanguage');
-			else if (item.participant.state.name === "REPRESENTATIV") {
+			else if (!item.meeting.registrationEnabled) {
+				$location.path('/registrationEnd');
+			} else if (item.participant.state.name === "REPRESENTATIV") {
 				$location.path('/representativ');
 			} else if ($rootScope.subscription) {
 				$location.path('/subscriptionDetails');

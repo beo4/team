@@ -8,6 +8,7 @@ angular.module('grailsService', ['ngResource']).factory('Grails', function($reso
 	return $resource(baseUrl + ':action/:id', {id: '@id'}, {
 		list: {method: 'GET', params: {action: 'list'}, isArray: true},
 		create: {method: 'GET', params: {action: 'create'}},
+		toggleRegistration: {method: 'GET', params: {action: 'toggleRegistration'}},
 		get: {method: 'GET', params: {action: 'get'}},
 		save: {method: 'POST', params: {action: 'save'}},
 		update: {method: 'POST', params: {action: 'update'}},

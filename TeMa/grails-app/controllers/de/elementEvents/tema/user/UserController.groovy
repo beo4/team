@@ -90,7 +90,7 @@ class UserController {
 	def createFromFile() {
 		
 		def file = request.getFile('file')
-		
+		def name = file.getOriginalFilename()
         def event
         def meeting
         if (params.eventId)
@@ -103,7 +103,7 @@ class UserController {
         }
         
         //save the file in tmp
-        def storagePath = new File("tmp")
+        def storagePath = new File(System.getProperty("java.io.tmpdir"))
         if(!storagePath.exists()) {
             if (storagePath.mkdirs()){
             } else {
@@ -111,7 +111,7 @@ class UserController {
         }
         def userInstanceList = []
         if (!file.isEmpty()) {
-            def tmpSave = new File("${storagePath}/tmp.xls");
+            def tmpSave = new File("${storagePath}/${name}");
             if (tmpSave.exists()){
                 tmpSave.delete()
             }
@@ -154,6 +154,7 @@ class UserController {
                 }
                 
             }
+            tmpSave.delete()
         }
 
 		JodaConverters.registerJsonAndXmlMarshallers()
@@ -162,16 +163,21 @@ class UserController {
     
     def fileCreate() {
         def defaultsValues = [eventId:0,meetingId:0 ] 
+        def meeting
+        def event
         if (params.eventId)
         {
+            event = Event.get(params.eventId)
             defaultsValues.eventId = params.eventId
         }
         if (params.meetingId)
         {
+            meeting = Meeting.get(params.meetingId)
             defaultsValues.meetingId = params.meetingId
+            
         }
         
-        [meetingId:defaultsValues.meetingId,eventId:defaultsValues.eventId]
+        [meetingId:defaultsValues.meetingId,eventId:defaultsValues.eventId,event:event,meeting:meeting]
         
     }
     

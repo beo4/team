@@ -48,7 +48,25 @@
 				</ul>
 				</bootstrap:alert>
 				</g:hasErrors>
-
+				
+				<g:if test="${event}">
+						<dt><g:message code="event.title.label" default="Event Titel" /></dt>
+						
+							<dd><g:fieldValue bean="${event}" field="defaultTitle"/></dd>
+						
+				</g:if>		
+				
+				<g:if test="${meeting}">
+						<dt><g:message code="meeting.title.label" default="Meeting Titel" /></dt>
+						
+							<dd><g:fieldValue bean="${meeting}" field="defaultTitle"/></dd>
+							
+							<dt><g:message code="event.subtitle.label" default="Meeting Subtitel" /></dt>
+						
+							<dd><g:fieldValue bean="${meeting}" field="defaultSubtitle"/></dd>
+						
+				</g:if>			
+			
 				<fieldset>
 					<g:uploadForm name="myUpload" action="createFromFile">
 						<g:hiddenField name="eventId" value="${eventId}"/>

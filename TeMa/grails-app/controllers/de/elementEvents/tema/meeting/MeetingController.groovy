@@ -29,17 +29,19 @@ class MeetingController {
         params.max = Math.min(params.max ? params.int('max') : 10, 100)
 		response.setIntHeader('X-Pagination-Total', Meeting.count())
 		JodaConverters.registerJsonAndXmlMarshallers()
+        JSON.use("meetingList"){
 		render Meeting.list(params) as JSON
+        }
     }
     
     def exportList() {
         response.contentType = grailsApplication.config.grails.mime.types[params.format]
         
         
-        List fields = ["user.companyadd", "user.salutation", "user.postalSalutation", "user.title","user.firstname", "user.middlename","user.lastname", "user.email","user.loginToken", "user.street","user.plz", "user.city","user.mobile","user.company", "user.position","user.companystreet","user.companyplz","user.companycity",
-                       "meeting.start","meeting.getDeadline","meeting.i18n.first().description", "user.account","user.confirmed","user.representative", "user.status"]
-        Map labels = ["user.companyadd":"Betriebsnummer","user.salutation" :"Anrede", "user.postalSalutation": "Anrede Brief", "user.title":"Titel","user.firstname":"Vorname", "user.email":"Email","user.middlename":"Zusatzname","user.lastname":"Nachname", "user.street":"Strasse","user.plz":"PLZ", "user.city":"Ort","user.mobile":"Telefon","user.company":"Firma", "user.position":"Position","companystreet":"Firmen Adresse","companyplz":"Fimen PLZ","user.companycity":"Firmen Ort","user.account":"Teilnahme","user.confirmed":"Datenschutz aktzeptiert",
-                      ,"meeting.start":"VA Datum","meeting.getDeadline":"Deadline","meeting.getDefaultDescription":"VA Ort","user.representative":"Vertretung", "user.status":"Anmeldestatus"]
+        List fields = ["user.correctCompanyAdd", "user.salutation", "user.postalSalutation", "user.title","user.firstname", "user.middlename","user.lastname", "user.email","user.loginToken", "user.street","user.plz", "user.city","user.mobile","user.company", "user.position","user.companystreet","user.companyplz","user.companycity",
+                       "meeting.start","meeting.getDeadline","meeting.i18n.first().description", "user.account","user.confirmed","user.representative", "user.status","user.companyadd","user.companyadd1","user.companyadd2","user.companyadd3"]
+        Map labels = ["user.correctCompanyAdd":"Betriebsnummer","user.salutation" :"Anrede", "user.postalSalutation": "Anrede Brief", "user.title":"Titel","user.firstname":"Vorname", "user.email":"Email","user.middlename":"Zusatzname","user.lastname":"Nachname", "user.street":"Strasse","user.plz":"PLZ", "user.city":"Ort","user.mobile":"Telefon","user.company":"Firma", "user.position":"Position","companystreet":"Firmen Adresse","companyplz":"Fimen PLZ","user.companycity":"Firmen Ort","user.account":"Teilnahme","user.confirmed":"Datenschutz aktzeptiert",
+                      ,"meeting.start":"VA Datum","meeting.getDeadline":"Deadline","meeting.getDefaultDescription":"VA Ort","user.representative":"Vertretung", "user.status":"Anmeldestatus","user.companyadd":"Zusätzliche Betriebsnummer 1","user.companyadd1":"Zusätzliche Betriebsnummer 2","user.companyadd2":"Zusätzliche Betriebsnummer 3","user.companyadd3":"Zusätzliche Betriebsnummer 4"]
         
         
         // Formatter closure
@@ -108,10 +110,36 @@ class MeetingController {
     def get() {
         def meetingInstance = Meeting.get(params.id)
         if (meetingInstance) {
+            JSON.use("meetingView"){
 			render meetingInstance as JSON
+            }
         } else {
 			notFound params.id
 		}
+    }
+    
+    def toggleRegistration() {
+        def meetingInstance = Meeting.get(params.id)
+        if (meetingInstance) {
+            def responseJson = [:]
+            meetingInstance.registrationEnabled = !meetingInstance.registrationEnabled
+            if (meetingInstance.save(flush: true)) {
+                response.status = SC_CREATED
+                responseJson.id = meetingInstance.id
+                responseJson.message = message(code: 'default.created.message', args: [message(code: 'meeting.label', default: 'Meeting'), meetingInstance.id])
+            } else {
+                response.status = SC_UNPROCESSABLE_ENTITY
+                responseJson.errors = meetingInstance.errors.fieldErrors.collectEntries {
+                    [(it.field): message(error: it)]
+                }
+            }
+            
+            JSON.use("meetingView"){
+            render meetingInstance as JSON
+            }
+        } else {
+            notFound params.id
+        }
     }
 	
 	def create() {
@@ -136,6 +164,7 @@ class MeetingController {
 		JodaConverters.registerJsonAndXmlMarshallers()
 		render defaultsValues as JSON
 	}
+    
 
     def update() {
         def meetingInstance = Meeting.get(params.id)

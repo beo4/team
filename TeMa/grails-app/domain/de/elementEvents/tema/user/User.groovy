@@ -2,6 +2,9 @@ package de.elementEvents.tema.user
 
 import java.lang.annotation.Retention;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.poi.util.StringUtil;
+
 import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.event.EventLanguage;
 import de.elementEvents.tema.meeting.Meeting
@@ -156,6 +159,10 @@ class User {
         default:
             "unbekannt";
         }
+    }
+    
+    public getCorrectCompanyAdd() {
+        return StringUtils.isEmpty(companynr) ? companyadd : companynr
     }
     
     public getPostalSalutation() {

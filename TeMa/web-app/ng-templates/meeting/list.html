@@ -6,23 +6,30 @@
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
+			<th>Titel</th>
+			
+			<th>Subtitel</th>
+			
+			<th>Start</th>
 		
 			<th>End</th>
 		
 			<th>Event</th>
 		
-			<th>Start</th>
-		
         </tr>
     </thead>
     <tbody>
-        <tr data-ng-repeat="item in list" data-ng-click="show(item)">
+        <tr data-ng-repeat="item in list" data-ng-click="show(item)" ng-class="{'success': item.registrationEnabled, 'danger': !item.registrationEnabled}">
+        
+        	<td>{{item.i18n[0].title}}</td>
+        	
+        	<td>{{item.i18n[0].subtitle}}</td>
+        	
+        	<td>{{item.start}}</td>
 		
 			<td>{{item.end}}</td>
 		
 			<td>{{item.event}}</td>
-		
-			<td>{{item.start}}</td>
 		
         </tr>
     </tbody>

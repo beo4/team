@@ -1,0 +1,18 @@
+
+<div class="row-fluid">
+	<span class="span12"></span>
+</div>
+<p>
+	<span ng-show="participant.salutation.name == 'MR'">Sehr
+		geehrter Herr</span> <span
+		ng-show="participant.salutation.name == 'MS' || participant.salutation == 'MRS'">Sehr
+		geehrte Frau</span> {{participant.firstname}} {{participant.lastname}},
+</p>
+
+
+		<p>
+			leider ist eine Anmeldung an der Serviceleiter Konferenz von
+			Volkswagen Nutzfahreuge am <b>{{meeting.start |
+				date:'dd.MM.yyyy'}}</b> in <b>{{meeting_i18n.subtitle}}</b>
+			nicht mehr m&ouml;glich.
+		</p>

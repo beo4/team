@@ -1,0 +1,16 @@
+<plugin name='grails-angular-scaffolding' version='0.1' grailsVersion='2.2 &gt; *'>
+  <author>Your name</author>
+  <title>Grails Angular Scaffolding Plugin</title>
+  <description>Brief summary/description of the plugin.
+</description>
+  <documentation>http://grails.org/plugin/grails-angular-scaffolding</documentation>
+  <type>GrailsAngularScaffoldingGrailsPlugin</type>
+  <resources />
+  <repositories>
+    <repository name='grailsCentral' url='http://grails.org/plugins' />
+  </repositories>
+  <dependencies />
+  <plugins />
+  <runtimePluginRequirements />
+  <behavior />
+</plugin>

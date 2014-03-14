@@ -100,7 +100,28 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 			if (!item.participant.language)
 				$location.path('/chooseLanguage');
 			else if (!item.meeting.registrationEnabled) {
-				$location.path('/registrationEnd');
+				if (item.meeting.surveyEnabled) {
+					$rootScope.hideNav = true;
+					$rootScope.surveyOptions = [
+                    {text:'++', value:40},
+                    {text:'+', value:30},
+                    {text:'0', value:20},
+                    {text:'-', value:10}];
+					
+					if ($rootScope.participant.survey && $rootScope.participant.survey.id) 
+						{
+							Grails.getSurvey({
+								surveyId : $rootScope.participant.survey.id
+							}, function(item) {
+								angular.extend($rootScope.participant.survey, item);
+							}, errorHandler.curry($scope, $location, Flash));
+						}
+					
+					$location.path('/survey');
+				} else {
+					$location.path('/registrationEnd');
+				}
+				
 			} else if (item.participant.state.name === "REPRESENTATIV") {
 				$location.path('/representativ');
 			} else if ($rootScope.subscription) {
@@ -178,7 +199,19 @@ scaffoldingModule.controller('RegistrationCtrl', function($scope, $location, $ro
 			
 		}, errorHandler.curry($scope, $location, Flash));
 
-		//$location.path('/end');
+	};
+	
+	$scope.updateSurvey = function(item) {
+		
+		
+		item.$updateSurvey(function(response) {
+			Flash.success(response.message);
+			$rootScope.participant = new Grails;
+			angular.extend($rootScope.participant, response.participant);
+			angular.extend($rootScope.participant.marketplaceOptions, response.marketplaceOptions);
+			$location.path('/thankYou');
+			
+		}, errorHandler.curry($scope, $location, Flash));
 	};
 
 	$scope.emailChanged = function() {

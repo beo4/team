@@ -269,6 +269,13 @@ function ShowCtrl($scope, $routeParams, $location, Grails, Flash) {
             $location.path('/show/' + response.id);
         }, errorHandler.curry($scope, $location, Flash));
     };
+    
+    $scope.toggleSurveyStatus = function(item) {
+        item.$toggleSurvey(function(response) {
+            Flash.success(response.message);
+            $location.path('/show/' + response.id);
+        }, errorHandler.curry($scope, $location, Flash));
+    };
 }
 
 function CreateCtrl($scope, $location, Grails, Flash) {

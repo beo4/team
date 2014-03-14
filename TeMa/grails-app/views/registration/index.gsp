@@ -7,7 +7,7 @@
         <g:set var="entityName" value="${message(code: 'registration.label', default: 'Registration')}" />
         <title><g:message code="registration.default.label"/></title>
 
-        <r:require module="registration-angular-scaffolding"/>
+        <r:require module="registration-angular-scaffolding-a"/>
     </head>
     <body data-base-url="${createLink(uri: '/registration/')}">
         <div class="header">
@@ -19,7 +19,7 @@
 			</div>
 			</div>
 			<div class="container-fluid">
-			<div class="navbar">
+			<div class="navbar"  data-ng-hide="hideNav">
 				<ul class="nav">
 					<li data-ng-repeat="step in steps" data-ng-class="{'active': step.active}"><a href="#">{{step.title}}</a></li>
 				</ul>

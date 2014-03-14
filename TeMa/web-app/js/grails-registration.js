@@ -7,8 +7,10 @@ angular.module('grailsService', ['ngResource']).factory('Grails', function($reso
 
 	return $resource(baseUrl + ':action/:id', {id: '@id'}, {
 		get: {method: 'GET', params: {action: 'get'}},
+		getSurvey: {method: 'GET', params: {action: 'getSurvey'}},
 		getMeetings: {method: 'GET', params: {action: 'get'}},
 		update: {method: 'POST', params: {action: 'update'}},
+		updateSurvey: {method: 'POST', params: {action: 'updateSurvey'}},
 		confirm: {method: 'POST', params: {action: 'confirm'}},
 		save: {method: 'POST', params: {action: 'save'}},
 		saveTravelOptions: {method: 'POST', params: {action: 'saveTravelOptions'}},

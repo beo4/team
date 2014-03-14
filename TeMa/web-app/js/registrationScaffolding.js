@@ -82,6 +82,12 @@ scaffoldingModule
 			}).when('/representativ', {
 				templateUrl : baseUrl + '/representativ.html',
 				controller : 'RegistrationCtrl'
+			}).when('/survey', {
+				templateUrl : baseUrl + '/survey.html',
+				controller : 'RegistrationCtrl'
+			}).when('/thankYou', {
+				templateUrl : baseUrl + '/thankYou.html',
+				controller : 'RegistrationCtrl'
 			}).otherwise({
 				redirectTo : '/registration'
 			});

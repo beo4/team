@@ -142,6 +142,30 @@ class MeetingController {
         }
     }
 	
+	def toggleSurvey() {
+		def meetingInstance = Meeting.get(params.id)
+		if (meetingInstance) {
+			def responseJson = [:]
+			meetingInstance.surveyEnabled = !meetingInstance.surveyEnabled
+			if (meetingInstance.save(flush: true)) {
+				response.status = SC_CREATED
+				responseJson.id = meetingInstance.id
+				responseJson.message = message(code: 'default.created.message', args: [message(code: 'meeting.label', default: 'Meeting'), meetingInstance.id])
+			} else {
+				response.status = SC_UNPROCESSABLE_ENTITY
+				responseJson.errors = meetingInstance.errors.fieldErrors.collectEntries {
+					[(it.field): message(error: it)]
+				}
+			}
+			
+			JSON.use("meetingView"){
+			render meetingInstance as JSON
+			}
+		} else {
+			notFound params.id
+		}
+	}
+	
 	def create() {
 		
 		def event = Event.get(params.eventId)

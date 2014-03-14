@@ -9,6 +9,7 @@ angular.module('grailsService', ['ngResource']).factory('Grails', function($reso
 		list: {method: 'GET', params: {action: 'list'}, isArray: true},
 		create: {method: 'GET', params: {action: 'create'}},
 		toggleRegistration: {method: 'GET', params: {action: 'toggleRegistration'}},
+		toggleSurvey: {method: 'GET', params: {action: 'toggleSurvey'}},
 		get: {method: 'GET', params: {action: 'get'}},
 		save: {method: 'POST', params: {action: 'save'}},
 		update: {method: 'POST', params: {action: 'update'}},

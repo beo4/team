@@ -14,6 +14,7 @@ class Meeting {
 	LocalDateTime end
 	
     boolean registrationEnabled
+	boolean surveyEnabled
     
 	static belongsTo = [event: Event]
 	

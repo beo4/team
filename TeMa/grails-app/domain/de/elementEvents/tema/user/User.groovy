@@ -55,6 +55,7 @@ class User {
 	TravelOptions travelOptions
     OtherOption otherOptions
     MarketplaceOptions marketplaceOptions
+	Survey survey
 	
 	
 	boolean account = false
@@ -101,6 +102,7 @@ class User {
         travelOptions unique: true
         otherOptions unique: true , nullable: true
         marketplaceOptions unique: true , nullable: true
+		survey unique: true , nullable: true
         state blank:true , nullable: true
 	}
 

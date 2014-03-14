@@ -19,6 +19,7 @@ import de.elementEvents.tema.user.MarketplaceOptions;
 import de.elementEvents.tema.user.OtherOption
 import de.elementEvents.tema.user.Salutation;
 import de.elementEvents.tema.user.Status;
+import de.elementEvents.tema.user.Survey;
 import de.elementEvents.tema.user.TravelOptions;
 import de.elementEvents.tema.user.User;
 import grails.converters.JSON
@@ -72,6 +73,18 @@ class RegistrationController {
         }
         render responseJson as JSON
     }
+	
+	def getSurvey() {
+		def surveyInstance
+		if (params.surveyId) {
+			surveyInstance = Survey.get(params.surveyId)
+			if (surveyInstance){
+				render  surveyInstance as JSON
+			} else {
+				notFound params.surveyId
+			}
+		}
+	}
 
     def get() {
 		def userInstance
@@ -293,6 +306,51 @@ class RegistrationController {
         
         render responseJson as JSON
     }
+	
+	def updateSurvey() {
+		def userInstance = User.get(params.id)
+		if (!userInstance) {
+			notFound params.id
+			return
+		}
+
+		def responseJson = [:]
+
+		if (request.JSON.version != null) {
+			if (userInstance.version > request.JSON.version) {
+				response.status = SC_CONFLICT
+				responseJson.message = message(code: 'default.optimistic.locking.failure',
+						args: [message(code: 'user.label', default: 'User')],
+						default: 'Another user has updated this Subscription while you were editing')
+				cache false
+				render responseJson as JSON
+				return
+			}
+		}
+		
+		def survey = request.JSON.survey
+		def surveyOptions = userInstance.survey
+		if (!surveyOptions) {
+			userInstance.survey = new Survey(survey)
+		} else {
+			surveyOptions.properties = survey
+		}
+		
+		if (userInstance.save(flush: false)) {
+			response.status = SC_OK
+			responseJson.id = userInstance.id
+			responseJson.message = message(code: 'default.updated.message', args: [message(code: 'user.label', default: 'User'), userInstance.id])
+			responseJson.participant = userInstance
+			
+		} else {
+			response.status = SC_UNPROCESSABLE_ENTITY
+			responseJson.errors = userInstance.errors.fieldErrors.collectEntries {
+				[(it.field): message(error: it)]
+			}
+		}
+		
+		render responseJson as JSON
+	}
 
     def delete() {
         def userInstance = User.get(params.id)

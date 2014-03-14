@@ -1,0 +1,343 @@
+
+<h2>Feedback zur Serviceleiter Konferenz 2014.</h2>
+<div class="grey-body">
+	<form name="form" class="form-horizontal marketplace">
+		<fieldset>
+			<div class="row-fluid">
+				<div class="span10">
+					<div class="control-group"
+						data-ng-class="{error: errors.survey.entryValue}">
+						<label class="span9" for="title">Wie zufrieden waren Sie
+							mit dem Anmeldeprozedere vorab?</label>
+						<div class="controls span2">
+							<select class="input-block-level" type="text" id="entryValue"
+								name="entryValue" ng-required="true"
+								ng-model="participant.survey.entryValue"
+								ng-options="surveyOption.value as surveyOption.text for surveyOption in surveyOptions">
+							</select> <span class="help-inline"
+								data-ng-show="errors.survey.entryValue">{{errors.survey.entryValue}}</span>
+						</div>
+					</div>
+
+					<div class="control-group"
+						data-ng-class="{error: errors.survey.organisationValue}">
+						<label class="span9" for="title">Wie zufrieden waren Sie
+							mit dem organisatorischen Ablauf am Konferenztag?</label>
+						<div class="controls span2">
+							<select class="input-block-level" type="text"
+								id="organisationValue" name="organisationValue"
+								ng-required="true"
+								ng-model="participant.survey.organisationValue"
+								ng-options="surveyOption.value as surveyOption.text for surveyOption in surveyOptions">
+							</select> <span class="help-inline"
+								data-ng-show="errors.survey.organisationValue">{{errors.survey.organisationValue}}</span>
+						</div>
+					</div>
+
+					<div class="control-group"
+						data-ng-class="{error: errors.survey.theme}">
+						<label class="span9" for="title">Wie bewerten Sie die
+							pr&auml;sentierten Themen auf der B&uuml;hne insgesamt?</label>
+						<div class="controls span2">
+							<select class="input-block-level" type="text" id="theme"
+								name="theme" ng-required="true"
+								ng-model="participant.survey.theme"
+								ng-options="surveyOption.value as surveyOption.text for surveyOption in surveyOptions">
+							</select> <span class="help-inline"
+								data-ng-show="errors.survey.theme">{{errors.survey.theme}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group" data-ng-class="{error: errors.survey.themeText}">
+						<label class="span9" for="title">Welche Themen auf der B&uuml;hne waren f&uuml;r Sie besonders interessant?</label>
+						<div class="span12">
+							<textarea class="span10" rows="5" id="themeText" name="themeText"
+								data-ng-model="participant.survey.themeText"></textarea>
+							<span class="help-inline" data-ng-show="errors.survey.themeText">{{errors.survey.themeText}}</span>
+						</div>
+					</div>
+
+					<div class="control-group"
+						data-ng-class="{error: errors.survey.marketplace}">
+						<label class="span9" for="title">Wie bewerten Sie die Marktst&auml;nde?</label>
+						<div class="controls span2">
+							<select class="input-block-level" type="text" id="marketplace"
+								name="marketplace" ng-required="true"
+								ng-model="participant.survey.marketplace"
+								ng-options="surveyOption.value as surveyOption.text for surveyOption in surveyOptions">
+							</select> <span class="help-inline"
+								data-ng-show="errors.survey.marketplace">{{errors.survey.marketplace}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group" data-ng-class="{error: errors.dailyBusinessText}">
+						<label class="span9" for="title">Welche Marktstandthemen waren f&uuml;r Sie besonders interessant?</label>
+						<div class="span12">
+							
+							<div class="control-group" data-ng-class="{error: errors.aufbauherstellermanagement}">
+								<label class="control-label" for="title">Aufbauherstellermanagement</label>
+								<div class="controls">
+									<input type="checkbox" id="aufbauherstellermanagement" name="aufbauherstellermanagement" data-ng-model="participant.survey.aufbauherstellermanagement">
+									<span class="help-inline" data-ng-show="errors.aufbauherstellermanagement">{{errors.aufbauherstellermanagement}}</span>
+								</div>
+							</div>
+					
+							<div class="control-group" data-ng-class="{error: errors.careport}">
+								<label class="control-label" for="title">Care Port</label>
+								<div class="controls">
+									<input type="checkbox" id="careport" name="careport" data-ng-model="participant.survey.careport">
+									<span class="help-inline" data-ng-show="errors.careport">{{errors.careport}}</span>
+								</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.classicparts}">
+									<label class="control-label" for="title">Classic Parts</label>
+									<div class="controls">
+										<input type="checkbox" id="classicparts" name="classicparts" data-ng-model="participant.survey.classicparts">
+										<span class="help-inline" data-ng-show="errors.classicparts">{{errors.classicparts}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.euromobil}">
+									<label class="control-label" for="title">Euromobil</label>
+									<div class="controls">
+										<input type="checkbox" id="euromobil" name="euromobil" data-ng-model="participant.survey.euromobil">
+										<span class="help-inline" data-ng-show="errors.euromobil">{{errors.euromobil}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.gewahrleistung}">
+									<label class="control-label" for="title">Gew&auml;hrleistung</label>
+									<div class="controls">
+										<input type="checkbox" id="gewahrleistung" name="gewahrleistung" data-ng-model="participant.survey.gewahrleistung">
+										<span class="help-inline" data-ng-show="errors.gewahrleistung">{{errors.gewahrleistung}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.grosskundenbetreuung}">
+									<label class="control-label" for="title">Gro&szlig;kundenbetreuung</label>
+									<div class="controls">
+										<input type="checkbox" id="grosskundenbetreuung" name="grosskundenbetreuung" data-ng-model="participant.survey.grosskundenbetreuung">
+										<span class="help-inline" data-ng-show="errors.grosskundenbetreuung">{{errors.grosskundenbetreuung}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.ihvpost}">
+									<label class="control-label" for="title">IHV Post</label>
+									<div class="controls">
+										<input type="checkbox" id="ihvpost" name="ihvpost" data-ng-model="participant.survey.ihvpost">
+										<span class="help-inline" data-ng-show="errors.ihvpost">{{errors.ihvpost}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.inspektion}">
+									<label class="control-label" for="title">Inspektion &amp; Wartung</label>
+									<div class="controls">
+										<input type="checkbox" id="inspektion" name="inspektion" data-ng-model="participant.survey.inspektion">
+										<span class="help-inline" data-ng-show="errors.inspektion">{{errors.inspektion}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.kbaservice}">
+									<label class="control-label" for="title">Kundenbindungsanalyse Service</label>
+									<div class="controls">
+										<input type="checkbox" id="kbaservice" name="kbaservice" data-ng-model="participant.survey.kbaservice">
+										<span class="help-inline" data-ng-show="errors.kbaservice">{{errors.kbaservice}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.marktchancen}">
+									<label class="control-label" for="title">Marktchancen / Marktanalyse</label>
+									<div class="controls">
+										<input type="checkbox" id="marktchancen" name="marktchancen" data-ng-model="participant.survey.marktchancen">
+										<span class="help-inline" data-ng-show="errors.marktchancen">{{errors.marktchancen}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.nutzfahrzeuge}">
+									<label class="control-label" for="title">Nutzfahrzeuge Technik Center</label>
+									<div class="controls">
+										<input type="checkbox" id="nutzfahrzeuge" name="nutzfahrzeuge" data-ng-model="participant.survey.nutzfahrzeuge">
+										<span class="help-inline" data-ng-show="errors.nutzfahrzeuge">{{errors.nutzfahrzeuge}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.partnerbetreuung}">
+									<label class="control-label" for="title">Partnerbetreuung</label>
+									<div class="controls">
+										<input type="checkbox" id="partnerbetreuung" name="partnerbetreuung" data-ng-model="participant.survey.partnerbetreuung">
+										<span class="help-inline" data-ng-show="errors.partnerbetreuung">{{errors.partnerbetreuung}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.produktbetreuung}">
+									<label class="control-label" for="title">Produktbetreuung</label>
+									<div class="controls">
+										<input type="checkbox" id="produktbetreuung" name="produktbetreuung" data-ng-model="participant.survey.produktbetreuung">
+										<span class="help-inline" data-ng-show="errors.produktbetreuung">{{errors.produktbetreuung}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.servicemarketing}">
+									<label class="control-label" for="title">Service Marketing</label>
+									<div class="controls">
+										<input type="checkbox" id="servicemarketing" name="servicemarketing" data-ng-model="participant.survey.servicemarketing">
+										<span class="help-inline" data-ng-show="errors.servicemarketing">{{errors.servicemarketing}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.servicequalifizierungen}">
+									<label class="control-label" for="title">Service Qualifizierungen</label>
+									<div class="controls">
+										<input type="checkbox" id="servicequalifizierungen" name="servicequalifizierungen" data-ng-model="participant.survey.servicequalifizierungen">
+										<span class="help-inline" data-ng-show="errors.servicequalifizierungen">{{errors.servicequalifizierungen}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.servicestandards}">
+									<label class="control-label" for="title">Service Standards</label>
+									<div class="controls">
+										<input type="checkbox" id="servicestandards" name="servicestandards" data-ng-model="participant.survey.servicestandards">
+										<span class="help-inline" data-ng-show="errors.servicestandards">{{errors.servicestandards}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.skpcommerce}">
+									<label class="control-label" for="title">SKP commerce</label>
+									<div class="controls">
+										<input type="checkbox" id="skpcommerce" name="skpcommerce" data-ng-model="participant.survey.skpcommerce">
+										<span class="help-inline" data-ng-show="errors.skpcommerce">{{errors.skpcommerce}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.taxi}">
+									<label class="control-label" for="title">Taxibetreuung</label>
+									<div class="controls">
+										<input type="checkbox" id="taxi" name="taxi" data-ng-model="participant.survey.taxi">
+										<span class="help-inline" data-ng-show="errors.taxi">{{errors.taxi}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.leasing}">
+									<label class="control-label" for="title">Volkswagen Leasing</label>
+									<div class="controls">
+										<input type="checkbox" id="leasing" name="leasing" data-ng-model="participant.survey.leasing">
+										<span class="help-inline" data-ng-show="errors.leasing">{{errors.leasing}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.originalteile}">
+									<label class="control-label" for="title">Volkswagen Original Teile</label>
+									<div class="controls">
+										<input type="checkbox" id="originalteile" name="originalteile" data-ng-model="participant.survey.originalteile">
+										<span class="help-inline" data-ng-show="errors.originalteile">{{errors.originalteile}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.merchandising}">
+									<label class="control-label" for="title">Volkswagen Zubeh&ouml;r &amp; Lifestyle</label>
+									<div class="controls">
+										<input type="checkbox" id="merchandising" name="merchandising" data-ng-model="participant.survey.merchandising">
+										<span class="help-inline" data-ng-show="errors.merchandising">{{errors.merchandising}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.werkstattsysteme">
+									<label class="control-label" for="title">Werkstattsysteme</label>
+									<div class="controls">
+										<input type="checkbox" id="werkstattsysteme" name="werkstattsysteme" data-ng-model="participant.survey.werkstattsysteme">
+										<span class="help-inline" data-ng-show="errors.werkstattsysteme">{{errors.werkstattsysteme}}</span>
+									</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="control-group"
+						data-ng-class="{error: errors.survey.marketplaceTime}">
+						<label class="span9" for="title">Empfanden Sie die Zeit f&uuml;r Gespr&auml;che am Marktplatz als ausreichend?</label>
+						<div class="controls span2">
+							<select class="input-block-level" type="text" id="marketplaceTime"
+								name="marketplaceTime" ng-required="true"
+								ng-model="participant.survey.marketplaceTime"
+								ng-options="surveyOption.value as surveyOption.text for surveyOption in surveyOptions">
+							</select> <span class="help-inline"
+								data-ng-show="errors.survey.marketplaceTime">{{errors.survey.marketplaceTime}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group"
+						data-ng-class="{error: errors.survey.dailyBusiness}">
+						<label class="span9" for="title">In welchem Ma&szlig;e hilft Ihnen der Inhalt der Themen bei Ihrem t&auml;glichen Gesch&auml;ft weiter/wird weiterhelfen?</label>
+						<div class="controls span2">
+							<select class="input-block-level" type="text" id="dailyBusiness"
+								name="dailyBusiness" ng-required="true"
+								ng-model="participant.survey.dailyBusiness"
+								ng-options="surveyOption.value as surveyOption.text for surveyOption in surveyOptions">
+							</select> <span class="help-inline"
+								data-ng-show="errors.survey.dailyBusiness">{{errors.survey.dailyBusiness}}</span>
+						</div>
+					</div>
+
+					<div class="control-group"
+						data-ng-class="{error: errors.survey.overallImpression}">
+						<label class="span9" for="title">Wie bewerten Sie die Serviceleiter Konferenz 2014 im Ganzen?</label>
+						<div class="controls span2">
+							<select class="input-block-level" type="text" id="overallImpression"
+								name="overallImpression" ng-required="true"
+								ng-model="participant.survey.overallImpression"
+								ng-options="surveyOption.value as surveyOption.text for surveyOption in surveyOptions">
+							</select> <span class="help-inline"
+								data-ng-show="errors.survey.overallImpression">{{errors.survey.overallImpression}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group"
+						data-ng-class="{error: errors.survey.overallImpression}">
+						<label class="span9" for="title">Inwieweit hat die Serviceleiter Konferenz Ihren Erwartungen entsprochen?</label>
+						<div class="controls span2">
+							<select class="input-block-level" type="text" id="expectation"
+								name="expectation" ng-required="true"
+								ng-model="participant.survey.expectation"
+								ng-options="surveyOption.value as surveyOption.text for surveyOption in surveyOptions">
+							</select> <span class="help-inline"
+								data-ng-show="errors.survey.expectation">{{errors.survey.expectation}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group"
+						data-ng-class="{error: errors.survey.reentry}">
+						<label class="span9" for="title">Wie wahrscheinlich ist Ihre Teilnahme an der n&auml;chsten Serviceleiter Konferenz?</label>
+						<div class="controls span2">
+							<select class="input-block-level" type="text" id="reentry"
+								name="reentry" ng-required="true"
+								ng-model="participant.survey.reentry"
+								ng-options="surveyOption.value as surveyOption.text for surveyOption in surveyOptions">
+							</select> <span class="help-inline"
+								data-ng-show="errors.survey.reentry">{{errors.survey.reentry}}</span>
+						</div>
+					</div>
+					
+					<div class="control-group" data-ng-class="{error: errors.other}">
+						<label class="span9" for="title">Weitere Anregungen.</label>
+						<div class="span12">
+							<textarea class="span10" rows="5" id="other" name="other"
+								data-ng-model="participant.survey.other"></textarea>
+							<span class="help-inline" data-ng-show="errors.survey.other">{{errors.survey.other}}</span>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+
+		</fieldset>
+		
+		<div class="form-actions">
+			
+			<button data-ng-click="updateSurvey(participant)"
+				class="btn btn-primary pull-right">
+				Absenden<i class="icon-play"></i>
+			</button>
+		</div>
+
+	</form>
+</div>

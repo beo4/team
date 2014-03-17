@@ -9,6 +9,7 @@ import org.springframework.web.util.HtmlUtils;
 import de.elementEvents.tema.event.Event;
 import de.elementEvents.tema.event.EventLanguage;
 import de.elementEvents.tema.subscription.Subscription;
+import de.elementEvents.tema.user.Status;
 import de.elementEvents.tema.user.User;
 import grails.converters.JSON
 import grails.plugin.jodatime.converters.JodaConverters;
@@ -71,6 +72,188 @@ class MeetingController {
        
 
     }
+	
+	def exportSurveyList() {
+		response.contentType = grailsApplication.config.grails.mime.types[params.format]
+		
+
+		List fields = [
+			"user.correctCompanyAdd",
+			"user.salutation",
+			"user.title",
+			"user.firstname",
+			"user.lastname",
+			"user.company",
+			"user.position",
+			"user.companystreet",
+			"user.companyplz",
+			"user.companycity",
+			"meeting.i18n.first().title",
+			"user.survey.entryValue",
+			"user.survey.organisationValue",
+			"user.survey.theme",
+			"user.survey.themeText",
+			"user.survey.marketplace",
+			"user.survey.marketplaceText",
+			"user.survey.marketplaceTime",
+			"user.survey.dailyBusiness",
+			"user.survey.overallImpression",
+			"user.survey.expectation",
+			"user.survey.reentry",
+			"user.survey.other",
+			"user.survey.aufbauherstellermanagement",
+			"user.survey.careport",
+			"user.survey.classicparts",
+			"user.survey.euromobil",
+			"user.survey.gewahrleistung",
+			"user.survey.grosskundenbetreuung",
+			"user.survey.ihvpost",
+			"user.survey.inspektion",
+			"user.survey.kbaservice",
+			"user.survey.marktchancen",
+			"user.survey.originalteile",
+			"user.survey.produktbetreuung",
+			"user.survey.servicemarketing",
+			"user.survey.servicequalifizierungen",
+			"user.survey.servicestandards",
+			"user.survey.skpcommerce",
+			"user.survey.taxi",
+			"user.survey.leasing",
+			"user.survey.merchandising",
+			"user.survey.onlinesz",
+			"user.survey.partnerbetreuung",
+			"user.survey.nutzfahrzeuge",
+			"user.survey.werkstattsysteme",
+		]
+		Map labels = ["user.correctCompanyAdd":"Betriebsnummer",
+			"user.salutation" :"Anrede",
+			"user.title":"Titel",
+			"user.firstname":"Vorname",
+			"user.email":"Email",
+			"user.lastname":"Nachname",
+			"user.street":"Strasse",
+			"user.plz":"PLZ", "user.city":"Ort",
+			"user.mobile":"Telefon","user.company":"Firma",
+			"user.position":"Position","companystreet":"Firmen Adresse",
+			"companyplz":"Fimen PLZ","user.companycity":"Firmen Ort",
+			"user.account":"Teilnahme",
+			"user.confirmed":"Datenschutz aktzeptiert",
+			,"meeting.start":"VA Datum",
+			"meeting.getDeadline":"Deadline",
+			"meeting.getDefaultDescription":"VA Ort",
+			"user.representative":"Vertretung", 
+			"user.status":"Anmeldestatus",
+			"user.companyadd":"Zusätzliche Betriebsnummer 1",
+			"user.companyadd1":"Zusätzliche Betriebsnummer 2",
+			"user.companyadd2":"Zusätzliche Betriebsnummer 3",
+			"user.companyadd3":"Zusätzliche Betriebsnummer 4",
+			"user.survey.entryValue":message(code: "user.survey.entryValue"),
+			"user.survey.organisationValue":message(code: "user.survey.organisationValue"),
+			"user.survey.theme":message(code: "user.survey.theme"),
+			"user.survey.themeText":message(code: "user.survey.themeText"),
+			"user.survey.marketplace":message(code: "user.survey.marketplace"),
+			"user.survey.marketplaceText":message(code: "user.survey.marketplaceText"),
+			"user.survey.marketplaceTime":message(code: "user.survey.marketplaceTime"),
+			"user.survey.dailyBusiness":message(code: "user.survey.dailyBusiness"),
+			"user.survey.other":message(code: "user.survey.other"),
+			"user.survey.overallImpression":message(code: "user.survey.overallImpression"),
+			"user.survey.expectation":message(code: "user.survey.expectation"),
+			"user.survey.reentry":message(code: "user.survey.reentry"),
+			"user.survey.aufbauherstellermanagement":message(code: "user.survey.aufbauherstellermanagement"),
+			"user.survey.careport":message(code: "user.survey.careport"),
+			"user.survey.classicparts":message(code: "user.survey.classicparts"),
+			"user.survey.euromobil":message(code: "user.survey.euromobil"),
+			"user.survey.gewahrleistung":message(code: "user.survey.gewahrleistung"),
+			"user.survey.grosskundenbetreuung":message(code: "user.survey.entrgrosskundenbetreuungyValue"),
+			"user.survey.ihvpost":message(code: "user.survey.ihvpost"),
+			"user.survey.inspektion":message(code: "user.survey.inspektion"),
+			"user.survey.kbaservice":message(code: "user.survey.kbaservice"),
+			"user.survey.marktchancen":message(code: "user.survey.marktchancen"),
+			"user.survey.originalteile":message(code: "user.survey.originalteile"),
+			"user.survey.produktbetreuung":message(code: "user.survey.produktbetreuung"),
+			"user.survey.servicemarketing":message(code: "user.survey.servicemarketing"),
+			"user.survey.servicequalifizierungen":message(code: "user.survey.servicequalifizierungen"),
+			"user.survey.servicestandards":message(code: "user.survey.servicestandards"),
+			"user.survey.skpcommerce":message(code: "user.survey.skpcommerce"),
+			"user.survey.taxi":message(code: "user.survey.taxi"),
+			"user.survey.leasing":message(code: "user.survey.leasing"),
+			"user.survey.merchandising":message(code: "user.survey.merchandising"),
+			"user.survey.onlinesz":message(code: "user.survey.onlinesz"),
+			"user.survey.partnerbetreuung":message(code: "user.survey.partnerbetreuung"),
+			"user.survey.nutzfahrzeuge":message(code: "user.survey.nutzfahrzeuge"),
+			"user.survey.werkstattsysteme":message(code: "user.survey.werkstattsysteme")]
+
+
+		// Formatter closure
+		def dateformat = { domain, value ->
+			DateTimeFormatter fmt = DateTimeFormat.forPattern("dd.MM.yyyy");
+			return fmt.print(value)
+		}
+		
+		def decodeHTML = {domain, value ->
+			return HtmlUtils.htmlUnescape(value[0]).replaceAll("<br/>", " ")
+		}
+		
+		def decodeSurvey = {domain, value ->
+			if (value==null) return ""
+			
+			def result = ""
+			switch (value) {
+				case 1..10:
+					result = "-"
+					break
+				case 11..20:
+					result = "0"
+					break
+				case 21..30:
+					result = "+"
+					break
+				case 31..40:
+					result = "++"
+					break
+				default:
+					result = ""
+			}
+			return result 
+		}
+
+		Map formatters = ["meeting.start" : dateformat, 
+						  "meeting.getDeadline" : dateformat, 
+						  "meeting.i18n.first().description" : decodeHTML,
+						  "user.survey.entryValue" : decodeSurvey,
+						"user.survey.organisationValue" : decodeSurvey,
+						"user.survey.theme" : decodeSurvey,
+						"user.survey.themeText" : decodeSurvey,
+						"user.survey.marketplace" : decodeSurvey,
+						"user.survey.marketplaceText" : decodeSurvey,
+						"user.survey.marketplaceTime" : decodeSurvey,
+						"user.survey.dailyBusiness" : decodeSurvey,
+						"user.survey.other" : decodeSurvey,
+						"user.survey.overallImpression" : decodeSurvey,
+						"user.survey.expectation" : decodeSurvey,
+						"user.survey.reentry" : decodeSurvey
+						]
+		
+		if (params.meetingId){
+			def meetingInstance =  Meeting.get(params.meetingId)
+			
+			
+			def subscriptionList = Subscription.findAll("\
+										from Subscription as s \
+											where s.meeting = :meeting and s.user.account = 1 and s.user.state = :confirmed\
+										", [meeting: meetingInstance, confirmed: Status.CONFIRMED])
+			
+			def firstLocalisation = meetingInstance.i18n.asList()[0]
+			def filename = "Fragebogen_" + firstLocalisation.title + "_" + firstLocalisation.subtitle
+			Map parameters = [title: "${meetingInstance.id}_Fragebogen_${firstLocalisation.title}"]
+			response.setHeader("Content-disposition", "attachment; filename=${filename}.${params.extension}")
+			
+			
+			exportService.export(params.format, response.outputStream,subscriptionList, fields, labels,formatters,parameters)
+		}
+	   
+
+	}
 
     def save() {
 		

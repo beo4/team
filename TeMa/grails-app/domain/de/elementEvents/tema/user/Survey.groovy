@@ -84,7 +84,7 @@ class Survey {
 		onlinesz blank: true, nullable: true
 		partnerbetreuung blank: true, nullable: true
 		nutzfahrzeuge blank: true, nullable: true
-        
+		werkstattsysteme blank: true, nullable: true
     }
     
     static mapping = {

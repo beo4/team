@@ -29,7 +29,8 @@
 </dl>
 <div class="form-actions">
 	<a class="btn" data-ng-href="{{appUrl}}user/fileCreate?eventId={{item.event.id}}&meetingId={{item.id}}"><i class="icon-plus"></i> add Participant</a>
-	<a class="btn" data-ng-href="{{appUrl}}meeting/exportList?format=excel&extension=xls&meetingId={{item.id}}"><i class="icon-download"></i>Download Excel List</a>
+	<a class="btn" data-ng-href="{{appUrl}}meeting/exportList?format=excel&extension=xls&meetingId={{item.id}}"><i class="icon-download"></i>Download Anmeldeliste</a>
+	<a class="btn" data-ng-href="{{appUrl}}meeting/exportSurveyList?format=excel&extension=xls&meetingId={{item.id}}"><i class="icon-download"></i>Download Fragebogen</a>
 	<button type="button" class="btn" ng-class="{'btn-danger': item.registrationEnabled, 'btn-success': !item.registrationEnabled}" data-ng-click="toggleRegistrationStatus(item)" data-ng-text><i class="icon-time"></i>{{!item.registrationEnabled && '&Ouml;ffne' || 'Schliesse'}} Registrierung </button>
 	<button type="button" class="btn" ng-class="{'btn-danger': item.surveyEnabled, 'btn-success': !item.surveyEnabled}" data-ng-click="toggleSurveyStatus(item)" data-ng-text><i class="icon-time"></i>{{!item.surveyEnabled && '&Ouml;ffne' || 'Schliesse'}} Fragebogen </button>
 	<a class="btn" data-ng-href="#/edit/{{item.id}}"><i class="icon-edit"></i> Edit</a>

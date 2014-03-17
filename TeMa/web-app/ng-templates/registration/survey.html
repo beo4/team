@@ -218,6 +218,14 @@
 									</div>
 							</div>
 							
+							<div class="control-group" data-ng-class="{error: errors.onlinesz}">
+									<label class="control-label" for="title">Technik &#x201e;live&#x201c;</label>
+									<div class="controls">
+										<input type="checkbox" id="onlinesz" name="onlinesz" data-ng-model="participant.survey.onlinesz">
+										<span class="help-inline" data-ng-show="errors.onlinesz">{{errors.onlinesz}}</span>
+									</div>
+							</div>
+							
 							<div class="control-group" data-ng-class="{error: errors.leasing}">
 									<label class="control-label" for="title">Volkswagen Leasing</label>
 									<div class="controls">
@@ -242,7 +250,7 @@
 									</div>
 							</div>
 							
-							<div class="control-group" data-ng-class="{error: errors.werkstattsysteme">
+							<div class="control-group" data-ng-class="{error: errors.werkstattsysteme}">
 									<label class="control-label" for="title">Werkstattsysteme</label>
 									<div class="controls">
 										<input type="checkbox" id="werkstattsysteme" name="werkstattsysteme" data-ng-model="participant.survey.werkstattsysteme">

@@ -1,14 +1,13 @@
 
 <%@ page import="de.elementEvents.tema.subscription.Subscription"%>
-<!doctype html>
 <html>
-<head>
-<meta name="layout" content="registrationbootstrap">
+    <head>
+        <meta name="layout" content="registrationbootstrap">
 <g:set var="entityName"
 	value="${message(code: 'registration.label', default: 'Registration')}" />
 <title><g:message code="registration.default.label" /></title>
 
-<r:require module="registration-angular-scaffolding" />
+<r:require module="registration-angular-scaffolding-a" />
 </head>
 <body data-base-url="${createLink(uri: '/registration/')}">
 	<div class="header">

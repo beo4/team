@@ -25,7 +25,7 @@
 
 <br>
 <p style="text-align: justify;">
-vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014 von Volkswagen Nutzfahrzeuge.
+vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2015 von Volkswagen Nutzfahrzeuge.
 </p>
 <div>
 <p style="text-align: justify;">
@@ -45,7 +45,7 @@ Eine &Auml;nderung Ihrer pers&ouml;nlichen Daten ist bis zum
 </p>
 <p>
 Mit freundlichen Gr&uuml;&szlig;en<br>
-Ihr Serviceleiter Konferenz 2014 Organisationsteam.
+Ihr Serviceleiter Konferenz 2015 Organisationsteam.
 </p>
 </div>
 	

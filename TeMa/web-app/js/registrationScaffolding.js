@@ -109,7 +109,7 @@ scaffoldingModule
 						title : 'Registrierung'
 					}, {
 						active : false,
-						title : 'Marktplatz'
+						title : 'Servicethemen'
 					}, {
 						active : false,
 						title : 'Bestätigung'
@@ -202,7 +202,7 @@ scaffoldingModule
 													.setStep('Teilnehmerdaten');
 											break;
 										case "/chooseMarketplace":
-											$rootScope.setStep('Marktplatz');
+											$rootScope.setStep('Servicethemen');
 											break;
 
 										}

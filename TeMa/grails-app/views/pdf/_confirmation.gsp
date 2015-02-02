@@ -76,10 +76,10 @@
 </p>
 <p>&nbsp;</p>
 <p style="text-align: justify;">
-vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2014 von Volkswagen Nutzfahrzeuge. Sie wurden f&uuml;r folgende Konferenz angemeldet.
+vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2015 von Volkswagen Nutzfahrzeuge. Sie wurden f&uuml;r folgende Konferenz angemeldet.
 </p>
 <p style="text-align: center;"><strong>
-Volkswagen Nutzfahrzeuge Serviceleiter Konferenz 2014<br/>
+Volkswagen Nutzfahrzeuge Serviceleiter Konferenz 2015<br/>
 am <joda:format value="${meeting.start}" pattern="dd.MM.yyyy"/> um 09:30 Uhr<br/>
 in ${meeting_i18n.subtitle} ein.<br/>
 Konferenzbeginn ist um 10:00 Uhr.</strong>
@@ -157,7 +157,8 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 								Position:
 							</td>
 							<td>
-								${participant.position.encodeAsHTML()}
+								<g:if test="${participant.position != 'Sonstiges'}">${participant.position.encodeAsHTML()} </g:if>
+								<g:if test="${participant.position == 'Sonstiges'}">${participant.position.encodeAsHTML()} </g:if>
 							</td>
 					</tr>
 					</table>
@@ -193,42 +194,33 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 					</tr>
 		</table>
 					<h2>
-						Marktplatzthemen:
+						Servicethemen:
 					</h2>
 						
 					<div class="row-fluid">
 							<div class="span10 marketplaceList">
 <g:if test="${participant.marketplaceOptions.aufbauherstellermanagement && participant.marketplaceOptions.aufbauherstellermanagement != null}">Aufbauherstellermanagement, </g:if>
-<g:if test="${participant.marketplaceOptions.spezialfahrzeuge && participant.marketplaceOptions.spezialfahrzeuge != null}">Business Unit Spezialfahrzeuge, </g:if>
 <g:if test="${participant.marketplaceOptions.careport && participant.marketplaceOptions.careport != null}">CarePort, </g:if>
-<g:if test="${participant.marketplaceOptions.direktexpress && participant.marketplaceOptions.direktexpress != null}">Direkt Express, </g:if>
+<g:if test="${participant.marketplaceOptions.classicparts && participant.marketplaceOptions.classicparts != null}">Classic Parts, </g:if>
 <g:if test="${participant.marketplaceOptions.euromobil && participant.marketplaceOptions.euromobil != null}">Euromobil, </g:if>
-<g:if test="${participant.marketplaceOptions.feldbeobachtung && participant.marketplaceOptions.feldbeobachtung != null}">Feldbeobachtung, </g:if>
 <g:if test="${participant.marketplaceOptions.gewahrleistung && participant.marketplaceOptions.gewahrleistung != null}">Gew&auml;hrleistung, </g:if>
 <g:if test="${participant.marketplaceOptions.grosskundenbetreuung && participant.marketplaceOptions.grosskundenbetreuung != null}">Gro&szlig;kundenbetreuung, </g:if>
+<g:if test="${participant.marketplaceOptions.heritage && participant.marketplaceOptions.heritage != null}">IT-Systeme im Service, </g:if>
 <g:if test="${participant.marketplaceOptions.ihvpost && participant.marketplaceOptions.ihvpost != null}">IHV Post, </g:if>
-<g:if test="${participant.marketplaceOptions.inspektion && participant.marketplaceOptions.inspektion != null}">Inspektion &amp; Wartung, </g:if>
 <g:if test="${participant.marketplaceOptions.kbaservice && participant.marketplaceOptions.kbaservice != null}">Kundenbindungsanalyse Service, </g:if>
-<g:if test="${participant.marketplaceOptions.marktchancen && participant.marketplaceOptions.marktchancen != null}">Marktchancen Web Reporting, </g:if>
-<g:if test="${participant.marketplaceOptions.onlinesz && participant.marketplaceOptions.onlinesz != null}">Onlineauftritt Service und Zubeh&ouml;r, </g:if>
-<g:if test="${participant.marketplaceOptions.originalteile && participant.marketplaceOptions.originalteile != null}">Original Teile, </g:if>
-<g:if test="${participant.marketplaceOptions.originalteilelogistik && participant.marketplaceOptions.originalteilelogistik != null}">Original Teile Logistik GmbH, </g:if>
+<g:if test="${participant.marketplaceOptions.serviceapp && participant.marketplaceOptions.serviceapp != null}">Volkswagen Service APP, </g:if>
+<g:if test="${participant.marketplaceOptions.nutzfahrzeugeTechnikCenter && participant.marketplaceOptions.nutzfahrzeugeTechnikCenter != null}">Nutzfahrzeuge Technik Center, </g:if>
 <g:if test="${participant.marketplaceOptions.partnerbetreuung && participant.marketplaceOptions.partnerbetreuung != null}">Partnerbetreuung, </g:if>
-<g:if test="${participant.marketplaceOptions.planungimah && participant.marketplaceOptions.planungimah != null}">Planungssysteme im Autohaus, </g:if>
+<g:if test="${participant.marketplaceOptions.personalmarketing && participant.marketplaceOptions.personalmarketing != null}">Personalmarketing, </g:if>
 <g:if test="${participant.marketplaceOptions.produktbetreuung && participant.marketplaceOptions.produktbetreuung != null}">Produktbetreuung, </g:if>
 <g:if test="${participant.marketplaceOptions.servicemarketing && participant.marketplaceOptions.servicemarketing != null}">Service Marketing, </g:if>
 <g:if test="${participant.marketplaceOptions.servicequalifizierungen && participant.marketplaceOptions.servicequalifizierungen != null}">Service Qualifizierungen, </g:if>
 <g:if test="${participant.marketplaceOptions.servicestandards && participant.marketplaceOptions.servicestandards != null}">Service Standards, </g:if>
-<g:if test="${participant.marketplaceOptions.skpcommerce && participant.marketplaceOptions.skpcommerce != null}">SKPcommerce, </g:if>
-<g:if test="${participant.marketplaceOptions.taxi && participant.marketplaceOptions.taxi != null}">Taxi, </g:if>
-<g:if test="${participant.marketplaceOptions.unfallverhutung && participant.marketplaceOptions.unfallverhutung != null}">Unfallverh&uuml;tungsvorschrift, </g:if>
-<g:if test="${participant.marketplaceOptions.classicparts && participant.marketplaceOptions.classicparts != null}">Volkswagen Classic Parts, </g:if>
+<g:if test="${participant.marketplaceOptions.serviceProzesse && participant.marketplaceOptions.serviceProzesse != null}">Service Prozesse, </g:if>
+<g:if test="${participant.marketplaceOptions.technikLive && participant.marketplaceOptions.technikLive != null}">Technik &#8222;live&ldquo;, </g:if>
 <g:if test="${participant.marketplaceOptions.leasing && participant.marketplaceOptions.leasing != null}">Volkswagen Leasing, </g:if>
-<g:if test="${participant.marketplaceOptions.nutzfahrzeuge && participant.marketplaceOptions.nutzfahrzeuge != null}">Volkswagen Nutzfahrzeuge, </g:if>
-<g:if test="${participant.marketplaceOptions.oldtimer && participant.marketplaceOptions.oldtimer != null}">Oldtimer, </g:if>
-<g:if test="${participant.marketplaceOptions.serviceapp && participant.marketplaceOptions.serviceapp != null}">Volkswagen Service APP, </g:if>
+<g:if test="${participant.marketplaceOptions.originalteile && participant.marketplaceOptions.originalteile != null}">Original Teile, </g:if>
 <g:if test="${participant.marketplaceOptions.merchandising && participant.marketplaceOptions.merchandising != null}">Volkswagen Zubeh&ouml;r &amp; Lifestyle, </g:if>
-<g:if test="${participant.marketplaceOptions.other && participant.marketplaceOptions.other != null}">${participant.marketplaceOptions.other} </g:if>
 							
 							
 							</div>
@@ -241,7 +233,7 @@ F&uuml;r R&uuml;ckfragen zu Ihrer Anmeldung steht Ihnen das Organisationsteam un
 
 <p>
 Mit freundlichen Gr&uuml;&szlig;en<br/>
-Ihr Serviceleiter Konferenz 2014 Organisationsteam.<br/>
+Ihr Serviceleiter Konferenz 2015 Organisationsteam.<br/>
 </p>
 </div>
 <div style="width: 100%; clear:both; margin-top:30px">

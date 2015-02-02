@@ -100,7 +100,7 @@
 						<div class="control-group" data-ng-class="{error: errors.position}">
 							<label class="control-label" for="position">Position*</label>
 							<div class="controls">
-								<select class="form-control input-block-level" data-ng-model="participant.position">
+								<select class="form-control input-block-level" data-ng-model="participant.position" data-ng-change="participant.positionAddon = ''">
 								  <option>Serviceleiter</option>
 								  <option>Gesch&auml;ftsf&uuml;hrer</option>
 								  <option>Gesamtserviceleiter</option>
@@ -109,14 +109,21 @@
 								<span class="help-inline" data-ng-show="errors.position">{{errors.position}}</span>
 							</div>
 						</div>
-						<div class="control-group" data-ng-class="{error: errors.position}" data-ng-show="participant.position=='Gesamtserviceleiter'">
-							<label class="control-label" for="position">Ich komme f&uuml;r</label>
+						<div class="control-group" data-ng-class="{error: errors.positionAddon}" data-ng-show="participant.position=='Gesamtserviceleiter'">
+							<label class="control-label" for="positionAddon">Ich komme f&uuml;r</label>
 							<div class="controls">
 								<select class="form-control input-block-level" data-ng-model="participant.positionAddon">
 								  <option selected value="single">1 Betrieb</option>
 								  <option value="multi">mehrere Betriebe</option>
 								</select>
-								<span class="help-inline" data-ng-show="errors.position">{{errors.position}}</span>
+								<span class="help-inline" data-ng-show="errors.positionAddon">{{errors.positionAddon}}</span>
+							</div>
+						</div>
+						<div class="control-group" data-ng-class="{error: errors.position}" data-ng-show="participant.position=='Sonstiges'">
+							<label class="control-label" for="positionAddon">Position</label>
+							<div class="controls">
+								<input type="text" id="positionAddon" name="positionAddon" data-ng-model="participant.positionAddon">
+								<span class="help-inline" data-ng-show="errors.positionAddon">{{errors.positionAddon}}</span>
 							</div>
 						</div>
 						<div class="control-group" data-ng-class="{error: errors.companyadd}" data-ng-show="participant.positionAddon=='multi'">

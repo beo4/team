@@ -24,7 +24,6 @@
 					<li data-ng-repeat="step in steps" data-ng-class="{'active': step.active}"><a href="#">{{step.title}}</a></li>
 				</ul>
 				<ul class="nav pull-right" data-ng-show="participant">
-					<li><g:link action="download" target='_blank'>Download</g:link></li>
 					<li><g:link action="faq" target='_blank'>FAQ</g:link></li>
 				</ul>
 				</div>

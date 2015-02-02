@@ -10,14 +10,14 @@ class MarketplaceOptions {
     Boolean feldbeobachtung
     Boolean gewahrleistung
     Boolean grosskundenbetreuung
-    Boolean heritage
+    Boolean heritage //IT-Systeme im Service
     Boolean ihvpost
     Boolean unfallverhutung
     Boolean inspektion
     Boolean kbaservice
     Boolean marktchancen
-    Boolean originalteile
-    Boolean serviceapp
+    Boolean originalteile //Volkswagen Original Teile
+    Boolean serviceapp //Mobile Online Dienste
     Boolean planungimah
     Boolean produktbetreuung
     Boolean servicemarketing
@@ -32,7 +32,13 @@ class MarketplaceOptions {
     Boolean originalteilelogistik
     Boolean partnerbetreuung
     Boolean oldtimer
-    Boolean nutzfahrzeuge 
+    Boolean nutzfahrzeuge
+    Boolean nutzfahrzeugeTechnikCenter
+    Boolean personalmarketing
+    Boolean serviceProzesse
+    Boolean technikLive
+    
+    
     
     String other
     
@@ -71,6 +77,10 @@ class MarketplaceOptions {
         partnerbetreuung blank: true, nullable: true
         oldtimer blank: true, nullable: true
         nutzfahrzeuge blank: true, nullable: true
+        nutzfahrzeugeTechnikCenter blank: true, nullable: true
+        personalmarketing blank: true, nullable: true
+        serviceProzesse blank: true, nullable: true
+        technikLive blank: true, nullable: true
         
         
     }

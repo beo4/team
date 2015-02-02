@@ -384,12 +384,13 @@ class RegistrationController {
         Meeting_i18n i18n = Meeting_i18n.findByMeetingAndI18n(subscriptionInstance.meeting, user.language)
         
         def vwLogo = grailsApplication.parentContext.getResource('images/VWN.png').getFile().getBytes()
-        def slkLogo = grailsApplication.parentContext.getResource('images/VWN-SLK2014-Keyvisual-FINAL-small.jpg').getFile().getBytes()
+        def slkLogo = grailsApplication.parentContext.getResource('images/Keyvisual_3D_2015_small.jpg').getFile().getBytes()
         
         ByteArrayOutputStream bytes = pdfRenderingService.render(template: "/pdf/confirmation", model: [participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl, vwlogo:vwLogo, slklogo:slkLogo])
         
         def fileName = 'Teilnehmerdaten ' + user.firstname + ' ' + user.lastname + '.pdf'
         
+        try {
         mailService.sendMail {
             multipart true
             bcc EMAIL
@@ -401,14 +402,18 @@ class RegistrationController {
                 model:[participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl])
             attach fileName,'application/pdf', bytes.toByteArray()
             inline 'VWN','image/png', grailsApplication.parentContext.getResource('images/VWN.png').getFile().readBytes()
-            inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/VWN-SLK2014-Keyvisual-FINAL-460.jpg').getFile().readBytes()
+            inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/Keyvisual_3D_2015_420.jpg').getFile().readBytes()
           }
+        } catch (any) {
+            
+        }
         bytes.close()    
     }
     
     private sendRepresentativNotificationEmail(User user, Meeting meeting){
         Meeting_i18n i18n = Meeting_i18n.findByMeetingAndI18n(meeting, user.language)
         def serverUrl = serverUrl()
+        try {
         mailService.sendMail {
             multipart true
             bcc "support@vwn.serviceleiterkonferenz.de"
@@ -419,8 +424,11 @@ class RegistrationController {
             html g.render(template:"/email/emailRepTmpl",
                 model:[participant:user, meeting_i18n:i18n, meeting:meeting, serverUrl:serverUrl])
             inline 'VWN','image/png', grailsApplication.parentContext.getResource('images/VWN.png').getFile().readBytes()
-            inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/VWN-SLK2014-Keyvisual-FINAL-460.jpg').getFile().readBytes()
+            inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/Keyvisual_3D_2015_420.jpg').getFile().readBytes()
           }
+        } catch (any) {
+        }
+        
     }
     
     def createRepresentativ() {

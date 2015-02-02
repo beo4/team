@@ -24,19 +24,19 @@
 </g:if>
 <p>&nbsp;</p>
 <p style="text-align: justify;">
-das Gesch&auml;ftsjahr 2013 war von einigen Herausforderungen f&uuml;r den Nutzfahrzeuge Service gepr&auml;gt. Gemeinsam mit Ihnen m&ouml;chten wir das vergangene Jahr Revue passieren lassen und Ihnen einen Ausblick auf 2014 geben.
+das Gesch&auml;ftsjahr 2015 war von einigen Herausforderungen f&uuml;r den Nutzfahrzeuge Service gepr&auml;gt. Gemeinsam mit Ihnen m&ouml;chten wir das vergangene Jahr Revue passieren lassen und Ihnen einen Ausblick auf 2015 geben.
 </p>
 <p>
 Hierzu laden wir Sie herzlich zur
 </p>
 <p style="text-align: center;"><strong>
-Volkswagen Nutzfahrzeuge Serviceleiter Konferenz 2014<br>
+Volkswagen Nutzfahrzeuge Serviceleiter Konferenz 2015<br>
 am <joda:format value="${meeting.start}" pattern="dd.MM.yyyy"/> um 09:30 Uhr<br>
 im ${meeting_i18n.subtitle} ein.<br>
 Konferenzbeginn ist um 10:00 Uhr.</strong>
 </p>
 <p style="text-align: justify;">
-Im Rahmen der Konferenz gehen wir besonders auf die geplanten Ma&szlig;nahmen und Ziele f&uuml;r das Servicejahr 2014 ein. Dar&uuml;ber hinaus pr&auml;sentieren wir Ihnen relevante Neuigkeiten zu den Themenbereichen After Sales Qualit&auml;t und Prozesse, Technik, Kundenzufriedenheit sowie Original Teile und Service Vermarktung. 
+Im Rahmen der Konferenz gehen wir besonders auf die geplanten Ma&szlig;nahmen und Ziele f&uuml;r das Servicejahr 2015 ein. Dar&uuml;ber hinaus pr&auml;sentieren wir Ihnen relevante Neuigkeiten zu den Themenbereichen After Sales Qualit&auml;t und Prozesse, Technik, Kundenzufriedenheit sowie Original Teile und Service Vermarktung. 
 </p>
 <p style="text-align: justify;">
 Wie in den vergangenen Jahren haben Sie wieder die M&ouml;glichkeit, auf einem Marktplatz mit unseren Experten direkt in den Dialog zu treten und zu diskutieren.
@@ -82,7 +82,7 @@ F&uuml;r R&uuml;ckfragen zu Ihrer Anmeldung steht Ihnen das Organisationsteam un
 </p>
 <p>
 Mit freundlichen Gr&uuml;&szlig;en<br>
-Ihr Serviceleiter Konferenz 2014 Organisationsteam.
+Ihr Serviceleiter Konferenz 2015 Organisationsteam.
 </p>
 </div>
 </body>

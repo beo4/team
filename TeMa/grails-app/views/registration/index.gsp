@@ -14,7 +14,7 @@
         <div class="container-fluid">
 			<div class="row-fluid">
 				<div id="logo" class="span12">
-						<img src="${ g.resource( dir:'images', file:'VWN.png' ) }" alt="Volkswagen Nutzfahrzeuge" height="108" width="118">
+						<img src="${ g.resource( dir:'images', file:'VWN.png' ) }" alt="Volkswagen Nutzfahrzeuge" height="78" width="87">
 				</div>
 			</div>
 			</div>

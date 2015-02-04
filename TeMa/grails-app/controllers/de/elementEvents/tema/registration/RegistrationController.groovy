@@ -1,6 +1,7 @@
 package de.elementEvents.tema.registration
 
 import java.awt.GraphicsConfiguration.DefaultBufferCapabilities;
+import java.util.logging.Logger;
 
 import javax.validation.Validation;
 
@@ -404,8 +405,8 @@ class RegistrationController {
             inline 'VWN','image/png', grailsApplication.parentContext.getResource('images/VWN.png').getFile().readBytes()
             inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/Keyvisual_3D_2015_420.jpg').getFile().readBytes()
           }
-        } catch (any) {
-            
+        } catch (Exception e) {
+            log.error "Error: ${e.message}", e
         }
         bytes.close()    
     }
@@ -426,7 +427,8 @@ class RegistrationController {
             inline 'VWN','image/png', grailsApplication.parentContext.getResource('images/VWN.png').getFile().readBytes()
             inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/Keyvisual_3D_2015_420.jpg').getFile().readBytes()
           }
-        } catch (any) {
+        } catch (Exception e) {
+            log.error "Error: ${e.message}", e
         }
         
     }

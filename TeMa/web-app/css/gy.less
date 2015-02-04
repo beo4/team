@@ -6,10 +6,13 @@ img {
   -webkit-background-clip: padding-box;
   background-clip: padding-box;
 }
- #logo img {
-  -webkit-border-radius: 0;
-  -moz-border-radius: 0;
-  border-radius: 0;
+ #logo {
+    margin-bottom: 20px;
+    img {
+      -webkit-border-radius: 0;
+      -moz-border-radius: 0;
+      border-radius: 0;
+    }
 }
 
 @font-face{
@@ -551,5 +554,5 @@ footer {
 
 .marketplaceList{
     span:after { content: ", "; }
-    span:visible:last-child:after { content: none; }
+    span:last-child:after { content: "."; }
 }

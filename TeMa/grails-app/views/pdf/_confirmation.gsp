@@ -76,12 +76,12 @@
 </p>
 <p>&nbsp;</p>
 <p style="text-align: justify;">
-vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2015 von Volkswagen Nutzfahrzeuge. Sie wurden f&uuml;r folgende Konferenz angemeldet.
+vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2015 von Volkswagen Nutzfahrzeuge. Sie wurden f&uuml;r folgende Konferenz angemeldet:
 </p>
 <p style="text-align: center;"><strong>
 Volkswagen Nutzfahrzeuge Serviceleiter Konferenz 2015<br/>
 am <joda:format value="${meeting.start}" pattern="dd.MM.yyyy"/> um 09:30 Uhr<br/>
-in ${meeting_i18n.subtitle} ein.<br/>
+im ${meeting_i18n.description}<br/>
 Konferenzbeginn ist um 10:00 Uhr.</strong>
 </p>
 <div class="container-fluid">
@@ -158,7 +158,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 							</td>
 							<td>
 								<g:if test="${participant.position != 'Sonstiges'}">${participant.position.encodeAsHTML()} </g:if>
-								<g:if test="${participant.position == 'Sonstiges'}">${participant.position.encodeAsHTML()} </g:if>
+								<g:if test="${participant.position == 'Sonstiges'}">${participant.positionAddon.encodeAsHTML()} </g:if>
 							</td>
 					</tr>
 					</table>
@@ -171,7 +171,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 								Telefon:
 							</td>
 							<td>
-								${participant.phone.encodeAsHTML()}
+								${participant.phone? participant.phone.encodeAsHTML():""}
 							</td>
 					</tr>
 					
@@ -180,7 +180,7 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 								Fax:
 							</td>
 							<td>
-								${participant.fax.encodeAsHTML()}
+								${participant.fax? participant.fax.encodeAsHTML():""}
 							</td>
 					</tr>
 
@@ -206,9 +206,9 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 <g:if test="${participant.marketplaceOptions.gewahrleistung && participant.marketplaceOptions.gewahrleistung != null}">Gew&auml;hrleistung, </g:if>
 <g:if test="${participant.marketplaceOptions.grosskundenbetreuung && participant.marketplaceOptions.grosskundenbetreuung != null}">Gro&szlig;kundenbetreuung, </g:if>
 <g:if test="${participant.marketplaceOptions.heritage && participant.marketplaceOptions.heritage != null}">IT-Systeme im Service, </g:if>
-<g:if test="${participant.marketplaceOptions.ihvpost && participant.marketplaceOptions.ihvpost != null}">IHV Post, </g:if>
-<g:if test="${participant.marketplaceOptions.kbaservice && participant.marketplaceOptions.kbaservice != null}">Kundenbindungsanalyse Service, </g:if>
-<g:if test="${participant.marketplaceOptions.serviceapp && participant.marketplaceOptions.serviceapp != null}">Volkswagen Service APP, </g:if>
+<g:if test="${participant.marketplaceOptions.ihvpost && participant.marketplaceOptions.ihvpost != null}">IHV Post/Taxibetreuung, </g:if>
+<g:if test="${participant.marketplaceOptions.kbaservice && participant.marketplaceOptions.kbaservice != null}">KBA Service, </g:if>
+<g:if test="${participant.marketplaceOptions.serviceapp && participant.marketplaceOptions.serviceapp != null}">Mobile Online Dienste, </g:if>
 <g:if test="${participant.marketplaceOptions.nutzfahrzeugeTechnikCenter && participant.marketplaceOptions.nutzfahrzeugeTechnikCenter != null}">Nutzfahrzeuge Technik Center, </g:if>
 <g:if test="${participant.marketplaceOptions.partnerbetreuung && participant.marketplaceOptions.partnerbetreuung != null}">Partnerbetreuung, </g:if>
 <g:if test="${participant.marketplaceOptions.personalmarketing && participant.marketplaceOptions.personalmarketing != null}">Personalmarketing, </g:if>
@@ -218,8 +218,8 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 <g:if test="${participant.marketplaceOptions.servicestandards && participant.marketplaceOptions.servicestandards != null}">Service Standards, </g:if>
 <g:if test="${participant.marketplaceOptions.serviceProzesse && participant.marketplaceOptions.serviceProzesse != null}">Service Prozesse, </g:if>
 <g:if test="${participant.marketplaceOptions.technikLive && participant.marketplaceOptions.technikLive != null}">Technik &#8222;live&ldquo;, </g:if>
-<g:if test="${participant.marketplaceOptions.leasing && participant.marketplaceOptions.leasing != null}">Volkswagen Leasing, </g:if>
 <g:if test="${participant.marketplaceOptions.originalteile && participant.marketplaceOptions.originalteile != null}">Original Teile, </g:if>
+<g:if test="${participant.marketplaceOptions.leasing && participant.marketplaceOptions.leasing != null}">Volkswagen Leasing, </g:if>
 <g:if test="${participant.marketplaceOptions.merchandising && participant.marketplaceOptions.merchandising != null}">Volkswagen Zubeh&ouml;r &amp; Lifestyle, </g:if>
 							
 							

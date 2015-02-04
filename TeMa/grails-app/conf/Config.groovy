@@ -159,9 +159,9 @@ grails {
     mail {
       host = "smtp.1und1.de"
       port = 587
-      username = "noreply@behounek.de"
-      password = "Initial1@NEU"
-      props = ["mail.smtp.auth":"true",
+      username = "ee_web@s231130202.online.de"
+      password = "Initial1@ee"
+      props = ["mail.smtp.starttls.enable":"true",
                "mail.smtp.socketFactory.port":"587"]
       
     }

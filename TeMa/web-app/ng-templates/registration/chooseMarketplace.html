@@ -126,6 +126,15 @@ Bitte w&auml;hlen Sie mindestens ein Thema.
 				</div>
 				<div class="span6">
 				
+					<div class="control-group" data-ng-class="{error: errors.originalteile}">
+						<label class="control-label" for="originalteile">Original Teile</label>
+						<div class="controls">
+							<input type="checkbox" id="originalteile" name="originalteile"
+								data-ng-model="participant.marketplaceOptions.originalteile">
+							<span class="help-inline" data-ng-show="errors.originalteile">{{errors.originalteile}}</span>
+						</div>
+					</div>
+				
 					<div class="control-group"
 						data-ng-class="{error: errors.partnerbetreuung}">
 						<label class="control-label" for="title">Partnerbetreuung</label>
@@ -222,15 +231,6 @@ Bitte w&auml;hlen Sie mindestens ein Thema.
 						</div>
 					</div>
 					
-					<div class="control-group" data-ng-class="{error: errors.originalteile}">
-						<label class="control-label" for="originalteile">Volkswagen Original Teile<sup>&reg;</sup></label>
-						<div class="controls">
-							<input type="checkbox" id="originalteile" name="originalteile"
-								data-ng-model="participant.marketplaceOptions.originalteile">
-							<span class="help-inline" data-ng-show="errors.originalteile">{{errors.originalteile}}</span>
-						</div>
-					</div>
-
 					<div class="control-group"
 						data-ng-class="{error: errors.merchandising}">
 						<label class="control-label" for="title">Zubeh&ouml;r &amp; Lifestyle</label>

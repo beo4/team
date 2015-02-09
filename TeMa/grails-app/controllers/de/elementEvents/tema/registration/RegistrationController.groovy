@@ -289,6 +289,11 @@ class RegistrationController {
         def marketplaceOptions = userInstance.marketplaceOptions
         marketplaceOptions.properties = marketplaceOptionsArr
         
+        userInstance.setSalutation(Salutation.valueOf(request.JSON.salutation.name))
+        
+        
+        
+        
         if (userInstance.save(flush: false)) {
             response.status = SC_OK
             responseJson.id = userInstance.id

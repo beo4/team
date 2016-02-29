@@ -52,7 +52,11 @@ class RegistrationController {
     def index() { }
     
     def faq() { 
-        render(view:"faq");
+        render(template:"/faq/faq");
+    }
+    
+    def chooseMarketplace() {
+        render(template:"/marketplace/chooseMarketplace");
     }
     
     def download() {
@@ -146,8 +150,6 @@ class RegistrationController {
 	def getMeetings() {
 		def eventInstance = Event.get(params.event)
 		def meetings = eventInstance.meetings
-		
-		
 		
 		def responseJson = [:]
 
@@ -390,7 +392,7 @@ class RegistrationController {
         Meeting_i18n i18n = Meeting_i18n.findByMeetingAndI18n(subscriptionInstance.meeting, user.language)
         
         def vwLogo = grailsApplication.parentContext.getResource('images/VWN.png').getFile().getBytes()
-        def slkLogo = grailsApplication.parentContext.getResource('images/Keyvisual_3D_2015_small.jpg').getFile().getBytes()
+        def slkLogo = grailsApplication.parentContext.getResource('images/Keyvisual_3D_2016_small.jpg').getFile().getBytes()
         
         ByteArrayOutputStream bytes = pdfRenderingService.render(template: "/pdf/confirmation", model: [participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl, vwlogo:vwLogo, slklogo:slkLogo])
         
@@ -408,7 +410,7 @@ class RegistrationController {
                 model:[participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl])
             attach fileName,'application/pdf', bytes.toByteArray()
             inline 'VWN','image/png', grailsApplication.parentContext.getResource('images/VWN.png').getFile().readBytes()
-            inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/Keyvisual_3D_2015_420.jpg').getFile().readBytes()
+            inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/Keyvisual_3D_2016_420.jpg').getFile().readBytes()
           }
         } catch (Exception e) {
             log.error "Error: ${e.message}", e
@@ -430,7 +432,7 @@ class RegistrationController {
             html g.render(template:"/email/emailRepTmpl",
                 model:[participant:user, meeting_i18n:i18n, meeting:meeting, serverUrl:serverUrl])
             inline 'VWN','image/png', grailsApplication.parentContext.getResource('images/VWN.png').getFile().readBytes()
-            inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/Keyvisual_3D_2015_420.jpg').getFile().readBytes()
+            inline 'VWN-SLK2014','image/jpg', grailsApplication.parentContext.getResource('images/Keyvisual_3D_2016_420.jpg').getFile().readBytes()
           }
         } catch (Exception e) {
             log.error "Error: ${e.message}", e

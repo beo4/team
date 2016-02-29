@@ -7,8 +7,7 @@
 				<div class="span10">
 					<div class="control-group"
 						data-ng-class="{error: errors.survey.entryValue}">
-						<label class="span9" for="title">Wie zufrieden waren Sie
-							mit dem Anmeldeprozedere vorab?</label>
+						<label class="span9" for="title"><g:message code="user.survey.entryValue"/></label>
 						<div class="controls span2">
 							<select class="input-block-level" type="text" id="entryValue"
 								name="entryValue" ng-required="true"
@@ -21,8 +20,7 @@
 
 					<div class="control-group"
 						data-ng-class="{error: errors.survey.organisationValue}">
-						<label class="span9" for="title">Wie zufrieden waren Sie
-							mit dem organisatorischen Ablauf am Konferenztag?</label>
+						<label class="span9" for="title"><g:message code="user.survey.organisationValue"/></label>
 						<div class="controls span2">
 							<select class="input-block-level" type="text"
 								id="organisationValue" name="organisationValue"
@@ -75,47 +73,31 @@
 						<div class="span12">
 							
 							<div class="control-group" data-ng-class="{error: errors.aufbauherstellermanagement}">
-								<label class="control-label" for="title">Aufbauherstellermanagement</label>
+								<label class="control-label" for="title"><g:message code="user.survey.aufbauherstellermanagement"/></label>
 								<div class="controls">
 									<input type="checkbox" id="aufbauherstellermanagement" name="aufbauherstellermanagement" data-ng-model="participant.survey.aufbauherstellermanagement">
 									<span class="help-inline" data-ng-show="errors.aufbauherstellermanagement">{{errors.aufbauherstellermanagement}}</span>
 								</div>
 							</div>
-					
-							<div class="control-group" data-ng-class="{error: errors.careport}">
-								<label class="control-label" for="title">Care Port</label>
-								<div class="controls">
-									<input type="checkbox" id="careport" name="careport" data-ng-model="participant.survey.careport">
-									<span class="help-inline" data-ng-show="errors.careport">{{errors.careport}}</span>
-								</div>
-							</div>
 							
 							<div class="control-group" data-ng-class="{error: errors.classicparts}">
-									<label class="control-label" for="title">Classic Parts</label>
+									<label class="control-label" for="title"><g:message code="user.survey.classicparts"/></label>
 									<div class="controls">
 										<input type="checkbox" id="classicparts" name="classicparts" data-ng-model="participant.survey.classicparts">
 										<span class="help-inline" data-ng-show="errors.classicparts">{{errors.classicparts}}</span>
 									</div>
 							</div>
 							
-							<div class="control-group" data-ng-class="{error: errors.euromobil}">
-									<label class="control-label" for="title">Euromobil</label>
-									<div class="controls">
-										<input type="checkbox" id="euromobil" name="euromobil" data-ng-model="participant.survey.euromobil">
-										<span class="help-inline" data-ng-show="errors.euromobil">{{errors.euromobil}}</span>
-									</div>
-							</div>
-							
-							<div class="control-group" data-ng-class="{error: errors.gewahrleistung}">
-									<label class="control-label" for="title">Gew&auml;hrleistung &amp; Produktbetreuung</label>
-									<div class="controls">
-										<input type="checkbox" id="gewahrleistung" name="gewahrleistung" data-ng-model="participant.survey.gewahrleistung">
-										<span class="help-inline" data-ng-show="errors.gewahrleistung">{{errors.gewahrleistung}}</span>
-									</div>
+							<div class="control-group" data-ng-class="{error: errors.careport}">
+								<label class="control-label" for="title"><g:message code="user.survey.diesel"/></label>
+								<div class="controls">
+									<input type="checkbox" id="careport" name="careport" data-ng-model="participant.survey.careport">
+									<span class="help-inline" data-ng-show="errors.careport">{{errors.careport}}</span>
+								</div>
 							</div>
 							
 							<div class="control-group" data-ng-class="{error: errors.grosskundenbetreuung}">
-									<label class="control-label" for="title">Gro&szlig;kundenbetreuung</label>
+									<label class="control-label" for="title"><g:message code="user.survey.grosskundenbetreuung"/></label>
 									<div class="controls">
 										<input type="checkbox" id="grosskundenbetreuung" name="grosskundenbetreuung" data-ng-model="participant.survey.grosskundenbetreuung">
 										<span class="help-inline" data-ng-show="errors.grosskundenbetreuung">{{errors.grosskundenbetreuung}}</span>
@@ -123,7 +105,7 @@
 							</div>
 							
 							<div class="control-group" data-ng-class="{error: errors.ihvpost}">
-									<label class="control-label" for="title">IHV Post/Taxibetreuung</label>
+									<label class="control-label" for="title"><g:message code="user.survey.ihvpost"/></label>
 									<div class="controls">
 										<input type="checkbox" id="ihvpost" name="ihvpost" data-ng-model="participant.survey.ihvpost">
 										<span class="help-inline" data-ng-show="errors.ihvpost">{{errors.ihvpost}}</span>

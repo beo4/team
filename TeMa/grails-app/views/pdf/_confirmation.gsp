@@ -199,28 +199,23 @@ Konferenzbeginn ist um 10:00 Uhr.</strong>
 						
 					<div class="row-fluid">
 							<div class="span10 marketplaceList">
-<g:if test="${participant.marketplaceOptions.aufbauherstellermanagement && participant.marketplaceOptions.aufbauherstellermanagement != null}">Aufbauherstellermanagement, </g:if>
-<g:if test="${participant.marketplaceOptions.careport && participant.marketplaceOptions.careport != null}">CarePort, </g:if>
-<g:if test="${participant.marketplaceOptions.classicparts && participant.marketplaceOptions.classicparts != null}">Classic Parts, </g:if>
-<g:if test="${participant.marketplaceOptions.euromobil && participant.marketplaceOptions.euromobil != null}">Euromobil, </g:if>
-<g:if test="${participant.marketplaceOptions.gewahrleistung && participant.marketplaceOptions.gewahrleistung != null}">Gew&auml;hrleistung, </g:if>
-<g:if test="${participant.marketplaceOptions.grosskundenbetreuung && participant.marketplaceOptions.grosskundenbetreuung != null}">Gro&szlig;kundenbetreuung, </g:if>
-<g:if test="${participant.marketplaceOptions.heritage && participant.marketplaceOptions.heritage != null}">IT-Systeme im Service, </g:if>
-<g:if test="${participant.marketplaceOptions.ihvpost && participant.marketplaceOptions.ihvpost != null}">IHV Post/Taxibetreuung, </g:if>
-<g:if test="${participant.marketplaceOptions.kbaservice && participant.marketplaceOptions.kbaservice != null}">KBA Service, </g:if>
-<g:if test="${participant.marketplaceOptions.serviceapp && participant.marketplaceOptions.serviceapp != null}">Mobile Online Dienste, </g:if>
-<g:if test="${participant.marketplaceOptions.nutzfahrzeugeTechnikCenter && participant.marketplaceOptions.nutzfahrzeugeTechnikCenter != null}">Nutzfahrzeuge Technik Center, </g:if>
-<g:if test="${participant.marketplaceOptions.partnerbetreuung && participant.marketplaceOptions.partnerbetreuung != null}">Partnerbetreuung, </g:if>
-<g:if test="${participant.marketplaceOptions.personalmarketing && participant.marketplaceOptions.personalmarketing != null}">Personalmarketing, </g:if>
-<g:if test="${participant.marketplaceOptions.produktbetreuung && participant.marketplaceOptions.produktbetreuung != null}">Produktbetreuung, </g:if>
-<g:if test="${participant.marketplaceOptions.servicemarketing && participant.marketplaceOptions.servicemarketing != null}">Service Marketing, </g:if>
-<g:if test="${participant.marketplaceOptions.servicequalifizierungen && participant.marketplaceOptions.servicequalifizierungen != null}">Service Qualifizierungen, </g:if>
-<g:if test="${participant.marketplaceOptions.servicestandards && participant.marketplaceOptions.servicestandards != null}">Service Standards, </g:if>
-<g:if test="${participant.marketplaceOptions.serviceProzesse && participant.marketplaceOptions.serviceProzesse != null}">Service Prozesse, </g:if>
-<g:if test="${participant.marketplaceOptions.technikLive && participant.marketplaceOptions.technikLive != null}">Technik &#8222;live&ldquo;, </g:if>
-<g:if test="${participant.marketplaceOptions.originalteile && participant.marketplaceOptions.originalteile != null}">Original Teile, </g:if>
-<g:if test="${participant.marketplaceOptions.leasing && participant.marketplaceOptions.leasing != null}">Volkswagen Leasing, </g:if>
-<g:if test="${participant.marketplaceOptions.merchandising && participant.marketplaceOptions.merchandising != null}">Volkswagen Zubeh&ouml;r &amp; Lifestyle, </g:if>
+<g:if test="${participant.marketplaceOptions.aufbauherstellermanagement && participant.marketplaceOptions.aufbauherstellermanagement != null}"><g:message encodeAs="HTML" code="user.survey.aufbauherstellermanagement"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.classicparts && participant.marketplaceOptions.classicparts != null}"><g:message encodeAs="HTML" code="user.survey.classicparts"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.gewahrleistung && participant.marketplaceOptions.gewahrleistung != null}"><g:message encodeAs="HTML" code="user.survey.diesel"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.grosskundenbetreuung && participant.marketplaceOptions.grosskundenbetreuung != null}"><g:message encodeAs="HTML" code="user.survey.grosskundenbetreuung"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.ihvpost && participant.marketplaceOptions.ihvpost != null}"><g:message encodeAs="HTML" code="user.survey.ihvpost"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.skpcommerce && participant.marketplaceOptions.skpcommerce != null}"><g:message encodeAs="HTML" code="user.survey.skpcommerce"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.onlinesz && participant.marketplaceOptions.onlinesz != null}"><g:message encodeAs="HTML" code="user.survey.onlinesz"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.originalteile && participant.marketplaceOptions.originalteile != null}"><g:message encodeAs="HTML" code="user.survey.originalteile"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.partnerbetreuung && participant.marketplaceOptions.partnerbetreuung != null}"><g:message encodeAs="HTML" code="user.survey.partnerbetreuung"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.personalmarketing && participant.marketplaceOptions.personalmarketing != null}"><g:message encodeAs="HTML" code="user.survey.personalmarketing"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.technikLive && participant.marketplaceOptions.technikLive != null}"><g:message encodeAs="HTML" code="user.survey.quality"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.servicemarketing && participant.marketplaceOptions.servicemarketing != null}"><g:message encodeAs="HTML" code="user.survey.servicemarketing"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.servicestandards && participant.marketplaceOptions.servicestandards != null}"><g:message encodeAs="HTML" code="user.survey.servicestandards"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.serviceProzesse && participant.marketplaceOptions.serviceProzesse != null}"><g:message encodeAs="HTML" code="user.survey.serviceprozesse"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.servicequalifizierungen && participant.marketplaceOptions.servicequalifizierungen != null}"><g:message encodeAs="HTML" code="user.survey.servicequalifizierungen"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.leasing && participant.marketplaceOptions.leasing != null}"><g:message encodeAs="HTML" code="user.survey.leasing"/>, </g:if>
+<g:if test="${participant.marketplaceOptions.merchandising && participant.marketplaceOptions.merchandising != null}"><g:message encodeAs="HTML" code="user.survey.merchandising"/>, </g:if>
 							
 							
 							</div>

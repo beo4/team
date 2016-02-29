@@ -30,18 +30,18 @@ class Survey {
 	Boolean kbaservice
 	Boolean marktchancen
 	Boolean originalteile
-	Boolean produktbetreuung
+	Boolean produktbetreuung //Personalmarketing
 	Boolean servicemarketing
 	Boolean servicequalifizierungen
-	Boolean servicestandards
-	Boolean skpcommerce
+	Boolean servicestandards //Service Prozesse
+	Boolean skpcommerce //it-systeme im Service
 	Boolean taxi
 	Boolean leasing 
-	Boolean merchandising 
-	Boolean onlinesz 
+	Boolean merchandising // zubehoer und lifestyle
+	Boolean onlinesz //mobile online dienste
 	Boolean partnerbetreuung 
 	Boolean nutzfahrzeuge 
-	Boolean werkstattsysteme 
+	Boolean werkstattsysteme
 	    
     String other
     

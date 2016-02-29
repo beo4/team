@@ -1,5 +1,5 @@
 
-<h2>Feedback zur Serviceleiter Konferenz 2015.</h2>
+<h2>Feedback zur Serviceleiter Konferenz 2016.</h2>
 <div class="grey-body">
 	<form name="form" class="form-horizontal marketplace">
 		<fieldset>
@@ -107,7 +107,7 @@
 							</div>
 							
 							<div class="control-group" data-ng-class="{error: errors.gewahrleistung}">
-									<label class="control-label" for="title">Gew&auml;hrleistung</label>
+									<label class="control-label" for="title">Gew&auml;hrleistung &amp; Produktbetreuung</label>
 									<div class="controls">
 										<input type="checkbox" id="gewahrleistung" name="gewahrleistung" data-ng-model="participant.survey.gewahrleistung">
 										<span class="help-inline" data-ng-show="errors.gewahrleistung">{{errors.gewahrleistung}}</span>
@@ -123,18 +123,18 @@
 							</div>
 							
 							<div class="control-group" data-ng-class="{error: errors.ihvpost}">
-									<label class="control-label" for="title">IHV Post</label>
+									<label class="control-label" for="title">IHV Post/Taxibetreuung</label>
 									<div class="controls">
 										<input type="checkbox" id="ihvpost" name="ihvpost" data-ng-model="participant.survey.ihvpost">
 										<span class="help-inline" data-ng-show="errors.ihvpost">{{errors.ihvpost}}</span>
 									</div>
 							</div>
 							
-							<div class="control-group" data-ng-class="{error: errors.inspektion}">
-									<label class="control-label" for="title">Inspektion &amp; Wartung</label>
+							<div class="control-group" data-ng-class="{error: errors.skpcommerce}">
+									<label class="control-label" for="title">IT-Systeme im Service</label>
 									<div class="controls">
-										<input type="checkbox" id="inspektion" name="inspektion" data-ng-model="participant.survey.inspektion">
-										<span class="help-inline" data-ng-show="errors.inspektion">{{errors.inspektion}}</span>
+										<input type="checkbox" id="skpcommerce" name="skpcommerce" data-ng-model="participant.survey.skpcommerce">
+										<span class="help-inline" data-ng-show="errors.skpcommerce">{{errors.skpcommerce}}</span>
 									</div>
 							</div>
 							
@@ -147,18 +147,35 @@
 							</div>
 							
 							<div class="control-group" data-ng-class="{error: errors.marktchancen}">
-									<label class="control-label" for="title">Marktchancen / Marktanalyse</label>
+									<label class="control-label" for="title">Marktanalysen</label>
 									<div class="controls">
 										<input type="checkbox" id="marktchancen" name="marktchancen" data-ng-model="participant.survey.marktchancen">
 										<span class="help-inline" data-ng-show="errors.marktchancen">{{errors.marktchancen}}</span>
 									</div>
 							</div>
+														
+							<div class="control-group" data-ng-class="{error: errors.onlinesz}">
+									<label class="control-label" for="title">Mobile Online Dienste</label>
+									<div class="controls">
+										<input type="checkbox" id="onlinesz" name="onlinesz" data-ng-model="participant.survey.onlinesz">
+										<span class="help-inline" data-ng-show="errors.onlinesz">{{errors.onlinesz}}</span>
+									</div>
+							</div>
+							
 							
 							<div class="control-group" data-ng-class="{error: errors.nutzfahrzeuge}">
 									<label class="control-label" for="title">Nutzfahrzeuge Technik Center</label>
 									<div class="controls">
 										<input type="checkbox" id="nutzfahrzeuge" name="nutzfahrzeuge" data-ng-model="participant.survey.nutzfahrzeuge">
 										<span class="help-inline" data-ng-show="errors.nutzfahrzeuge">{{errors.nutzfahrzeuge}}</span>
+									</div>
+							</div>
+							
+							<div class="control-group" data-ng-class="{error: errors.originalteile}">
+									<label class="control-label" for="title">Original Teile</label>
+									<div class="controls">
+										<input type="checkbox" id="originalteile" name="originalteile" data-ng-model="participant.survey.originalteile">
+										<span class="help-inline" data-ng-show="errors.originalteile">{{errors.originalteile}}</span>
 									</div>
 							</div>
 							
@@ -171,7 +188,7 @@
 							</div>
 							
 							<div class="control-group" data-ng-class="{error: errors.produktbetreuung}">
-									<label class="control-label" for="title">Produktbetreuung</label>
+									<label class="control-label" for="title">Personalmarketing</label>
 									<div class="controls">
 										<input type="checkbox" id="produktbetreuung" name="produktbetreuung" data-ng-model="participant.survey.produktbetreuung">
 										<span class="help-inline" data-ng-show="errors.produktbetreuung">{{errors.produktbetreuung}}</span>
@@ -186,43 +203,19 @@
 									</div>
 							</div>
 							
-							<div class="control-group" data-ng-class="{error: errors.servicequalifizierungen}">
-									<label class="control-label" for="title">Service Qualifizierungen</label>
-									<div class="controls">
-										<input type="checkbox" id="servicequalifizierungen" name="servicequalifizierungen" data-ng-model="participant.survey.servicequalifizierungen">
-										<span class="help-inline" data-ng-show="errors.servicequalifizierungen">{{errors.servicequalifizierungen}}</span>
-									</div>
-							</div>
-							
 							<div class="control-group" data-ng-class="{error: errors.servicestandards}">
-									<label class="control-label" for="title">Service Standards</label>
+									<label class="control-label" for="title">Service Prozesse</label>
 									<div class="controls">
 										<input type="checkbox" id="servicestandards" name="servicestandards" data-ng-model="participant.survey.servicestandards">
 										<span class="help-inline" data-ng-show="errors.servicestandards">{{errors.servicestandards}}</span>
 									</div>
 							</div>
 							
-							<div class="control-group" data-ng-class="{error: errors.skpcommerce}">
-									<label class="control-label" for="title">SKP commerce</label>
+							<div class="control-group" data-ng-class="{error: errors.servicequalifizierungen}">
+									<label class="control-label" for="title">Service Qualifizierungen</label>
 									<div class="controls">
-										<input type="checkbox" id="skpcommerce" name="skpcommerce" data-ng-model="participant.survey.skpcommerce">
-										<span class="help-inline" data-ng-show="errors.skpcommerce">{{errors.skpcommerce}}</span>
-									</div>
-							</div>
-							
-							<div class="control-group" data-ng-class="{error: errors.taxi}">
-									<label class="control-label" for="title">Taxibetreuung</label>
-									<div class="controls">
-										<input type="checkbox" id="taxi" name="taxi" data-ng-model="participant.survey.taxi">
-										<span class="help-inline" data-ng-show="errors.taxi">{{errors.taxi}}</span>
-									</div>
-							</div>
-							
-							<div class="control-group" data-ng-class="{error: errors.onlinesz}">
-									<label class="control-label" for="title">Technik &#x201e;live&#x201c;</label>
-									<div class="controls">
-										<input type="checkbox" id="onlinesz" name="onlinesz" data-ng-model="participant.survey.onlinesz">
-										<span class="help-inline" data-ng-show="errors.onlinesz">{{errors.onlinesz}}</span>
+										<input type="checkbox" id="servicequalifizierungen" name="servicequalifizierungen" data-ng-model="participant.survey.servicequalifizierungen">
+										<span class="help-inline" data-ng-show="errors.servicequalifizierungen">{{errors.servicequalifizierungen}}</span>
 									</div>
 							</div>
 							
@@ -234,13 +227,6 @@
 									</div>
 							</div>
 							
-							<div class="control-group" data-ng-class="{error: errors.originalteile}">
-									<label class="control-label" for="title">Volkswagen Original Teile</label>
-									<div class="controls">
-										<input type="checkbox" id="originalteile" name="originalteile" data-ng-model="participant.survey.originalteile">
-										<span class="help-inline" data-ng-show="errors.originalteile">{{errors.originalteile}}</span>
-									</div>
-							</div>
 							
 							<div class="control-group" data-ng-class="{error: errors.merchandising}">
 									<label class="control-label" for="title">Volkswagen Zubeh&ouml;r &amp; Lifestyle</label>
@@ -250,13 +236,6 @@
 									</div>
 							</div>
 							
-							<div class="control-group" data-ng-class="{error: errors.werkstattsysteme}">
-									<label class="control-label" for="title">Werkstattsysteme</label>
-									<div class="controls">
-										<input type="checkbox" id="werkstattsysteme" name="werkstattsysteme" data-ng-model="participant.survey.werkstattsysteme">
-										<span class="help-inline" data-ng-show="errors.werkstattsysteme">{{errors.werkstattsysteme}}</span>
-									</div>
-							</div>
 						</div>
 					</div>
 					
@@ -288,7 +267,7 @@
 
 					<div class="control-group"
 						data-ng-class="{error: errors.survey.overallImpression}">
-						<label class="span9" for="title">Wie bewerten Sie die Serviceleiter Konferenz 2015 im Ganzen?</label>
+						<label class="span9" for="title">Wie bewerten Sie die Serviceleiter Konferenz 2016 im Ganzen?</label>
 						<div class="controls span2">
 							<select class="input-block-level" type="text" id="overallImpression"
 								name="overallImpression" ng-required="true"

@@ -109,7 +109,6 @@ class MeetingController {
 			"user.survey.gewahrleistung",
 			"user.survey.grosskundenbetreuung",
 			"user.survey.ihvpost",
-			"user.survey.inspektion",
 			"user.survey.kbaservice",
 			"user.survey.marktchancen",
 			"user.survey.originalteile",
@@ -118,13 +117,11 @@ class MeetingController {
 			"user.survey.servicequalifizierungen",
 			"user.survey.servicestandards",
 			"user.survey.skpcommerce",
-			"user.survey.taxi",
 			"user.survey.leasing",
 			"user.survey.merchandising",
 			"user.survey.onlinesz",
 			"user.survey.partnerbetreuung",
-			"user.survey.nutzfahrzeuge",
-			"user.survey.werkstattsysteme",
+			"user.survey.nutzfahrzeuge"
 		]
 		Map labels = ["user.correctCompanyAdd":"Betriebsnummer",
 			"user.salutation" :"Anrede",
@@ -167,7 +164,6 @@ class MeetingController {
 			"user.survey.gewahrleistung":message(code: "user.survey.gewahrleistung"),
 			"user.survey.grosskundenbetreuung":message(code: "user.survey.entrgrosskundenbetreuungyValue"),
 			"user.survey.ihvpost":message(code: "user.survey.ihvpost"),
-			"user.survey.inspektion":message(code: "user.survey.inspektion"),
 			"user.survey.kbaservice":message(code: "user.survey.kbaservice"),
 			"user.survey.marktchancen":message(code: "user.survey.marktchancen"),
 			"user.survey.originalteile":message(code: "user.survey.originalteile"),
@@ -176,13 +172,11 @@ class MeetingController {
 			"user.survey.servicequalifizierungen":message(code: "user.survey.servicequalifizierungen"),
 			"user.survey.servicestandards":message(code: "user.survey.servicestandards"),
 			"user.survey.skpcommerce":message(code: "user.survey.skpcommerce"),
-			"user.survey.taxi":message(code: "user.survey.taxi"),
 			"user.survey.leasing":message(code: "user.survey.leasing"),
 			"user.survey.merchandising":message(code: "user.survey.merchandising"),
 			"user.survey.onlinesz":message(code: "user.survey.onlinesz"),
 			"user.survey.partnerbetreuung":message(code: "user.survey.partnerbetreuung"),
-			"user.survey.nutzfahrzeuge":message(code: "user.survey.nutzfahrzeuge"),
-			"user.survey.werkstattsysteme":message(code: "user.survey.werkstattsysteme")]
+			"user.survey.nutzfahrzeuge":message(code: "user.survey.nutzfahrzeuge")]
 
 
 		// Formatter closure

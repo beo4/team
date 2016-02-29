@@ -76,10 +76,10 @@
 </p>
 <p>&nbsp;</p>
 <p style="text-align: justify;">
-vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2015 von Volkswagen Nutzfahrzeuge. Sie wurden f&uuml;r folgende Konferenz angemeldet:
+vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2016 von Volkswagen Nutzfahrzeuge. Sie wurden f&uuml;r folgende Konferenz angemeldet:
 </p>
 <p style="text-align: center;"><strong>
-Volkswagen Nutzfahrzeuge Serviceleiter Konferenz 2015<br/>
+Volkswagen Nutzfahrzeuge Serviceleiter Konferenz 2016<br/>
 am <joda:format value="${meeting.start}" pattern="dd.MM.yyyy"/> um 09:30 Uhr<br/>
 im ${meeting_i18n.description}<br/>
 Konferenzbeginn ist um 10:00 Uhr.</strong>
@@ -233,7 +233,7 @@ F&uuml;r R&uuml;ckfragen zu Ihrer Anmeldung steht Ihnen das Organisationsteam un
 
 <p>
 Mit freundlichen Gr&uuml;&szlig;en<br/>
-Ihr Serviceleiter Konferenz 2015 Organisationsteam.<br/>
+Ihr Serviceleiter Konferenz 2016 Organisationsteam.<br/>
 </p>
 </div>
 <div style="width: 100%; clear:both; margin-top:30px">

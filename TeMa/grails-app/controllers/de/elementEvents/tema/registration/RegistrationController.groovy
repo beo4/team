@@ -52,13 +52,9 @@ class RegistrationController {
     def index() { }
     
     def faq() { 
-        render(template:"/faq/faq");
+        render(view:"faq");
     }
-    
-    def chooseMarketplace() {
-        render(template:"/marketplace/chooseMarketplace");
-    }
-    
+
     def download() {
         render(view:"download");
     }

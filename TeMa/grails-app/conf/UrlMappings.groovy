@@ -9,7 +9,7 @@ class UrlMappings {
 
 		"/"(controller:"registration")
 		"500"(view:'/error')
-        "/faq"(view:"/faq/faq")
+        "/faq"(view:"/faq/_faq")
         "/download"(controller:"registration",action:"download")
         "/ng-templates/registration/chooseMarketplace"(view:"/marketplace/_chooseMarketplace")
 	}

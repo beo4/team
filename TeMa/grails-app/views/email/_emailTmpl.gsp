@@ -12,7 +12,7 @@
 		<img src="cid:VWN" alt="Volkswagen Nutzfahrzeuge" height="108" width="118"/>
 	</div>
 	<div style="float:right;">
-		<img src="cid:VWN-SLK2014" height="118" width="389" alt="Volkswagen Nutzfahrzeuge" />
+		<img src="cid:VWN-SLK2014" height="107" width="376" alt="Volkswagen Nutzfahrzeuge" />
 	</div>
 </div>
 <p style="clear:both;"></p>

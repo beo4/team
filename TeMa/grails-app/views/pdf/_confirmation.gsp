@@ -81,7 +81,7 @@ vielen Dank f&uuml;r die erfolgreiche Anmeldung zur Serviceleiter Konferenz 2016
 <p style="text-align: center;"><strong>
 Volkswagen Nutzfahrzeuge Serviceleiter Konferenz 2016<br/>
 am <joda:format value="${meeting.start}" pattern="dd.MM.yyyy"/> um 09:30 Uhr<br/>
-im ${meeting_i18n.description}<br/>
+<g:if test="${meeting.id == 18}">in der</g:if><g:if test="${meeting.id != 18}">im</g:if> ${meeting_i18n.description}<br/>
 Konferenzbeginn ist um 10:00 Uhr.</strong>
 </p>
 <div class="container-fluid">

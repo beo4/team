@@ -401,7 +401,7 @@ class RegistrationController {
             to user.email
             from EMAIL
             replyTo EMAIL
-            subject "Teilnahmebestätigung"
+            subject message(code:'registration.mail.subject')
             html g.render(template:"/email/emailTmpl",
                 model:[participant: user, meeting_i18n:i18n, meeting:subscriptionInstance.meeting, serverUrl:serverUrl])
             attach fileName,'application/pdf', bytes.toByteArray()
@@ -424,7 +424,7 @@ class RegistrationController {
             to user.email
             from EMAIL
             replyTo EMAIL
-            subject "Einladung"
+            subject message(code:'registration.mail.rep.subject')
             html g.render(template:"/email/emailRepTmpl",
                 model:[participant:user, meeting_i18n:i18n, meeting:meeting, serverUrl:serverUrl])
             inline 'VWN','image/png', grailsApplication.parentContext.getResource('images/VWN.png').getFile().readBytes()

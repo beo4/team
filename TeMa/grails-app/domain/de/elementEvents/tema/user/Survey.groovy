@@ -20,7 +20,7 @@ class Survey {
 	int reentry
 	
 	Boolean aufbauherstellermanagement
-	Boolean careport
+	Boolean careport // serviceprozesse
 	Boolean classicparts
 	Boolean euromobil
 	Boolean gewahrleistung
@@ -30,7 +30,7 @@ class Survey {
 	Boolean kbaservice
 	Boolean marktchancen
 	Boolean originalteile
-	Boolean produktbetreuung //Personalmarketing
+	Boolean produktbetreuung //technik live
 	Boolean servicemarketing
 	Boolean servicequalifizierungen
 	Boolean servicestandards //Service Prozesse
@@ -62,29 +62,29 @@ class Survey {
 		expectation blank: true, nullable: true
 		reentry blank: true, nullable: true
 		other blank: true, nullable: true
-		aufbauherstellermanagement blank: true, nullable: true
-		careport blank: true, nullable: true
-		classicparts blank: true, nullable: true
-		euromobil blank: true, nullable: true
-		gewahrleistung blank: true, nullable: true
-		grosskundenbetreuung blank: true, nullable: true
-		ihvpost blank: true, nullable: true
-		inspektion blank: true, nullable: true
-		kbaservice blank: true, nullable: true
+		aufbauherstellermanagement blank: true, nullable: true //Betriebseinrichtung
+		careport blank: true, nullable: true //Fahrzeug-Aufbauten im Service
+		classicparts blank: true, nullable: true //VW Classic Parts 
+		euromobil blank: true, nullable: true //Euromobil
+		gewahrleistung blank: true, nullable: true // Diesel/EA189
+		grosskundenbetreuung blank: true, nullable: true //
+		ihvpost blank: true, nullable: true //
+		inspektion blank: true, nullable: true // IT-Systeme im Service
+		kbaservice blank: true, nullable: true 
 		marktchancen blank: true, nullable: true
-		originalteile blank: true, nullable: true
-		produktbetreuung blank: true, nullable: true
-		servicemarketing blank: true, nullable: true
-		servicequalifizierungen blank: true, nullable: true
-		servicestandards blank: true, nullable: true
-		skpcommerce blank: true, nullable: true
-		taxi blank: true, nullable: true
-		leasing blank: true, nullable: true
-		merchandising blank: true, nullable: true
-		onlinesz blank: true, nullable: true
+		originalteile blank: true, nullable: true // Original Teile
+		produktbetreuung blank: true, nullable: true //großkundenbetreuung
+		servicemarketing blank: true, nullable: true //
+		servicequalifizierungen blank: true, nullable: true // Service Qualifizierung
+		servicestandards blank: true, nullable: true //  Service Prozesse
+		skpcommerce blank: true, nullable: true // Service Professionalisierung
+		taxi blank: true, nullable: true //Personalmarketing
+		leasing blank: true, nullable: true // Volkswagen Financial Services
+		merchandising blank: true, nullable: true // VW Zubehör und Lifestyle
+		onlinesz blank: true, nullable: true // Mobile Online Dienste
 		partnerbetreuung blank: true, nullable: true
 		nutzfahrzeuge blank: true, nullable: true
-		werkstattsysteme blank: true, nullable: true
+		werkstattsysteme blank: true, nullable: true // Technik & Qualität
     }
     
     static mapping = {

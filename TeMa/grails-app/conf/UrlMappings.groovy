@@ -12,5 +12,6 @@ class UrlMappings {
         "/faq"(view:"/faq/_faq")
         "/download"(controller:"registration",action:"download")
         "/ng-templates/registration/chooseMarketplace"(view:"/marketplace/_chooseMarketplace")
+        "/ng-templates/registration/survey"(view:"/survey/_survey")
 	}
 }
